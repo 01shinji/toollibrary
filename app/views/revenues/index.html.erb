@@ -1,0 +1,28 @@
+<div class="">
+  <ul class="">
+    <li class=""><%= link_to "支払い方法", payment_method_path %></li>
+    <li class=""><%= link_to "売上管理", payout_method_path, class: "active" %></li>
+    <li class=""><%= link_to "通知設定", payment_method_path %></li>
+    <li class=""><%= link_to "プロフィールを見る", user_path(current_user.id) %></li>
+  </ul>
+</div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 text-center">
+    <div class="panel panel-default">
+      <h3><b>週間売上チャート</b></h3>
+
+      <div class="container">
+
+        <% if @reservations.blank? %>
+          <p>まだ売上がありません...</p><br/>
+          <%= link_to "出品する", new_listing_path, class: "btn-sm  white b-orange" %>
+        <% else %>
+          <%= column_chart @this_week_revenue, colors: ["#04b4e4"] %>
+        <% end %>
+
+      </div>
+
+    </div>
+  </div>
+</div>

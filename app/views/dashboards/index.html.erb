@@ -1,0 +1,58 @@
+<div class="row text-center">
+  <div class="col-md-8 col-md-offset-2">
+
+
+    <div  class="">
+      <div class="">
+        <h3><b><%= current_user.fullname %></b></h3>
+      </div>
+
+      <div class="">
+        <%= image_tag current_user.image, class: "img-circle avatar-full" %>
+      </div>
+
+    </div>
+
+    <div class="verification">
+      <ul>
+        <% if current_user.confirmation_token %>
+          <li>メールアドレスの確認<span class=" blue"><i class="fa fa-check-circle"></i></span></li>
+        <% end %>
+        <% if current_user.provider %>
+          <li>Facebookによる認証<span class=" blue"><i class="fa fa-check-circle"></i></span></li>
+        <% end %>
+        <li>電話番号の確認<span class=" blue"><i class="fa fa-check-circle"></i></span></li>
+      </ul>
+    </div>
+    <hr/>
+
+    <!-- 通知 -->
+    <div class="row">
+     <h4>あなたへのお知らせ</h4>
+     <div class="col-md-12 notification-dashboard">
+
+         <p>
+          新しいお知らせが
+          <%= link_to notifications_path do %>
+           <span id="num_of_unread">
+            <%= current_user.unread %>
+           </span>件
+          <% end %>
+          あります。
+         </p>
+
+
+     </div>
+    </div>
+    <hr/>
+
+    <!-- 出品中アイテム -->
+    <div class="row nearby">
+      <h4>
+        出品中アイテム<span>&nbsp;<%= @listings.length %>点</span>
+      </h4>
+      <%= render partial: "listings/listings_list", locals: {listings: @listings} %>
+    </div>
+
+  </div>
+</div>

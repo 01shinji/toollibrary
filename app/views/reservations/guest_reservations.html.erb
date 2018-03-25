@@ -1,0 +1,59 @@
+<!-- ホストとしての貸出し販売履歴 -->
+<div class="">
+  <ul class="">
+    <li class=""><%= link_to "出品アイテム管理", listings_path %></li>
+    <li class=""><%= link_to "貸出し販売履歴", guest_reservations_path, class: "active" %></li>
+    <li class=""><%= link_to "レンタル購入履歴", my_reservations_path  %></li>
+  </ul>
+</div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="">
+      <h3 class="text-center"><b>貸出し販売履歴</b></h3>
+      <div class="container text-left">
+
+        <% @listings.each do |listing| %>
+          <% listing.reservations.each do |reservation| %>
+
+           <p class="">
+             <%= reservation.start_date.strftime('%Y年%m月%d日') %>&nbsp;
+             <%= reservation.status_i18n %>&nbsp;
+
+              <% if reservation.Waiting? %>
+               <%= link_to approve_reservation_path(reservation), method: :post do %><span class="blue"><i class="fa fa-thumbs-up fa-lg"></i></span><% end %> |
+               <%= link_to decline_reservation_path(reservation), method: :post do %><span class="blue"><i class="fa fa-thumbs-down fa-lg"></i></span><% end %>
+              <% end %>
+
+           </p>
+           <div class="row">
+             <div class="col-md-3 col-sm-3 col-xs-6">
+               <%= link_to listing_path(reservation.listing) do %>
+                <%= image_tag reservation.listing.cover_photo(:thumb) %>
+               <% end %>
+             </div>
+             <div class="col-md-9 col-sm-9 col-xs-6 ">
+               <%= link_to reservation.listing.listing_title, listing_path(reservation.listing) %>
+               <br>
+               <div class="reservation-user">
+                 <span>
+                   <%= image_tag reservation.user.image, class: "img-circle avatar-small" %>
+                   <%= link_to user_path(reservation.user) do %>
+                    <%= reservation.user.fullname %>
+                   <% end %>
+                 </span>
+               </div>
+               <br>
+               <%= render partial: "reviews/host_form", locals: {reservation: reservation} if reservation.Approved? %>
+
+             </div>
+           </div>
+           <hr/>
+
+          <% end %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

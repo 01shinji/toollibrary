@@ -1,0 +1,29 @@
+<div class="">
+  <ul class="">
+    <li class=""><%= link_to "出品アイテム管理", listings_path, class: "active" %></li>
+    <li class=""><%= link_to "貸出し販売履歴",  guest_reservations_path %></li>
+    <li class=""><%= link_to "レンタル購入履歴", my_reservations_path %></li>
+  </ul>
+</div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 text-center">
+    <div class="panel panel-default">
+      <h3><b>出品アイテム管理</b></h3>
+      <div class="container">
+        <% @listings.each do |listing| %>
+          <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-6">
+              <%= image_tag listing.cover_photo(:thumb) %>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-6 text-left">
+              <p><%= listing.listing_title %></p>
+              <p><b><%= link_to "編集する", information1_listing_path(listing) %></b></p>
+            </div>
+          </div>
+          <hr/>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

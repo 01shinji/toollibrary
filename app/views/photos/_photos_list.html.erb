@@ -1,0 +1,22 @@
+<% if @photos.count > 0 %>
+  <br/><br/>
+
+  <div class="row">
+    <% @photos.each do |photo| %>
+      <div class="col-md-6 col-sm-6 col-xs-6">
+        <div class="panel panel-default">
+          <div class="panel-heading preview">
+            <%= image_tag photo.image.url() %>
+          </div>
+          <div class="panel-body">
+            <span class="pull-right trash">
+              <%= link_to listing_photo_path(photo.listing_id, photo), remote: true, method: :delete, data: {confirm: "削除しても大丈夫ですか?"} do %>
+                <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+              <% end %>
+            </span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

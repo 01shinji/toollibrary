@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 text-center">
+    <div class="panel panel-default">
+      <h3><b>出品商品の基本情報を入力</b></h3>
+
+      <div class="container">
+        <%= form_for @listing,html: {multipart: true} do |f| %>
+
+        <div class="form_box ">
+          <p>出品タイプ</p>
+          <div class="form-group select">
+            <%= f.select :listing_type, [["貸す","貸す"], ["売る","売る"], ["教える","教える"]], {prompt:"選択してください"}, {required: 'true', autofocus: 'true', class: 'form-control',id: "listing_type"} %>
+          </div>
+        </div>
+
+        <div class="form_box">
+          <p>カテゴリー1</p>
+          <div class="form-group">
+            <%= f.select :category1, [["サーフボード", "サーフボード"], ["SUPボード", "SUPボード"], ["アイテム", "アイテム"],["その他", "その他"]],{prompt:"選択してください"},{required: 'true', autofocus: 'true', class: "form-control",id: "category1"} %>
+          </div>
+        </div>
+
+        <div class="form_box">
+          <p>カテゴリー2</p>
+          <div class="form-group">
+            <%= f.select :category2, [["サーフボード", "サーフボード"], ["SUPボード", "SUPボード"], ["アイテム", "アイテム"],["その他", "その他"]],{prompt:"選択してください"},{required: 'true', autofocus: 'true', class: "form-control",id: "category2"} %>
+          </div>
+        </div>
+
+        <div class="form_box">
+          <p>商品名</p>
+          <div class="form-group">
+            <%= f.text_field :listing_title, placeholder: "例:キャッチサーフのファンボード", class: "form-control", required: true %>
+          </div>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "登録する", class: "btn btn-form" %>
+        </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="row text-center conversations">
+  <div class="col-md-8 col-md-offset-2">
+
+    <div  class="">
+      <div class="">
+        <h3><b>メッセージ一覧</b></h3>
+      </div>
+    </div>
+
+    <div class="row">
+     <div class="col-md-12 ">
+
+       <% if @conversations.count == 0 %>
+        <p>まだメッセージのやりとりがありません...</p>
+       <% else %>
+
+        <% @conversations.each do |conversation| %>
+         <% other = current_user == conversation.sender ? conversation.recipient : conversation.sender %>
+         <%= link_to conversation_messages_path(conversation) do %>
+          <div class="conversation-box row ">
+             <% if conversation.messages.any? %>
+             <div class="col-md-2 col-sm-2 col-xs-3">
+               <%= image_tag other.image, class: "img-circle avatar-medium" %>
+             </div>
+             <div class="col-md-10 col-sm-10 col-xs-9">
+               <strong><%= other.fullname %>さん</strong>
+               <div class="message">
+                 <%= conversation.messages.last.context %><br>
+                 <span>
+                  <%= conversation.messages.last.message_time %>
+                 </span>
+               </div>
+             </div>
+             <% end %>
+          </div>
+  
+         <% end %>
+
+        <% end %>
+       <% end %>
+     </div>
+    </div>
+
+
+
+  </div>
+</div>

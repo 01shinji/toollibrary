@@ -1,0 +1,47 @@
+<div class="row text-center messages">
+  <div class="col-md-8 col-md-offset-2">
+
+    <div  class="messages-header">
+      <h3><i><%= @other.fullname %></i>さんとのメッセージ</h3>
+      <div class="">
+        <ul class="">
+         <li class="">
+           <%= image_tag @other.image, class: "img-circle avatar-medium" %>
+         </li>
+         <li class="">
+           登録日:&nbsp;<%= @other.created_at.strftime("%Y年%m月") %><br>
+           <p><%= link_to "プロフィールを見る", @other, class: "btn-blue" %></p>
+         </li>
+
+        </ul>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+     <div class="col-md-12 ">
+
+       <input id="conversation_id" type="hidden" value="<%= @conversation.id %>">
+
+       <div id="chat">
+         <%= render @messages %>
+       </div>
+
+       <%= form_for [@conversation, @conversation.messages.new], remote: true do |f| %>
+           <div class="form-group">
+             <%= f.text_field :context, placeholder: "コメントを入力", class: "form-control new-message" %>
+           </div>
+           <%= f.hidden_field :user_id, value: current_user.id %>
+           <div>
+             <%= f.submit "送信", class: "btn btn-form" %>
+           </div>
+
+       <% end %>
+     </div>
+    </div>
+
+
+
+  </div>
+</div>

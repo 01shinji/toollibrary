@@ -1,0 +1,205 @@
+  <!-- About -->
+  <div class="row show-header">
+   <div class="col-md-12">
+    <h3>
+      <b><%= @listing.listing_title %></b>
+      <span><%= @listing.listing_type %></span>
+      <% if @listing.Instant? %><span>即決可</span><% end %>
+    </h3>
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-xs-6">
+        <%= image_tag @listing.user.image, class: "img-circle avatar-large" %><br/>
+        <%= @listing.user.fullname %>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-6">
+        <p>
+          商品の受け渡し場所<br/>
+          <div class="icon-circle">
+           <i class="fa fa-map-marker gray"></i>
+          </div>
+          <%= @listing.location %>
+        </p>
+      </div>
+    </div>
+   </div>
+  </div>
+
+  <!-- パンくずリスト -->
+  <div id="" class="breadcrumb thick-gray">
+ <ul>
+   <li class="">
+    <%= @listing.category1 %>
+   </li>
+   <li>&nbsp;&gt;&nbsp;</li>
+   <li class="">
+    <%= @listing.category2 %>
+   </li>
+  <ul>
+</div>
+
+  <!-- Carousel -->
+  <div class="row show-photo">
+  <% if @photos.length > 0 %>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <% @photos.each do |photo| %>
+            <li data-target="#myCarousel" data-slide-to="<%= photo.id %>"></li>
+        <% end %>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <% @photos.each do |photo| %>
+            <div class="item <%= 'active' if photo.id == @photos[0].id %>">
+              <%= image_tag photo.image.url() %>
+            </div>
+        <% end %>
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">前</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">次</span>
+      </a>
+    </div>
+  <% end %>
+</div>
+
+  <!-- 価格 -->
+  <div class="row">
+   <div class="col-md-12">
+    <h4>価格</h4>
+    <p><%= @listing.price %>円/<%= @listing.price_per %></p>
+   </div>
+  </div>
+  <hr/>
+
+  <!-- 商品詳細 -->
+  <div class="row">
+   <div class="col-md-12">
+    <h4>商品詳細</h4>
+    <p><%= @listing.description %></p>
+   </div>
+  </div>
+  <hr/>
+
+  <!-- その他 -->
+  <div class="row">
+   <div class="col-md-3 col-sm-3 col-xs-3">
+    <p>その他</p>
+  </div>
+   <div class="col-md-9 col-sm-9 col-xs-9">
+    <div class="row">
+        <ul class="amenities">
+          <li class="<%= 'text-line-through' %>">シャワー,着替え</li>
+          <li class="<%= 'text-line-through' %>">自転車</li>
+          <li class="<%= 'text-line-through' %>">ウェットスーツ</li>
+        </ul>
+    </div>
+  </div>
+  </div>
+  <hr/>
+
+  <!-- レビュー -->
+  <div class="row">
+    <div class="col-md-12">
+      <h4>
+        <%= pluralize(@guest_reviews.count, "レビュー") %>
+        <span id="average_rating"  class="host-stars"></span>
+      </h4>
+
+      <div class="">
+        <div><%= render "reviews/guest_list" %></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 予約フォーム -->
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 text-center">
+      <div class="panel panel-default">
+        <h3>予約フォーム</h3>
+        <%= render 'reservations/form' %>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- GOOGLE MAP -->
+  <div class="row show-map" >
+    <div id="map" style="width: 100%; height: 400px"></div>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+        function initialize() {
+          var location = {lat: <%= @listing.latitude %>, lng: <%= @listing.longitude %>};
+
+
+          var map = new google.maps.Map(document.getElementById('map'), {
+            center: location,
+            zoom: 14
+          });
+
+          var marker = new google.maps.Marker({
+            map: map
+          });
+
+
+          var infoWindow = new google.maps.InfoWindow({
+            position: location,
+
+            maxWidth: 200,
+            content: '<div id="content"><b><%= @listing.listing_title %></b>の受け渡し場所(※予約成立後、詳細場所が表示されます)</div>'
+          });
+
+          var cityCircle = new google.maps.Circle({
+            strokeWeight: 0,
+            fillColor: '#C0C0C0',
+            fillOpacity: 0.5,
+            map: map,
+            center: location,
+            radius: 500
+          });
+
+          infoWindow.open(map, marker);
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    <script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzimiYRWiAsgZREK80Cq5UQimAeLhPCnU&callback=initMap">
+    </script>
+  </div>
+
+  <!-- 近くのリスティング -->
+  <div class="row nearby">
+    <h4>サーフ文庫からのオススメ</h4>
+
+      <% for listing in @listing.nearbys(10) %>
+       <div class="col-md-3 col-sm-3 col-xs-3">
+        <div class="panel panel-default">
+          <div class="panel-heading preview">
+            <%= image_tag listing.cover_photo(:medium) %>
+          </div>
+          <div class="panel-body">
+            <%= link_to listing.listing_title, listing %><br/>
+            (ここから<%= listing.distance.round(3)*1000 %>メートル離れています)
+          </div>
+        </div>
+       </div>
+      <% end %>
+
+  </div>
+
+  <script>
+   $('#average_rating').raty({
+     path: '/assets',
+     readOnly: true,
+     score: <%= @listing.average_rating %>
+   });
+  </script>

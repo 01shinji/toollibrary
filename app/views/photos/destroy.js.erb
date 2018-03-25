@@ -1,0 +1,13 @@
+$('#photos').html("<%= j render 'photos_list' %>")
+
+<% if @listing.photos.blank? %>
+  $('#photo_check').removeClass('text-blue');
+  $('#photo_check').addClass('text-gray');
+
+<% end %>
+
+<% if !@listing.active && !@listing.description.blank? && !@listing.photos.blank? %>
+    $('#publish_button').attr('disabled', false);
+<% else %>
+    $('#publish_button').attr('disabled', true);
+<% end %>

@@ -1,0 +1,17 @@
+<div class="chat-box row">
+
+      <div class="col-md-2 col-sm-2 col-xs-3">
+        <%= image_tag message.user.image, class: "img-circle avatar-medium" %>
+      </div>
+      <div class="col-md-10 col-sm-10 col-xs-9">
+        <strong><%= message.user.fullname %></strong>
+        <div class="message">
+          <%= message.context %><br>
+          <span class="">
+            <%= message.message_time %>
+          </span>
+        </div>
+      </div>
+
+
+</div>

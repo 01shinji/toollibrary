@@ -1,0 +1,47 @@
+<% if @host_reviews.count == 0 %>
+  <div class="text-center">
+    <p>まだレビューがありません...</p>
+  </div>
+<% else %>
+
+  <% @host_reviews.order(id: :desc).each do |r| %>
+
+    <div class="row">
+      <div class="col-md-3 col-sm-3 col-xs-3">
+        <%= image_tag r.host.image, class: "img-circle avatar-medium" %>
+      </div>
+
+      <div class="col-md-3 col-sm-3 col-xs-3">
+        <strong><%= r.host.fullname %></strong>さん<br>
+        利用日:&nbsp;<%= r.created_at.strftime("%Y年%m月%d日") %>
+      </div>
+
+      <div class="col-md-6 col-sm-6 col-xs-6">
+        <div id="star_<%= r.id %>" class="list-stars"></div>
+
+        <% if current_user && current_user == r.host %>
+            <span class="pull-right trash">
+              <%= link_to r, method: :delete, data: {confirm: "削除しても大丈夫ですか?"} do %>
+                  <i class="fa fa-trash-o fa-lg"></i>
+              <% end %>
+            </span>
+        <% end %>
+      </div>
+
+    </div>
+
+    <div><%= r.comment %></div>
+
+    <br>
+    <hr class="dotted-hr">
+
+    <script>
+      $('#star_<%= r.id %>').raty({
+        path: '/assets',
+        readOnly: true,
+        score: <%= r.star %>
+      });
+    </script>
+
+  <% end %>
+<% end %>

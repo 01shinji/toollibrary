@@ -1,0 +1,135 @@
+
+ <!-- 日本地図から検索 -->
+ <div class="search-form">
+   <p>どちらの海で使いたいですか？</p>
+   <div class="japan-container">
+    <ul class="area-name-list">
+
+      <li class="map-hokkaido">
+        <div class="">北海道〜東北</div>
+      </li>
+      <li class="map-ibaraki">
+        <div class="">茨城</div>
+      </li>
+
+
+      <li class="map-shonan local">
+        <div>湘南<span>+</span></div>
+        <div class="local-list">
+          <p><%= link_to '鎌倉',search_path(search: '神奈川県鎌倉市稲村ガ崎') %></p>
+          <p><%= link_to '江ノ島',search_path(search: '神奈川県藤沢市片瀬海岸') %></p>
+          <p><%= link_to '辻堂',search_path(search: '神奈川県藤沢市辻堂西海岸') %></p>
+          <p><%= link_to '茅ヶ崎',search_path(search: '神奈川県茅ヶ崎市東海岸南') %></p>
+        </div>
+      </li>
+
+      <li class="map-chiba local">
+        <div>千葉<span>+</span></div>
+        <div class="local-list">
+          <p>鎌倉</p>
+          <p>鎌倉</p>
+          <p>鎌倉</p>
+          <p>鎌倉</p>
+        </div>
+      </li>
+
+      <li class="map-ito">
+        <div class="">伊東〜伊豆</div>
+      </li>
+      <li class="map-shizunami">
+        <div class="">静波〜伊良湖</div>
+      </li>
+      <li class="map-ise">
+        <div class="">伊勢〜四国</div>
+      </li>
+      <li class="map-miyazaki">
+        <div class="">宮崎〜鹿児島</div>
+      </li>
+      <li class="map-kitanihon">
+        <div class="">北日本海</div>
+      </li>
+      <li class="map-nishinihon">
+        <div class="">西日本海</div>
+      </li>
+    </ul>
+   </div>
+ </div>
+
+
+<br/><hr/>
+<!-- 検索フォーム -->
+<%= form_tag search_path, method: :get do %>
+
+  <div class="row search-form">
+
+    <!-- 住所から検索 -->
+    <p>住所からも探せます</p>
+    <div class="col-md-6 col-sm-6 col-xs-6 box">
+      <%= text_field_tag :search, params[:search], placeholder: "例:神奈川県藤沢市", class: "form-control search-location", id: "autolocation" %>
+    </div>
+    <div class="col-md-2 col-sm-2 col-xs-2 box">
+      <%= text_field_tag :start_date, params[:start_date], placeholder: "開始日", class: "form-control datepicker" %>
+    </div>
+
+    <div class="col-md-2 col-sm-2 col-xs-2 box">
+      <%= text_field_tag :end_date, params[:end_date], placeholder: "終了日", class: "form-control datepicker" %>
+    </div>
+
+    <div class="col-md-2 col-sm-2 col-xs-2 box">
+      <%= submit_tag "検索", class: "search-short white b-red" %>
+    </div>
+  </div>
+
+<% end %>
+
+<br/><hr/>
+
+
+
+<!-- 出品中アイテム -->
+<div class="row">
+  <%= render partial: "listings/listings_list", locals: {listings: @listings} %>
+</div>
+
+<script>
+  $('#start_date').datepicker({
+    dateFormat: 'yy/mm/dd',
+    minDate: 0,
+    maxDate: '3m',
+    onSelect: function(selected) {
+      $('#end_date').datepicker("option", "minDate", selected);
+      $('#end_date').attr("disabled", false);
+    }
+  });
+
+  $('#end_date').datepicker({
+    dateFormat: 'yy/mm/dd',
+    minDate: 0,
+    maxDate: '3m',
+    onSelect: function(selected) {
+      $('#start_date').datepicker("option", "maxDate", selected);
+    }
+  });
+
+  $(function() {
+    $("#autolocation").geocomplete();
+  })
+</script>
+
+
+<script>
+// FAQのアコーディオン
+$(".local").click(function(){
+    var $answer=$(this).find(".local-list");
+    if ($answer.hasClass("open")) {
+      $answer.removeClass("open");
+      $answer.slideUp();
+      $(this).find("span").text("+");
+    }else{
+      $answer.addClass("open");
+      $answer.slideDown();
+      $(this).find("span").text("-");
+    }
+  });
+
+</script>

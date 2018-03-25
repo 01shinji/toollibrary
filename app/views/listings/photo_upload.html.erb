@@ -1,0 +1,39 @@
+<%= render 'listing_menu' %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 text-center">
+    <div class="panel panel-default">
+      <h3><b>商品画像のアップロード</b></h3>
+
+      <p><%= @listing.listing_title %></p>
+
+      <div class="panel-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+              <!-- PHOTOS UPLOAD GOES HERE -->
+
+              <%= form_for @listing, url: listing_photos_path(@listing), method: 'post', html: {multipart: true} do |f| %>
+                <div class="row">
+                  <div class="form-group">
+                    <span class="btn btn-default btn-file text-babu">
+                      <i class="fa fa-cloud-upload" aria-hidden="true"></i>画像を選択
+                      <%= file_field_tag "images[]", type: :file, multiple: true %>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="text-center">
+                  <%= f.submit "アップロード", class: "btn btn-form" %>
+                </div>
+
+              <% end %>
+            </div>
+          </div>
+
+          <div id="photos"><%= render 'photos/photos_list' %></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

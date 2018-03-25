@@ -1,0 +1,26 @@
+<div class="">
+  <ul class="">
+    <li class=""><%= link_to "支払い方法", payment_method_path %></li>
+    <li class=""><%= link_to "売上管理", payout_method_path, class: "active" %></li>
+    <li class=""><%= link_to "通知設定", payment_method_path %></li>
+    <li class=""><%= link_to "プロフィールを見る", user_path(current_user.id) %></li>
+  </ul>
+</div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 text-center">
+    <div class="panel panel-default">
+      <h3><b>売上管理</b></h3>
+
+      <div class="container payout">
+        <% if current_user.merchant_id.blank? %>
+          <p>サーフ文庫ではホストの売上げの支払いにStripeを利用しています。Stripeのアカウントを持っていない方は下のリンク先からお作りください。</p>
+          <%= link_to image_tag('stripe.png'), stripe_express_path %>
+        <% else %>
+          <%= link_to "Stripeのダッシュボードへ", @login_link.url, class: "btn-sm  white b-red" %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="row text-center">
+  <div class="col-md-8 col-md-offset-2">
+
+    <div class="panel panel-default">
+      <h3><b>通知一覧</b></h3>
+
+      <div class="container" id="notifications">
+        <% if @notifications.count == 0 %>
+         <p>まだ通知がありません...</p>
+        <% else %>
+        <%= render @notifications %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>
