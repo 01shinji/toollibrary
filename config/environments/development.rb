@@ -63,8 +63,8 @@ Rails.application.configure do
     domain: 'smtp.gmail.com',
     enable_starttls_auto: true,
     authentication: 'login',
-    user_name: 'satoyama.shinji@gmail.com',
-    password: 'Shinnkunnuenoshi1'
+    user_name: ENV['GMAIL_USER_NAME'],
+    password: ENV['GMAIL_PASSWORD']
   }
 
   config.paperclip_defaults = {
@@ -74,7 +74,7 @@ Rails.application.configure do
       bucket: ENV['S3_BUCKET_NAME'],
       access_key_id: ENV['AWS_ACCESS_KEY_ID'],
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
-      s3_region: ENV['AWS_REGION'],
+      s3_region: ENV['AWS_REGION']
     }
   }
 end

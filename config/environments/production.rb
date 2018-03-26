@@ -96,8 +96,21 @@ Rails.application.configure do
       bucket: ENV['S3_BUCKET_NAME'],
       access_key_id: ENV['AWS_ACCESS_KEY_ID'],
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
-      s3_region: ENV['AWS_REGION'],
+      s3_region: ENV['AWS_REGION']
     }
+  }
+
+  config.action_mailer.default_url_options = {host: 'http://toollibrary.herokuapp.com' }
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      user_name: ENV['SENDGRID_USERNAME'],
+  　　 password: ENV['SENDGRID_PASSWORD'],
+      domain: "heroku.com",
+      address: "smtp.sendgrid.net",
+      port: 587,
+      authentication: :plain,
+      enable_starttls_auto: true
   }
 
 end
