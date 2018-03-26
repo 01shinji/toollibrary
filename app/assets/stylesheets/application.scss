@@ -98,15 +98,8 @@ hr{
 
 // ヘッダー
 .header-container{
-  width: 90%;
-  padding: 0
-}
-
-@media (max-width: 480px) {
-    /* ~480px */
-.header-container{
   width: 100%;
-}
+  padding: 0
 }
 
 .header-box ul {
@@ -701,56 +694,92 @@ hr{
 }
 
 
-.japan-container .map-hokkaido {
+.japan-container .map-hokkaido{
   top: 10%;
-  right: 10%;
-
+  right: 20%;
 }
 
-.japan-container .map-kitanihon {
-  top: 30%;
-  right: 35%;
+.japan-container .map-kitanihon{
+  top: 25%;
+  right: 40%;
+}
+
+.japan-container .map-nishinihon{
+  top: 40%;
+  left: 20%;
 }
 
 .japan-container .map-ibaraki {
-  top: 50%;
-  right: 10%;
+  top: 40%;
+  right: 20%;
 }
 
 .japan-container .map-chiba {
-  top: 60%;
-  right: 10%;
+  top: 55%;
+  right: 20%;
 }
 
 .japan-container .map-shonan {
   top: 70%;
-  right: 10%;
+  right: 20%;
 }
 
 .japan-container .map-ito {
+  top: 50%;
+  right: 40%;
+
+}
+
+.japan-container .map-shizunami {
   top: 65%;
   right: 40%;
 }
 
-.japan-container .map-shizunami {
+.japan-container .map-ise {
   top: 85%;
   right: 40%;
 }
 
-.japan-container .map-nishinihon {
-  top: 40%;
-  left: 10%;
-}
-
-.japan-container .map-ise {
-  top: 50%;
-  left: 10%;
-}
-
 .japan-container .map-miyazaki {
-  bottom: 20%;
-  left: 0;
+  bottom: 15%;
+  left:  20%;
 }
+
+@media (max-width: 768px) {
+    /* ~768px */
+.japan-container .map-shonan,
+.japan-container .map-chiba,
+.japan-container .map-ibaraki,
+.japan-container .map-hokkaido{
+  right: 10%;
+}
+.japan-container .map-miyazaki,
+.japan-container .map-nishinihon{
+  left: 10%;
+}
+}
+
+@media (max-width: 480px) {
+  /* ~480px */
+.japan-container .map-shonan,
+.japan-container .map-chiba,
+.japan-container .map-ibaraki,
+.japan-container .map-hokkaido{
+  right: 0%;
+}
+.japan-container .map-ise,
+.japan-container .map-shizunami,
+.japan-container .map-ito,
+.japan-container .map-kitanihon{
+  right: 35%;
+}
+.japan-container .map-miyazaki,
+.japan-container .map-nishinihon{
+  left: 0%;
+}
+}
+
+
 .local span {
   position: absolute;
   top: 5px;
