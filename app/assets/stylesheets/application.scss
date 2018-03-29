@@ -3,6 +3,7 @@
 @import "toastr";
 @import "jquery-ui/datepicker";
 @import "jquery-bootstrap-datepicker";
+@import "jquery-ui/slider";
 
 html{
 overflow-x: hidden;
@@ -174,7 +175,7 @@ hr{
 // 地域ナビゲーション
 .navbar.area {
   border-bottom: solid 1px #e7e7e7;
-  margin-bottom: 20px;
+
   background: #F4F6F6;
   padding-top: 5px;
 }
@@ -221,6 +222,8 @@ hr{
   color:#ffffff;
   margin: 0 5px;
 }
+
+
 // 認証系ページ
 .devise_container{
   margin-top: 20px;
@@ -447,6 +450,19 @@ hr{
   margin-right: 5px;
 }
 
+// リスティング一覧
+.row-eq-height {
+  display: flex;
+  flex-wrap: wrap;
+  .panel{
+    height:100%;
+  }
+}
+
+#listings-list .box{
+  margin-bottom: 10px;
+}
+
 // リスティングのメニューバー
 .listing-menu {
   list-style: none;
@@ -573,7 +589,7 @@ hr{
   padding:0 5px;
   }
 
-.form-control.datepicker {
+.box .form-control{
   text-align: center;
   border-radius: 0;
 }
@@ -642,6 +658,7 @@ hr{
 .search-form{
   margin: 0;
 }
+
 .search-form p{
   color:#808080 ;
   font-size: 2rem;
@@ -816,21 +833,51 @@ hr{
   margin-top: 50px;
 }
 
+#map{
+  width: 100%;
+  height: 100%;
+}
+
 #right {
-  padding: 10px;
+  padding: 5px;
   position: fixed;
   right:0;
   height: 100%;
   overflow: scroll;
 }
 
+@media (max-width: 768px) {
+  /* ~768px */
+#left {
+  position:relative;
+  top:0;
+  height: 250px;
+  width: 100%;
+  margin-top: 0;
+  padding-bottom: 10px;
+}
+
+#right {
+  padding: 5px;
+  position:relative;
+  top: 0;
+  width: 100%;
+  overflow: visible;
+}
+}
+
 .search-panel-li{
   margin: 0 15%;
 }
 
+.search-panel-li h4,
 .search-panel-li p{
   color: #808080;
   text-align: center;
+}
+
+.search-panel-li .check{
+  margin: 0 auto;
 }
 
 .search-panel-li .box {
@@ -849,6 +896,19 @@ hr{
 
 .inforwindow-price {
   font-weight: bold;
+}
+
+.detail-list {
+  display:none;
+}
+
+#detail-header p{
+  color:#d9534f;
+  padding: 5px;
+  margin: 0;
+}
+.search-detail .chevron{
+  margin-left: 5px;
 }
 
 // 決済

@@ -1,11 +1,13 @@
 <div id="main row">
 
-  <div id="left" class="col-md-6 col-sm-6 col-xs-6">
+  <div id="left" class="col-md-6 col-sm-6 col-xs-12">
 
    <!-- Google Map -->
-   <div id="map" style="width: 100%; height: 100%">
+   <div id="map">
    </div>
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
+   <script src="https://maps.googleapis.com/maps/api/js"></script>
+   </script>
+
     <script>
     function initialize(listings) {
       var location = {lat: 35.339170, lng: 139.490036}
@@ -49,60 +51,67 @@
 
   </div>
 
-  <div id="right" class="col-md-6 col-sm-6 col-xs-6">
+  <div id="right" class="col-md-6 col-sm-6 col-xs-12">
     <!-- 検索パネル -->
-    <div id="collapsePanel">
+    <div>
       <%= search_form_for @search, url: search_path, remote: true do |f| %>
 
         <div class="search-panel-li">
-          <p>ご希望のプランは?</p>
-          <div class="">
+          <h4>ご希望のプランは?</h4>
+          <div class="check">
+
             <%= check_box_tag "q[listing_type_eq_any][]", "rental" %>サーフボードを借りる
-          </div>
-          <div class="">
+            <br>
             <%= check_box_tag "q[listing_type_eq_any][]", "buying-and_selling" %>サーフボードを購入
-          </div>
-          <div class="">
+            <br>
             <%= check_box_tag "q[listing_type_eq_any][]", "coaching" %>サーフィンを教えてもらう
           </div>
         </div>
-        <hr/>
 
-        <div class="row search-panel-li">
-          <p>価格帯</p>
-          <div id="slider-range"></div>
-          <div class="col-md-6 col-sm-6 col-xs-6 box">
-            <%= f.text_field :price_gteq, placeholder: "Min", class: "form-control" %>
+       <div class="search-detail">
+        <div id="detail-header" class="text-center ">
+          <p>詳細な検索<span class="chevron"><i class='fa fa-chevron-down'></i></span></p>
+        </div>
+        <div class="detail-list">
+          <div class="row search-panel-li">
+            <p>価格帯(円)</p>
+            <div id="slider-range"></div>
+            <div class="col-md-6 col-sm-6 col-xs-6 box">
+              <%= f.text_field :price_gteq, placeholder: "Min", class: "form-control " %>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 box">
+              <%= f.text_field :price_lteq, placeholder: "Max", class: "form-control " %>
+            </div>
           </div>
-          <div class="col-md-6 col-sm-6 col-xs-6 box">
-            <%= f.text_field :price_lteq, placeholder: "Max", class: "form-control" %>
+
+          <hr class="dotted-hr"/>
+
+          <div class="row search-panel-li">
+            <p>借りたい日付</p>
+            <div class="col-md-6 col-sm-6 col-xs-6 box">
+              <%= text_field_tag :start_date, params[:start_date], readonly: true, placeholder: "開始日", class: "form-control" %>
+            </div>
+
+            <div class="col-md-6 col-sm-6 col-xs-6 box">
+              <%= text_field_tag :end_date, params[:end_date], readonly: true, placeholder: "終了日", class: "form-control" %>
+            </div>
+          </div>
+
           </div>
         </div>
 
-        <hr/>
+        <br/>
 
-        <div class="row search-panel-li">
-
-          <div class="col-md-6 col-sm-6 col-xs-6 box">
-            <%= text_field_tag :start_date, params[:start_date], readonly: true, placeholder: "開始日", class: "form-control datepicker" %>
-          </div>
-
-          <div class="col-md-6 col-sm-6 col-xs-6 box">
-            <%= text_field_tag :end_date, params[:end_date], readonly: true, placeholder: "終了日", class: "form-control datepicker" %>
-          </div>
-        </div>
-        <hr/>
-
-        <div class="row text-center">
+        <div class="text-center">
           <%= f.submit "絞り込む", class: "btn-sm white b-red" %>
         </div>
 
       <% end %>
     </div>
-    <br/>
+    <hr/>
 
     <!-- 出品中アイテム -->
-    <div class="row" id="listings-list">
+    <div class="row row-eq-height" id="listings-list">
       <%= render partial: "listings/listings_list", locals: {listings: @arrListings} %>
     </div>
 
@@ -130,18 +139,19 @@
     }
   });
 
+
 </script>
 
 
 <script>
   $(function() {
-    $("#q_price_gteq").val('500');
-    $("#q_price_lteq").val('1000');
+    $("#q_price_gteq").val('100');
+    $("#q_price_lteq").val('500');
 
     $("#slider-range").slider({
       range: true,
       min: 0,
-      max: 3000,
+      max: 1000,
       values: [100, 500],
       slide: function(event, ui) {
         $("#q_price_gteq").val(ui.values[0]);
@@ -149,4 +159,21 @@
       }
     });
   })
+</script>
+
+<script>
+// FAQのアコーディオン
+$("#detail-header").click(function(){
+    var $answer = $(".search-detail").find(".detail-list");
+    if ($answer.hasClass("open")) {
+      $answer.removeClass("open");
+      $answer.slideUp();
+      $(this).find(".chevron").html("<i class='fa fa-chevron-down'></i>");
+    }else{
+      $answer.addClass("open");
+      $answer.slideDown();
+      $(this).find(".chevron").html("<i class='fa fa-chevron-up'></i>");
+    }
+  });
+
 </script>

@@ -57,11 +57,11 @@
 
 <!-- 検索フォーム -->
 <%= form_tag search_path, method: :get do %>
-
+  <p>住所からも探せます</p>
   <div class="row search-form">
 
     <!-- 住所から検索 -->
-    住所からも探せます
+
     <div class="col-md-10 col-sm-10 col-xs-10 box">
       <%= text_field_tag :search, params[:search], placeholder: "例:神奈川県藤沢市", class: "form-control search-location", id: "autolocation" %>
     </div>
@@ -75,10 +75,8 @@
 
 <br/><hr/>
 
-
-
 <!-- 出品中アイテム -->
-<div class="row">
+<div class="row row-eq-height">
   <%= render partial: "listings/listings_list", locals: {listings: @listings} %>
 </div>
 
