@@ -14,7 +14,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'shinji @ toollibrary <no-reply@toollibary.com>'
+  config.mailer_sender = 'surf@toollibrary <no-reply@toollibary.com>'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -276,12 +276,8 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
-  case Rails.env
-    when 'production'
-      config.omniauth :facebook, ENV["facebook_app_id_p"], ENV["facebook_app_secret_p"], scope: 'email', info_fields: 'email, name', secure_image_url: true
-    when 'development'
-      config.omniauth :facebook, ENV["facebook_app_id_d"], ENV["facebook_app_secret_d"], scope: 'email', info_fields: 'email, name', secure_image_url: true
-  end
+  config.omniauth :facebook, ENV["facebook_app_id"], ENV["facebook_app_secret"], scope: 'email', info_fields: 'email,name', secure_image_url: true
+
 
   config.omniauth :stripe_connect, ENV['STRIPE_CONNECT_CLIENT_ID'], ENV['STRIPE_SECRET_KEY'], scope: 'read_write', stripe_landing: 'login'
 
