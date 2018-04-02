@@ -46,9 +46,12 @@
     <%= f.submit "予約をリクエストする", id: "btn_book", class: "btn-sm  white b-red", disabled: true %>
   <% end %>
 
-  <br>
-  <%= f.submit "ホストにメッセージを送る", class: "btn-sm  white b-thick-gray"  %>
+
 <% end %>
+
+   <% if current_user && current_user != @listing.user %>
+    <%= link_to "ホストにメッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @listing.user.id), method: :post, class: "btn-sm  white b-blue" %>
+   <% end %>
 
 <script type="text/javascript">
 

@@ -9,9 +9,10 @@
         <div class="form_box ">
           <p>出品タイプ</p>
           <div class="form-group select">
-            <%= f.select :listing_type, [["貸す","貸す"], ["売る","売る"], ["教える","教える"]], {prompt:"選択してください"}, {required: 'true', autofocus: 'true', class: 'form-control',id: "listing_type"} %>
+            <%= f.select :listing_type, [["貸す","レンタル"], ["売る","販売"], ["教える","コーチング"]], {prompt:"選択してください"}, {required: 'true', autofocus: 'true', class: 'form-control',id: "listing_type"} %>
           </div>
         </div>
+
 
         <div class="form_box">
           <p>カテゴリー1</p>

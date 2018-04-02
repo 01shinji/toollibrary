@@ -12,7 +12,10 @@
     <div class="">
       <h3 class="text-center"><b>レンタル購入履歴</b></h3>
       <div class="container text-left">
-        <% @my_reservations.each do |my_reservation| %>
+        <% if @my_reservations.count == 0 %>
+         <p>まだレンタル購入履歴がありません...</p>
+        <% else %>
+         <% @my_reservations.each do |my_reservation| %>
           <p class="">
             <%= my_reservation.start_date.strftime('%Y年%m月%d日') %>&nbsp;
             <%= my_reservation.status_i18n %>&nbsp;
@@ -40,6 +43,7 @@
             </div>
           </div>
           <hr/>
+         <% end %>
         <% end %>
       </div>
     </div>

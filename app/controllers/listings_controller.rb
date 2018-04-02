@@ -12,9 +12,7 @@ class ListingsController < ApplicationController
   end
 
   def create
-    if !current_user.is_active_host
-     return redirect_to payout_method_path, alert: "Stripeに接続し、売上を受け取る口座の登録をお願いします"
-    end
+
 
     @listing = current_user.listings.build(listing_params)
     @photos = @listing.photos

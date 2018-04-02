@@ -16,7 +16,7 @@
 
         <% if @reservations.blank? %>
           <p>まだ売上がありません...</p><br/>
-          <%= link_to "出品する", new_listing_path, class: "btn-sm  white b-orange" %>
+          <%= link_to "出品する", new_listing_path, class: "btn btn-form" %>
         <% else %>
           <%= column_chart @this_week_revenue, colors: ["#04b4e4"] %>
         <% end %>

@@ -6,7 +6,7 @@
 @import "jquery-ui/slider";
 
 html{
-overflow-x: hidden;
+
   }
 
 body {
@@ -48,6 +48,9 @@ hr{
 // 色
 .blue{
   color: #04b4e4;
+}
+.b-blue{
+  background-color: #04b4e4;
 }
 
 .white{
@@ -274,7 +277,7 @@ hr{
 
 .btn-sm {
   margin: 5px;
-  width: 200px;
+  width: 165px;
   border: none;
 }
 
@@ -562,6 +565,10 @@ hr{
 }
 
 // 予約フォーム
+#reservation .panel {
+ padding-bottom: 5px;
+}
+
 .date-form{
   padding:0 5%;
   margin: 20px 0;

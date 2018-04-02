@@ -12,8 +12,11 @@
     <div class="">
       <h3 class="text-center"><b>貸出し販売履歴</b></h3>
       <div class="container text-left">
-
-        <% @listings.each do |listing| %>
+        <% if @listings.count == 0 %>
+         <p>まだ貸出し販売履歴がありません...</p><br/>
+         <%= link_to "出品する", new_listing_path, class: "btn btn-form" %>
+        <% else %>
+         <% @listings.each do |listing| %>
           <% listing.reservations.each do |reservation| %>
 
            <p class="">
@@ -51,8 +54,8 @@
            <hr/>
 
           <% end %>
+         <% end %>
         <% end %>
-
       </div>
     </div>
   </div>
