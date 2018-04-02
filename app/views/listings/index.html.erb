@@ -21,7 +21,7 @@
               <%= image_tag listing.cover_photo(:thumb) %>
             </div>
             <div class="col-md-9 col-sm-9 col-xs-6 text-left">
-              <p><%= listing.listing_title %></p>
+              <p><%= link_to listing.listing_title, listing_path(listing) %></p>
               <p><b><%= link_to "編集する", information1_listing_path(listing) %></b></p>
             </div>
           </div>

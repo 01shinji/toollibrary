@@ -6,7 +6,7 @@
 @import "jquery-ui/slider";
 
 html{
-
+  overflow-x: hidden;
   }
 
 body {
@@ -466,7 +466,7 @@ hr{
   }
 }
 
-#listings-list .box{
+.listings-list .box{
   margin-bottom: 10px;
 }
 

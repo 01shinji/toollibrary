@@ -177,24 +177,26 @@
   </div>
 
   <!-- 近くのリスティング -->
-  <div class="row nearby">
-    <h4>サーフ文庫からのオススメ</h4>
+  <% if @listing.nearbys.present? %>
+  <h4>サーフ文庫からのオススメ</h4>
+  <div class="row nearby row-eq-height listings-list">
 
-      <% for listing in @listing.nearbys(10) %>
-       <div class="col-md-3 col-sm-3 col-xs-3">
-        <div class="panel panel-default">
-          <div class="panel-heading preview">
-            <%= image_tag listing.cover_photo(:medium) %>
-          </div>
-          <div class="panel-body">
-            <%= link_to listing.listing_title, listing %><br/>
-            (ここから<%= listing.distance.round(3)*1000 %>メートル離れています)
-          </div>
-        </div>
+     <% for listing in @listing.nearbys(10) %>
+      <div class="col-md-3 col-sm-3 col-xs-3 box">
+       <div class="panel panel-default">
+         <div class="panel-heading preview">
+           <%= image_tag listing.cover_photo(:medium) %>
+         </div>
+         <div class="panel-body">
+           <%= link_to listing.listing_title, listing %><br/>
+           (ここから<%= listing.distance.round(3)*1000 %>メートル離れています)
+         </div>
        </div>
-      <% end %>
-
+      </div>
+     <% end %>
   </div>
+  <% end %>
+
 
   <script>
    $('#average_rating').raty({

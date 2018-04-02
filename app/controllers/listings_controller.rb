@@ -16,7 +16,7 @@ class ListingsController < ApplicationController
     @listing = current_user.listings.build(listing_params)
     @photos = @listing.photos
     if @listing.save
-      redirect_to information1_listing_path(@listing), notice: "出品が成功しました!"
+      redirect_to information1_listing_path(@listing), notice: "商品の仮登録が成功しました!最後まで入力をお願いします〜"
     else
       flash[:alert] = "出品がうまくいきませんでした..."
       render :new
@@ -52,6 +52,7 @@ class ListingsController < ApplicationController
       flash[:alert] = "商品情報の編集がうまくいきませんでした..."
     end
     redirect_back(fallback_location: request.referer)
+
   end
 
   # 予約フォーム
