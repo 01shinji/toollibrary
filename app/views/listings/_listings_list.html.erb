@@ -1,15 +1,17 @@
-<% listings.each do |listing| %>
-   <div class="<% if request.path == '/search' %>col-md-6 col-sm-6 col-xs-6 box<% else %>col-md-3 col-sm-3 col-xs-6 box<% end %>">
-    <div class="panel panel-default">
-      <div class="panel-heading preview">
-        <%= image_tag listing.cover_photo(:medium) %>
+<ul class="row-eq-height">
+  <% listings.each do |listing| %>
+   <li class="<% if request.path == '/search' %>col-md-6 col-sm-6 col-xs-6  row-eq-height <% else %>col-md-3 col-sm-3 col-xs-6  row-eq-height<% end %>">
+    <div class="listing-block">
+      <div class="">
+        <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
       </div>
-      <div class="panel-body">
+      <div class="">
         <%= link_to listing.listing_title, listing %><br/>
         <%= listing.listing_type %><br/>
         <%= listing.price_per %>&nbsp;<%= listing.price %>円
 
       </div>
     </div>
-   </div>
-<% end %>
+  </li>
+  <% end %>
+</ul>

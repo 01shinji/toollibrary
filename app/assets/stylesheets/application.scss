@@ -466,9 +466,21 @@ hr{
   }
 }
 
-.listings-list .box{
-  margin-bottom: 10px;
+.listings-list{
+  margin:0;
 }
+
+.listings-list ul{
+  padding:0;
+  margin:0;
+}
+
+.listings-list li{
+  list-style: none;
+  padding:10px;
+  margin:0 auto;
+}
+
 
 // リスティングのメニューバー
 .listing-menu {
