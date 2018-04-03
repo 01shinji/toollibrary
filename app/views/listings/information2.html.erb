@@ -41,7 +41,7 @@
           <div class="form-group">
 
               <%= f.select :instant, Listing.instants.map {|key,value| [key.humanize, key]}, selected: 'Instant', prompt: "選択してください" , class: "form-control" %>
-                        
+
           </div>
         </div>
 
@@ -54,3 +54,9 @@
     </div>
   </div>
 </div>
+
+<script>
+  $(function() {
+    $("#autoaddress").geocomplete();
+  })
+</script>
