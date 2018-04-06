@@ -1,4 +1,5 @@
-
+$('.listings-list').html('<%= j render partial: "listings/listings_list", locals: {listings: @arrListings} %>');
+document.getElementById('search-address').value = "<%= session[:address] %>";
 
 <% @arrListings.each do |listing| %>
   //markerはこの関数の中で同じ変数

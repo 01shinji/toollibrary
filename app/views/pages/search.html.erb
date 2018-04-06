@@ -16,19 +16,19 @@
   <div id="right" class="col-md-6 col-sm-6 col-xs-12">
     <!-- 検索パネル -->
     <div>
-      <%= search_form_for @search, url: search_path, remote: true do |f| %>
+      <%= search_form_for @search, url: search_path do |f| %>
 
-      <%= hidden_field_tag :search, session[:address],:id => "search-address" %>
+      <%= hidden_field_tag :search, session[:address], :id => "search-address" %>
 
         <div class="search-panel-li">
           <h4>ご希望のプランは?</h4>
           <div class="check">
 
-            <%= check_box_tag "q[listing_type_eq_any][]", "レンタル" %>サーフボードを借りる
+            <%= check_box_tag "q[listing_type_eq_any][]", "レンタル", session[:rental] %>サーフボードを借りる
             <br>
-            <%= check_box_tag "q[listing_type_eq_any][]", "販売" %>サーフボードを購入
+            <%= check_box_tag "q[listing_type_eq_any][]", "販売", session[:buying_and_selling] %>サーフボードを購入
             <br>
-            <%= check_box_tag "q[listing_type_eq_any][]", "コーチング" %>サーフィンを教えてもらう
+            <%= check_box_tag "q[listing_type_eq_any][]", "コーチング", session[:coaching] %>サーフィンを教えてもらう
           </div>
         </div>
 
@@ -41,10 +41,10 @@
             <p>価格帯(円)</p>
 
             <div class="col-md-6 col-sm-6 col-xs-6 box">
-              <%= f.text_field :price_gteq, placeholder: "Min", class: "form-control " %>
+              <%= f.text_field :price_gteq, placeholder: "Min", class: "form-control ", value: session[:price_gteq] %>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-6 box">
-              <%= f.text_field :price_lteq, placeholder: "Max", class: "form-control " %>
+              <%= f.text_field :price_lteq, placeholder: "Max", class: "form-control ", value: session[:price_lteq] %>
             </div>
           </div>
 
@@ -53,11 +53,11 @@
           <div class="row search-panel-li">
             <p>借りたい日付</p>
             <div class="col-md-6 col-sm-6 col-xs-6 box">
-              <%= text_field_tag :start_date, params[:start_date], readonly: true, placeholder: "開始日", class: "form-control" %>
+              <%= text_field_tag :start_date, params[:start_date], readonly: true, placeholder: "開始日", class: "form-control", value: session[:start_date] %>
             </div>
 
             <div class="col-md-6 col-sm-6 col-xs-6 box">
-              <%= text_field_tag :end_date, params[:end_date], readonly: true, placeholder: "終了日", class: "form-control" %>
+              <%= text_field_tag :end_date, params[:end_date], readonly: true, placeholder: "終了日", class: "form-control", value: session[:end_date] %>
             </div>
           </div>
 
@@ -176,12 +176,6 @@ function initMap() {
 
   <% end %>
 
-  // var infowindow = new google.maps.InfoWindow();
-  // var marker = new google.maps.Marker({
-  //   map: map,
-  //   anchorPoint: new google.maps.Point(0, -29)
-  // });
-  //
   autocomplete.addListener('place_changed', function() {
 
     // すべてのinfowindowを消す
@@ -230,16 +224,39 @@ function initMap() {
 
     $.ajax({
       url: '/ajaxsearch',
-        // this data is data for sending to url
-        data: {'geolocation': geolocation , 'location':  location}
+      // this data is data for sending to url
+      data: {'geolocation': geolocation , 'location':  location}
+    });
+  });
+
+  //google map がドラッグされた時の処理
+  google.maps.event.addListener(map, 'dragend', function() {
+    // すべてのinfowindowを消す
+    infowindows.forEach(function(infowindow) {
+      infowindow.close();
+    });
+    infowindows = [];
+
+    // すべてのmarkerを消す
+    markers.forEach(function(marker) {
+      marker.setVisible(false);
+    });
+    markers = [];
+
+    var pos = map.getCenter();
+    var lat = pos.lat();
+    var lng = pos.lng();
+
+    var geolocation = [lat,lng];
+
+    $.ajax({
+      url: '/ajaxsearch',
+      // this data is data for sending to url
+      data: {'geolocation': geolocation}
     });
 
-    google.maps.event.addDomListener(window, 'load', function(){
-       initialize(<%= raw @arrListings.to_json %>)
-     });
-
-
   });
+
 
 }
 </script>

@@ -31,12 +31,49 @@ class PagesController < ApplicationController
     end
 
 
-    # STEP 3
-    @search = @listings_address.ransack(params[:q])
-    @listings = @search.result(distinct: true)
-    if !@listings.present?
-       flash[:alert] = "こちらの地域にはまだ出品がありません..."
+    # Ransack q のチェックボックス一覧
+    if params[:q].present?
+
+     if params[:q][:listing_type_eq_any].present?
+       session[:listing_type_eq_any] = params[:q][:listing_type_eq_any]
+       session[:rental] = session[:listing_type_eq_any].include?("レンタル")
+       session[:buying_and_selling] = session[:listing_type_eq_any].include?("販売")
+       session[:coaching] = session[:listing_type_eq_any].include?("コーチング")
+     else
+       session[:listing_type_eq_any] = ""
+       session[:rental] = false
+       session[:buying_and_selling] = false
+       session[:coaching] = false
+     end
+
+     if params[:q][:price_gteq].present?
+       session[:price_gteq] = params[:q][:price_gteq]
+     else
+       session[:price_gteq] = nil
+     end
+
+     if params[:q][:price_lteq].present?
+       session[:price_lteq] = params[:q][:price_lteq]
+     else
+       session[:price_lteq] = nil
+     end
+
+
     end
+
+    # Q条件をまとめたものをセッションQに入れる
+    session[:q] = {
+     "listing_type_eq_any" => session[:listing_type_eq_any],
+     "price_gteq" => session[:price_gteq],
+     "price_lteq" => session[:price_lteq]
+
+    }
+
+
+    # STEP 3
+    @search = @listings_address.ransack(session[:q])
+    @listings = @search.result(distinct: true)
+
 
 
     @arrListings = @listings.to_a
