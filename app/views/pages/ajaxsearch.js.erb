@@ -1,0 +1,32 @@
+
+
+<% @arrListings.each do |listing| %>
+  //markerはこの関数の中で同じ変数
+  var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(<%= listing.latitude %>, <%= listing.longitude %>),
+    icon: {url: 'assets/surfboard.png',scaledSize: new google.maps.Size(40, 40)},
+    map: map
+  });
+
+  // マーカー配列にマーカを保存
+  markers.push(marker);
+
+  // マーカーがクリックされた時の処理
+  marker.addListener('click', function() {
+
+    <% if !listing.photos.blank? %>
+     var content = "<div>" + "<img src="+"<%= listing.photos[0].image.url(:thumb) %>" + " " + "style='width: 100%;height: 100%;'" +"alt='139'>" + '<br>' + '<a href="/listings/' + <%= listing.id %> +'">' + "<b><%= listing.listing_title %></b>" + "</a>" + '<br>' + "<span>" + "<%= listing.price_per %>" + "</span>&nbsp;<span class='inforwindow-price'>" + "<%= listing.price %>" + "</span>円</div>";
+    <% end %>
+
+   // infowindowを作成
+   var infowindow = new google.maps.InfoWindow({
+     content: content,
+     maxWidth: 200
+   });
+
+   infowindow.open(map, this);
+   infowindows.push(infowindow);
+
+  });
+
+<% end %>

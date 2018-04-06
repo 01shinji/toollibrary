@@ -175,6 +175,11 @@ hr{
 .navbar-toggle{
   margin-right: 5px;
 }
+
+.navbar-nav > li > a{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 // 地域ナビゲーション
 .navbar.area {
   border-bottom: solid 1px #e7e7e7;
@@ -857,6 +862,13 @@ hr{
   padding: 0;
   margin-top: 50px;
 }
+
+input#pac-input {
+  width: 200px;
+  margin-top: 10px;
+  border: solid 2px #04b4e4;
+}
+
 
 #map{
   width: 100%;

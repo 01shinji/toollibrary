@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 
   get 'search' => 'pages#search'
 
+  get '/ajaxsearch' => 'pages#ajaxsearch'
+
   # ---- AirKong ------
   get 'dashboard' => 'dashboards#index'
 
@@ -49,7 +51,7 @@ Rails.application.routes.draw do
   get '/payout_method' => "users#payout"
   post '/add_card' => "users#add_card"
 
-  get '/notifications' => 'notifications#index' 
+  get '/notifications' => 'notifications#index'
 
   mount ActionCable.server => '/cable'
 

@@ -61,6 +61,8 @@
   <div class="row search-form">
 
     <!-- 住所から検索 -->
+    <%= hidden_field_tag :lat %>
+    <%= hidden_field_tag :lng %>
 
     <div class="col-md-10 col-sm-10 col-xs-10 box">
       <%= text_field_tag :search, params[:search], placeholder: "例:神奈川県藤沢市", class: "form-control search-location", id: "autolocation" %>
@@ -101,9 +103,7 @@
     }
   });
 
-  $(function() {
-    $("#autolocation").geocomplete();
-  })
+
 </script>
 
 
@@ -121,5 +121,30 @@ $(".local").click(function(){
       $(this).find("span").text("-");
     }
   });
-
 </script>
+
+<script>
+function init() {
+  var input = /** @type {!HTMLInputElement} */(
+      document.getElementById('autolocation'));
+
+  var autocomplete = new google.maps.places.Autocomplete(input);
+
+  autocomplete.addListener('place_changed', function() {
+
+    var place = autocomplete.getPlace();
+    var lat = place.geometry.location.lat();
+    var lng = place.geometry.location.lng();
+
+    document.getElementById('lat').value = lat ;
+    document.getElementById('lng').value = lng ;
+
+    if (!place.geometry) {
+      window.alert("Autocomplete's returned place contains no geometry");
+      return;
+    }
+
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ZRYgtCagsAWTqGbqxkpW09Y1i_ZYixI&libraries=places&callback=init" async defer></script>

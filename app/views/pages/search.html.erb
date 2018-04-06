@@ -3,52 +3,13 @@
   <div id="left" class="col-md-6 col-sm-6 col-xs-12">
 
    <!-- Google Map -->
+
+    <div class="">
+      <%= text_field_tag :search, params[:search], placeholder: "住所から検索",  class: "form-control search-location", id:"pac-input" %>
+    </div>
+
    <div id="map">
    </div>
-   <script type="text/javascript"
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ZRYgtCagsAWTqGbqxkpW09Y1i_ZYixI&libraries=places">
-   </script>
-
-    <script>
-    function initialize(listings) {
-      var location = {lat: 35.339170, lng: 139.490036}
-
-      if (listings.length > 0){
-        location = {lat: listings[0].latitude ,  lng: listings[0].longitude}
-      }
-
-      var map = new google.maps.Map(document.getElementById('map'), {
-        center: location,
-        zoom: 12,
-        navigationControlOptions: {
-          position: google.maps.ControlPosition.TOP
-        }
-      });
-
-      var marker, inforwindow;
-
-      listings.forEach(function(listing){
-        marker = new google.maps.Marker({
-          map: map
-        });
-
-        inforwindow = new google.maps.InfoWindow({
-          position: {lat: listing.latitude , lng: listing.longitude },
-
-          content: "<div class='inforwindow'>" + "<span>" + listing.price_per + "</span>&nbsp;<span class='inforwindow-price'>" + listing.price + "</span>円</div>"
-        });
-
-        inforwindow.open(map, marker);
-
-      })
-    }
-
-      google.maps.event.addDomListener(window, 'load', function(){
-        initialize(<%= raw @arrListings.to_json %>)
-      });
-
-    </script>
-
 
   </div>
 
@@ -57,15 +18,17 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ZRYgtCagsAWTqGbqxkpW09Y
     <div>
       <%= search_form_for @search, url: search_path, remote: true do |f| %>
 
+      <%= hidden_field_tag :search, session[:address],:id => "search-address" %>
+
         <div class="search-panel-li">
           <h4>ご希望のプランは?</h4>
           <div class="check">
 
-            <%= check_box_tag "q[listing_type_eq_any][]", "rental" %>サーフボードを借りる
+            <%= check_box_tag "q[listing_type_eq_any][]", "レンタル" %>サーフボードを借りる
             <br>
-            <%= check_box_tag "q[listing_type_eq_any][]", "buying-and_selling" %>サーフボードを購入
+            <%= check_box_tag "q[listing_type_eq_any][]", "販売" %>サーフボードを購入
             <br>
-            <%= check_box_tag "q[listing_type_eq_any][]", "coaching" %>サーフィンを教えてもらう
+            <%= check_box_tag "q[listing_type_eq_any][]", "コーチング" %>サーフィンを教えてもらう
           </div>
         </div>
 
@@ -76,7 +39,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ZRYgtCagsAWTqGbqxkpW09Y
         <div class="detail-list">
           <div class="row search-panel-li">
             <p>価格帯(円)</p>
-            <div id="slider-range"></div>
+
             <div class="col-md-6 col-sm-6 col-xs-6 box">
               <%= f.text_field :price_gteq, placeholder: "Min", class: "form-control " %>
             </div>
@@ -144,23 +107,6 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ZRYgtCagsAWTqGbqxkpW09Y
 </script>
 
 
-<script>
-  $(function() {
-    $("#q_price_gteq").val('100');
-    $("#q_price_lteq").val('500');
-
-    $("#slider-range").slider({
-      range: true,
-      min: 0,
-      max: 1000,
-      values: [100, 500],
-      slide: function(event, ui) {
-        $("#q_price_gteq").val(ui.values[0]);
-        $("#q_price_lteq").val(ui.values[1]);
-      }
-    });
-  })
-</script>
 
 <script>
 // FAQのアコーディオン
@@ -176,5 +122,125 @@ $("#detail-header").click(function(){
       $(this).find(".chevron").html("<i class='fa fa-chevron-up'></i>");
     }
   });
-
 </script>
+
+<script>
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: <%= @latitude %>, lng: <%= @longitude %>},
+    zoom: 13
+  });
+
+  var input = /** @type {!HTMLInputElement} */(
+      document.getElementById('pac-input'));
+
+  var types = document.getElementById('type-selector');
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
+
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  autocomplete.bindTo('bounds', map);
+
+  // マーカーとインフォウィンドウの配列を用意
+  markers = [];
+  infowindows = [];
+
+  <% @arrListings.each do |listing| %>
+    //markerはこの関数の中で同じ変数
+    var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(<%= listing.latitude %>, <%= listing.longitude %>),
+      icon: {url: 'assets/surfboard.png',scaledSize: new google.maps.Size(40, 40)},
+      map: map
+    });
+
+    // マーカー配列にマーカを保存
+    markers.push(marker);
+
+    // マーカーがクリックされた時の処理
+    marker.addListener('click', function() {
+
+      <% if !listing.photos.blank? %>
+       var content = "<div>" + "<img src="+"<%= listing.photos[0].image.url(:thumb) %>" + " " + "style='width: 100%;height: 100%;'" +"alt='139'>" + '<br>' + '<a href="/listings/' + <%= listing.id %> +'">' + "<b><%= listing.listing_title %></b>" + "</a>" + '<br>' + "<span>" + "<%= listing.price_per %>" + "</span>&nbsp;<span class='inforwindow-price'>" + "<%= listing.price %>" + "</span>円</div>";
+      <% end %>
+
+     // infowindowを作成
+     var infowindow = new google.maps.InfoWindow({
+       content: content,
+       maxWidth: 200
+     });
+
+     infowindow.open(map, this);
+     infowindows.push(infowindow);
+
+    });
+
+  <% end %>
+
+  // var infowindow = new google.maps.InfoWindow();
+  // var marker = new google.maps.Marker({
+  //   map: map,
+  //   anchorPoint: new google.maps.Point(0, -29)
+  // });
+  //
+  autocomplete.addListener('place_changed', function() {
+
+    // すべてのinfowindowを消す
+    infowindows.forEach(function(infowindow){
+      infowindow.close();
+    });
+    infowindows = [];
+
+
+    // すべてのmarkerを消す
+    markers.forEach(function(marker) {
+        marker.setVisible(false);
+    });
+    markers = [];
+
+
+    var place = autocomplete.getPlace();
+    if (!place.geometry) {
+      window.alert("No details available for input: '" + place.name + "'");
+      return;
+    }
+
+    // If the place has a geometry, then present it on a map.
+    if (place.geometry.viewport) {
+      map.fitBounds(place.geometry.viewport);
+      map.setZoom(13);
+    } else {
+      map.setCenter(place.geometry.location);
+      map.setZoom(13);
+    }
+
+    // 入力欄の場所の緯度経度情報を取得
+    var lat = place.geometry.location.lat();
+    var lng = place.geometry.location.lng();
+
+    // 緯度経度情報をまとめる
+    var geolocation = [lat,lng];
+
+    // 場所の住所
+    var location = place.formatted_address;
+
+    // autocompleteの入力欄が変更されたらurlも変更して履歴に残す
+    url = "/search?utf8=✓&search="+place.formatted_address;
+
+    window.history.pushState(null,null,url);
+
+    $.ajax({
+      url: '/ajaxsearch',
+        // this data is data for sending to url
+        data: {'geolocation': geolocation , 'location':  location}
+    });
+
+    google.maps.event.addDomListener(window, 'load', function(){
+       initialize(<%= raw @arrListings.to_json %>)
+     });
+
+
+  });
+
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ZRYgtCagsAWTqGbqxkpW09Y1i_ZYixI&libraries=places&callback=initMap" async defer></script>

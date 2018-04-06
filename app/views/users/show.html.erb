@@ -45,11 +45,13 @@
 
 
     <!-- 出品中アイテム -->
-    <div class="row nearby">
+    <div class="nearby">
       <h4>
         出品中アイテム<span>&nbsp;<%= @listings.length %>点</span>
       </h4>
-      <%= render partial: "listings/listings_list", locals: {listings: @listings} %>
+      <div class="row  listings-list">
+        <%= render partial: "listings/listings_list", locals: {listings: @listings} %>
+      </div>
     </div>
 
   </div>
