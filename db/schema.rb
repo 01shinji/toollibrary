@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180324044415) do
+ActiveRecord::Schema.define(version: 20180408020357) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer "sender_id"
@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(version: 20180324044415) do
     t.float "latitude"
     t.float "longitude"
     t.integer "instant", default: 1
+    t.integer "price_hour"
+    t.integer "price_day"
+    t.integer "price_month"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 

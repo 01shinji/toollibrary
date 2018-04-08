@@ -12,22 +12,36 @@
         <div class="form_box ">
           <p>出品タイプ</p>
           <div class="form-group select">
-            <%= f.select :listing_type, [["貸す","レンタル"], ["売る","販売"], ["教える","コーチング"]], {prompt:"選択してください"}, {required: 'true', autofocus: 'true', class: 'form-control',id: "listing_type"} %>
+            <%= f.select :listing_type, [["貸す","レンタル"], ["売る","販売"], ["教える","コーチング"]], {prompt:"選択してください"}, {required: true, autofocus: 'true', class: 'form-control',id: "listing_type"} %>
           </div>
         </div>
 
         <div class="form_box">
-          <p>カテゴリー1</p>
+          <p>カテゴリー</p>
           <div class="form-group">
+           <%= f.select :category1,
+           [["サーフボード", "サーフボード"],
+            ["SUPボード", "SUPボード"],
+            ["アイテム", "アイテム"]],
 
-            <%= f.select :category1, [["サーフボード", "サーフボード"], ["SUPボード", "SUPボード"], ["アイテム", "アイテム"],["その他", "その他"]],{prompt:"選択してください"},{required: 'true', autofocus: 'true', class: "form-control",id: "category1"} %>
+            {prompt:"カテゴリー1"},
+            {required: true, autofocus: 'true', class: "form-control parent",id: "category1"}
+            %>
           </div>
-        </div>
 
-        <div class="form_box">
-          <p>カテゴリー2</p>
           <div class="form-group">
-            <%= f.select :category2, [["サーフボード", "サーフボード"], ["SUPボード", "SUPボード"], ["アイテム", "アイテム"],["その他", "その他"]],{prompt:"選択してください"},{required: 'true', autofocus: 'true', class: "form-control",id: "category2"} %>
+           <%= f.select :category2,
+           [["ショートボード", "ショートボード", data: {val:"サーフボード"}],
+            ["ロングボード", "ロングボード", data: {val:"サーフボード"}],
+            ["オールラウンド", "オールラウンド", data: {val:"SUPボード"}],
+            ["フィッシング", "フィッシング", data: {val:"SUPボード"}],
+            ["フィッシング", "フィッシング", data: {val:"SUPボード"}],
+            ["ウェットスーツ", "ウェットスーツ", data: {val:"アイテム"}],
+            ["自転車", "自転車", data: {val:"アイテム"}]],
+
+            {prompt: "カテゴリー2"},
+            {required: true, autofocus: 'true', class: "form-control children",id: "category2"}
+            %>
           </div>
         </div>
 
@@ -36,6 +50,52 @@
           <div class="form-group">
             <%= f.text_field :listing_title, placeholder: "例:キャッチサーフのファンボード", class: "form-control", required: true %>
           </div>
+        </div>
+
+        <div class="form_box">
+          <p>レンタル価格(※1時間あたりの価格の登録は必須)</p>
+          <div class="" id="information2-price">
+            <div class="form-group" >
+              <ul class="row">
+                <li class="">
+                  <p>1時間</p>
+                </li>
+                <li class="">
+                  <%= f.text_field :price_hour, placeholder: "例:500", class: "form-control", required: true %>
+                </li>
+                <li class="">
+                  <p>円</p>
+                </li>
+              </ul>
+            </div>
+            <div class="form-group" >
+              <ul class="row">
+                <li id="price_day-margin">
+                  <p>1日</p>
+                </li>
+                <li class="">
+                  <%= f.text_field :price_day, placeholder: "例:3000", class: "form-control", required: true %>
+                </li>
+                <li class="">
+                  <p>円</p>
+                </li>
+              </ul>
+            </div>
+            <div class="form-group" >
+              <ul class="row">
+                <li class="">
+                  <p>1ヶ月</p>
+                </li>
+                <li class="">
+                  <%= f.text_field :price_month, placeholder: "例:10000", class: "form-control" %>
+                </li>
+                <li class="">
+                  <p>円</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
         </div>
 
         <div class="actions">
@@ -47,3 +107,38 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+  var $children = $('.children'); //カテゴリー2の要素を変数に入れます。
+  var original = $children.html(); //後のイベントで、不要なoption要素を削除するため、オリジナルをとっておく
+
+  //カテゴリー1のselect要素が変更になるとイベントが発生
+  $('.parent').change(function() {
+    //選択されたカテゴリー1のvalueを取得し変数に入れる
+    var val1 = $(this).val();
+
+    //削除された要素をもとに戻すため.html(original)を入れておく
+    $children.html(original).find('option').each(function() {
+      var val2 = $(this).data('val'); //data-valの値を取得
+
+      //valueと異なるdata-valを持つ要素を削除
+      if (val1 != val2) {
+        $(this).not(':first-child').remove();
+      }
+
+    });
+
+    //カテゴリー1のselect要素が未選択の場合、カテゴリー2をdisabledにする
+    if ($(this).val() !== "") {
+      $children.fadeIn(100);
+    } else {
+      $children.fadeOut(100);
+    }
+
+  });
+
+
+});
+</script>

@@ -2,15 +2,24 @@
   <% listings.each do |listing| %>
    <li class="<% if request.path == '/search' %>col-md-6 col-sm-6 col-xs-6  row-eq-height <% else %>col-md-3 col-sm-3 col-xs-6  row-eq-height<% end %>">
     <div class="listing-block">
+
       <div class="">
         <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
       </div>
-      <div class="listing-content">
-        <%= link_to listing.listing_title, listing %><br/>
-        <%= listing.listing_type %><br/>
-        <%= listing.price_per %>&nbsp;<%= listing.price %>円
 
+      <div class="listing-content">
+        <%= link_to listing.listing_title, listing %>
+        <div class="row">
+          <div class="col-md-3 col-sm-3 col-xs-4">
+            <%= image_tag listing.user.image, class: "img-circle avatar-medium" %>
+          </div>
+          <div class="col-md-9 col-sm-9 col-xs-8 text-left">
+            <p><%= listing.listing_type %></p>
+            <p><%= listing.price_per %>&nbsp;<%= listing.price %>円</p>
+          </div>
+        </div>
       </div>
+
     </div>
   </li>
   <% end %>

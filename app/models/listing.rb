@@ -10,6 +10,12 @@ class Listing < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :location_changed?
 
+  validates :listing_type, presence: true
+  validates :category1, presence: true
+  validates :category2, presence: true
+  validates :listing_title, presence: true
+  validates :price_hour, presence: true
+
   def cover_photo(size)
     if self.photos.length > 0
       self.photos[0].image.url(size)

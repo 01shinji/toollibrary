@@ -12,9 +12,7 @@ class ListingsController < ApplicationController
   end
 
   def create
-    if !current_user.is_active_host
-     return redirect_to payout_method_path, alert: "Stripeに接続し、売上を受け取る口座の登録をお願いします"
-    end
+    
 
     @listing = current_user.listings.build(listing_params)
     @photos = @listing.photos
@@ -50,6 +48,9 @@ class ListingsController < ApplicationController
     new_params = listing_params.merge(active: true) if is_ready_listing
 
     if @listing.update(new_params)
+      flash[:notice] = "商品情報を編集しました"
+    elsif
+       @listing.update(new_params)
       flash[:notice] = "商品情報を編集しました"
     else
       flash[:alert] = "商品情報の編集がうまくいきませんでした..."
@@ -92,10 +93,10 @@ class ListingsController < ApplicationController
   end
 
   def is_ready_listing
-    !@listing.active && !@listing.description.blank? && !@listing.photos.blank?
+    !@listing.active && !@listing.price_hour.blank? && !@listing.photos.blank?
   end
 
   def listing_params
-    params.require(:listing).permit(:listing_title, :listing_type, :category1, :category2,  :price, :price_per, :description, :location, :active, :instant)
+    params.require(:listing).permit(:listing_title, :listing_type, :category1, :category2,  :price_hour, :price_per,  :price_hour, :price_day, :price_month, :description, :location, :active, :instant)
   end
 end

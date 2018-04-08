@@ -24,11 +24,11 @@
           <h4>ご希望のプランは?</h4>
           <div class="check">
 
-            <%= check_box_tag "q[listing_type_eq_any][]", "レンタル", session[:rental] %>サーフボードを借りる
-            <br>
-            <%= check_box_tag "q[listing_type_eq_any][]", "販売", session[:buying_and_selling] %>サーフボードを購入
-            <br>
-            <%= check_box_tag "q[listing_type_eq_any][]", "コーチング", session[:coaching] %>サーフィンを教えてもらう
+            <%= check_box_tag "q[listing_type_eq_any][]", "レンタル", session[:rental] %>借りる
+
+            <%= check_box_tag "q[listing_type_eq_any][]", "販売", session[:buying_and_selling] %>購入する
+
+            <%= check_box_tag "q[listing_type_eq_any][]", "コーチング", session[:coaching] %>コーチング
           </div>
         </div>
 
@@ -162,6 +162,7 @@ function initMap() {
       <% if !listing.photos.blank? %>
        var content = "<div>" + "<img src="+"<%= listing.photos[0].image.url(:thumb) %>" + " " + "style='width: 100%;height: 100%;'" +"alt='139'>" + '<br>' + '<a href="/listings/' + <%= listing.id %> +'">' + "<b><%= listing.listing_title %></b>" + "</a>" + '<br>' + "<span>" + "<%= listing.price_per %>" + "</span>&nbsp;<span class='inforwindow-price'>" + "<%= listing.price %>" + "</span>円</div>";
       <% end %>
+
 
      // infowindowを作成
      var infowindow = new google.maps.InfoWindow({

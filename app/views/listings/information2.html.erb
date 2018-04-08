@@ -4,10 +4,12 @@
     <div class="panel panel-default">
       <h3><b>商品の詳細</b></h3>
 
-      <p><%= @listing.listing_title %></p>
+      <p><b><%= @listing.listing_title %></b></p>
 
       <div class="container">
         <%= form_for @listing,html: {multipart: true} do |f| %>
+
+
 
         <div class="form_box">
           <p>商品の詳細説明</p>
@@ -17,32 +19,24 @@
         </div>
 
         <div class="form_box">
-          <p>商品の受け渡し場所(住所を記入してください)</p>
+          <p>商品の受け渡し場所(住所を記入)</p>
           <div class="form-group">
             <%= f.text_field :location, placeholder: "例:神奈川県藤沢市辻堂1-1-1", class: "form-control", required: true, id: "autoaddress" %>
           </div>
         </div>
 
-        <div class="form_box">
-          <p>価格</p>
-          <div class="form-group">
-            <%= f.select :price_per, [["1時間", "1時間"], ["1日", "1日"], ["1ヶ月", "1ヶ月"]],{prompt:"期間"},{required: 'true', autofocus: 'true', class: "form-control",id: "price_per"} %>
-          </div>
-          <div class="form-group">
-            <%= f.text_field :price, placeholder: "例:1,000円", class: "form-control", required: true %>
-          </div>
-        </div>
+
 
         <div class="form_box">
           <p>
-            即決の可否<br>
-            (※即決可の場合は<%= @user.fullname %>さんへの確認なしに予約購入がおこなわれます。即決不可の場合はゲストからの予約リクエストを確認後に承認するか決めることができます。)
+            即決の可否
           </p>
           <div class="form-group">
 
-              <%= f.select :instant, Listing.instants.map {|key,value| [key.humanize, key]}, selected: 'Instant', prompt: "選択してください" , class: "form-control" %>
+              <%= f.select :instant, Listing.instants.map {|key,value| [key.humanize, key]}, {prompt: "選択してください" },{selected: 'Instant',  class: "form-control"} %>
 
           </div>
+          <p>※即決可の場合は<%= @user.fullname %>さんへの確認なしに予約購入がおこなわれます。即決不可の場合はゲストからの予約リクエストを確認後に承認するか決めることができます。</p>
         </div>
 
         <div class="actions">
