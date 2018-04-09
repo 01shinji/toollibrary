@@ -144,7 +144,11 @@
 
           var map = new google.maps.Map(document.getElementById('map'), {
             center: location,
-            zoom: 14
+            zoom: 14,
+            // デフォルトのコントロールセット非表示
+            disableDefaultUI: true,
+            // デフォルトの情報ウィンドウ非表示
+            clickableIcons: false
           });
 
           var marker = new google.maps.Marker({
@@ -153,15 +157,16 @@
 
 
           var infoWindow = new google.maps.InfoWindow({
-            position: location,
+
+            position: {lat: <%= @listing.latitude + 0.005 %>, lng: <%= @listing.longitude  %>},
 
             maxWidth: 200,
-            content: '<div id="content"><b><%= @listing.listing_title %></b>の受け渡し場所(※予約成立後、詳細場所が表示されます)</div>'
+            content: '<div id="content"><b><%= @listing.listing_title %></b>の受け渡し場所(※予約成立後に詳細場所を通知)</div>'
           });
 
           var cityCircle = new google.maps.Circle({
             strokeWeight: 0,
-            fillColor: '#C0C0C0',
+            fillColor: '#04b4e4',
             fillOpacity: 0.5,
             map: map,
             center: location,

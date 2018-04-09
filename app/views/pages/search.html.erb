@@ -128,7 +128,11 @@ $("#detail-header").click(function(){
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: <%= @latitude %>, lng: <%= @longitude %>},
-    zoom: 13
+    zoom: 12,
+    // デフォルトのコントロールセット非表示
+    disableDefaultUI: true,
+    // デフォルトの情報ウィンドウ非表示
+    clickableIcons: false
   });
 
   var input = /** @type {!HTMLInputElement} */(
@@ -160,14 +164,15 @@ function initMap() {
     marker.addListener('click', function() {
 
       <% if !listing.photos.blank? %>
-       var content = "<div>" + "<img src="+"<%= listing.photos[0].image.url(:thumb) %>" + " " + "style='width: 100%;height: 100%;'" +"alt='139'>" + '<br>' + '<a href="/listings/' + <%= listing.id %> +'">' + "<b><%= listing.listing_title %></b>" + "</a>" + '<br>' + "<span>" + "<%= listing.price_per %>" + "</span>&nbsp;<span class='inforwindow-price'>" + "<%= listing.price %>" + "</span>円</div>";
+       var content = "<div>" +  "<img src="+"<%= listing.photos[0].image.url(:thumb) %>" + " " + "style='width: 60%;height: 60%;'" +"alt='139'>" + '<br>' + '<a href="/listings/' + <%= listing.id %> +'">' + "<b><%= listing.listing_title %></b>" + "</a>" +  "<span>" + "<%= listing.price_per %>" + "</span>&nbsp;<span class='inforwindow-price'>" + "<%= listing.price %>" + "</span>円" +'<br>' + "<img src="+"<%= listing.user.image.url(:thumb) %>" + " " + "style='width: 20%;height: 20%;'" + "class='img-circle'" +"alt='139'>" + "<%= listing.user.fullname %>" +"</div>";
       <% end %>
+
 
 
      // infowindowを作成
      var infowindow = new google.maps.InfoWindow({
        content: content,
-       maxWidth: 200
+       maxWidth: 150
      });
 
      infowindow.open(map, this);
@@ -202,10 +207,10 @@ function initMap() {
     // If the place has a geometry, then present it on a map.
     if (place.geometry.viewport) {
       map.fitBounds(place.geometry.viewport);
-      map.setZoom(13);
+      map.setZoom(12);
     } else {
       map.setCenter(place.geometry.location);
-      map.setZoom(13);
+      map.setZoom(12);
     }
 
     // 入力欄の場所の緯度経度情報を取得
