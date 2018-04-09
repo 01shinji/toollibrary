@@ -5,31 +5,8 @@
 @import "jquery-bootstrap-datepicker";
 @import "jquery-ui/slider";
 
-#information2-price ul{
-  padding: 0
-
-}
-#information2-price ul li{
-  list-style: none;
-  float: left;
-}
 
 
-#information2-price p {
-    font-size: 15px;
-    margin: 10px 5px;
-}
-
-#information2-price .form-control{
-  border-radius: 0;
-}
-
-#price_day-margin p{
-  margin-right: 20px;
-}
-.children{
-  display: none;
-}
 
 html{
   overflow-x: hidden;
@@ -454,6 +431,35 @@ hr{
     opacity: 1;
 }
 
+
+// リスティング作成
+.children{
+  display: none;
+}
+
+#information2-price ul{
+  padding: 0
+
+}
+#information2-price ul li{
+  list-style: none;
+  float: left;
+}
+
+
+#information2-price p {
+    font-size: 15px;
+    margin: 10px 5px;
+}
+
+#information2-price .form-control{
+  border-radius: 0;
+}
+
+#price_day-margin p{
+  margin-right: 20px;
+}
+
 // 画像アップロード
 #photos-select .btn{
   color: #808080;
@@ -525,7 +531,7 @@ hr{
 .listing-content .col-xs-4,
 .listing-content .col-xs-8
 {
-  padding: 5px;
+  padding: 0;
 }
 }
 
@@ -544,27 +550,60 @@ hr{
 }
 
 // リスティング詳細ページ
+#show .col-xs-12{
+  padding-left: 0;
+  padding-right: 0;
+}
 .show-header h3{
   margin: 20px auto;
   text-align: center;
-
 }
+
 .show-header h3 span{
-  border: solid 1px #C0C0C0;
+  color: #ffffff;
+  font-size: 13px;
+
+  padding: 2px;
+  background-color: #C0C0C0;
 }
 
-.icon-circle{
-  width:20px;
-  height:20px;
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border:solid 1px #C0C0C0;
+.show-header .listing-category{
+  border-radius: 10px;
 }
-.icon-circle i{
-  position: relative;
-  left:5px;
+
+.show-header .bottom{
+  position:relative;
+  overflow:hidden;
+  padding:0;
 }
+
+.show-header .bottom ul{
+  position:relative;
+  left:50%;
+  float:left;
+  padding:0px 0px;
+  margin:0 0;
+
+ }
+
+.show-header .bottom ul:after{
+ content:"";
+ clear:both;
+ display:block;
+ }
+
+.show-header .bottom ul li{
+  list-style: none;
+  position:relative;
+  left:-50%;
+  float:left;
+  }
+
+.show-header .bottom p {
+  font-size: 13px;
+  margin: 5px;
+}
+
 .show-photo{
   margin:10px auto;
 }
@@ -590,6 +629,7 @@ hr{
 .nearby h4{
   margin: 10px;
 }
+
 // パンくずリスト
 .breadcrumb{
 
@@ -628,6 +668,10 @@ hr{
 }
 
 // 予約フォーム
+#reservation .col-md-12{
+  padding-left: 0;
+  padding-right: 0;
+}
 #reservation .panel {
  padding-bottom: 5px;
 }
@@ -984,6 +1028,15 @@ input#pac-input {
 }
 .search-detail .chevron{
   margin-left: 5px;
+}
+
+// GoogleMap 右下の利用規約隠す
+.gmnoprint a,
+.gmnoprint span {
+    display:none;
+}
+.gmnoprint div {
+    background:none;
 }
 
 // 決済
