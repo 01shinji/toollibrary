@@ -5,7 +5,11 @@
    <!-- Google Map -->
 
     <div class="">
-      <%= text_field_tag :search, params[:search], placeholder: "住所から検索",  class: "form-control search-location", id:"pac-input" %>
+
+
+        <%= text_field_tag :search, params[:search], placeholder: "住所から検索",  class: "form-control search-location", id:"pac-input" %>
+
+
     </div>
 
    <div id="map">
@@ -48,8 +52,6 @@
             </div>
           </div>
 
-          <hr class="dotted-hr"/>
-
           <div class="row search-panel-li">
             <p>借りたい日付</p>
             <div class="col-md-6 col-sm-6 col-xs-6 box">
@@ -72,7 +74,6 @@
 
       <% end %>
     </div>
-    <hr/>
 
     <!-- 出品中アイテム -->
     <div class="row  listings-list" id="">

@@ -5,9 +5,6 @@
 @import "jquery-bootstrap-datepicker";
 @import "jquery-ui/slider";
 
-
-
-
 html{
   overflow-x: hidden;
   }
@@ -41,6 +38,10 @@ a:hover{
   padding: 0
 }
 
+.container .col-xs-12{
+  padding-left: 0;
+  padding-right: 0;
+}
 
 hr{
   border-top:1px solid #C0C0C0  ;
@@ -526,14 +527,21 @@ hr{
   padding: 5px;
 }
 
+.listing-content .bottom{
+  text-align: left;
+}
+
 @media (max-width: 480px) {
   /* ~480px */
 .listing-content .col-xs-4,
-.listing-content .col-xs-8
-{
+.listing-content .col-xs-8{
   padding: 0;
 }
+.listing-content .bottom{
+  text-align: center;
 }
+}
+
 
 // リスティングのメニューバー
 .listing-menu {
@@ -550,10 +558,7 @@ hr{
 }
 
 // リスティング詳細ページ
-#show .col-xs-12{
-  padding-left: 0;
-  padding-right: 0;
-}
+
 .show-header h3{
   margin: 20px auto;
   text-align: center;
@@ -600,13 +605,23 @@ hr{
   }
 
 .show-header .bottom p {
-  font-size: 13px;
+  font-size:15px;
   margin: 5px;
+}
+
+.bottom img{
+  margin-top: 7px;
 }
 
 .show-photo{
   margin:10px auto;
 }
+
+#show-price .form-check{
+  position: relative;
+  top: 2px;
+}
+
 .amenities li {
   margin-bottom: 10px;
   font-size: 16px;
@@ -668,6 +683,18 @@ hr{
 }
 
 // 予約フォーム
+#reservation{
+
+}
+
+.reservation-form{
+  display: none;
+}
+
+.form-active {
+  display: block;
+}
+
 #reservation .col-md-12{
   padding-left: 0;
   padding-right: 0;
@@ -941,10 +968,10 @@ hr{
 
 #left {
   position: fixed;
-  top: 38px;
+  top: 0;
   height: 100%;
   padding: 0;
-  margin-top: 50px;
+
 }
 
 input#pac-input {
@@ -1031,6 +1058,9 @@ input#pac-input {
 }
 
 // GoogleMap 右下の利用規約隠す
+.gm-style-cc{
+  display: none;
+}
 .gmnoprint a,
 .gmnoprint span {
     display:none;
@@ -1038,6 +1068,7 @@ input#pac-input {
 .gmnoprint div {
     background:none;
 }
+
 
 // 決済
 .field {
