@@ -1,16 +1,12 @@
-<div id="main row">
+<div class=" row" id="main">
 
   <div id="left" class="col-md-6 col-sm-6 col-xs-12">
 
    <!-- Google Map -->
 
-    <div class="">
-
-
-        <%= text_field_tag :search, params[:search], placeholder: "住所から検索",  class: "form-control search-location", id:"pac-input" %>
-
-
-    </div>
+   <div class="">
+      <%= text_field_tag :search, params[:search], placeholder: "住所から検索",  class: "form-control search-location", id:"pac-input" %>
+   </div>
 
    <div id="map">
    </div>
@@ -76,7 +72,7 @@
     </div>
 
     <!-- 出品中アイテム -->
-    <div class="row  listings-list" id="">
+    <div class="row listings-list" id="">
       <%= render partial: "listings/listings_list", locals: {listings: @arrListings} %>
     </div>
 

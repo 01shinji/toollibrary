@@ -1,58 +1,15 @@
+<div class=" row">
 
- <!-- 日本地図から検索 -->
-<div class="search-form">
-   <p>どちらの海で使いたいですか？</p>
-   <div class="japan-container">
-    <ul class="area-name-list">
+  <div id="home-left" class="col-md-6 col-sm-6 col-xs-12">
 
-      <li class="map-shonan local">
-        <div>湘南<span>+</span></div>
-        <div class="local-list">
-          <p><%= link_to '鎌倉',search_path(search: '神奈川県鎌倉市稲村ガ崎') %></p>
-          <p><%= link_to '江ノ島',search_path(search: '神奈川県藤沢市片瀬海岸') %></p>
-          <p><%= link_to '辻堂',search_path(search: '神奈川県藤沢市辻堂西海岸') %></p>
-          <p><%= link_to '茅ヶ崎',search_path(search: '神奈川県茅ヶ崎市東海岸南') %></p>
-        </div>
-      </li>
-      <li class="map-chiba local">
-        <div>千葉<span>+</span></div>
-        <div class="local-list">
-          <p>鎌倉</p>
-          <p>鎌倉</p>
-          <p>鎌倉</p>
-          <p>鎌倉</p>
-        </div>
-      </li>
-      <li class="map-ibaraki">
-        <div class="">茨城</div>
-      </li>
-      <li class="map-hokkaido">
-        <div class="">北海道〜東北</div>
-      </li>
+   <!-- Google Map -->
 
 
-      <li class="map-ise">
-        <div class="">伊勢〜四国</div>
-      </li>
-      <li class="map-shizunami">
-        <div class="">静波〜伊良湖</div>
-      </li>
-      <li class="map-ito">
-        <div class="">伊東〜伊豆</div>
-      </li>
-      <li class="map-kitanihon">
-        <div class="">北日本海</div>
-      </li>
 
-      <li class="map-miyazaki">
-        <div class="">宮崎〜鹿児島</div>
-      </li>
-      <li class="map-nishinihon">
-        <div class="">西日本海</div>
-      </li>
-
-    </ul>
+   <div id="map">
    </div>
+
+  </div>
 </div>
 
 <!-- 検索フォーム -->
@@ -72,16 +29,9 @@
       <%= submit_tag "検索", class: "search-short white b-red" %>
     </div>
   </div>
-
 <% end %>
 
-<br/><hr/>
 
-<!-- 出品中アイテム -->
-<h4>サーフ文庫からのオススメ</h4>
-<div class="row listings-list">
-  <%= render partial: "listings/listings_list", locals: {listings: @listings} %>
-</div>
 
 <script>
   $('#start_date').datepicker({
@@ -125,6 +75,15 @@ $(".local").click(function(){
 
 <script>
 function init() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 39, lng: 137},
+    zoom: 4.6,
+    // デフォルトのコントロールセット非表示
+    disableDefaultUI: true,
+    // デフォルトの情報ウィンドウ非表示
+    clickableIcons: false
+  });
+
   var input = /** @type {!HTMLInputElement} */(
       document.getElementById('autolocation'));
 

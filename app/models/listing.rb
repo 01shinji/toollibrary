@@ -7,7 +7,9 @@ class Listing < ApplicationRecord
 
   has_many :guest_reviews
 
+  # 緯度経度取得
   geocoded_by :location
+
   after_validation :geocode, if: :location_changed?
 
   validates :listing_type, presence: true

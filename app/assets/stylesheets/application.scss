@@ -5,6 +5,25 @@
 @import "jquery-bootstrap-datepicker";
 @import "jquery-ui/slider";
 
+#home-left {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  padding: 0;
+
+}
+@media (max-width: 768px) {
+  /* ~768px */
+#home-left {
+  position: fixed;
+  top: 0px;
+
+  width: 100%;
+  margin-top: 0;
+
+}
+}
+
 html{
   overflow-x: hidden;
   }
@@ -127,8 +146,8 @@ hr{
 #title a{
   color:#04b4e4;
   font-family: 'Noto Sans Japanese', sans-serif;
-  font-weight: 600;
-  font-style: italic;
+  font-weight: 400;
+
   font-size: 2em;
 }
 
@@ -190,8 +209,11 @@ hr{
 
   background: #F4F6F6;
   padding-top: 5px;
-  z-index: 1;
+
+
+  display: none;// 暫定
 }
+
 .navbar.area ul{
   width:980px;
   padding: 0;
@@ -518,9 +540,10 @@ hr{
 }
 
 .listings-list li{
+
   list-style: none;
   padding:10px;
-  margin:0 auto;
+  margin:0;
 }
 
 .listing-content{
@@ -683,10 +706,6 @@ hr{
 }
 
 // 予約フォーム
-#reservation{
-
-}
-
 .reservation-form{
   display: none;
 }
@@ -699,6 +718,11 @@ hr{
   padding-left: 0;
   padding-right: 0;
 }
+
+#reservation .form-control{
+  border-radius: 0;
+}
+
 #reservation .panel {
  padding-bottom: 5px;
 }
@@ -976,8 +1000,8 @@ hr{
 
 input#pac-input {
   width: 200px;
-  margin-top: 100px;
-  margin-left: 10px;
+  margin-top: 55px;
+  margin-left: 5px;
   border: solid 2px #04b4e4;
 
 }
@@ -989,8 +1013,9 @@ input#pac-input {
 }
 
 #right {
-  padding: 5px;
+  padding: 50px 0 0 0;
   position: fixed;
+  top:0;
   right:0;
   height: 100%;
   overflow: scroll;

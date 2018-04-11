@@ -1,8 +1,8 @@
-<div class="reservation-form form-active">
-  <%= form_for([@listing, @listing.reservations.new]) do |f| %>
 
-  <div class="row date-form">
+ <%= form_for([@listing, @listing.reservations.new]) do |f| %>
 
+   <div class="reservation-form form-active">
+    <div class="row date-form">
      <ul class="">
        <li class="col-md-6 col-sm-6 col-xs-6">
          <%= f.text_field :start_date, readonly: true, placeholder: "利用日", class: 'form-control datepicker' %>
@@ -10,16 +10,12 @@
        <li class="col-md-6 col-sm-6 col-xs-6">
          <%= f.text_field :start_date, readonly: true, placeholder: "利用時間", class: 'form-control datepicker' %>
        </li>
-       時間
      </ul>
-
-  </div>
-
-  <h5><span id="message" class="message-alert"></span></h5>
-
-  <div id="preview" style="display: none">
-   <table class="reservation-table">
-     <tbody>
+    </div>
+    <h5><span id="message" class="message-alert"></span></h5>
+    <div id="preview" style="display: none">
+     <table class="reservation-table">
+      <tbody>
        <tr>
          <td class="text-left">レンタル価格</td>
          <td class="text-right"><%= @listing.price_hour %>円</td>
@@ -40,11 +36,88 @@
            <span id="reservation_total"></span>円
          </td>
        </tr>
-     </tbody>
-   </table>
-  </div>
-
-  <br>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="reservation-form ">
+    <div class="row date-form">
+     <ul class="">
+       <li class="col-md-6 col-sm-6 col-xs-6">
+         <%= f.text_field :start_date, readonly: true, placeholder: "利用開始日", class: 'form-control datepicker' %>
+       </li>
+       <li class="col-md-6 col-sm-6 col-xs-6">
+         <%= f.text_field :start_date, readonly: true, placeholder: "利用終了日", class: 'form-control datepicker' %>
+       </li>
+     </ul>
+    </div>
+    <h5><span id="message" class="message-alert"></span></h5>
+    <div id="preview" style="display: none">
+     <table class="reservation-table">
+      <tbody>
+       <tr>
+         <td class="text-left">レンタル価格</td>
+         <td class="text-right"><%= @listing.price_hour %>円</td>
+       </tr>
+       <tr>
+         <td class="text-left">時間</td>
+         <td class="text-right">
+           ✕&nbsp;<span id="reservation_days"></span>時間
+         </td>
+       </tr>
+       <tr>
+         <td class="text-left">保証金</td>
+         <td class="text-right">500円</td>
+       </tr>
+       <tr>
+         <td class="total text-left">合計</td>
+         <td class="text-right">
+           <span id="reservation_total"></span>円
+         </td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="reservation-form ">
+    <div class="row date-form">
+     <ul class="">
+       <li class="col-md-6 col-sm-6 col-xs-6">
+         <%= f.text_field :start_date, readonly: true, placeholder: "利用開始日", class: 'form-control datepicker' %>
+       </li>
+       <li class="col-md-6 col-sm-6 col-xs-6">
+         <%= f.text_field :start_date, readonly: true, placeholder: "利用終了日", class: 'form-control datepicker' %>
+       </li>
+     </ul>
+    </div>
+    <h5><span id="message" class="message-alert"></span></h5>
+    <div id="preview" style="display: none">
+     <table class="reservation-table">
+      <tbody>
+       <tr>
+         <td class="text-left">レンタル価格</td>
+         <td class="text-right"><%= @listing.price_hour %>円</td>
+       </tr>
+       <tr>
+         <td class="text-left">時間</td>
+         <td class="text-right">
+           ✕&nbsp;<span id="reservation_days"></span>時間
+         </td>
+       </tr>
+       <tr>
+         <td class="text-left">保証金</td>
+         <td class="text-right">500円</td>
+       </tr>
+       <tr>
+         <td class="total text-left">合計</td>
+         <td class="text-right">
+           <span id="reservation_total"></span>円
+         </td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
 
    <% if @listing.Instant? %>
      <%= f.submit "今すぐ予約する", id: "btn_book", class: "btn-sm  white b-red", disabled: true %>
@@ -52,66 +125,9 @@
      <%= f.submit "予約をリクエストする", id: "btn_book", class: "btn-sm  white b-red", disabled: true %>
    <% end %>
 
-  <% end %>
-</div>
-
-<div class="reservation-form">
- <%= form_for([@listing, @listing.reservations.new]) do |f| %>
-
- <div class="row date-form">
-  <ul>
-    <li class="col-md-6 col-sm-6 col-xs-6">
-      <%= f.text_field :start_date, readonly: true, placeholder: "利用開始日", class: 'form-control datepicker' %>
-    </li>
-    <li class="col-md-6 col-sm-6 col-xs-6">
-      <%= f.text_field :end_date, readonly: true, placeholder: "利用終了日", class: 'form-control datepicker', disabled: true %>
-    </li>
-  </ul>
- </div>
-
- <h5><span id="message" class="message-alert"></span></h5>
-
- <div id="preview" style="display: none">
-  <table class="reservation-table">
-    <tbody>
-      <tr>
-        <td class="text-left">レンタル価格</td>
-        <td class="text-right"><%= @listing.price_day %>円</td>
-      </tr>
-      <tr>
-        <td class="text-left">日数</td>
-        <td class="text-right">
-          ✕&nbsp;<span id="reservation_days"></span>日間
-        </td>
-      </tr>
-      <tr>
-        <td class="text-left">保証金</td>
-        <td class="text-right">500円</td>
-      </tr>
-      <tr>
-        <td class="total text-left">合計</td>
-        <td class="text-right">
-          <span id="reservation_total"></span>円
-        </td>
-      </tr>
-    </tbody>
-  </table>
- </div>
-
- <br>
-
-  <% if @listing.Instant? %>
-    <%= f.submit "今すぐ予約する", id: "btn_book", class: "btn-sm  white b-red", disabled: true %>
-  <% else %>
-    <%= f.submit "予約をリクエストする", id: "btn_book", class: "btn-sm  white b-red", disabled: true %>
-  <% end %>
-
  <% end %>
-</div>
 
-<div class="reservation-form">
-  月
-</div>
+
 
    <% if current_user && current_user != @listing.user %>
     <%= link_to "ホストにメッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @listing.user.id), method: :post, class: "btn-sm  white b-blue" %>
@@ -224,6 +240,8 @@ $(document).ready(function(){
   });
 
 });
+
+
 </script>
 
 <script type="text/javascript">

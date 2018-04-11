@@ -44,7 +44,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ZRYgtCagsAWTqGbqxkpW09Y
       <input type="hidden" id="user_id" value="<%= current_user.id %>">
     <% end %>
 
-    <% if  request.path == '/search' %>
+    <% if  request.path == '/' || request.path == '/search'%>
       <%= yield %>
     <% else %>
       <div class="container">

@@ -1,6 +1,6 @@
 <ul class="row-eq-height">
   <% listings.each do |listing| %>
-   <li class="<% if request.path == '/search' %>col-md-6 col-sm-6 col-xs-6  row-eq-height <% else %>col-md-3 col-sm-3 col-xs-6  row-eq-height<% end %>">
+   <li class="<% if request.path == '/search' || request.path == '/ajaxsearch' %>col-md-6 col-sm-6 col-xs-6  row-eq-height <% else %>col-md-3 col-sm-3 col-xs-6  row-eq-height<% end %>">
     <div class="listing-block">
 
       <div class="">
