@@ -4,17 +4,19 @@
 
    <!-- Google Map -->
 
-
-
    <div id="map">
    </div>
 
   </div>
 </div>
 
+ <p class=" animated infinite slideOutLeft" id="motion"><span class="">🌊🏄</span></p>
+
+
+
 <!-- 検索フォーム -->
 <%= form_tag search_path, method: :get do %>
-  <p>住所からも探せます</p>
+
   <div class="row search-form">
 
     <!-- 住所から検索 -->
@@ -26,7 +28,7 @@
     </div>
 
     <div class="col-md-2 col-sm-2 col-xs-2 box">
-      <%= submit_tag "検索", class: "search-short white b-red" %>
+      <%= submit_tag "検索", class: "search-short white b-green" %>
     </div>
   </div>
 <% end %>

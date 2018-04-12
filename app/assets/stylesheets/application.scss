@@ -5,11 +5,35 @@
 @import "jquery-bootstrap-datepicker";
 @import "jquery-ui/slider";
 
+#motion{
+  margin: 0;
+  font-size: 1.5em;
+
+
+   -webkit-animation-duration: 5s;
+   animation-duration: 5s;
+   -webkit-animation-fill-mode: both;
+   animation-fill-mode: both;
+}
+
+#motion span{
+  float: right;
+  position: relative;
+  top: 5px;
+}
+
+#motion:after{
+ content:"";
+ clear:both;
+ display:block;
+ }
+
 #home-left {
   position: fixed;
   top: 0;
   height: 100%;
   padding: 0;
+  z-index: -1;
 
 }
 @media (max-width: 768px) {
@@ -23,6 +47,16 @@
 
 }
 }
+
+input#autolocation {
+  border: solid 2px #04b4e4;
+  border-left: solid 2px #04b4e4;
+  border-bottom: solid 2px #04b4e4;
+  border-right: transparent;
+}
+
+
+
 
 html{
   overflow-x: hidden;
@@ -115,6 +149,9 @@ hr{
   background-color: #FFA500;
 }
 
+.b-green{
+  background-color: #28a745;
+}
 // float
 .float-left{
   float: left;
@@ -327,7 +364,7 @@ hr{
 
 .btn-blue{
   color:#04b4e4;
-  border: solid 1px #04b4e4;
+  border: solid 2px #04b4e4;
   border-radius: 2px;
   padding: 2px;
   margin-top: 5px;
@@ -821,7 +858,7 @@ hr{
 
 // 検索フォーム
 .search-form{
-  margin: 0;
+  margin: 0 5px;
 }
 
 .search-form p{
@@ -845,6 +882,7 @@ hr{
   width: 100%;
   border: none;
   padding: 10px;
+
 }
 
 // 日本地図
