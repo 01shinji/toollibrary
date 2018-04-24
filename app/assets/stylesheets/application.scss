@@ -644,7 +644,7 @@ hr{
 }
 
 .form-control {
-
+  border-radius: 0;
   height: 4rem;
 }
 
@@ -674,9 +674,6 @@ hr{
     margin: 10px 5px;
 }
 
-#information2-price .form-control{
-  border-radius: 0;
-}
 
 #price_day-margin p{
   margin-right: 20px;
@@ -918,9 +915,7 @@ hr{
   padding-right: 0;
 }
 
-#reservation .form-control{
-  border-radius: 0;
-}
+
 
 #reservation .panel {
  padding-bottom: 5px;
@@ -955,7 +950,7 @@ hr{
 
 .box .form-control{
   text-align: center;
-  border-radius: 0;
+
 }
 
 .reservation-table{
@@ -1027,9 +1022,7 @@ hr{
   color:#808080 ;
   font-size: 2rem;
 }
-.form-control.search-location {
-  border-radius: 0;
-}
+
 
 .search-form .box {
   padding: 0;
