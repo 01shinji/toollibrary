@@ -57,4 +57,5 @@ Rails.application.routes.draw do
 
   # オリジナル追加
   get 'about' => 'pages#about'
+  get 'information' => 'pages#information'
 end

@@ -49,7 +49,10 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ZRYgtCagsAWTqGbqxkpW09Y
     <% end %>
 
     <% if  request.path == '/' || request.path == '/search'%>
-      <%= yield %>
+       <%= yield %>
+    <% elsif request.path == '/about' || request.path == '/information' %>
+       <%= yield %>
+       <%= render 'shared/footer'%>
     <% else %>
       <div class="container">
        <%= yield %>

@@ -8,15 +8,15 @@
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
           <ul >
             <li>
-              <a href="<?php echo home_url('/'); ?>">
                 <%= link_to "チャレンタ!とは", about_path %>
-
-              </a>
             </li>
             <li>
               <a href="http://shop.toollibrary.jp/?mode=sk#info">
                 特定商取引法に基づく表記
               </a>
+            </li>
+            <li>
+                <%= link_to "運営者", information_path %>
             </li>
           </ul>
         </div>
@@ -31,6 +31,9 @@
               <a href="http://shop.toollibrary.jp/?mode=privacy">
                 プライバシーポリシー
               </a>
+            </li>
+            <li>
+                <%= link_to "お問合わせ", about_path %>
             </li>
           </ul>
         </div>

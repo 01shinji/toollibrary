@@ -113,8 +113,8 @@ input#autolocation {
 }
 
 .about-box{
-  padding: 5px;
-  margin: 40px;
+
+  margin-bottom: 40px;
 
  }
 
@@ -147,6 +147,10 @@ input#autolocation {
 
 }
 
+.about-sentence {
+  margin: 20px;
+}
+
 .about-sentence p{
   font-size: 15px;
 }
@@ -154,8 +158,9 @@ input#autolocation {
 
 // 運営者
 .shinji-circle{
-
- margin:0;
+ 
+ text-align: center;
+ margin-top: 40px;
  padding:0;
 
   }
@@ -1447,17 +1452,22 @@ input#pac-input {
 #footer{
  margin-top: 50px;
  border-top: solid 1px #C0C0C0;
+ background-color: #ffffff;
 }
 
 #footernavi_container{
-  padding:10px;
+  padding: 20px 10px;
   color:#808080;
-
 
  }
 
+#footernavi_container ul{
+  padding-left: 0;
+}
+
 #footernavi_container ul li{
   list-style: none;
+  margin: 10px;
   }
 
 #footernavi_container ul li a{
