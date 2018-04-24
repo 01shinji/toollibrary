@@ -4,7 +4,16 @@
 
     <div  class="">
       <div class="">
-        <h3><b><%= @user.fullname %></b>さん</h3>
+        <h3>
+          <b>
+            <% if (user_signed_in?)%>
+             <%= @user.fullname %>
+            <% else %>
+             <%= @user.nickname %>
+            <% end %>
+          </b>
+          さん
+        </h3>
       </div>
 
       <div class="">

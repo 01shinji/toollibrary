@@ -55,4 +55,6 @@ Rails.application.routes.draw do
 
   mount ActionCable.server => '/cable'
 
+  # オリジナル追加
+  get 'about' => 'pages#about'
 end

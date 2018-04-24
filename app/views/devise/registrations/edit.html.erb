@@ -9,7 +9,7 @@
 
   <div class="col-md-8 col-md-offset-2 text-center">
     <div class="panel panel-default">
-      <h3><b>プロフィールの編集</b></h3>
+      <h3>プロフィールの編集</h3>
       <div class="container">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
@@ -23,9 +23,23 @@
         </div>
 
         <div class="form_box">
+          <p>ニックネーム</p>
+          <div class="form-group">
+            <%= f.text_field :nickname, autofocus: true, placeholder: "タロウ", class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form_box">
           <p>プロフィール画像</p>
           <div class="form-group">
             <%= f.file_field :image , class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form_box">
+          <p>メールアドレス</p>
+          <div class="form-group">
+            <%= f.email_field :email, autofocus: true, placeholder: "sample@gmail.com", class: "form-control" %>
           </div>
         </div>
 
@@ -37,18 +51,47 @@
         </div>
 
         <div class="form_box">
+          <p>住所</p>
+          <div class="form-group">
+            <%= f.text_field :address_zipcode, autofocus: true, placeholder: "郵便番号", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :address_prefecture_name, autofocus: true, placeholder: "都道府県", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :address_city, autofocus: true, placeholder: "市区町村", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :address_street, autofocus: true, placeholder: "番地", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :address_building, autofocus: true, placeholder: "建物(任意)", class: "form-control" %>
+          </div>
+        </div>
+
+        <script type="text/javascript">
+          $(window).ready( function() {
+           $('#address_zipcode').jpostal({
+             postcode : [
+               '#address_zipcode'
+             ],
+             address : {
+               '#address_prefecture_name'  : '%3',
+               '#address_city'  : '%4%5',
+               '#address_street'  : '%6%7'
+             }
+           });
+         });
+        </script>
+
+        <div class="form_box">
           <p>自己紹介</p>
           <div class="form-group">
             <%= f.text_area :description, rows: 5, cols: 25, autofocus: true, placeholder: "藤沢市辻堂在住で、サーフィン大好きです。宜しくお願い致します。", class: "form-control" %>
           </div>
         </div>
 
-        <div class="form_box">
-          <p>メールアドレス</p>
-          <div class="form-group">
-            <%= f.email_field :email, autofocus: true, placeholder: "sample@gmail.com", class: "form-control" %>
-          </div>
-        </div>
+
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div><p>こちらのメールアドレスはまだ認証が完了していません、送付したメールのリンク先から完了してください:<%= resource.unconfirmed_email %></p></div>

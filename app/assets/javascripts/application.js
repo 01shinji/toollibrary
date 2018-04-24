@@ -20,8 +20,10 @@
 //= require toastr
 //= require card
 //= require Chart.bundle
-//= require chartkick
+
 //= require cable
+//= require markerwithlabel
+//= require jquery.jpostal
 //= require_tree .
 
   toastr.options = {

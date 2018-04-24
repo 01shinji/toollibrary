@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180408020357) do
+ActiveRecord::Schema.define(version: 20180415131700) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer "sender_id"
@@ -129,6 +129,12 @@ ActiveRecord::Schema.define(version: 20180408020357) do
     t.string "stripe_id"
     t.string "merchant_id"
     t.integer "unread", default: 0
+    t.string "address_zipcode"
+    t.string "address_prefecture_name"
+    t.string "address_city"
+    t.string "address_street"
+    t.string "address_building"
+    t.string "nickname"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

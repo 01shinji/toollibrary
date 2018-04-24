@@ -22,6 +22,8 @@
 .search-spot p{
   margin: 5px;
   padding-top: 5px;
+  font-weight: bold;
+  font-size: 10px;
 }
 #spotModal span{
 
@@ -483,7 +485,8 @@ hr{
 
 .social_btn svg{
   position: relative;
-  top:3px;
+  top: 2px;
+  right: 5px;
   float: left;
 
 }
@@ -1259,6 +1262,7 @@ input#pac-input {
 
 .inforwindow-price {
   font-weight: bold;
+  color: #d9534f;
 }
 
 .detail-list {
@@ -1353,6 +1357,9 @@ input#pac-input {
 }
 
 // メッセージ
+.messages{
+  padding-bottom: 10px;
+}
 .messages-header{
   overflow:hidden;
   padding:0;
@@ -1434,4 +1441,55 @@ input#pac-input {
   font-size: 15px;
   font-weight: 500;
   line-height: 25px;
+}
+
+// フッター
+#footer{
+ margin-top: 50px;
+ border-top: solid 1px #C0C0C0;
+}
+
+#footernavi_container{
+  padding:10px;
+  color:#808080;
+
+
+ }
+
+#footernavi_container ul li{
+  list-style: none;
+  }
+
+#footernavi_container ul li a{
+   border-bottom: solid 1px #808080;
+   color:#808080;
+ }
+
+#footernavi_container ul li a:hover{
+  opacity: 0.6;
+}
+
+.social_logo{
+ text-align: center;
+ margin:5px auto;
+
+ width:30px;
+ height:30px;
+
+}
+
+#footer_facebook{
+}
+
+#footer_facebook path{
+ color: #808080;
+ fill: currentColor;
+}
+
+#copyright address{
+  margin-top: 20px;
+}
+
+#copyright address p{
+  text-align:center;
 }

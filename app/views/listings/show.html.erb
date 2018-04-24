@@ -22,7 +22,14 @@
          </li>
          <li class="">
              <p>
-               ホスト:<b><%= @listing.user.fullname %></b>
+               ホスト:
+               <b>
+               <% if (user_signed_in?)%>
+                <%= @listing.user.fullname %>
+               <% else %>
+                <%= @listing.user.nickname %>
+               <% end %>
+               </b>
              </p>
              <p>
                <%= link_to "プロフィールを見る", @listing.user, class: "btn-blue" %>
