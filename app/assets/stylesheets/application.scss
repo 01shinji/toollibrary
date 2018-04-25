@@ -858,12 +858,22 @@ hr{
 }
 
 .nearby{
+  margin-top: 30px;
 }
 
 .nearby h4{
   margin: 10px;
 }
 
+.distance{
+  position: absolute;
+  top:12px;
+  left: 12px;
+  padding: 2px;
+
+  color: #ffffff;
+  background-color: #808080;
+}
 // パンくずリスト
 .breadcrumb{
 

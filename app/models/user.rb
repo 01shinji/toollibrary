@@ -10,6 +10,11 @@ class User < ApplicationRecord
   has_many :listings
   has_many :reservations
 
+  # 緯度経度取得
+  geocoded_by :address_city
+
+  after_validation :geocode, if: :address_city_changed?
+
   # ゲストからホストへのレビュー
   has_many :guest_reviews, class_name: "GuestReview", foreign_key: "guest_id"
 
@@ -46,6 +51,16 @@ class User < ApplicationRecord
 
   def is_active_host
     !self.merchant_id.blank?
+  end
+
+  # 市区町村まで
+  def address1
+    "%s%s"%([self.address_prefecture_name,self.address_city,])
+  end
+
+  # 番地まで
+  def address2
+    "%s%s%s"%([self.address_prefecture_name,self.address_city,self.address_street])
   end
 
 end

@@ -1,4 +1,5 @@
 <div class="row">
+
  <div class="col-md-8 col-md-offset-2 col-xs-12">
    <!-- About -->
    <div class="row show-header">
@@ -39,7 +40,7 @@
                 <i class="fa fa-map-marker fa-lg"></i>
                </span>
                <span>
-                <%= @listing.location %>
+                <%= @listing.user.address1 %>
                </span>
              </p>
          </li>
@@ -175,7 +176,7 @@
      </script>
      <script>
          function initialize() {
-           var location = {lat: <%= @listing.latitude %>, lng: <%= @listing.longitude %>};
+           var location = {lat: <%= @listing.user.latitude %>, lng: <%= @listing.user.longitude %>};
 
 
            var map = new google.maps.Map(document.getElementById('map'), {
@@ -194,7 +195,7 @@
 
            var infoWindow = new google.maps.InfoWindow({
 
-             position: {lat: <%= @listing.latitude + 0.005 %>, lng: <%= @listing.longitude  %>},
+             position: {lat: <%= @listing.user.latitude + 0.005 %>, lng: <%= @listing.user.longitude  %>},
 
              maxWidth: 200,
              content: '<div id="content"><b><%= @listing.listing_title %></b>の受け渡し場所(※予約成立後に詳細場所を通知)</div>'
@@ -218,23 +219,43 @@
 
    <!-- 近くのリスティング -->
    <% if @listing.nearbys.present? %>
-   <h4>近くの出品中商品</h4>
+
    <div class="row nearby listings-list">
+     <h4>近くのリスティング</h4>
+
      <ul class="row-eq-height">
        <% for listing in @listing.nearbys(10) %>
         <li class="col-md-3 col-sm-3 col-xs-6 row-eq-height">
          <div class="listing-block">
+
            <div class="">
              <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
            </div>
-           <div class="">
-             <%= link_to listing.listing_title, listing %><br/>
-             (ここから<%= listing.distance.round(3)*1000 %>メートル離れています)
+
+           <span class="distance">
+             <%= listing.distance.round(3)*1000 %><menuitem type="command" label="Save">m
+           </span>
+
+           <div class="listing-content">
+             <%= link_to listing.listing_title, listing %>
+             <div class="row">
+               <div class="col-md-3 col-sm-3 col-xs-4">
+                 <%= image_tag listing.user.image, class: "img-circle avatar-medium" %>
+               </div>
+               <div class="col-md-9 col-sm-9 col-xs-8 bottom">
+                 <p><%= listing.listing_type %></p>
+                 <p><%= listing.price_per %>&nbsp;<%= listing.price %>円</p>
+               </div>
+             </div>
+
+
            </div>
+
          </div>
         </li>
        <% end %>
      </ul>
+
    </div>
    <% end %>
  </div>
