@@ -195,7 +195,7 @@
 
            var infoWindow = new google.maps.InfoWindow({
 
-             position: {lat: <%= @listing.user.latitude + 0.005 %>, lng: <%= @listing.user.longitude  %>},
+             position: {lat: <%= @listing.user.latitude  %>, lng: <%= @listing.user.longitude  %>},
 
              maxWidth: 200,
              content: '<div id="content"><b><%= @listing.listing_title %></b>の受け渡し場所(※予約成立後に詳細場所を通知)</div>'

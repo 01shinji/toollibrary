@@ -49,6 +49,25 @@ class User < ApplicationRecord
     end
   end
 
+  def generate_pin
+    self.pin = SecureRandom.hex(2)
+    self.phone_verified = false
+    save
+  end
+
+  def send_pin
+    @client = Twilio::REST::Client.new
+    @client.messages.create(
+      from: '+',
+      to: self.phone_number,
+      body: "[チャレンタ!]認証コードは#{self.pin}です"
+    )
+  end
+
+  def verify_pin(entered_pin)
+    update(phone_verified: true) if self.pin == entered_pin
+  end
+
   def is_active_host
     !self.merchant_id.blank?
   end

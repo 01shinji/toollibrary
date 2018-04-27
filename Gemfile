@@ -55,6 +55,9 @@ gem "figaro", "~> 1.1.0"
 
 gem 'ransack', '~> 1.7'
 
+#----  AirKONG  -------
+gem 'twilio-ruby', '~> 4.11.1'
+
 gem 'enum_help'
 
 gem 'stripe', '~> 3.0.0'
