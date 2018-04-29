@@ -2,14 +2,14 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2 text-center">
     <div class="panel panel-default">
-      <h3><b>商品の詳細</b></h3>
+      <h3>商品の詳細</h3>
 
       <p><b><%= @listing.listing_title %></b></p>
 
       <div class="container">
-        <%= form_for @listing,html: {multipart: true} do |f| %>
+       <%= form_for @listing,html: {multipart: true} do |f| %>
 
-
+        <%= f.hidden_field :location, value: @user.address_city %>
 
         <div class="form_box">
           <p>商品の詳細説明</p>
@@ -18,7 +18,23 @@
           </div>
         </div>
 
-        <%= f.hidden_field :location, value: @user.address_city %>
+        <div class="form_box">
+          <p>利用可能なアメニティ</p>
+          <div class="form-group row">
+            <div class="col-md-4 col-sm-4 col-xs-4 check">
+              <%= f.check_box :is_shower %>
+              シャワー
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4 check">
+              <%= f.check_box :is_bicycle %>
+              自転車
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4 check">
+              <%= f.check_box :is_wetsuit %>
+              ウェットスーツ
+            </div>
+          </div>
+        </div>
 
         <div class="form_box">
           <p>
@@ -36,7 +52,7 @@
           <%= f.submit "登録する", class: "btn btn-form" %>
         </div>
 
-        <% end %>
+       <% end %>
       </div>
     </div>
   </div>

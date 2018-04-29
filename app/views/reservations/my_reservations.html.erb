@@ -7,42 +7,63 @@
   </ul>
 </div>
 
-<div class="row">
+<div class="row my-reservation">
   <div class="col-md-8 col-md-offset-2">
     <div class="">
-      <h3 class="text-center"><b>レンタル購入履歴</b></h3>
-      <div class="container text-left">
+      <h3 class="">レンタル購入履歴</h3>
+      <div class="">
         <% if @my_reservations.count == 0 %>
          <p>まだレンタル購入履歴がありません...</p>
-        <% else %>
-         <% @my_reservations.each do |my_reservation| %>
-          <p class="">
-            <%= my_reservation.start_date.strftime('%Y年%m月%d日') %>&nbsp;
-            <%= my_reservation.status_i18n %>&nbsp;
-          </p>
-          <div class="row">
-            <div class="col-md-3 col-sm-3 col-xs-6">
-              <%= link_to listing_path(my_reservation.listing) do %>
-                <%= image_tag my_reservation.listing.cover_photo(:thumb) %>
-              <% end %>
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-6 ">
-              <%= link_to my_reservation.listing.listing_title, listing_path(my_reservation.listing) %>
-              <br>
-              <div class="reservation-user">
-                <span>
-                  <%= image_tag my_reservation.listing.user.image, class: "img-circle avatar-small" %>
 
-                  <%= link_to user_path(my_reservation.listing.user) do %>
-                      <%= my_reservation.listing.user.fullname %>
-                  <% end %>
-                </span>
-              </div>
-              <br>
-              <%= render partial: "reviews/guest_form", locals: {reservation: my_reservation} if my_reservation.Approved? %>
-            </div>
-          </div>
-          <hr class="dotted-hr" />
+        <% else %>
+
+         <% @my_reservations.each do |my_reservation| %>
+         <div class="box">
+           <p class="">
+             <%= my_reservation.start_date.strftime('%Y年%m月%d日') %>&nbsp;
+
+             <% if my_reservation.Waiting? %>
+              <span class="status">返答待ち</span>
+             <% elsif my_reservation.Approved? %>
+              <span class="status">予約成立!</span>
+             <% else my_reservation.Declined? %>
+              <span class="status">不成立</span>
+             <% end %>
+           </p>
+
+           <div class="bottom">
+             <p>
+               <%= link_to my_reservation.listing.listing_title, listing_path(my_reservation.listing) %>
+             </p>
+             <ul>
+               <li class="">
+                 <%= link_to listing_path(my_reservation.listing) do %>
+                   <%= image_tag my_reservation.listing.cover_photo(:thumb) %>
+                 <% end %>
+               </li>
+               <li class="">
+                 <div class="reservation-user">
+                  <p>
+                   ホスト<br>
+                   <span>
+                     <%= image_tag my_reservation.listing.user.image, class: "img-circle avatar-small" %>
+
+                     <%= link_to user_path(my_reservation.listing.user) do %>
+                         <%= my_reservation.listing.user.fullname %>
+                     <% end %>さん
+                   </span>
+                  </p>
+                 </div>
+
+                 <%= render partial: "reviews/guest_form", locals: {reservation: my_reservation} if my_reservation.Approved? %>
+               </li>
+             </ul>
+
+
+           </div>
+         </div>
+
+
          <% end %>
         <% end %>
       </div>

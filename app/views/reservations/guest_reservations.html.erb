@@ -7,51 +7,64 @@
   </ul>
 </div>
 
-<div class="row">
+<div class="row guest-reservation">
   <div class="col-md-8 col-md-offset-2">
     <div class="">
-      <h3 class="text-center"><b>貸出し販売履歴</b></h3>
-      <div class="container text-left">
+      <h3 class="">貸出し販売履歴</h3>
+      <div class="">
         <% if @listings.count == 0 %>
          <p>まだ貸出し販売履歴がありません...</p><br/>
          <%= link_to "出品する", new_listing_path, class: "btn btn-form" %>
+
         <% else %>
+
          <% @listings.each do |listing| %>
           <% listing.reservations.each do |reservation| %>
+          <div class="box">
+            <p class="">
+              <%= reservation.start_date.strftime('%Y年%m月%d日') %>&nbsp;
 
-           <p class="">
-             <%= reservation.start_date.strftime('%Y年%m月%d日') %>&nbsp;
-             <%= reservation.status_i18n %>&nbsp;
+                <% if reservation.Waiting? %>
+                 <span class="status">返答待ち</span>&nbsp;
+                 <%= link_to approve_reservation_path(reservation), method: :post do %><span class="blue"><i class="fa fa-thumbs-up fa-lg"></i></span><% end %> |
+                 <%= link_to decline_reservation_path(reservation), method: :post do %><span class="blue"><i class="fa fa-thumbs-down fa-lg"></i></span><% end %>
+                <% elsif reservation.Approved? %>
+                 <span class="status">予約成立!</span>
+                <% else reservation.Declined? %>
+                 <span class="status">不成立</span>
+                <% end %>
+            </p>
 
-              <% if reservation.Waiting? %>
-               <%= link_to approve_reservation_path(reservation), method: :post do %><span class="blue"><i class="fa fa-thumbs-up fa-lg"></i></span><% end %> |
-               <%= link_to decline_reservation_path(reservation), method: :post do %><span class="blue"><i class="fa fa-thumbs-down fa-lg"></i></span><% end %>
-              <% end %>
+            <div class="bottom">
+              <p>
+                <%= link_to reservation.listing.listing_title, listing_path(reservation.listing) %>
+              </p>
+              <ul>
+                <li class="">
+                  <%= link_to listing_path(reservation.listing) do %>
+                   <%= image_tag reservation.listing.cover_photo(:thumb) %>
+                  <% end %>
+                </li>
+                <li class="">
 
-           </p>
-           <div class="row">
-             <div class="col-md-3 col-sm-3 col-xs-6">
-               <%= link_to listing_path(reservation.listing) do %>
-                <%= image_tag reservation.listing.cover_photo(:thumb) %>
-               <% end %>
-             </div>
-             <div class="col-md-9 col-sm-9 col-xs-6 ">
-               <%= link_to reservation.listing.listing_title, listing_path(reservation.listing) %>
-               <br>
-               <div class="reservation-user">
-                 <span>
-                   <%= image_tag reservation.user.image, class: "img-circle avatar-small" %>
-                   <%= link_to user_path(reservation.user) do %>
-                    <%= reservation.user.fullname %>
-                   <% end %>
-                 </span>
-               </div>
-               <br>
-               <%= render partial: "reviews/host_form", locals: {reservation: reservation} if reservation.Approved? %>
+                  <div class="reservation-user">
+                    <p>
+                      ゲスト<br>
+                      <%= image_tag reservation.user.image, class: "img-circle avatar-small" %>
+                      <%= link_to user_path(reservation.user) do %>
+                       <%= reservation.user.fullname %>
+                      <% end %>
+                    </p>
+                  </div>
 
-             </div>
-           </div>
-           <hr class="dotted-hr" />
+                  <%= render partial: "reviews/host_form", locals: {reservation: reservation} if reservation.Approved? %>
+                </li>
+              </ul>
+
+            </div>
+          </div>
+
+
 
           <% end %>
          <% end %>

@@ -11,9 +11,7 @@
          <span class="listing-category"><%= @listing.category1 %></span>
          <span class="listing-category"><%= @listing.category2 %></span>
          <span><%= @listing.listing_type %></span>
-         <span>
-           <% if @listing.Instant? %>即決可<% else @listing.Request? %>リクエスト<% end %>
-         </span>
+         <span><%= @listing.instant_i18n %></span>
        </p>
      </h3>
      <div class="bottom">
@@ -119,15 +117,21 @@
 
    <!-- その他 -->
    <div class="row">
-    <div class="col-md-3 col-sm-3 col-xs-3">
-     <p>その他</p>
+    <div class="col-md-3 col-sm-3 col-xs-4">
+     <p>アメニティ</p>
     </div>
-    <div class="col-md-9 col-sm-9 col-xs-9">
+    <div class="col-md-9 col-sm-9 col-xs-8">
      <div class="row">
          <ul class="amenities">
-           <li class="<%= 'text-line-through' %>">シャワー,着替え</li>
-           <li class="<%= 'text-line-through' %>">自転車</li>
-           <li class="<%= 'text-line-through' %>">ウェットスーツ</li>
+           <li class="<%= 'text-line-through' if !@listing.is_shower %> %>">
+             シャワー
+           </li>
+           <li class="<%= 'text-line-through' if !@listing.is_bicycle %>">
+             自転車
+           </li>
+           <li class="<%= 'text-line-through' if !@listing.is_wetsuit %>">
+             ウェットスーツ
+           </li>
          </ul>
      </div>
    </div>

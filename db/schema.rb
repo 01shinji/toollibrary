@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180425072331) do
+ActiveRecord::Schema.define(version: 20180429073817) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer "sender_id"
@@ -38,6 +38,9 @@ ActiveRecord::Schema.define(version: 20180425072331) do
     t.integer "price_hour"
     t.integer "price_day"
     t.integer "price_month"
+    t.boolean "is_shower"
+    t.boolean "is_bicycle"
+    t.boolean "is_wetsuit"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
