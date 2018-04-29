@@ -83,12 +83,12 @@ input#autolocation {
   border-right: transparent;
 }
 
-// 一般向けホームページ
+// aboutページ
 .image-box{
   padding: 0;
   text-align: center;
 
-  background:url("/assets/about_image.png") no-repeat center rgba(0, 0, 0, 0);
+  background:url("/assets/about-image.png") no-repeat center rgba(0, 0, 0, 0);
   background-size: 100% auto;
   background-blend-mode: soft-light;
 }
@@ -110,13 +110,22 @@ input#autolocation {
 .image-box h3{
   color:#FFA500;
   font-weight: 400;
+  line-height: 2;
 }
 
 .about-box{
 
-  margin-bottom: 40px;
+  margin: 50px 0;
 
  }
+
+.about-box h4{
+  text-align: center;
+}
+
+.about-box p{
+  margin: 20px 0;
+}
 
 .box-circle{
   color:#ffffff;
@@ -147,15 +156,22 @@ input#autolocation {
 
 }
 
+
 .about-sentence {
   margin: 20px;
+}
+
+.about-sentence img {
+  border-radius: 10px;
 }
 
 .about-sentence p{
   font-size: 15px;
 }
 
-
+.table_container {
+  margin: 30px 0;
+}
 // 運営者
 .shinji-circle{
 
@@ -913,12 +929,9 @@ hr{
 
 // 予約フォーム
 .reservation-form{
-  display: none;
+
 }
 
-.form-active {
-  display: block;
-}
 
 #reservation .col-md-12{
   padding-left: 0;

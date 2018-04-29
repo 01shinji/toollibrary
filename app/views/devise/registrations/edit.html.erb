@@ -1,6 +1,7 @@
 <div class="">
   <ul class="">
     <li class=""><%= link_to "プロフィールの編集", edit_user_registration_path %></li>
+    <li class=""><%= link_to "電話番号の認証", edit_user_registration_path %></li>
     <li class=""><%= link_to "プロフィールを見る", user_path(current_user.id) %></li>
   </ul>
 </div>
@@ -95,8 +96,6 @@
             <%= f.text_area :description, rows: 5, cols: 25, autofocus: true, placeholder: "藤沢市辻堂在住で、サーフィン大好きです。宜しくお願い致します。", class: "form-control" %>
           </div>
         </div>
-
-
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div><p>こちらのメールアドレスはまだ認証が完了していません、送付したメールのリンク先から完了してください:<%= resource.unconfirmed_email %></p></div>

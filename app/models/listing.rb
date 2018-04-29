@@ -16,7 +16,7 @@ class Listing < ApplicationRecord
   validates :category1, presence: true
   validates :category2, presence: true
   validates :listing_title, presence: true
-  validates :price_hour, presence: true
+  validates :price_day, presence: true
 
   def cover_photo(size)
     if self.photos.length > 0

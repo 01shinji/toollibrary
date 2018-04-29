@@ -18,14 +18,7 @@
           </div>
         </div>
 
-        <div class="form_box">
-          <p>商品の受け渡し場所(住所を記入)</p>
-          <div class="form-group">
-            <%= f.text_field :location, placeholder: "例:神奈川県藤沢市辻堂1-1-1", class: "form-control", required: true, id: "autoaddress" %>
-          </div>
-        </div>
-
-
+        <%= f.hidden_field :location, value: @user.address_city %>
 
         <div class="form_box">
           <p>

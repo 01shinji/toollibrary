@@ -1,74 +1,39 @@
 
  <%= form_for([@listing, @listing.reservations.new]) do |f| %>
 
-   <div class="reservation-form form-active">
-    <div class="row date-form">
-     <ul class="">
-       <li class="col-md-6 col-sm-6 col-xs-6">
-         <%= f.text_field :start_date, readonly: true, placeholder: "利用日", class: 'form-control datepicker' %>
-       </li>
-       <li class="col-md-6 col-sm-6 col-xs-6">
-         <%= f.text_field :start_date, readonly: true, placeholder: "利用時間", class: 'form-control datepicker' %>
-       </li>
-     </ul>
-    </div>
-    <h5><span id="message" class="message-alert"></span></h5>
-    <div id="preview" style="display: none">
-     <table class="reservation-table">
-      <tbody>
-       <tr>
-         <td class="text-left">レンタル価格</td>
-         <td class="text-right"><%= @listing.price_hour %>円</td>
-       </tr>
-       <tr>
-         <td class="text-left">時間</td>
-         <td class="text-right">
-           ✕&nbsp;<span id="reservation_days"></span>時間
-         </td>
-       </tr>
-       <tr>
-         <td class="text-left">保証金</td>
-         <td class="text-right">500円</td>
-       </tr>
-       <tr>
-         <td class="total text-left">合計</td>
-         <td class="text-right">
-           <span id="reservation_total"></span>円
-         </td>
-       </tr>
-      </tbody>
-     </table>
-    </div>
-   </div>
-   <div class="reservation-form ">
+   <div class="reservation-form">
+
     <div class="row date-form">
      <ul class="">
        <li class="col-md-6 col-sm-6 col-xs-6">
          <%= f.text_field :start_date, readonly: true, placeholder: "利用開始日", class: 'form-control datepicker' %>
        </li>
        <li class="col-md-6 col-sm-6 col-xs-6">
-         <%= f.text_field :start_date, readonly: true, placeholder: "利用終了日", class: 'form-control datepicker' %>
+         <%= f.text_field :end_date, readonly: true, placeholder: "利用終了日", class: 'form-control datepicker', disabled: true %>
        </li>
      </ul>
     </div>
+
     <h5><span id="message" class="message-alert"></span></h5>
+
     <div id="preview" style="display: none">
      <table class="reservation-table">
       <tbody>
        <tr>
          <td class="text-left">レンタル価格</td>
-         <td class="text-right"><%= @listing.price_hour %>円</td>
+         <td class="text-right"><%= @listing.price_day %>円</td>
        </tr>
        <tr>
-         <td class="text-left">時間</td>
+         <td class="text-left">サポーター費</td>
+         <td class="text-right">300円</td>
+       </tr>
+       <tr>
+         <td class="text-left">日数</td>
          <td class="text-right">
-           ✕&nbsp;<span id="reservation_days"></span>時間
+           ✕&nbsp;<span id="reservation_days"></span>日間
          </td>
        </tr>
-       <tr>
-         <td class="text-left">保証金</td>
-         <td class="text-right">500円</td>
-       </tr>
+
        <tr>
          <td class="total text-left">合計</td>
          <td class="text-right">
@@ -79,45 +44,7 @@
      </table>
     </div>
    </div>
-   <div class="reservation-form ">
-    <div class="row date-form">
-     <ul class="">
-       <li class="col-md-6 col-sm-6 col-xs-6">
-         <%= f.text_field :start_date, readonly: true, placeholder: "利用開始日", class: 'form-control datepicker' %>
-       </li>
-       <li class="col-md-6 col-sm-6 col-xs-6">
-         <%= f.text_field :start_date, readonly: true, placeholder: "利用終了日", class: 'form-control datepicker' %>
-       </li>
-     </ul>
-    </div>
-    <h5><span id="message" class="message-alert"></span></h5>
-    <div id="preview" style="display: none">
-     <table class="reservation-table">
-      <tbody>
-       <tr>
-         <td class="text-left">レンタル価格</td>
-         <td class="text-right"><%= @listing.price_hour %>円</td>
-       </tr>
-       <tr>
-         <td class="text-left">時間</td>
-         <td class="text-right">
-           ✕&nbsp;<span id="reservation_days"></span>時間
-         </td>
-       </tr>
-       <tr>
-         <td class="text-left">保証金</td>
-         <td class="text-right">500円</td>
-       </tr>
-       <tr>
-         <td class="total text-left">合計</td>
-         <td class="text-right">
-           <span id="reservation_total"></span>円
-         </td>
-       </tr>
-      </tbody>
-     </table>
-    </div>
-   </div>
+
 
    <% if @listing.Instant? %>
      <%= f.submit "今すぐ予約する", id: "btn_book", class: "btn-sm  white b-red", disabled: true %>
@@ -186,7 +113,7 @@ $(document).ready(function(){
               $('#preview').show();
               $('#btn_book').attr('disabled', false);
 
-              var total = days * <%= @listing.price_day %> + 500
+              var total = days * ( <%= @listing.price_day %> +  300 )
               $('#reservation_days').text(days);
               $('#reservation_total').text(total);
             }
@@ -227,7 +154,7 @@ $(document).ready(function(){
               $('#preview').show();
               $('#btn_book').attr('disabled', false);
 
-              var total = days * <%= @listing.price_day %> + 500
+              var total = days * ( <%= @listing.price_day %> +  300 )
               $('#reservation_days').text(days);
               $('#reservation_total').text(total);
             }
@@ -242,17 +169,4 @@ $(document).ready(function(){
 });
 
 
-</script>
-
-<script type="text/javascript">
- $(document).ready(function(){
-
-  $('.index-btn').click(function() {
-   $('.form-active').removeClass('form-active');
-  var clickedIndex = $('.index-btn').index($(this));
-   $('.reservation-form').eq(clickedIndex).addClass('form-active');
-
-  });
-
- });
 </script>
