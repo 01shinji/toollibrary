@@ -24,15 +24,15 @@
             <p class="">
               <%= reservation.start_date.strftime('%Y年%m月%d日') %>&nbsp;
 
-                <% if reservation.Waiting? %>
-                 <span class="status">返答待ち</span>&nbsp;
-                 <%= link_to approve_reservation_path(reservation), method: :post do %><span class="blue"><i class="fa fa-thumbs-up fa-lg"></i></span><% end %> |
-                 <%= link_to decline_reservation_path(reservation), method: :post do %><span class="blue"><i class="fa fa-thumbs-down fa-lg"></i></span><% end %>
-                <% elsif reservation.Approved? %>
+              <% if reservation.Waiting? %>
+                <span class="status">返答待ち</span>&nbsp;
+                  <%= link_to approve_reservation_path(reservation), method: :post do %><span class="blue"><i class="fa fa-thumbs-up fa-lg"></i></span><% end %> |
+                  <%= link_to decline_reservation_path(reservation), method: :post do %><span class="blue"><i class="fa fa-thumbs-down fa-lg"></i></span><% end %>
+               <% elsif reservation.Approved? %>
                  <span class="status">予約成立!</span>
-                <% else reservation.Declined? %>
+               <% else reservation.Declined? %>
                  <span class="status">不成立</span>
-                <% end %>
+               <% end %>
             </p>
 
             <div class="bottom">
@@ -45,15 +45,18 @@
                    <%= image_tag reservation.listing.cover_photo(:thumb) %>
                   <% end %>
                 </li>
-                <li class="">
 
+                <li class="">
                   <div class="reservation-user">
                     <p>
-                      ゲスト<br>
-                      <%= image_tag reservation.user.image, class: "img-circle avatar-small" %>
-                      <%= link_to user_path(reservation.user) do %>
-                       <%= reservation.user.fullname %>
-                      <% end %>
+                       ゲスト<br>
+                      <span>
+                        <%= image_tag reservation.user.image, class: "img-circle avatar-small" %>
+
+                        <%= link_to user_path(reservation.user) do %>
+                         <%= reservation.user.fullname %>
+                        <% end %>さん
+                      </span>
                     </p>
                   </div>
 
@@ -63,9 +66,6 @@
 
             </div>
           </div>
-
-
-
           <% end %>
          <% end %>
         <% end %>
