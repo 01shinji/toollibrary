@@ -10,6 +10,7 @@
 
   <div class="col-md-8 col-md-offset-2 text-center">
     <div class="panel panel-default">
+
       <h3>プロフィールの編集</h3>
       <div class="container">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -41,13 +42,6 @@
           <p>メールアドレス</p>
           <div class="form-group">
             <%= f.email_field :email, autofocus: true, placeholder: "sample@gmail.com", class: "form-control" %>
-          </div>
-        </div>
-
-        <div class="form_box">
-          <p>電話番号</p>
-          <div class="form-group">
-            <%= f.text_field :phone_number, autofocus: true, placeholder: "08012345678", class: "form-control" %>
           </div>
         </div>
 
@@ -121,8 +115,83 @@
 
       <% end %>
       </div>
+
+
+      <div class="edit-phone">
+        <h4>電話番号</h4>
+        <div class="container">
+
+          <% if !current_user.phone_number.blank? %>
+            <h4><%= current_user.phone_number %></h4>
+            <button class="btn white b-green" data-toggle="modal" data-target="#update-phone">
+              電話番号を変更する
+            </button>
+            <% if current_user.phone_verified == false %>
+            <button class="btn white b-gray" data-toggle="modal" data-target="#verify-phone">
+              電話番号を認証する
+            </button>
+            <% end %>
+          <% else %>
+            <button class="btn white b-green" data-toggle="modal" data-target="#update-phone">
+              電話番号を登録する
+            </button>
+          <% end %>
+
+        </div>
+      </div>
+
+
     </div>
+  </div>
 
+</div>
 
+<!-- MODAL FOR PHONE NUMBER -->
+<div id="update-phone" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">電話番号</h4>
+      </div>
+
+      <div class="modal-body">
+        <%= form_for current_user, url: update_phone_number_user_path(current_user) do |f| %>
+            <div class="form-group">
+              <%= f.phone_field :phone_number, class: "form-control", placeholder: "08012345678" %>
+            </div>
+            <div class="text-center">
+              <%= f.submit "登録する", class: "btn-sm  white b-red" %>
+            </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL FOR VERIFICATION -->
+<div id="verify-phone" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">認証コード</h4>
+      </div>
+
+      <div class="modal-body">
+        <%= form_for current_user, url: verify_phone_number_user_path(current_user), method: :post do |f| %>
+            <div class="form-group">
+              <%= f.text_field :pin, class: "form-control", placeholder: "４桁の認証コード", value: "" %>
+            </div>
+            <div class="text-center">
+              <%= f.submit "認証する", class: "btn-sm  white b-red" %>
+            </div>
+        <% end %>
+      </div>
+
+    </div>
   </div>
 </div>

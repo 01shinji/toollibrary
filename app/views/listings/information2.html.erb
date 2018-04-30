@@ -1,4 +1,5 @@
 <%= render 'listing_menu' %>
+
 <div class="row">
   <div class="col-md-8 col-md-offset-2 text-center">
     <div class="panel panel-default">
@@ -38,14 +39,21 @@
 
         <div class="form_box">
           <p>
-            即決の可否
+            リクエスト&nbsp;or&nbsp;即決<br>
+            <span  class="form-explain">リクエスト&nbsp;:&nbsp;ゲストからのリクエストを受けてからレンタルの可否を返答できます<br>
+            即決&nbsp;:&nbsp;ゲストが「今すぐ予約」ボタンを押した段階で取引が成立します</span>
           </p>
+
           <div class="form-group">
 
-              <%= f.select :instant, Listing.instants.map {|key,value| [key.humanize, key]}, {prompt: "選択してください" },{selected: 'Instant',  class: "form-control"} %>
+            <select selected="selected" class="form-control" name="listing[instant]" id="listing_instant">
+              <option selected="selected" value="Request">リクエスト</option>
+              <option value="Instant">即決</option>
+            </select>
 
           </div>
-          <p>※即決可の場合は<%= @user.fullname %>さんへの確認なしに予約購入がおこなわれます。即決不可の場合はゲストからの予約リクエストを確認後に承認するか決めることができます。</p>
+
+
         </div>
 
         <div class="actions">

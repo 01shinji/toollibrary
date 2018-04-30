@@ -6,27 +6,40 @@
   </ul>
 </div>
 
-<div class="row">
-  <div class="col-md-8 col-md-offset-2 text-center">
-    <div class="panel panel-default">
-      <h3><b>出品アイテム管理</b></h3>
-      <div class="container">
+<div class="row listing-index">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="">
+      <h3>出品アイテム管理</h3>
+
+      <div class="">
         <% if @listings.count == 0 %>
          <p>まだ出品中のアイテムがありません...</p><br/>
          <%= link_to "出品する", new_listing_path, class: "btn btn-form" %>
+
         <% else %>
+
          <% @listings.each do |listing| %>
-          <div class="row">
-            <div class="col-md-3 col-sm-3 col-xs-6">
-              <%= image_tag listing.cover_photo(:thumb) %>
+          <div class="box">
+            <p>
+              <%= listing.created_at.strftime('%Y年%m月%d日') %>登録
+            </p>
+
+            <div class="bottom">
+              <ul class="row">
+                <li class="col-md-6 col-sm-6 col-xs-6">
+                  <%= image_tag listing.cover_photo(:thumb) %>
+                </li>
+                <li class="col-md-6 col-sm-6 col-xs-6">
+                  <p><%= link_to listing.listing_title, listing_path(listing) %></p>
+                  <p><b><%= link_to "編集する", information1_listing_path(listing) , class: "btn-sm white b-gray" %></b></p>
+                </li>
+              </ul>
             </div>
-            <div class="col-md-9 col-sm-9 col-xs-6 text-left">
-              <p><%= link_to listing.listing_title, listing_path(listing) %></p>
-              <p><b><%= link_to "編集する", information1_listing_path(listing) , class: "gray" %></b></p>
-            </div>
+
+
           </div>
-          <hr class="dotted-hr" />
          <% end %>
+
         <% end %>
       </div>
     </div>

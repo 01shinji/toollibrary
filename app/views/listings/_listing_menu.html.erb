@@ -1,37 +1,42 @@
-<ul class="listing-menu">
-  <li class="listing-item">
-    <%= link_to "商品の基本情報", information1_listing_path, class: "listing-link active blue" %>
-    <span class="pull-right blue"><i class="fa fa-check"></i></span>
-  </li>
-  <li class="listing-item">
+<div class="row listing-menu ">
+  <div class="col-md-8 col-md-offset-2">
+    <ul class="">
+      <li class="listing-item">
+        <%= link_to "商品の基本情報", information1_listing_path, class: "listing-link active blue" %>
+        <span class="blue"><i class="fa fa-check"></i></span>
+      </li>
+      <li class="listing-item">
 
-    <% if !@listing.description.blank? %>
-    <%= link_to "商品の詳細", information2_listing_path, class: "listing-link active blue" %>
-    <span class="pull-right blue"><i class="fa fa-check"></i></span>
-    <% else %>
-    <%= link_to "商品の詳細", information2_listing_path, class: "listing-link active text-gray" %>
-    <span class="pull-right text-gray"><i class="fa fa-check"></i></span>
-    <% end %>
-  </li>
-  <li class="listing-item">
+        <% if !@listing.description.blank? %>
+        <%= link_to "商品の詳細", information2_listing_path, class: "listing-link active blue" %>
+        <span class="blue"><i class="fa fa-check"></i></span>
+        <% else %>
+        <%= link_to "商品の詳細", information2_listing_path, class: "listing-link active text-gray" %>
+        <span class="text-gray"><i class="fa fa-check"></i></span>
+        <% end %>
+      </li>
+      <li class="listing-item">
 
-    <% if !@listing.photos.blank? %>
+        <% if !@listing.photos.blank? %>
 
-    <%= link_to "商品画像のアップロード", photo_upload_listing_path, class: "listing-link active blue" %>
-    <span id='photo_check' class="pull-right blue"><i class="fa fa-check"></i></span>
-    <% else %>
+        <%= link_to "商品画像のアップロード", photo_upload_listing_path, class: "listing-link active blue" %>
+        <span id='photo_check' class=" blue"><i class="fa fa-check"></i></span>
+        <% else %>
 
-    <%= link_to "商品画像のアップロード", photo_upload_listing_path, class: "listing-link active text-gray" %>
-    <span class="pull-right text-gray"><i class="fa fa-check"></i></span>
-    <% end %>
-  </li>
-  <li>
-    <% is_ready = !@listing.active && !@listing.description.blank? && !@listing.photos.blank?  %>
+        <%= link_to "商品画像のアップロード", photo_upload_listing_path, class: "listing-link active text-gray" %>
+        <span class=" text-gray"><i class="fa fa-check"></i></span>
+        <% end %>
+      </li>
 
-    <%= form_for @listing do |f| %>
-    <%= f.hidden_field :active, value: true %>
-    <%= f.submit "公開する", class:  'btn-xs  white b-thick-gray', disabled: !is_ready %>
-    <% end %>
+    </ul>
+    <p>
+      <% is_ready = !@listing.active && !@listing.description.blank? && !@listing.photos.blank?  %>
 
-  </li>
-</ul>
+      <%= form_for @listing do |f| %>
+      <%= f.hidden_field :active, value: true %>
+      <%= f.submit "公開する", class:  'btn-sm  white b-green', disabled: !is_ready %>
+      <% end %>
+    </p>
+
+  </div>
+</div>

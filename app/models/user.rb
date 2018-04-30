@@ -58,7 +58,7 @@ class User < ApplicationRecord
   def send_pin
     @client = Twilio::REST::Client.new
     @client.messages.create(
-      from: '+',
+      from: '+14159650101',
       to: self.phone_number,
       body: "[チャレンタ!]認証コードは#{self.pin}です"
     )

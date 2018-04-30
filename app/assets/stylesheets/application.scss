@@ -526,19 +526,25 @@ hr{
 .btn {
   color: #fff;
   border-radius: 2px;
-  font-weight: normal;
+
   padding: 9px 27px;
+  border-radius: 0;
+  font-weight: normal;
 }
 
 .btn-sm {
   margin: 5px;
   width: 165px;
   border: none;
+  border-radius: 0;
+  font-weight: normal;
 }
 
 .btn-xs {
   width: 120px;
   border: none;
+  border-radius: 0;
+  font-weight: normal;
 }
 
 .btn:hover, .btn:focus {
@@ -709,6 +715,10 @@ hr{
   position: relative;
   top: 2px;
 }
+
+.form-explain{
+  font-size: 0.8em;
+}
 // 画像アップロード
 #photos-select .btn{
   color: #808080;
@@ -747,7 +757,7 @@ hr{
   margin-right: 5px;
 }
 
-// リスティング一覧
+// リスティングコンテナ
 .row-eq-height {
   display: flex;
   flex-wrap: wrap;
@@ -793,8 +803,14 @@ hr{
 
 
 // リスティングのメニューバー
-.listing-menu {
+.listing-menu{
+  text-align: center;
+}
+
+.listing-menu ul{
   list-style: none;
+  padding: 0;
+
 }
 .listing-item a:hover{
  opacity: 1;
@@ -806,8 +822,56 @@ hr{
 .active.listing-link {
 }
 
-// リスティング詳細ページ
+// リスティング一覧
+.listing-index{
+  text-align: center;
+}
 
+.listing-index h3{
+  margin-bottom: 20px;
+}
+
+.listing-index .box{
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #ffffff;
+}
+
+.listing-index .bottom{
+  position:relative;
+  overflow:hidden;
+  padding:0;
+}
+
+.listing-index ul{
+  position:relative;
+  left:50%;
+  float:left;
+  padding:0px 0px;
+  margin:0 0;
+
+ }
+
+.listing-index .bottom ul:after{
+ content:"";
+ clear:both;
+ display:block;
+ }
+
+.listing-index .bottom ul li{
+  list-style: none;
+  position:relative;
+  left:-50%;
+  float:left;
+  }
+
+.listing-index .bottom p{
+  font-size:15px;
+  margin: 5px;
+}
+
+
+// リスティング詳細ページ
 .show-header h3{
   margin: 20px auto;
   text-align: center;
@@ -1098,7 +1162,16 @@ hr{
     top: -5px;
 }
 
+// プロフィール編集
+.edit-phone{
+  background-color: #F4F6F6;
+  margin: 10px;
+  padding: 10px;
+}
 
+.edit-phone button {
+  margin: 5px;
+}
 
 // プロフィール詳細
 .profile p{
