@@ -12,12 +12,75 @@
     <div class="panel panel-default">
       <h3><b>売上管理</b></h3>
 
-      <div class="container payout">
-        <% if current_user.merchant_id.blank? %>
-          <p>サーフ文庫ではホストの売上げの支払いにStripeを利用しています。Stripeのアカウントを持っていない方は下のリンク先からお作りください。</p>
-          <%= link_to image_tag('stripe.png'), stripe_express_path %>
-        <% else %>
-          <%= link_to "Stripeのダッシュボードへ", @login_link.url, class: "btn-sm  white b-red" %>
+      <div class="edit-bank">
+        <h4>振込先口座</h4>
+        <div class="container">
+
+          <% if !current_user.account_number.blank? %>
+            <p>
+              <%= current_user.bank_name %><br>
+              <%= current_user.account_type %>&nbsp;
+              <%= current_user.branch_code %>&nbsp;
+              <%= current_user.account_number %><br>
+              <%= current_user.account_name %>
+            </p>
+            <button class="btn white b-green" data-toggle="modal" data-target="#update-bank">
+              口座を変更する
+            </button>
+
+          <% else %>
+            <button class="btn white b-green" data-toggle="modal" data-target="#update-bank">
+              口座を登録する
+            </button>
+          <% end %>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL FOR BANK -->
+<div id="update-bank" class="modal fade " role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-center">振込先口座</h4>
+      </div>
+
+      <div class="modal-body">
+        <%= form_for current_user, url: update_bank_account_user_path(current_user) do |f| %>
+            <p>銀行名</p>
+            <div class="form-group">
+              <%= f.text_field :bank_name, class: "form-control", placeholder: "湘南銀行" %>
+            </div>
+
+            <p>口座種別</p>
+            <div class="form-group select">
+              <%= f.select :account_type, [["普通預金","普通"], ["当座預金","当座"], ["貯蓄預金","貯蓄"]], {prompt:"選択してください"}, {required: true, autofocus: 'true', class: 'form-control',id: "account_type"} %>
+            </div>
+
+            <p>支店コード</p>
+            <div class="form-group">
+              <%= f.text_field :branch_code, class: "form-control", placeholder: "123" %>
+            </div>
+
+            <p>口座番号</p>
+            <div class="form-group">
+              <%= f.text_field :account_number, class: "form-control", placeholder: "1234567" %>
+            </div>
+
+            <p>口座名義(カタカナ)</p>
+            <div class="form-group">
+              <%= f.text_field :account_name, class: "form-control", placeholder: "ショウナン タロウ" %>
+            </div>
+
+            <div class="text-center">
+              <%= f.submit "登録する", class: "btn-sm  white b-red" %>
+            </div>
         <% end %>
       </div>
 

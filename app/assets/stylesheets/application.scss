@@ -525,7 +525,6 @@ hr{
 
 .btn {
   color: #fff;
-  border-radius: 2px;
 
   padding: 9px 27px;
   border-radius: 0;
@@ -1480,7 +1479,7 @@ input#pac-input {
 }
 
 
-// 決済
+// 支払い方法
 .field {
   background: white;
   box-sizing: border-box;
@@ -1529,6 +1528,7 @@ input#pac-input {
 }
 
 .error {
+  color: #E4584C;
   display: none;
   font-size: 13px;
 }
@@ -1537,8 +1537,17 @@ input#pac-input {
   display: inline;
 }
 
-.error {
-  color: #E4584C;
+
+
+// 売上管理
+.edit-bank{
+  background-color: #F4F6F6;
+  margin: 10px;
+  padding: 10px;
+}
+
+.edit-bank button {
+  margin: 5px;
 }
 
 .payout img{

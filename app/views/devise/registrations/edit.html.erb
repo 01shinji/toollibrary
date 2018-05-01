@@ -122,7 +122,13 @@
         <div class="container">
 
           <% if !current_user.phone_number.blank? %>
-            <h4><%= current_user.phone_number %></h4>
+            <h4>
+              <%= current_user.phone_number %>
+              <% if current_user.phone_verified %>
+
+               <span class="blue"><i class="fa fa-check"></i></span>
+              <% end %>
+            </h4>
             <button class="btn white b-green" data-toggle="modal" data-target="#update-phone">
               電話番号を変更する
             </button>

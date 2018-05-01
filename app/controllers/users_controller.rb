@@ -12,12 +12,14 @@ class UsersController < ApplicationController
     @host_reviews = Review.where(type: "HostReview", guest_id: @user.id)
   end
 
+
+
   def update_phone_number
     current_user.update_attributes(user_params)
     current_user.generate_pin
     current_user.send_pin
 
-    redirect_to edit_user_registration_path, notice: "電話番号を変更しました!"
+    redirect_to edit_user_registration_path, notice: "認証コードを送りました、電話番号の認証をお願いします"
   rescue Exception => e
     redirect_to edit_user_registration_path, alert: "#{e.message}"
   end
@@ -42,10 +44,7 @@ class UsersController < ApplicationController
   end
 
   def payout
-    if !current_user.merchant_id.blank?
-     account = Stripe::Account.retrieve(current_user.merchant_id)
-     @login_link = account.login_links.create()
-    end
+
   end
 
   def add_card
@@ -71,9 +70,15 @@ class UsersController < ApplicationController
    redirect_to payment_method_path
   end
 
+
+  def update_bank_account
+    current_user.update_attributes(user_params)
+    redirect_to payout_method_path, notice: "振込先口座を変更しました!"
+  end
+
   private
 
     def user_params
-      params.require(:user).permit(:phone_number, :pin)
+      params.require(:user).permit(:phone_number, :pin, :bank_name, :account_type, :branch_code, :account_number, :account_name)
     end
 end
