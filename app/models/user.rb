@@ -59,7 +59,7 @@ class User < ApplicationRecord
     @client = Twilio::REST::Client.new
     @client.messages.create(
       from: '+14159650101',
-      to: self.phone_number,
+      to: "+81#{self.phone_number}",
       body: "[チャレンタ!]認証コードは#{self.pin}です"
     )
   end

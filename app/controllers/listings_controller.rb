@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
   before_action :set_listing, except: [:index, :new, :create]
   before_action :authenticate_user!, except: [:show]
+  before_action :is_verified, except: [:show]
   before_action :is_authorised, only: [ :information1, :information2, :photo_upload, :update]
 
   def index
@@ -92,8 +93,12 @@ class ListingsController < ApplicationController
     redirect_to root_path, alert: "このページを編集する権限がありません" unless current_user.id == @listing.user_id
   end
 
+  def is_verified
+    redirect_to edit_user_registration_path, alert: "電話番号の認証が必要です" if !current_user.phone_verified
+  end
+
   def is_ready_listing
-    !@listing.active && !@listing.price_hour.blank? && !@listing.photos.blank?
+    !@listing.active && !@listing.price_day.blank? && !@listing.photos.blank?
   end
 
   def listing_params

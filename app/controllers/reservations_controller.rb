@@ -10,6 +10,9 @@ class ReservationsController < ApplicationController
     elsif current_user.stripe_id.blank?
       flash[:alert] = "支払い方法を登録してください"
       return redirect_to payment_method_path
+    elsif !current_user.phone_verified
+      flash[:alert] = "電話番号の認証が必要です"
+      return redirect_to edit_user_registration_path
     else
       start_date = Date.parse(reservation_params[:start_date])
       end_date = Date.parse(reservation_params[:end_date])
