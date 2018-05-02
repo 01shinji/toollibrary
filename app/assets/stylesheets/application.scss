@@ -333,6 +333,7 @@ hr{
 .b-yellow{
   background-color: #FCE40C;
 }
+
 // float
 .float-left{
   float: left;
@@ -344,7 +345,15 @@ hr{
 // ヘッダー
 .header-container{
   width: 100%;
-  padding: 0
+  padding: 5px;
+}
+
+@media (max-width: 480px) {
+  /* ~480px */
+.header-container{
+
+  padding: 0;
+  }
 }
 
 .header-box ul {
@@ -367,11 +376,28 @@ hr{
   font-weight: 400;
 
   font-size: 2em;
+  padding-right: 0
+
 }
 
-.header-box .float-right {
+.header-case {
+  position: absolute;
+  right: 5px;
   margin-top: 15px;
-  margin-right: 5px;
+  margin-right: 3px;
+  border-left: 2px solid #C0C0C0;
+  padding-left: 10px;
+}
+
+@media (max-width: 768px) {
+  /* ~768px */
+.header-case{
+  position: static;
+  float: right;
+  border: none;
+  padding-left: 0;
+
+}
 }
 
 .header-box i {
@@ -380,20 +406,23 @@ hr{
 
 .badge {
   display: inline-block;
-  min-width: 10px;
-  font-size: 12px;
+  min-width: 1.5em;
+  font-size: 8px;
   color: #fff;
-  line-height: 1;
+  line-height: 1.5em;
   vertical-align: middle;
   white-space: nowrap;
   text-align: center;
   background-color: #d9534f;
   position: relative;
-  right: 10px;
+  right: 13px;
   top: -10px;
-  border-radius: 0;
+  border-radius: 50%;
   padding: 0;
+
 }
+
+
 // ナビゲーション
 .navbar{
   margin-bottom: 0;
@@ -421,6 +450,21 @@ hr{
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.navbar-right{
+  position: absolute;
+  right: 150px;
+  top: 10px;
+}
+
+@media (max-width: 768px) {
+  /* ~768px */
+.navbar-right{
+  position: static;
+
+}
+}
+
 // 地域ナビゲーション
 .navbar.area {
   border-bottom: solid 1px #e7e7e7;
@@ -454,22 +498,45 @@ hr{
 .navbar.area li span a{
   color:#ffffff;
 }
+
+
 // ダッシュボードナビゲーション
 .navbar.dashboard {
-  padding: 2px;
+  padding: 5px;
   margin-bottom: 20px;
   background: #808080 ;
   border-radius: 0;
 }
+
+@media (max-width: 480px) {
+  /* ~480px */
+.navbar.dashboard{
+  padding: 2px;
+}
+}
+
 .navbar.dashboard ul{
-  margin-bottom: 0;
+  position:relative;
+  left:50%;
+  float:left;
+  padding:0px 0px;
+  margin:0 0;
 
-}
-.navbar.dashboard li{
+ }
 
+.navbar.dashboard ul:after{
+ content:"";
+ clear:both;
+ display:block;
+ }
+
+.navbar.dashboard ul li{
   list-style: none;
-  float: left;
-}
+  position:relative;
+  left:-50%;
+  float:left;
+  }
+
 
 .navbar.dashboard li.active {
   background-color: #808080;
@@ -480,13 +547,56 @@ hr{
   margin: 0 5px;
 }
 
+// ダッシュボード内リンク
+.dashboard-link{
+  margin-bottom: 20px;
+}
+
+.dashboard-link ul{
+  position:relative;
+  left:50%;
+  float:left;
+  padding:0px 0px;
+  margin:0 0;
+
+ }
+
+.dashboard-link:after,
+.dashboard-link ul:after{
+ content:"";
+ clear:both;
+ display:block;
+ }
+
+.dashboard-link ul li{
+  list-style: none;
+  position:relative;
+  left:-50%;
+  background-color: #C0C0C0;
+  padding: 5px;
+  margin: 5px;
+  float: left;
+  }
+
+.dashboard-link ul li a{
+  color:#000000;
+}
 
 // 認証系ページ
+
+
 .devise_container{
   margin-top: 20px;
-  padding-bottom:20px;
+  padding: 10px 20%;
   background-color: #ffffff;
   border:solid 1px #aeb0b5;
+}
+
+@media (max-width: 768px) {
+  /* ~768px */
+.devise_container{
+  padding: 10px;
+ }
 }
 
 .text-include-separator {
@@ -615,8 +725,16 @@ hr{
 }
 
 .panel .container{
-  padding: 10px 0;
+  padding: 10px 20%;
 }
+
+ @media (max-width: 768px) {
+   /* ~768px */
+.panel .container{
+  padding: 10px 0;
+  }
+}
+
 .row-space-1 {
   margin-top: 6px;
   margin-bottom: 6px;
@@ -811,6 +929,11 @@ hr{
   padding: 0;
 
 }
+
+.listing-menu li {
+    font-size: 15px;
+}
+
 .listing-item a:hover{
  opacity: 1;
 }
@@ -969,6 +1092,7 @@ hr{
   color: #ffffff;
   background-color: #808080;
 }
+
 // パンくずリスト
 .breadcrumb{
 
@@ -1649,10 +1773,28 @@ input#pac-input {
 }
 
 #footernavi_container{
+  padding: 20px 20%;
+  color:#808080;
+
+ }
+
+ @media (max-width: 768px) {
+   /* ~768px */
+ #footernavi_container{
+  padding: 20px 10%;
+  color:#808080;
+
+ }
+ }
+
+ @media (max-width: 480px) {
+   /* ~480px */
+#footernavi_container{
   padding: 20px 10px;
   color:#808080;
 
  }
+}
 
 #footernavi_container ul{
   padding-left: 0;

@@ -13,7 +13,9 @@ class ListingsController < ApplicationController
   end
 
   def create
-
+    if !current_user.is_active_host
+      return redirect_to payout_method_path, alert: "Please Connect to Stripe Express first."
+    end
 
     @listing = current_user.listings.build(listing_params)
     @photos = @listing.photos
