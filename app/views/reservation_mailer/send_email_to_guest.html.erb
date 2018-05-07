@@ -1,5 +1,52 @@
-<%= @recipient.fullname %>さん、こんにちは!
-<br/>
-「<%= @listing.listing_title %>」の予約が完了しました。
-<br/>
-サーフ文庫
+<div class="">
+  <h3>ご予約が確定しました</h3>
+  <p><%= @recipient.fullname %>さん、こんにちは!この度はチャレンタ!を利用して頂きありがとうございます</p>
+  <p>予約内容は以下の通りです。</p>
+
+  <div class="table_container">
+    <div class="table-responsive">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th><%= @reservation.listing_title %></th>
+
+          </tr>
+          <tr>
+            <td>利用開始日</td>
+            <td><%= @reservation.start_date %></td>
+          </tr>
+          <tr>
+            <td>利用終了日</td>
+            <td><%= @reservation.end_date %></td>
+          </tr>
+          <tr>
+            <td>金額</td>
+            <td><%= @reservation.total %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td>
+              <%= @listing.user.address_zipcode %>
+              <%= @listing.user.address_prefecture_name %>
+              <%= @listing.user.address_city %>
+              <%= @listing.user.address_street %>
+              <% if @listing.user.address_building? %>
+               <%= @listing.user.address_building %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>ホスト名</td>
+            <td><%= @listing.user.fullname %></td>
+          </tr>
+          <tr>
+            <td>ホストの電話番号</td>
+            <td><%= @listing.user.phone_number %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <p>サーフ文庫</p>
+</div>

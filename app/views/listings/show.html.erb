@@ -51,7 +51,9 @@
    <!-- Carousel -->
    <div class="row show-photo">
     <% if @photos.length > 0 %>
+
      <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+
        <!-- Indicators -->
        <ol class="carousel-indicators">
          <% @photos.each do |photo| %>
@@ -77,7 +79,9 @@
          <span class="glyphicon glyphicon-chevron-right"></span>
          <span class="sr-only">次</span>
        </a>
+
      </div>
+
     <% end %>
    </div>
 

@@ -3,46 +3,45 @@
   <% if
     request.path == '/' %>
 
+
+
   <li class="col-md-2 col-sm-2 col-xs-2  row-eq-height">
    <div class="listing-block" >
-
      <div class="">
-
-       <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
+       <%= link_to  listing  do %>
+         <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
+       <% end %>
      </div>
 
      <span class="address-prefecture-name">
        <%= listing.user.address_prefecture_name %>
      </span>
-
      <span class="user-image">
        <%= image_tag listing.user.image, class: "img-circle avatar-small" %>
      </span>
-
      <span class="listing-content">
        <%= link_to listing.listing_title, listing %>
-
      </span>
-
      <p class="price-day">
          <b ><span class="red"><%= listing.price_day %>円</span></b>
-
      </p>
    </div>
-
-   <script type="text/javascript">
-     $(function(){
-      var w = window.innerWidth;
-      if (w <= 768){
-        $(".user-image").remove();
-        $(".listing-content").remove();
-      }
-
-      console.log(w);
-     });
-   </script>
-
   </li>
+  <script type="text/javascript">
+    $(function(){
+     var w = window.innerWidth;
+     if (w <= 768){
+       $(".user-image").remove();
+       $(".listing-content").remove();
+
+     }
+     if (w <= 480){
+
+       $(".address-prefecture-name").remove();
+     }
+     console.log(w);
+    });
+  </script>
 
   <% elsif
      request.path == '/search' || request.path == '/ajaxsearch' %>

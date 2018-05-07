@@ -75,24 +75,7 @@
      </div>
    </nav>
 
-   <!-- 地域ナビゲーション -->
-   <% if current_page?(root_path) || current_page?(search_path) || current_page?("/listings/#{params[:id]}") && !current_page?(listings_path) %>
-    <nav class="navbar area mCustomScrollbar" data-mcs-axis="x" data-mcs-theme="minimal-dark">
-      <div class="">
-        <ul class="">
-          <li><span><%= link_to '鎌倉',search_path(search: '神奈川県鎌倉市稲村ガ崎') %></span></li>
-          <li><span>茨城</span></li>
-          <li><span>千葉</span></li>
-          <li><span>伊東〜伊豆</span></li>
-          <li><span>静波〜伊良湖</span></li>
-          <li><span>伊勢〜四国</span></li>
-          <li><span>宮崎〜鹿児島</span></li>
-          <li><span>北日本海</span></li>
-          <li><span>西日本海</span></li>
-        </ul>
-      </div>
-    </nav>
-   <% end %>
+
 
    <!-- ダッシュボードナビゲーション -->
    <% unless !(user_signed_in?) || current_page?(root_path) || current_page?(search_path) ||  current_page?("/listings/#{params[:id]}") && !current_page?(listings_path)   %>

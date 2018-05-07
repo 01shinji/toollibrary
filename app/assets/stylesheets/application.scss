@@ -812,11 +812,15 @@ hr{
     right: 15px;
 }
 
-#home-listings{
-  position: absolute;
-  bottom: 0px;
-  background-color: #F4F6F6;
+#home-listings {
+    position: fixed;
+    bottom: 0px;
+    background-color: #F4F6F6;
+    margin: 0;
+    padding: 0;
 }
+
+
 
 #home-listings .listings-list{
   margin: 0;
@@ -1917,6 +1921,9 @@ input#autolocation {
   height: 45px;
 }
 
+.alert li{
+  list-style: none;
+}
 // テーブル
 th {
   font-weight: 400;

@@ -76,4 +76,6 @@ Rails.application.routes.draw do
   get 'inquiry/thanks' => redirect("/inquiry")
   post 'inquiry/confirm' => 'inquiry#confirm'
   post 'inquiry/thanks' => 'inquiry#thanks'
+
+  resources :fees, only: [:index]
 end
