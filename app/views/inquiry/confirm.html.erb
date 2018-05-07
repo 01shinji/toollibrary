@@ -1,0 +1,51 @@
+<div class="row">
+  <div class=" text-center">
+    <div class="panel panel-default">
+      <h3>お問合わせ確認画面</h3>
+
+      <div class="container">
+
+        <%= form_for @inquiry, :url => inquiry_thanks_path do |f| %>
+
+        <table class="table table-bordered">
+         <tbody>
+          <tr>
+            <th scope="row">
+              名前
+            </th>
+            <td colspan="3">
+              <%= f.hidden_field :name %>
+              <%= @inquiry.name %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              メールアドレス
+            </th>
+            <td colspan="3">
+              <%= f.hidden_field :email %>
+              <%= @inquiry.email %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              問い合わせ内容
+            </th>
+            <td colspan="3">
+              <%= f.hidden_field :message %>
+              <%= simple_format(@inquiry.message) %>
+            </td>
+          </tr>
+         </tbody>
+        </table>
+
+        <div class="actions">
+          <%= f.submit "送信する", class: "btn btn-form" %>
+        </div>
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

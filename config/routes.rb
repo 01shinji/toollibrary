@@ -64,5 +64,16 @@ Rails.application.routes.draw do
 
   # オリジナル追加
   get 'about' => 'pages#about'
-  get 'information' => 'pages#information'
+
+  get 'pages/management' => 'pages#management'
+  get 'pages/guide' => 'pages#guide'
+  get 'pages/legal' => 'pages#legal'
+  get 'pages/rules' => 'pages#rules'
+  get 'pages/policy' => 'pages#policy'
+
+  get 'inquiry' => 'inquiry#index'
+  get 'inquiry/confirm' => redirect("/inquiry")
+  get 'inquiry/thanks' => redirect("/inquiry")
+  post 'inquiry/confirm' => 'inquiry#confirm'
+  post 'inquiry/thanks' => 'inquiry#thanks'
 end

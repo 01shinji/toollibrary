@@ -5,233 +5,6 @@
 @import "jquery-bootstrap-datepicker";
 @import "jquery-ui/slider";
 
-
-.search-spot {
-  color: #ffffff;
-  background-color: #04b4e4;
-  position: absolute;
-  z-index: 1;
-  bottom: 10px;
-  right: 10px;
-  width: 50px;
-  height: 50px;
-  font-size: 0.5em;
-  border-radius: 50%;
-}
-
-.search-spot p{
-  margin: 5px;
-  padding-top: 5px;
-  font-weight: bold;
-  font-size: 10px;
-}
-#spotModal span{
-
-  border-radius: 0;
-  background-color: #04b4e4;
-  padding: 1px;
-
-}
-#spotModal span a{
-  color:#ffffff;
-}
-#motion{
-  margin: 0;
-  font-size: 1.5em;
-  -webkit-animation-duration: 5s;
-  animation-duration: 5s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-#motion span{
-  float: right;
-  position: relative;
-  top: 5px;
-}
-
-#motion:after{
- content:"";
- clear:both;
- display:block;
- }
-
-#home-left {
-  position: fixed;
-  top: 0;
-  height: 100%;
-  padding: 0;
-  z-index: -1;
-
-}
-@media (max-width: 768px) {
-  /* ~768px */
-#home-left {
-  position: fixed;
-  top: 0px;
-
-  width: 100%;
-  margin-top: 0;
-
-}
-}
-
-input#autolocation {
-  border: solid 2px #04b4e4;
-  border-left: solid 2px #04b4e4;
-  border-bottom: solid 2px #04b4e4;
-  border-right: transparent;
-}
-
-// aboutページ
-.image-box{
-  padding: 0;
-  text-align: center;
-
-  background:url("/assets/about-image.png") no-repeat center rgba(0, 0, 0, 0);
-  background-size: 100% auto;
-  background-blend-mode: soft-light;
-}
-
-.image-case{
- padding: 15%;
-}
-
-@media (max-width: 480px) {
-  /* ~480px */
-.image-box{
-  padding: 0;
- }
- .image-case{
-  padding: 10%;
- }
-}
-
-.image-box h3{
-  color:#FFA500;
-  font-weight: 400;
-  line-height: 2;
-}
-
-.about-box{
-
-  margin: 50px 0;
-
- }
-
-.about-box h4{
-  text-align: center;
-}
-
-.about-box p{
-  margin: 20px 0;
-}
-
-.box-circle{
-  color:#ffffff;
-  position:relative;
-
-  margin:15px auto;
-  padding:0;
-  text-align:center;
-  width:70px;
-  height:70px;
-  background-color:#04b4e4;
-
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-
-}
-
-.circle-top{
-  position:relative;
-  top:25px;
-
-  font-size:16px;
-
-  font-weight:400;
-  padding:0;
-  margin:0;
-
-}
-
-
-.about-sentence {
-  margin: 20px;
-}
-
-.about-sentence img {
-  border-radius: 10px;
-}
-
-.about-sentence p{
-  font-size: 15px;
-}
-
-.table_container {
-  margin: 30px 0;
-}
-// 運営者
-.shinji-circle{
-
- text-align: center;
- margin-top: 40px;
- padding:0;
-
-  }
-
-.shinji-circle h3{
-
-  margin-bottom: 5px;
-}
-
-.shinji-logo{
-  position:relative;
-
-  padding:0;
-  margin:0;
-
-}
-
-.shinji_photo{
- margin:0 auto;
- padding:0;
- width:80px;
- height:80px;
-
-}
-
-.shinji-logo img{
-  position: relative;
-  border-radius: 50%;
- -webkit-border-radius: 50%;
- -moz-border-radius: 50%;
-}
-
-#shinji_name{
-}
-
-#shinji_twitter{
-  position:relative;
-  top: 5px;
-  left: 5px;
-  margin:0;
-  padding: 0;
-  width:25px;
-  height:25px;
-
-}
-
-#shinji_twitter path{
-  color: #C0C0C0;
-  fill: currentColor;
-  margin: 0;
-  padding: 0;
-
-}
-
-
 html{
   overflow-x: hidden;
   }
@@ -241,6 +14,12 @@ body {
   color: #565a5c;
   background-color: #F8F8F8;
   font-family: "Varela Round", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+#wrapper{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 a {
@@ -276,6 +55,8 @@ hr{
 .dotted-hr{
   border-top:1px dotted #C0C0C0  ;
 }
+
+
 // 色
 .blue{
   color: #04b4e4;
@@ -626,6 +407,8 @@ hr{
   float: left;
 
 }
+
+
 // ボタン
 .btn-block {
   display: block;
@@ -836,6 +619,8 @@ hr{
 .form-explain{
   font-size: 0.8em;
 }
+
+
 // 画像アップロード
 #photos-select .btn{
   color: #808080;
@@ -884,7 +669,7 @@ hr{
 }
 
 .listings-list{
-  margin:0;
+  margin:20px;
 }
 
 .listings-list ul{
@@ -900,11 +685,29 @@ hr{
 }
 
 .listing-content{
+  text-align: center;
   padding: 5px;
 }
 
-.listing-content .bottom{
-  text-align: left;
+.listing-content .case{
+  margin:5px;
+}
+
+.listing-content .bottom span{
+  color: #ffffff;
+  padding: 2px;
+  background-color: #C0C0C0;
+}
+
+@media (max-width: 980px) {
+  /* ~980px */
+.listings-list{
+ margin:10px;
+
+}
+.listing-content{
+ font-size: 12px;
+}
 }
 
 @media (max-width: 480px) {
@@ -992,6 +795,76 @@ hr{
   margin: 5px;
 }
 
+.address-prefecture-name{
+  font-size: 10px;
+  position: absolute;
+  top:8px;
+  left: 8px;
+  padding: 2px;
+
+  color: #ffffff;
+  background-color: #808080;
+}
+
+.user-image {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+}
+
+#home-listings{
+  position: absolute;
+  bottom: 0px;
+  background-color: #F4F6F6;
+}
+
+#home-listings .listings-list{
+  margin: 0;
+
+}
+
+#home-listings .listings-list li{
+  padding: 5px;
+
+}
+
+#home-listings .listing-content{
+  position: absolute;
+  bottom: 25px;
+
+  padding: 10px;
+  margin: 0;
+  text-align: center;
+
+}
+
+#home-listings .listing-content a{
+  color: #FFA500;
+}
+
+@media (max-width: 980px) {
+  /* ~980px */
+#home-listings .listing-content{
+  font-size: 10px;
+}
+}
+
+#home-listings .price-day{
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+
+  margin: 0;
+  text-align: center;
+
+}
+
+@media (max-width: 480px) {
+  /* ~480px */
+#home-listings .price-day{
+  right:5px;
+}
+}
 
 // リスティング詳細ページ
 .show-header h3{
@@ -1354,142 +1227,7 @@ hr{
 
 }
 
-// 日本地図
-.japan-container {
-  position: relative;
-  display: inline-block;
-  background-image: url("/assets/img-japan.png");
-  background-repeat: no-repeat;
-  background-position-x: 50%;
-  background-position-y: 50%;
-  background-size: contain;
-  margin-right: 30px;
-  width: 100%;
-  height: 350px;
 
-}
-
-.japan-container ul.area-name-list li{
-  color:#04b4e4;
-  position: absolute;
-  list-style: none;
-  font-weight: bold;
-  border:1px solid #C0C0C0  ;
-  border-radius: 2px;
-  background-color: #ffffff;
-  padding:5px;
-  width:110px;
-  text-align: center;
-}
-
-
-.japan-container .map-hokkaido{
-  top: 10%;
-  right: 20%;
-}
-
-.japan-container .map-kitanihon{
-  top: 25%;
-  right: 40%;
-}
-
-.japan-container .map-nishinihon{
-  top: 40%;
-  left: 20%;
-}
-
-.japan-container .map-ibaraki {
-  top: 40%;
-  right: 20%;
-}
-
-.japan-container .map-chiba {
-  top: 55%;
-  right: 20%;
-}
-
-.japan-container .map-shonan {
-  top: 70%;
-  right: 20%;
-}
-
-.japan-container .map-ito {
-  top: 50%;
-  right: 40%;
-
-}
-
-.japan-container .map-shizunami {
-  top: 65%;
-  right: 40%;
-}
-
-.japan-container .map-ise {
-  top: 85%;
-  right: 40%;
-}
-
-.japan-container .map-miyazaki {
-  bottom: 15%;
-  left:  20%;
-}
-
-@media (max-width: 768px) {
-    /* ~768px */
-.japan-container .map-shonan,
-.japan-container .map-chiba,
-.japan-container .map-ibaraki,
-.japan-container .map-hokkaido{
-  right: 10%;
-}
-.japan-container .map-miyazaki,
-.japan-container .map-nishinihon{
-  left: 10%;
-}
-}
-
-@media (max-width: 480px) {
-  /* ~480px */
-.japan-container .map-shonan,
-.japan-container .map-chiba,
-.japan-container .map-ibaraki,
-.japan-container .map-hokkaido{
-  right: 0%;
-}
-.japan-container .map-ise,
-.japan-container .map-shizunami,
-.japan-container .map-ito,
-.japan-container .map-kitanihon{
-  right: 35%;
-}
-.japan-container .map-miyazaki,
-.japan-container .map-nishinihon{
-  left: 0%;
-}
-}
-
-
-.local span {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  color: #04b4e4;
-  font-size: 13px;
-}
-.local-list {
-  display:none;
-}
-
-.local-list p{
-  font-weight: normal;
-  text-decoration: underline;
-  font-size: 15px;
-  margin: 5px;
-}
-
-.local-list a{
-  color: #808080 ;
-}
 
 // 検索パネル
 #main {
@@ -1501,17 +1239,17 @@ hr{
   position: fixed;
   top: 0;
   height: 100%;
-  padding: 0;
+  padding: 61px 0 0 0;;
 
 }
 
 input#pac-input {
   width: 200px;
-  margin-top: 55px;
+  margin-top: 5px;
   margin-left: 5px;
   border: solid 2px #04b4e4;
-
 }
+
 
 
 #map{
@@ -1520,7 +1258,7 @@ input#pac-input {
 }
 
 #right {
-  padding: 50px 0 0 0;
+  padding: 61px 0 0 0;
   position: fixed;
   top:0;
   right:0;
@@ -1544,14 +1282,32 @@ input#pac-input {
 }
 }
 
+.nolistings{
+  text-align: center;
+  margin: 20px 0;
+
+}
+
+.nolistings p{
+  font-size: 18px;
+  color: #808080;
+}
+
+@media (max-width: 480px){
+#left {
+  padding: 50px 0 0 0;
+
+  }
+}
 .search-panel-li{
   margin: 0 15%;
 }
 
-.search-panel-li h4,
+
 .search-panel-li p{
   color: #808080;
   text-align: center;
+  margin: 10px;
 }
 
 .search-panel-li .check{
@@ -1584,11 +1340,54 @@ input#pac-input {
 #detail-header p{
   color:#d9534f;
   padding: 5px;
-  margin: 0;
+  margin: 10px;
 }
 .search-detail .chevron{
   margin-left: 5px;
 }
+
+.detail-list .btn-sm {
+    margin: 20px;
+}
+
+.search-spot {
+  color: #ffffff;
+  background-color: #04b4e4;
+  position: absolute;
+  z-index: 1;
+  bottom: 10px;
+  right: 51%;
+  width: 50px;
+  height: 50px;
+  font-size: 0.5em;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  /* ~768px */
+.search-spot{
+
+  right: 10px;
+  }
+}
+
+.search-spot p{
+  margin: 5px;
+  padding-top: 5px;
+  font-weight: bold;
+  font-size: 10px;
+}
+#spotModal span{
+
+  border-radius: 0;
+  background-color: #04b4e4;
+  padding: 1px;
+
+}
+#spotModal span a{
+  color:#ffffff;
+}
+
 
 // GoogleMap 右下の利用規約隠す
 .gm-style-cc{
@@ -1767,7 +1566,7 @@ input#pac-input {
 
 // フッター
 #footer{
- margin-top: 50px;
+ margin-top: auto;
 
  background-color: #ffffff;
 }
@@ -1837,4 +1636,288 @@ input#pac-input {
 
 #copyright address p{
   text-align:center;
+}
+
+// トップページ
+#motion{
+  margin: 0;
+  font-size: 1.5em;
+  -webkit-animation-duration: 5s;
+  animation-duration: 5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+#motion span{
+  float: right;
+  position: relative;
+  top: 5px;
+}
+
+#motion:after{
+ content:"";
+ clear:both;
+ display:block;
+ }
+
+#home-left {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  padding: 61px 0 0 0;
+  z-index: -1;
+
+}
+@media (max-width: 480px) {
+  /* ~480px */
+#home-left {
+  position: fixed;
+  top: 0px;
+  padding: 51px 0 0 0;
+  width: 100%;
+  margin-top: 0;
+
+}
+}
+
+input#autolocation {
+  border: solid 2px #04b4e4;
+  border-left: solid 2px #04b4e4;
+  border-bottom: solid 2px #04b4e4;
+  border-right: transparent;
+}
+
+
+// aboutページ
+.image-box{
+  padding: 0;
+  margin: 10px 20%;
+  text-align: center;
+
+  background:url("/assets/about-image.png") no-repeat center rgba(0, 0, 0, 0);
+  background-size: 100% auto;
+  background-blend-mode: soft-light;
+}
+
+.image-case{
+ padding: 15%;
+}
+
+@media (max-width: 768px) {
+  /* ~768px */
+.image-box{
+  margin: 10px 10%;
+ }
+}
+
+@media (max-width: 480px) {
+  /* ~480px */
+.image-box{
+  padding: 0;
+  margin: 0;
+ }
+ .image-case{
+  padding: 10%;
+ }
+}
+
+.image-box h3{
+  color:#FFA500;
+  font-weight: 400;
+  line-height: 2;
+}
+
+.about-box{
+
+ margin-top: 10px;
+ margin-bottom: 50px;
+
+ }
+
+.about-box h3{
+  margin: 30px;
+}
+
+.about-box .about-sentence h3{
+  margin: 0;
+}
+
+.about-box h4{
+  text-align: center;
+}
+
+.about-box p{
+  margin: 20px 0;
+}
+
+.box-circle{
+  color:#ffffff;
+  position:relative;
+
+  margin:5px auto;
+  padding:0;
+  text-align:center;
+  width:70px;
+  height:70px;
+  background-color:#04b4e4;
+
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+
+}
+
+.circle-top{
+  position:relative;
+  top:25px;
+
+  font-size:16px;
+
+  font-weight:bold;
+  padding:0;
+  margin:0;
+
+}
+
+.circle-top.small{
+  font-size: 12px;
+}
+
+.about-sentence{
+  margin:0 20px;
+  padding: 10px 20%;
+}
+
+@media (max-width: 768px) {
+  /* ~768px */
+.about-sentence{
+  padding: 10px 10%;
+ }
+}
+
+@media (max-width: 480px) {
+  /* ~480px */
+.about-sentence{
+ padding: 10px 10px;
+
+}
+}
+
+.about-sentence img{
+  border-radius: 10px;
+}
+
+.about-sentence p{
+  font-size: 15px;
+}
+
+.table_container {
+  margin: 30px 0;
+}
+
+// 運営者
+.shinji-circle{
+
+ text-align: center;
+ margin-top: 40px;
+ padding:0;
+
+  }
+
+.shinji-circle h3{
+
+  margin-bottom: 5px;
+}
+
+.shinji-logo{
+  position:relative;
+
+  padding:0;
+  margin:0;
+
+}
+
+.shinji_photo{
+ margin:0 auto;
+ padding:0;
+ width:80px;
+ height:80px;
+
+}
+
+.shinji-logo img{
+  position: relative;
+  border-radius: 50%;
+ -webkit-border-radius: 50%;
+ -moz-border-radius: 50%;
+}
+
+#shinji_name{
+}
+
+#shinji_twitter{
+  position:relative;
+  top: 5px;
+  left: 5px;
+  margin:0;
+  padding: 0;
+  width:25px;
+  height:25px;
+
+}
+
+#shinji_twitter path{
+  color: #C0C0C0;
+  fill: currentColor;
+  margin: 0;
+  padding: 0;
+
+}
+
+.case{
+  margin: 30px 0;
+}
+.packet{
+  position: relative;
+  left: 10px;
+}
+
+.credit{
+  margin-bottom: 50px;
+}
+.credit ul{
+  position:relative;
+  left:50%;
+  float:left;
+  padding:0px 0px;
+  margin:0 0;
+
+ }
+
+.credit ul:after{
+ content:"";
+ clear:both;
+ display:block;
+ }
+
+.credit ul li{
+  list-style: none;
+  position:relative;
+  left:-50%;
+  float:left;
+  }
+
+.mastercard img{
+  height: 60px;
+  position: relative;
+  bottom: 5px;
+}
+
+.visa img{
+  height: 45px;
+}
+
+// テーブル
+th {
+  font-weight: 400;
 }

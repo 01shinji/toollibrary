@@ -24,8 +24,33 @@
          <td class="text-right"><%= @listing.price_day %>円</td>
        </tr>
        <tr>
-         <td class="text-left">サポーター費</td>
-         <td class="text-right">300円</td>
+         <td class="text-left">
+           サポーター費&nbsp;
+           <span class="text-gray" data-toggle="modal" data-target="#info-supporter">
+             <i class="fa fa-info-circle"></i>
+           </span>
+           <!-- MODAL FOR PHONE NUMBER -->
+           <div id="info-supporter" class="modal fade text-center" role="dialog">
+             <div class="modal-dialog">
+               <div class="modal-content">
+
+                 <div class="modal-header">
+                   <button class="close" data-dismiss="modal">&times;</button>
+                   <h4 class="modal-title">サポーター費について</h4>
+                 </div>
+
+                 <div class="modal-body">
+                    <div class="form-group">
+                      一度の取引において、1日あたりレンタル価格の10%をサポーター費として頂いております。サポーター費はサービスの運営や環境保護団体への寄付に使わせて頂きます(詳細は<%= link_to "こちら", pages_guide_path %>)
+                    </div>
+                 </div>
+
+               </div>
+             </div>
+           </div>
+
+         </td>
+         <td class="text-right"><%= @listing.price_day * 0.10 %>円</td>
        </tr>
        <tr>
          <td class="text-left">日数</td>
@@ -59,6 +84,7 @@
    <% if current_user && current_user != @listing.user %>
     <%= link_to "ホストにメッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @listing.user.id), method: :post, class: "btn-sm  white b-blue" %>
    <% end %>
+
 
 <script type="text/javascript">
 
@@ -115,7 +141,7 @@ $(document).ready(function(){
                 $('#preview').show();
                 $('#btn_book').attr('disabled', false);
 
-                var total = days * ( <%= @listing.price_day %> +  300 )
+                var total = days * ( <%= @listing.price_day %> +  <%= @listing.price_day * 0.10 %> )
                 $('#reservation_days').text(days);
                 $('#reservation_total').text(total);
               }
@@ -163,7 +189,7 @@ $(document).ready(function(){
                 $('#preview').show();
                 $('#btn_book').attr('disabled', false);
 
-                var total = days * ( <%= @listing.price_day %> +  300 )
+                var total = days * ( <%= @listing.price_day %> +  <%= @listing.price_day * 0.10 %> )
                 $('#reservation_days').text(days);
                 $('#reservation_total').text(total);
               }

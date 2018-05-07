@@ -13,8 +13,10 @@ class ListingsController < ApplicationController
   end
 
   def create
-    if !current_user.is_active_host
-      return redirect_to payout_method_path, alert: "Please Connect to Stripe Express first."
+
+
+    if !current_user.update_bank_account
+      return redirect_to payout_method_path, alert: "振込先口座の登録をお願いします"
     end
 
     @listing = current_user.listings.build(listing_params)

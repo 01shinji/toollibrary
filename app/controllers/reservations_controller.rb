@@ -21,7 +21,9 @@ class ReservationsController < ApplicationController
       @reservation = current_user.reservations.build(reservation_params)
       @reservation.listing = listing
       @reservation.price = listing.price_day
-      @reservation.total = days * (listing.price_day  +  300 )
+      @reservation.total = days * (listing.price_day  +  listing.price_day * 0.10 )
+
+
       # @reservation.save
 
       if @reservation.Waiting!

@@ -1,0 +1,199 @@
+<!--運営者-->
+<!--仕組み-->
+<div class="about-box">
+  <div class="box-circle">
+    <div class="circle-top">仕組み</div>
+  </div>
+
+  <div class="about-sentence">
+    <div class=""><img id="" class="img-responsive" src="/assets/rental.jpg" alt="" width="" height="" /></div>
+    <p>ユーザー登録や出品は無料でできます(取引が成立した場合のみ一部手数料をいただきます)</p>
+
+  </div>
+</div>
+
+<div class="about-box">
+  <div class="box-circle">
+    <div class="circle-top small">サポーター費</div>
+  </div>
+  <div class="about-sentence">
+    <p>
+      一度の取引において、ホスト(貸し手)とゲスト(借り手)の双方から、1日あたりレンタル価格の10%をサポーター費として頂いております。
+    </p>
+
+    <p>
+      サポーター費は3ヶ月スパンで積み立てし、チャレンタ!の運営費やこの期間中の取引きで発生した破損への修理費用などに当てられます。そして使われなかったサポーター費は3ヶ月ごとに精算し、環境保護団体などへ寄付されます。(返金はされません)
+    </p>
+    <p>
+      またサポーター費の積み立てや寄付の状況は<%= link_to "こちら", pages_guide_path %>のページで公開しています。
+    </p>
+    <div class="table_container">
+      <h4><b>費用</b></h4>
+      <h4>例&nbsp;:&nbsp;1日3,000円でレンタルされた場合</h4>
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th></th>
+              <th>登録料</th>
+              <th>利用料</th>
+              <th>レンタル代</th>
+              <th>サポーター費</th>
+              <th>トータル</th>
+            </tr>
+            <tr>
+              <td>ゲスト(借り手)</td>
+              <td>無料</td>
+              <td>無料</td>
+              <td>3,000円</td>
+              <td>300円</td>
+              <td><b>3,300円(3,000円＋300円)の支払い</b></td>
+            </tr>
+            <tr>
+              <td>ホスト(貸し手)</td>
+              <td>無料</td>
+              <td>無料</td>
+              <td>3,000円</td>
+              <td>300円</td>
+              <td><b>2,700円(3,000円-300円)の収入</b></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="about-box">
+  <div class="box-circle">
+    <div class="circle-top small">ホストへの振込</div>
+  </div>
+  <div class="about-sentence">
+
+    <p>
+      チャレンタ!からホスト(貸し手)への振込は、ご登録頂いた銀行口座へ行います。(登録は<%= link_to "こちら", payout_method_path %>)
+    </p>
+    <p>
+      振込タイミングは、レンタル完了日の翌日がn月の場合、n+1月 の最終営業日となります。<br>
+     （例：レンタル完了日が5月10日の場合、7月の最終営業日に振込まれます。）
+    </p>
+    <p>
+     ただし、登録された口座情報が間違っている場合には振り込みが実施されませんので、ご注意ください。
+    </p>
+
+  </div>
+</div>
+
+<div class="about-box">
+  <div class="box-circle">
+    <div class="circle-top small">ゲストの支払い</div>
+  </div>
+  <div class="about-sentence">
+
+    <p>
+      チャレンタ!において、ゲストのレンタル代金の支払いはカード決済システムStripeを通して、クレジットカードによっておこなわれ、VISAとMastercardに対応しています。(Stripeについては<%= link_to "こちら", "https://stripe.com/jp" %>)
+    </p>
+
+    <p>
+      またレンタル利用最終日の翌日が決済日となっています。<br>
+     （例：3月30日から4月2日まで利用した場合、4月3日になります）
+    </p>
+
+    <div class="credit">
+      <ul>
+        <li class="mastercard">
+          <img id="" class="img-responsive" src="/assets/mastercard.png" alt="" width="" height="" />
+        </li>
+        <li class="visa">
+          <img id="" class="img-responsive" src="/assets/visa.png" alt="" width="" height="" />
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<div class="about-box">
+  <div class="box-circle">
+    <div class="circle-top small">破損への対応</div>
+  </div>
+  <div class="about-sentence">
+
+    <p>
+      ホスト 全額補償
+      ゲスト 半額は支払い義務あり、残りの半額はチャレンタ!が支払う
+    </p>
+    <p>
+      盗難や事故による怪我は補償の対象外
+    </p>
+    <div class="table_container">
+      <h4><b>修理費の計算方法</b></h4>
+      <h4>例&nbsp;:&nbsp;1日3,000円でレンタルされた場合</h4>
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th></th>
+              <th>登録料</th>
+              <th>利用料</th>
+              <th>レンタル代</th>
+              <th>サポーター費</th>
+              <th>トータル</th>
+            </tr>
+            <tr>
+              <td>ゲスト(借り手)</td>
+              <td>無料</td>
+              <td>無料</td>
+              <td>3,000円</td>
+              <td>300円</td>
+              <td><b>3,300円(3,000円＋300円)の支払い</b></td>
+            </tr>
+            <tr>
+              <td>ホスト(貸し手)</td>
+              <td>無料</td>
+              <td>無料</td>
+              <td>3,000円</td>
+              <td>300円</td>
+              <td><b>2,700円(3,000円-300円)の収入</b></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="about-box">
+  <div class="box-circle">
+    <div class="circle-top small">取引の流れ</div>
+  </div>
+  <div class="about-sentence">
+    <h4><b>ゲスト</b></h4>
+    <p>
+      一度の取引において、ホスト(貸し手)とゲスト(借り手)の双方から、1日あたりレンタル価格の10%をサポーター費として頂いております。
+    </p>
+    <p>
+      サポーター費は3ヶ月スパンで積み立てし、その期間中の取引きで発生した破損への修理費用として当てられ、使われなかった費用は3ヶ月ごとに精算し環境保護団体などへ寄付されます。<br>
+      またサポーター費の積み立ては<%= link_to "こちら", pages_guide_path %>のページで見ることができます。
+    </p>
+  </div>
+</div>
+
+<div class="about-box">
+  <h3 class="text-center">Q&A</h3>
+
+    <p>お金仕組み 結局いくら掛かる貰える? クレジットカード</p>
+    <p>入金サイクル いつ取引完了?いつ入金?</p>
+    <p>取引の流れ いつ引き落とされる?</p>
+    <p>破損 計算</p>
+    <p>Q&A よくある質問</p>
+
+
+</div>
+
+<div class="about-box">
+  <h3 class="text-center"></h3>
+</div>

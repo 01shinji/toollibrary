@@ -1,0 +1,53 @@
+<div class="row">
+  <div class=" text-center">
+    <div class="panel panel-default">
+      <h3>お問合わせ窓口</h3>
+
+      <div class="container">
+
+        <%= form_for @inquiry, :url => inquiry_confirm_path do |f| %>
+
+        <% if @inquiry.errors.any? %>
+         <div class="alert alert-danger" role="alert">
+          <strong>入力内容にエラーがあります</strong>
+           <ul>
+             <% @inquiry.errors.each do |attr, msg| %>
+              <li><%= msg %></li>
+             <% end %>
+           </ul>
+         </div>
+        <% end %>
+
+
+
+        <div class="form_box">
+          <p>名前</p>
+          <div class="form-group">
+            <%= f.text_field :name, autofocus: true, placeholder: "湘南太郎", class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form_box">
+          <p>メールアドレス</p>
+          <div class="form-group">
+            <%= f.email_field :email, autofocus: true, placeholder: "sample@gmail.com", class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form_box">
+          <p>問い合わせ内容 </p>
+          <div class="form-group">
+            <%= f.text_area :message, autofocus: true, class: "form-control" %>
+          </div>
+        </div>
+
+
+        <div class="actions">
+          <%= f.submit "確認する", class: "btn btn-form" %>
+        </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

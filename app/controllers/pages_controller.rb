@@ -46,16 +46,16 @@ class PagesController < ApplicationController
        session[:coaching] = false
      end
 
-     if params[:q][:price_gteq].present?
-       session[:price_gteq] = params[:q][:price_gteq]
+     if params[:q][:price_day_gteq].present?
+       session[:price_day_gteq] = params[:q][:price_day_gteq]
      else
-       session[:price_gteq] = nil
+       session[:price_day_gteq] = nil
      end
 
-     if params[:q][:price_lteq].present?
-       session[:price_lteq] = params[:q][:price_lteq]
+     if params[:q][:price_day_lteq].present?
+       session[:price_day_lteq] = params[:q][:price_day_lteq]
      else
-       session[:price_lteq] = nil
+       session[:price_day_lteq] = nil
      end
 
 
@@ -64,8 +64,8 @@ class PagesController < ApplicationController
     # Q条件をまとめたものをセッションQに入れる
     session[:q] = {
      "listing_type_eq_any" => session[:listing_type_eq_any],
-     "price_gteq" => session[:price_gteq],
-     "price_lteq" => session[:price_lteq]
+     "price_day_gteq" => session[:price_day_gteq],
+     "price_day_lteq" => session[:price_day_lteq]
 
     }
 

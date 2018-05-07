@@ -1,6 +1,53 @@
 <ul class="row-eq-height">
-  <% listings.each do |listing| %>
-   <li class="<% if request.path == '/search' || request.path == '/ajaxsearch' %>col-md-6 col-sm-6 col-xs-6  row-eq-height <% else %>col-md-3 col-sm-3 col-xs-6  row-eq-height<% end %>">
+ <% listings.each do |listing| %>
+  <% if
+    request.path == '/' %>
+
+  <li class="col-md-2 col-sm-2 col-xs-2  row-eq-height">
+   <div class="listing-block" >
+
+     <div class="">
+
+       <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
+     </div>
+
+     <span class="address-prefecture-name">
+       <%= listing.user.address_prefecture_name %>
+     </span>
+
+     <span class="user-image">
+       <%= image_tag listing.user.image, class: "img-circle avatar-small" %>
+     </span>
+
+     <span class="listing-content">
+       <%= link_to listing.listing_title, listing %>
+
+     </span>
+
+     <p class="price-day">
+         <b ><span class="red"><%= listing.price_day %>円</span></b>
+
+     </p>
+   </div>
+
+   <script type="text/javascript">
+     $(function(){
+      var w = window.innerWidth;
+      if (w <= 768){
+        $(".user-image").remove();
+        $(".listing-content").remove();
+      }
+
+      console.log(w);
+     });
+   </script>
+
+  </li>
+
+  <% elsif
+     request.path == '/search' || request.path == '/ajaxsearch' %>
+
+   <li class="col-md-6 col-sm-6 col-xs-6  row-eq-height">
     <div class="listing-block">
 
       <div class="">
@@ -9,18 +56,54 @@
 
       <div class="listing-content">
         <%= link_to listing.listing_title, listing %>
-        <div class="row">
+        <div class="row case">
           <div class="col-md-3 col-sm-3 col-xs-4">
             <%= image_tag listing.user.image, class: "img-circle avatar-medium" %>
           </div>
-          <div class="col-md-9 col-sm-9 col-xs-8 bottom">
-            <p><%= listing.listing_type %></p>
-            <p><%= listing.price_per %>&nbsp;<%= listing.price %>円</p>
+          <div class="col-md-9 col-sm-9 col-xs-8  bottom">
+            <p>
+              <span><%= listing.listing_type %></span>
+            </p>
+            <p>
+              1日&nbsp;<b class="red"><%= listing.price_day%></b>円
+            </p>
           </div>
         </div>
       </div>
 
     </div>
+   </li>
+
+  <% else %>
+
+  <li class="col-md-3 col-sm-3 col-xs-6  row-eq-height">
+   <div class="listing-block">
+
+     <div class="">
+       <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
+     </div>
+
+     <div class="listing-content">
+       <%= link_to listing.listing_title, listing %>
+       <div class="row case">
+         <div class="col-md-3 col-sm-3 col-xs-4">
+           <%= image_tag listing.user.image, class: "img-circle avatar-medium" %>
+         </div>
+         <div class="col-md-9 col-sm-9 col-xs-8  bottom">
+           <p>
+             <span><%= listing.listing_type %></span>
+           </p>
+           <p>
+             1日&nbsp;<b class="red"><%= listing.price_day%></b>円
+           </p>
+         </div>
+       </div>
+     </div>
+
+   </div>
   </li>
+
   <% end %>
+
+ <% end %>
 </ul>
