@@ -1,4 +1,15 @@
-<!--運営者-->
+<div class="dashboard-link">
+  <ul class="">
+    <li class=""><%= link_to "チャレンタ!について", about_path, class: "active" %></li>
+    <li class=""><%= link_to "取引きの仕組み", pages_guide_path %></li>
+    <li class=""><%= link_to "サーフボードを貸す", pages_host_flow_path %></li>
+    <li class=""><%= link_to "サーフボードを借りる",pages_guest_flow_path %></li>
+    <li class=""><%= link_to "Q&A", pages_qanda_path %></li>
+  </ul>
+</div>
+
+<h3 class="text-center">取引きの仕組み</h3>
+
 <!--仕組み-->
 <div class="about-box">
   <div class="box-circle">
@@ -14,7 +25,7 @@
 
 <div class="about-box">
   <div class="box-circle">
-    <div class="circle-top small">サポーター費</div>
+    <div class="circle-top ">サポーター費</div>
   </div>
   <div class="about-sentence">
     <p>
@@ -68,7 +79,7 @@
 
 <div class="about-box">
   <div class="box-circle">
-    <div class="circle-top small">ホストへの振込</div>
+    <div class="circle-top ">ホストへの振込</div>
   </div>
   <div class="about-sentence">
 
@@ -88,7 +99,7 @@
 
 <div class="about-box">
   <div class="box-circle">
-    <div class="circle-top small">ゲストの支払い</div>
+    <div class="circle-top ">ゲストの支払い</div>
   </div>
   <div class="about-sentence">
 
@@ -117,46 +128,64 @@
 
 <div class="about-box">
   <div class="box-circle">
-    <div class="circle-top small">破損への対応</div>
+    <div class="circle-top ">ホストへの補償</div>
   </div>
   <div class="about-sentence">
 
     <p>
-      ホスト 全額補償
-      ゲスト 半額は支払い義務あり、残りの半額はチャレンタ!が支払う
+      ホストが商品を貸出し中に発生した破損や盗難に関しては<span>全額</span>補償されます。また保障費は購入時期と購入価格やブランド、中古市場価格を基に算出され、その上限は以下のとおりです。
     </p>
-    <p>
-      盗難や事故による怪我は補償の対象外
-    </p>
+
     <div class="table_container">
-      <h4><b>修理費の計算方法</b></h4>
-      <h4>例&nbsp;:&nbsp;1日3,000円でレンタルされた場合</h4>
+      <h4><b>補償費の上限</b></h4>
       <div class="table-responsive">
         <table class="table">
           <tbody>
             <tr>
               <th></th>
-              <th>登録料</th>
-              <th>利用料</th>
-              <th>レンタル代</th>
-              <th>サポーター費</th>
-              <th>トータル</th>
+              <th>購入時期</th>
+              <th>全損と盗難の補償上限</th>
+              <th>修理の補償上限</th>
+
             </tr>
             <tr>
-              <td>ゲスト(借り手)</td>
-              <td>無料</td>
-              <td>無料</td>
-              <td>3,000円</td>
-              <td>300円</td>
-              <td><b>3,300円(3,000円＋300円)の支払い</b></td>
+              <td>サーフボード</td>
+              <td>1年以内</td>
+              <td>購入価格&nbsp;×&nbsp;0.6</td>
+              <td>15,000円</td>
+
             </tr>
             <tr>
-              <td>ホスト(貸し手)</td>
-              <td>無料</td>
-              <td>無料</td>
-              <td>3,000円</td>
-              <td>300円</td>
-              <td><b>2,700円(3,000円-300円)の収入</b></td>
+              <td>サーフボード</td>
+              <td>1年以上2年以内</td>
+              <td>購入価格&nbsp;×&nbsp;0.5</td>
+              <td>15,000円</td>
+            </tr>
+            <tr>
+              <td>サーフボード</td>
+              <td>2年以上3年以内</td>
+              <td>購入価格&nbsp;×&nbsp;0.4</td>
+              <td>10,000円</td>
+            </tr>
+            <tr>
+              <td>サーフボード</td>
+              <td>3年以上</td>
+
+              <td>購入価格&nbsp;×&nbsp;0.3</td>
+              <td>10,000円</td>
+            </tr>
+            <tr>
+              <td>リシューコード</td>
+              <td></td>
+
+              <td>2,000円</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>ウェットスーツ</td>
+              <td></td>
+              <td></td>
+              <td>5,000円</td>
             </tr>
 
           </tbody>
@@ -168,32 +197,75 @@
 
 <div class="about-box">
   <div class="box-circle">
-    <div class="circle-top small">取引の流れ</div>
+    <div class="circle-top ">ゲストへの補償</div>
   </div>
   <div class="about-sentence">
-    <h4><b>ゲスト</b></h4>
+
     <p>
-      一度の取引において、ホスト(貸し手)とゲスト(借り手)の双方から、1日あたりレンタル価格の10%をサポーター費として頂いております。
+      ゲストが商品をレンタル中に発生した破損や盗難に関しては<span>半額</span>まではチャレンタ!が補償し、残りの<span>半額</span>はゲストに弁償する義務があります。
     </p>
     <p>
-      サポーター費は3ヶ月スパンで積み立てし、その期間中の取引きで発生した破損への修理費用として当てられ、使われなかった費用は3ヶ月ごとに精算し環境保護団体などへ寄付されます。<br>
-      またサポーター費の積み立ては<%= link_to "こちら", pages_guide_path %>のページで見ることができます。
+      またレンタル中に怪我した場合や他人を怪我させた場合への補償はありません。
     </p>
+    <p>
+    弁償費用はホストが商品を購入時期と購入価格やブランド、中古市場価格を基に算出され、その上限は以下のとおりです。
+    </p>
+
+    <div class="table_container">
+      <h4><b>弁償費用の上限</b></h4>
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th></th>
+              <th>購入時期</th>
+              <th>全損と盗難の補償上限</th>
+              <th>修理の補償上限</th>
+
+            </tr>
+            <tr>
+              <td>サーフボード</td>
+              <td>1年以内</td>
+              <td>購入価格&nbsp;×&nbsp;0.6×&nbsp;1/2</td>
+              <td>15,000円×&nbsp;1/2</td>
+
+            </tr>
+            <tr>
+              <td>サーフボード</td>
+              <td>1年以上2年以内</td>
+              <td>購入価格&nbsp;×&nbsp;0.5×&nbsp;1/2</td>
+              <td>7,500円</td>
+            </tr>
+            <tr>
+              <td>サーフボード</td>
+              <td>2年以上3年以内</td>
+              <td>購入価格&nbsp;×&nbsp;0.4×&nbsp;1/2</td>
+              <td>5,000円×&nbsp;1/2</td>
+            </tr>
+            <tr>
+              <td>サーフボード</td>
+              <td>3年以上</td>
+
+              <td>購入価格&nbsp;×&nbsp;0.3×&nbsp;1/2</td>
+              <td>5,000円×&nbsp;1/2</td>
+            </tr>
+            <tr>
+              <td>リシューコード</td>
+              <td></td>
+
+              <td>1,000円</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>ウェットスーツ</td>
+              <td></td>
+              <td></td>
+              <td>2,500円</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-</div>
-
-<div class="about-box">
-  <h3 class="text-center">Q&A</h3>
-
-    <p>お金仕組み 結局いくら掛かる貰える? クレジットカード</p>
-    <p>入金サイクル いつ取引完了?いつ入金?</p>
-    <p>取引の流れ いつ引き落とされる?</p>
-    <p>破損 計算</p>
-    <p>Q&A よくある質問</p>
-
-
-</div>
-
-<div class="about-box">
-  <h3 class="text-center"></h3>
 </div>

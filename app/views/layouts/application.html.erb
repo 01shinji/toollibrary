@@ -53,7 +53,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ZRYgtCagsAWTqGbqxkpW09Y
     <% if  request.path == '/' || request.path == '/search'%>
        <%= yield %>
 
-    <% elsif request.path == '/about' || request.path == '/information' %>
+    <% elsif request.path == '/about' || request.path == '/information' || request.path == '/pages/guide' %>
        <%= yield %>
        <%= render 'shared/footer'%>
 

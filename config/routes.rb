@@ -70,6 +70,9 @@ Rails.application.routes.draw do
   get 'pages/legal' => 'pages#legal'
   get 'pages/rules' => 'pages#rules'
   get 'pages/policy' => 'pages#policy'
+  get 'pages/host_flow' => 'pages#host_flow'
+  get 'pages/guest_flow' => 'pages#guest_flow'
+  get 'pages/qanda' => 'pages#qanda'
 
   get 'inquiry' => 'inquiry#index'
   get 'inquiry/confirm' => redirect("/inquiry")

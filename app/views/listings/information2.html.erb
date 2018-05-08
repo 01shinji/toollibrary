@@ -52,8 +52,43 @@
             </select>
 
           </div>
+        </div>
+
+        <div class="purchase">
+          <p class="text-left">
+            ※破損が起きた際の補償費の計算の参考にします
+          </p>
+
+          <div class="form_box">
+            <p>購入時期</p>
+            <div class="form-group">
+              <%= f.text_field :purchase_time, placeholder: "例:2016年春ごろ", class: "form-control", required: true %>
+            </div>
+          </div>
+
+          <div class="form_box">
+            <p>購入価格</p>
+            <div class="">
+
+              <div class="form-group" >
+                <ul class="row">
+
+                  <li class="">
+                    <%= f.text_field :purchase_price, placeholder: "例:80000", class: "form-control", required: true %>
+                  </li>
+                  <li class="">
+                    <p>円</p>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+
+          </div>
 
 
+
+          </div>
         </div>
 
         <div class="actions">

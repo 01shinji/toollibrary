@@ -56,7 +56,9 @@ hr{
   border-top:1px dotted #C0C0C0  ;
 }
 
-
+.actions{
+  margin: 10px;
+}
 // 色
 .blue{
   color: #04b4e4;
@@ -586,11 +588,11 @@ hr{
   display: none;
 }
 
-#information2-price ul{
+.form-group ul{
   padding: 0
 
 }
-#information2-price ul li{
+.form-group ul li{
   list-style: none;
   float: left;
 }
@@ -618,6 +620,12 @@ hr{
 
 .form-explain{
   font-size: 0.8em;
+}
+
+.purchase{
+  background-color: #F4F6F6;
+
+  padding: 10px;
 }
 
 
@@ -818,6 +826,7 @@ hr{
     background-color: #F4F6F6;
     margin: 0;
     padding: 0;
+    z-index: 2;
 }
 
 
@@ -1775,7 +1784,7 @@ input#autolocation {
   position:relative;
   top:25px;
 
-  font-size:16px;
+  font-size: 12px;
 
   font-weight:bold;
   padding:0;
@@ -1783,9 +1792,7 @@ input#autolocation {
 
 }
 
-.circle-top.small{
-  font-size: 12px;
-}
+
 
 .about-sentence{
   margin:0 20px;
@@ -1813,6 +1820,11 @@ input#autolocation {
 
 .about-sentence p{
   font-size: 15px;
+}
+
+.about-sentence p span{
+  color: #d9534f;
+  font-weight: bold;
 }
 
 .table_container {
@@ -1923,6 +1935,40 @@ input#autolocation {
 
 .alert li{
   list-style: none;
+}
+
+
+.voice {
+  color: #ffffff;
+
+  border-radius: 5px;
+  background-color: #808080;
+  padding:20px 10px;
+  margin: 5px 0;
+}
+
+.voice:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 30px;
+
+  border: 10px solid transparent;
+  border-bottom: 10px solid #808080;
+
+}
+
+.appeal{
+  color: #ffffff;
+  background-color:  #FFA500;
+  padding: 5px;
+}
+
+.flow .list{
+
+  background-color: #C0C0C0;
+  padding: 5px;
+  margin: 0;
 }
 // テーブル
 th {
