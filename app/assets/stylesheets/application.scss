@@ -59,6 +59,13 @@ hr{
 .actions{
   margin: 10px;
 }
+
+// テーブル
+th {
+  font-weight: 400;
+}
+
+
 // 色
 .blue{
   color: #04b4e4;
@@ -1970,7 +1977,38 @@ input#autolocation {
   padding: 5px;
   margin: 0;
 }
-// テーブル
-th {
-  font-weight: 400;
+
+// ガイダンス内リンク
+.guidance-link{
+  margin-bottom: 20px;
+}
+
+.guidance-link ul{
+  position:relative;
+  left:50%;
+  float:left;
+  padding:0px 0px;
+  margin:0 0;
+
+ }
+
+.guidance-link:after,
+.guidance-link ul:after{
+ content:"";
+ clear:both;
+ display:block;
+ }
+
+.guidance-link ul li{
+  list-style: none;
+  position:relative;
+  left:-50%;
+  background-color: #C0C0C0;
+  padding: 5px;
+  margin: 5px;
+  float: left;
+  }
+
+.guidance-link ul li a{
+  color:#000000;
 }

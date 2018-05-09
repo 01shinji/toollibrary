@@ -1,17 +1,11 @@
-<div class="dashboard-link">
-  <ul class="">
-    <li class=""><%= link_to "チャレンタ!について", about_path, class: "active" %></li>
-    <li class=""><%= link_to "取引きの仕組み", pages_guide_path %></li>
-    <li class=""><%= link_to "サーフボードを貸す", pages_host_flow_path %></li>
-    <li class=""><%= link_to "サーフボードを借りる",pages_guest_flow_path %></li>
-    <li class=""><%= link_to "Q&A", pages_qanda_path %></li>
-  </ul>
-</div>
+<%= render 'guidance_menu' %>
 
-
+<h3 class="text-center">サーフボードを借りる</h3>
 
 <div class="about-box flow">
-  <h3 class="text-center">サーフボードを借りる</h3>
+  <div class="box-circle">
+    <div class="circle-top ">取引の流れ</div>
+  </div>
 
   <div class="about-sentence text-center">
 

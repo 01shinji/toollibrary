@@ -21,7 +21,8 @@
           <div class="form-group">
            <%= f.select :category1,
            [["サーフボード", "サーフボード"],
-            ["SUPボード", "SUPボード"]],
+            ["SUPボード", "SUPボード"],
+            ["その他", "その他"]],
 
             {prompt:"カテゴリー1"},
             {required: true, autofocus: 'true', class: "form-control parent",id: "category1"}
@@ -36,7 +37,9 @@
              ["サーフ", "サーフ", data: {val:"SUPボード"}],
              ["オールラウンド", "オールラウンド", data: {val:"SUPボード"}],
              ["フィッシング", "フィッシング", data: {val:"SUPボード"}],
-             ["クルージング", "クルージング", data: {val:"SUPボード"}]],
+             ["クルージング", "クルージング", data: {val:"SUPボード"}],
+             ["ボード置き場", "ボード置き場", data: {val:"その他"}],
+             ["その他", "その他", data: {val:"その他"}]],
 
             {prompt: "カテゴリー2"},
             {required: true, autofocus: 'true', class: "form-control children",id: "category2"}

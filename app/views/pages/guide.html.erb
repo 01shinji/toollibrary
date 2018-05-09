@@ -1,12 +1,5 @@
-<div class="dashboard-link">
-  <ul class="">
-    <li class=""><%= link_to "チャレンタ!について", about_path, class: "active" %></li>
-    <li class=""><%= link_to "取引きの仕組み", pages_guide_path %></li>
-    <li class=""><%= link_to "サーフボードを貸す", pages_host_flow_path %></li>
-    <li class=""><%= link_to "サーフボードを借りる",pages_guest_flow_path %></li>
-    <li class=""><%= link_to "Q&A", pages_qanda_path %></li>
-  </ul>
-</div>
+
+<%= render 'guidance_menu' %>
 
 <h3 class="text-center">取引きの仕組み</h3>
 
@@ -17,8 +10,56 @@
   </div>
 
   <div class="about-sentence">
-    <div class=""><img id="" class="img-responsive" src="/assets/rental.jpg" alt="" width="" height="" /></div>
-    <p>ユーザー登録や出品は無料でできます(取引が成立した場合のみ一部手数料をいただきます)</p>
+    <div class="">
+      <img id="" class="img-responsive" src="/assets/rental.jpg" alt="" width="" height="" />
+    </div>
+
+
+  </div>
+</div>
+
+<div class="about-box">
+  <div class="box-circle">
+    <div class="circle-top">取扱い商品</div>
+  </div>
+
+  <div class="about-sentence">
+    <table class="table table-bordered">
+     <tbody>
+      <tr>
+        <th scope="row">
+          サーフボード
+        </th>
+        <td colspan="3">
+          ショートボード<br>
+          ファンボード<br>
+          ロングボード
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          SUPボード
+        </th>
+        <td colspan="3">
+          サーフ<br>
+          オールラウンド<br>
+          フィッシング<br>
+          クルージング
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          その他
+        </th>
+        <td colspan="3">
+          ボード置き場<br>
+
+        </td>
+      </tr>
+
+     </tbody>
+    </table>
+
 
   </div>
 </div>
@@ -149,26 +190,26 @@
 
             </tr>
             <tr>
-              <td>サーフボード</td>
+              <td>サーフボード,SUPボード</td>
               <td>1年以内</td>
               <td>購入価格&nbsp;×&nbsp;0.6</td>
               <td>15,000円</td>
 
             </tr>
             <tr>
-              <td>サーフボード</td>
+              <td>サーフボード,SUPボード</td>
               <td>1年以上2年以内</td>
               <td>購入価格&nbsp;×&nbsp;0.5</td>
               <td>15,000円</td>
             </tr>
             <tr>
-              <td>サーフボード</td>
+              <td>サーフボード,SUPボード</td>
               <td>2年以上3年以内</td>
               <td>購入価格&nbsp;×&nbsp;0.4</td>
               <td>10,000円</td>
             </tr>
             <tr>
-              <td>サーフボード</td>
+              <td>サーフボード,SUPボード</td>
               <td>3年以上</td>
 
               <td>購入価格&nbsp;×&nbsp;0.3</td>
@@ -224,26 +265,26 @@
 
             </tr>
             <tr>
-              <td>サーフボード</td>
+              <td>サーフボード,SUPボード</td>
               <td>1年以内</td>
               <td>購入価格&nbsp;×&nbsp;0.6×&nbsp;1/2</td>
               <td>15,000円×&nbsp;1/2</td>
 
             </tr>
             <tr>
-              <td>サーフボード</td>
+              <td>サーフボード,SUPボード</td>
               <td>1年以上2年以内</td>
               <td>購入価格&nbsp;×&nbsp;0.5×&nbsp;1/2</td>
               <td>7,500円</td>
             </tr>
             <tr>
-              <td>サーフボード</td>
+              <td>サーフボード,SUPボード</td>
               <td>2年以上3年以内</td>
               <td>購入価格&nbsp;×&nbsp;0.4×&nbsp;1/2</td>
               <td>5,000円×&nbsp;1/2</td>
             </tr>
             <tr>
-              <td>サーフボード</td>
+              <td>サーフボード,SUPボード</td>
               <td>3年以上</td>
 
               <td>購入価格&nbsp;×&nbsp;0.3×&nbsp;1/2</td>
