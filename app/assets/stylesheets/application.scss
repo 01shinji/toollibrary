@@ -373,10 +373,8 @@ th {
 }
 
 // 認証系ページ
-
-
 .devise_container{
-  margin-top: 20px;
+  margin: 20px;
   padding: 10px 20%;
   background-color: #ffffff;
   border:solid 1px #aeb0b5;
@@ -1593,6 +1591,7 @@ input#pac-input {
 
 #footernavi_container{
   padding: 20px 20%;
+
   color:#808080;
 
  }
@@ -1834,9 +1833,19 @@ input#autolocation {
   font-weight: bold;
 }
 
+.about-sentence .case {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
 .table_container {
   margin: 30px 0;
 }
+
+
+
 
 // 運営者
 .shinji-circle{

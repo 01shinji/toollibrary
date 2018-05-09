@@ -17,7 +17,12 @@
      <div class="bottom">
        <ul>
          <li class="">
-           <%= image_tag @listing.user.image, class: "img-circle avatar-large" %>
+           <% if (user_signed_in?)%>
+             <%= image_tag @listing.user.image, class: "img-circle avatar-large" %>
+           <% else %>
+             <%= image_tag "avatar-default", class: "img-circle avatar-large" %>
+           <% end %>
+
          </li>
          <li class="">
              <p>

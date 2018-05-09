@@ -17,6 +17,14 @@ class ListingsController < ApplicationController
 
     if !current_user.update_bank_account
       return redirect_to payout_method_path, alert: "振込先口座の登録をお願いします"
+
+    else
+      current_user.nickname.blank? ||
+      current_user.image.blank? ||
+      current_user.address_zipcode.blank? ||
+      current_user.address_prefecture_name.blank?
+
+      return redirect_to edit_user_registration_path, alert: "プロフィールの登録をお願いします"
     end
 
     @listing = current_user.listings.build(listing_params)
