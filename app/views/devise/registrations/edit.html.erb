@@ -18,23 +18,39 @@
         <%= render 'shared/devisemes' %>
 
         <div class="form_box">
-          <p>氏名</p>
+          <p>
+            氏名<br>
+            ※本名を登録してください、会員にのみ表示されます
+          </p>
           <div class="form-group">
             <%= f.text_field :fullname, autofocus: true, placeholder: "湘南太郎", class: "form-control" %>
           </div>
         </div>
 
         <div class="form_box">
-          <p>ニックネーム</p>
+          <p>
+            ニックネーム<br>
+            ※一般のユーザーに表示されます
+          </p>
           <div class="form-group">
             <%= f.text_field :nickname, autofocus: true, placeholder: "タロウ", class: "form-control" %>
           </div>
         </div>
 
         <div class="form_box">
-          <p>プロフィール画像</p>
-          <div class="form-group">
-            <%= f.file_field :image , class: "form-control" %>
+          <p>
+            プロフィール画像<br>
+            ※顔が分かる写真を登録してください、会員にのみ表示されます
+          </p>
+
+          <div class="form-group" id="photos-select">
+            <span>
+              <%= image_tag current_user.image.url() , class: "avatar-large" %>
+            </span>
+            <span class="btn btn-default btn-file">
+              <i class="fa fa-cloud-upload" aria-hidden="true"></i>画像を選択
+              <%= f.file_field :image  %>
+            </span>
           </div>
         </div>
 
