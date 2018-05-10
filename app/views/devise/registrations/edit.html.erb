@@ -42,15 +42,14 @@
             プロフィール画像<br>
             ※顔が分かる写真を登録してください、会員にのみ表示されます
           </p>
-
-          <div class="form-group" id="photos-select">
-            <span>
-              <%= image_tag current_user.image.url() , class: "avatar-large" %>
-            </span>
-            <span class="btn btn-default btn-file">
+          <p class="text-left">
+            <%= image_tag current_user.image.url() , class: "avatar-large" %>
+          </p>
+          <div class="form-group image-select text-left" >
+            <p class="btn btn-default btn-file ">
               <i class="fa fa-cloud-upload" aria-hidden="true"></i>画像を選択
               <%= f.file_field :image  %>
-            </span>
+            </p>
           </div>
         </div>
 
