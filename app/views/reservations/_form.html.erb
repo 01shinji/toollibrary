@@ -6,6 +6,7 @@
     <div class="row date-form">
      <ul class="">
        <li class="col-md-6 col-sm-6 col-xs-6">
+
          <%= f.text_field :start_date, readonly: true, placeholder: "利用開始日", class: 'form-control datepicker' %>
        </li>
        <li class="col-md-6 col-sm-6 col-xs-6">
@@ -87,91 +88,128 @@
 
 
    <script type="text/javascript">
-   function checkDate(date){
-     ymd = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
-     return [$.inArray(ymd, unavailableDates) == -1];
-   }
-   $(document).ready(function(){
-     unavailableDates = [];
-     $.ajax({
-       url: '<%= preload_listing_path(@listing) %>',
-       dateTyp: 'json',
-       success: function(data){
-         $.each(data, function(arrID, arrValue){
-           for(var d = new Date(arrValue.start_date); d <= new Date(arrValue.end_date); d.setDate(d.getDate()+ 1)){
-            unavailableDates.push($.datepicker.formatDate("yy/m/d",d));
+
+function checkDate(date){
+  ymd = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
+  return [$.inArray(ymd, unavailableDates) == -1];
+}
+
+$(document).ready(function(){
+
+  unavailableDates = [];
+
+  $.ajax({
+    url: '<%= preload_listing_path(@listing) %>',
+    dateTyp: 'json',
+    success: function(data){
+      $.each(data, function(arrID, arrValue){
+        for(var d = new Date(arrValue.start_date); d <= new Date(arrValue.end_date); d.setDate(d.getDate()+ 1)){
+         unavailableDates.push($.datepicker.formatDate("yy/m/d",d));
+        }
+      });
+
+      $(document).on('click','#reservation_start_date', function(){
+        $(this).datepicker({
+          dateFormat: 'yy/mm/dd',
+          minDate: 0,
+          maxDate: '3m',
+          beforeShowDay: checkDate,
+
+          onSelect: function(selected) {
+           $('#reservation_end_date').datepicker("option", "minDate", selected);
+           $('#reservation_end_date').attr("disabled", false);
+
+           var start_date = $('#reservation_start_date').datepicker('getDate');
+           var end_date = $('#reservation_end_date').datepicker('getDate');
+           var days = (end_date - start_date)/1000/60/60/24 + 1;
+
+           var input = {
+             'start_date': start_date,
+             'end_date': end_date
            }
-         });
-         $("#reservation_start_date").datepicker({
-           dateFormat: 'yy/mm/dd',
-           minDate: 0,
-           maxDate: '3m',
-           beforeShowDay: checkDate,
-           onSelect: function(selected) {
-            $('#reservation_end_date').datepicker("option", "minDate", selected);
-            $('#reservation_end_date').attr("disabled", false);
-            var start_date = $('#reservation_start_date').datepicker('getDate');
-            var end_date = $('#reservation_end_date').datepicker('getDate');
-            var days = (end_date - start_date)/1000/60/60/24 + 1;
-            var input = {
-              'start_date': start_date,
-              'end_date': end_date
-            }
-            $.ajax({
-              url: '<%= preview_listing_path(@listing) %>',
-              data: input,
-              success: function(data){
-               if(data.conflict){
-                 $('#message').text('この期間は予約できません...');
-                 $('#preview').hide();
-                 $('#btn_book').attr('disabled', true);
-               } else {
-                 $('#message').text('');
-                 $('#preview').show();
-                 $('#btn_book').attr('disabled', false);
-                 var total = days * ( <%= @listing.price_day %> +  <%= @listing.price_day * 0.10 %> )
-                 $('#reservation_days').text(days);
-                 $('#reservation_total').text(total);
-               }
+
+           $.ajax({
+             url: '<%= preview_listing_path(@listing) %>',
+             data: input,
+             success: function(data){
+
+              if(data.conflict){
+                $('#message').text('この期間は予約できません...');
+                $('#preview').hide();
+                $('#btn_book').attr('disabled', true);
+              } else {
+                $('#message').text('');
+                $('#preview').show();
+                $('#btn_book').attr('disabled', false);
+
+                var total = days * ( <%= @listing.price_day %> +  <%= @listing.price_day * 0.10 %> )
+                $('#reservation_days').text(days);
+                $('#reservation_total').text(total);
               }
-            });
-          }
-         });
-         $("#reservation_end_date").datepicker({
-           dateFormat: 'yy/mm/dd',
-           minDate: 0,
-           maxDate: '3m',
-           beforeShowDay: checkDate,
-           onSelect: function(selected) {
-            $('#reservation_start_date').datepicker("option", "maxDate", selected);
-            var start_date = $('#reservation_start_date').datepicker('getDate');
-            var end_date = $('#reservation_end_date').datepicker('getDate');
-            var days = (end_date - start_date)/1000/60/60/24 + 1;
-            var input = {
-              'start_date': start_date,
-              'end_date': end_date
-            }
-            $.ajax({
-              url: '<%= preview_listing_path(@listing) %>',
-              data: input,
-              success: function(data){
-               if(data.conflict){
-                 $('#message').text('この期間は予約できません...');
-                 $('#preview').hide();
-                 $('#btn_book').attr('disabled', true);
-               } else {
-                 $('#message').text('');
-                 $('#preview').show();
-                 $('#btn_book').attr('disabled', false);
-                 var total = days * ( <%= @listing.price_day %> +  <%= @listing.price_day * 0.10 %> )
-                 $('#reservation_days').text(days);
-                 $('#reservation_total').text(total);
-               }
+
+             }
+           });
+
+         }
+        });
+        $(this).datepicker('show')
+      })
+
+
+
+
+      $(document).on('click','#reservation_end_date', function(){
+        $(this).datepicker({
+          dateFormat: 'yy/mm/dd',
+          minDate: 0,
+          maxDate: '3m',
+          beforeShowDay: checkDate,
+          onSelect: function(selected) {
+           $('#reservation_start_date').datepicker("option", "maxDate", selected);
+
+           var start_date = $('#reservation_start_date').datepicker('getDate');
+           var end_date = $('#reservation_end_date').datepicker('getDate');
+           var days = (end_date - start_date)/1000/60/60/24 + 1;
+
+           var input = {
+             'start_date': start_date,
+             'end_date': end_date
+           }
+
+           $.ajax({
+             url: '<%= preview_listing_path(@listing) %>',
+             data: input,
+             success: function(data){
+
+              if(data.conflict){
+                $('#message').text('この期間は予約できません...');
+                $('#preview').hide();
+                $('#btn_book').attr('disabled', true);
+              } else {
+                $('#message').text('');
+                $('#preview').show();
+                $('#btn_book').attr('disabled', false);
+
+                var total = days * ( <%= @listing.price_day %> +  <%= @listing.price_day * 0.10 %> )
+                $('#reservation_days').text(days);
+                $('#reservation_total').text(total);
               }
-            });
-          }
-         });
-       }
-     });
-   });
-   </script>
+
+             }
+           });
+
+
+         }
+        });
+        $(this).datepicker('show')
+      })
+
+
+
+    }
+  });
+
+});
+
+
+</script>
