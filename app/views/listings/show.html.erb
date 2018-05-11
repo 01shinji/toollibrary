@@ -105,7 +105,7 @@
    </div>
 
 
-   </script>
+   <% if (user_signed_in?)%>
    <!-- 予約フォーム -->
    <div class="row" id="reservation">
      <div class="col-md-12 text-center">
@@ -115,6 +115,7 @@
        </div>
      </div>
    </div>
+   <% end %>
 
    <hr class="dotted-hr" />
 
