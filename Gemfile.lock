@@ -96,6 +96,8 @@ GEM
     ffi (1.9.21)
     figaro (1.1.1)
       thor (~> 0.14)
+    flatpickr_rails (1.1.0)
+      railties (>= 3.0)
     geocoder (1.4.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -280,6 +282,7 @@ DEPENDENCIES
   devise (~> 4.2)
   enum_help
   figaro (~> 1.1.0)
+  flatpickr_rails
   geocoder (~> 1.4)
   jbuilder (~> 2.5)
   jquery-rails

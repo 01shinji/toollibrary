@@ -17,6 +17,9 @@
 //= require jquery-ui/datepicker
 //= require jquery-ui/datepicker-ja
 //= require jquery-ui/slider
+
+//= require flatpickr
+
 //= require toastr
 //= require card
 //= require Chart.bundle
