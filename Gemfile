@@ -12,7 +12,7 @@ gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
-gem 'jquery-rails'
+gem 'jquery-rails','>= 4.3.3'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
@@ -49,7 +49,7 @@ gem "paperclip", "~> 5.2.1"
 gem 'aws-sdk', '~> 2.8'
 
 gem 'geocoder', '~> 1.4'
-gem 'jquery-ui-rails', '~> 5.0'
+gem 'jquery-ui-rails', '~> 6.0'
 
 gem "figaro", "~> 1.1.0"
 
