@@ -6,10 +6,10 @@
     <div class="row date-form">
      <ul class="">
        <li class="col-md-6 col-sm-6 col-xs-6">
-         <%= f.text_field :start_date, readonly: true, placeholder: "利用開始日", class: 'form-control flatpickr' %>
+         <%= f.text_field :start_date, readonly: true, placeholder: "利用開始日", class: 'form-control datepicker' %>
        </li>
        <li class="col-md-6 col-sm-6 col-xs-6">
-         <%= f.text_field :end_date, readonly: true, placeholder: "利用終了日", class: 'form-control flatpickr', disabled: true %>
+         <%= f.text_field :end_date, readonly: true, placeholder: "利用終了日", class: 'form-control datepicker', disabled: true %>
        </li>
      </ul>
     </div>
@@ -99,19 +99,19 @@
        success: function(data){
          $.each(data, function(arrID, arrValue){
            for(var d = new Date(arrValue.start_date); d <= new Date(arrValue.end_date); d.setDate(d.getDate()+ 1)){
-            unavailableDates.push($.flatpickr.formatDate("yy/m/d",d));
+            unavailableDates.push($.datepicker.formatDate("yy/m/d",d));
            }
          });
-         $("#reservation_start_date").flatpickr({
+         $("#reservation_start_date").datepicker({
            dateFormat: 'yy/mm/dd',
            minDate: 0,
            maxDate: '3m',
            beforeShowDay: checkDate,
            onSelect: function(selected) {
-            $('#reservation_end_date').flatpickr("option", "minDate", selected);
+            $('#reservation_end_date').datepicker("option", "minDate", selected);
             $('#reservation_end_date').attr("disabled", false);
-            var start_date = $('#reservation_start_date').flatpickr('getDate');
-            var end_date = $('#reservation_end_date').flatpickr('getDate');
+            var start_date = $('#reservation_start_date').datepicker('getDate');
+            var end_date = $('#reservation_end_date').datepicker('getDate');
             var days = (end_date - start_date)/1000/60/60/24 + 1;
             var input = {
               'start_date': start_date,
@@ -137,15 +137,15 @@
             });
           }
          });
-         $("#reservation_end_date").flatpickr({
+         $("#reservation_end_date").datepicker({
            dateFormat: 'yy/mm/dd',
            minDate: 0,
            maxDate: '3m',
            beforeShowDay: checkDate,
            onSelect: function(selected) {
-            $('#reservation_start_date').flatpickr("option", "maxDate", selected);
-            var start_date = $('#reservation_start_date').flatpickr('getDate');
-            var end_date = $('#reservation_end_date').flatpickr('getDate');
+            $('#reservation_start_date').datepicker("option", "maxDate", selected);
+            var start_date = $('#reservation_start_date').datepicker('getDate');
+            var end_date = $('#reservation_end_date').datepicker('getDate');
             var days = (end_date - start_date)/1000/60/60/24 + 1;
             var input = {
               'start_date': start_date,
