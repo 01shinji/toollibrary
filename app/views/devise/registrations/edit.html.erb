@@ -19,7 +19,7 @@
 
         <div class="form_box">
           <p>
-            氏名<br>
+            <b>氏名</b><br>
             ※本名を登録してください、会員にのみ表示されます
           </p>
           <div class="form-group">
@@ -29,7 +29,7 @@
 
         <div class="form_box">
           <p>
-            ニックネーム<br>
+            <b>ニックネーム</b><br>
             ※一般のユーザーに表示されます
           </p>
           <div class="form-group">
@@ -39,7 +39,7 @@
 
         <div class="form_box">
           <p>
-            プロフィール画像<br>
+            <b>プロフィール画像</b><br>
             ※顔が分かる写真を登録してください、会員にのみ表示されます
           </p>
           <p class="text-left">
@@ -54,14 +54,14 @@
         </div>
 
         <div class="form_box">
-          <p>メールアドレス</p>
+          <p><b>メールアドレス</b></p>
           <div class="form-group">
             <%= f.email_field :email, autofocus: true, placeholder: "sample@gmail.com", class: "form-control" %>
           </div>
         </div>
 
         <div class="form_box">
-          <p>住所</p>
+          <p><b>住所</b></p>
           <div class="form-group">
             <%= f.text_field :address_zipcode, autofocus: true, placeholder: "郵便番号", class: "form-control", id: "address_zipcode" %>
           </div>

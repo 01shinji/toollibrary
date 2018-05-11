@@ -552,18 +552,22 @@ th {
 // プロフィール画像
 .avatar-small {
   width: 28px;
+  height: 28px;
 }
 
 .avatar-medium {
   width: 48px;
+  height: 48px;
 }
 
 .avatar-large {
   width: 68px;
+  height: 68px;
 }
 
 .avatar-full {
   width: 200px;
+  height: 200px;
 }
 
 // form
@@ -1023,6 +1027,16 @@ th {
   color:#04b4e4;
 }
 
+.listing-content .bottom {
+margin-top: 5px;
+}
+.listing-content .bottom .listing-type{
+  color: #ffffff;
+
+  padding: 2px;
+
+  background-color: #C0C0C0;
+}
 // 予約フォーム
 .reservation-form{
 
@@ -2026,4 +2040,79 @@ input#autolocation {
 
 .guidance-link ul li a{
   color:#000000;
+}
+
+// Q&A
+.qanda-container{
+
+  padding: 10px 15%;
+}
+
+@media (max-width: 768px) {
+  /* ~480px */
+.qanda-container{
+ padding: 10px 10%;
+}
+}
+
+@media (max-width: 480px) {
+  /* ~480px */
+.qanda-container{
+ padding: 0;
+}
+}
+
+.qanda-case {
+    margin-bottom: 30px;
+}
+
+.qanda-container ul {
+    padding: 0;
+}
+
+.qanda-container ul li{
+  list-style: none;
+  border:1px solid #C0C0C0  ;
+  background-color: #ffffff;
+  padding: 10px;
+  margin: 5px 0;
+
+}
+
+.qanda-container ul li .sign {
+  font-size: 20px;
+  float: right;
+  font-weight: bold;
+  padding-bottom: 5px;
+  position: relative;
+  bottom: 3px;
+
+
+}
+
+.qanda-container ul li .symbol-1{
+  font-size: 20px;
+  position: relative;
+  top: 2px;
+
+  color: #04b4e4 ;
+
+}
+
+.qanda-container ul li .symbol-2{
+  font-size: 20px;
+  position: relative;
+  top: 2px;
+
+  color: #FFA500;
+
+}
+
+.qanda-list {
+  display:none;
+}
+
+.qanda-list p{
+  font-weight: normal;
+  padding-top: 10px;
 }
