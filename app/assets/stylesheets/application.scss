@@ -2063,7 +2063,8 @@ input#autolocation {
 }
 
 .qanda-case {
-    margin-bottom: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px
 }
 
 .qanda-container ul {
@@ -2074,8 +2075,8 @@ input#autolocation {
   list-style: none;
   border:1px solid #C0C0C0  ;
   background-color: #ffffff;
-  padding: 10px;
-  margin: 5px 0;
+  padding: 8px 10px 10px 10px;
+  margin-bottom: -1px;
 
 }
 
@@ -2083,12 +2084,16 @@ input#autolocation {
   font-size: 20px;
   float: right;
   font-weight: bold;
-  padding-bottom: 5px;
-  position: relative;
-  bottom: 3px;
 
+  position: relative;
 
 }
+
+.qanda-container ul li:after{
+ content:"";
+ clear:both;
+ display:block;
+ }
 
 .qanda-container ul li .symbol-1{
   font-size: 20px;
