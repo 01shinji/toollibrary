@@ -834,7 +834,7 @@ th {
 #home-listings {
     position: fixed;
     bottom: 0px;
-    background-color: #F4F6F6;
+    background-color: rgba(192, 192, 192, 0.5);
     margin: 0;
     padding: 0;
     z-index: 2;
@@ -1197,7 +1197,7 @@ margin-top: 5px;
 .edit-license{
   background-color: #F4F6F6;
   margin: 20px;
-  padding: 10px 20%;
+  padding: 10px;
 }
 
 .edit-phone button,
@@ -1708,18 +1708,21 @@ input#pac-input {
 
 #home-left {
   position: fixed;
-  top: 0;
-  height: 100%;
-  padding: 61px 0 0 0;
-  z-index: -1;
+
+height: 100%;
+
+padding-bottom: 61px;
+padding-left: 0;
+padding-right: 0;
+
 
 }
 @media (max-width: 480px) {
   /* ~480px */
 #home-left {
   position: fixed;
-  top: 0px;
-  padding: 51px 0 0 0;
+
+  padding-bottom: 51px;
   width: 100%;
   margin-top: 0;
 
