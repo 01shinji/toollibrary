@@ -18,7 +18,7 @@
 
       <div class="">
         <% if (user_signed_in?)%>
-          <%= image_tag @user.image, class: "img-circle avatar-large" %>
+          <%= image_tag @user.image, class: "img-circle avatar-full" %>
         <% else %>
           <%= image_tag "avatar-default", class: "img-circle avatar-full" %>
         <% end %>
@@ -29,7 +29,7 @@
     </div>
 
     <% if current_user && current_user != @user %>
-     <p>
+     <p class="send-message">
        <%= link_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn-blue" %>
      </p>
     <% end %>
@@ -43,6 +43,9 @@
           <li>Facebookによる認証<span class=" blue"><i class="fa fa-check-circle"></i></span></li>
         <% end %>
         <li>電話番号の確認<span class=" blue"><i class="fa fa-check-circle"></i></span></li>
+        <% if current_user.license %>
+          <li>身分証の確認<span class=" blue"><i class="fa fa-check-circle"></i></span></li>
+        <% end %>
       </ul>
     </div>
 

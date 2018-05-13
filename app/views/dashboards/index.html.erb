@@ -22,7 +22,10 @@
           <li>Facebookによる認証<span class=" blue"><i class="fa fa-check-circle"></i></span></li>
         <% end %>
         <% if current_user.phone_verified %>
-        <li>電話番号の認証<span class=" blue"><i class="fa fa-check-circle"></i></span></li>
+          <li>電話番号の認証<span class=" blue"><i class="fa fa-check-circle"></i></span></li>
+        <% end %>
+        <% if current_user.license %>
+          <li>身分証の確認<span class=" blue"><i class="fa fa-check-circle"></i></span></li>
         <% end %>
       </ul>
     </div>

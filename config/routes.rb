@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       post '/verify_phone_number' => 'users#verify_phone_number'
       patch '/update_phone_number' => 'users#update_phone_number'
       patch '/update_bank_account' => 'users#update_bank_account'
+      patch '/update_license' => 'users#update_license'
     end
   end
 

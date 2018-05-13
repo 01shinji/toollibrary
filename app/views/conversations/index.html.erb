@@ -10,7 +10,7 @@
     <div class="row">
      <div class="col-md-12 ">
 
-       <% if @conversations.count == 0 %>
+       <% if !@conversations.present? %>
         <p>まだメッセージのやりとりがありません...</p>
        <% else %>
 
@@ -33,7 +33,7 @@
              </div>
              <% end %>
           </div>
-  
+
          <% end %>
 
         <% end %>

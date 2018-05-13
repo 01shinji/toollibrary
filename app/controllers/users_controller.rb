@@ -76,9 +76,14 @@ class UsersController < ApplicationController
     redirect_to payout_method_path, notice: "振込先口座を変更しました!"
   end
 
+  def update_license
+    current_user.update_attributes(user_params)
+    redirect_to edit_user_registration_path, notice: "身分証を登録しました!"
+  end
+
   private
 
     def user_params
-      params.require(:user).permit(:phone_number, :pin, :bank_name, :account_type, :branch_code, :account_number, :account_name)
+      params.require(:user).permit(:phone_number, :pin, :bank_name, :account_type, :branch_code, :account_number, :account_name, :license)
     end
 end

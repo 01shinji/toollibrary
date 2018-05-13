@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180508010630) do
+ActiveRecord::Schema.define(version: 20180513110253) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer "sender_id"
@@ -150,6 +150,12 @@ ActiveRecord::Schema.define(version: 20180508010630) do
     t.integer "branch_code"
     t.integer "account_number"
     t.string "account_name"
+    t.string "license_image"
+    t.string "license_file_name"
+    t.string "license_content_type"
+    t.integer "license_file_size"
+    t.datetime "license_updated_at"
+    t.string "license"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

@@ -26,6 +26,8 @@ class User < ApplicationRecord
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "avatar-default.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
+  has_attached_file :license, styles: { medium: "300x300>", thumb: "100x100>" }
+  validates_attachment_content_type :license, content_type: /\Aimage\/.*\z/
 
 
   def self.from_omniauth(auth)

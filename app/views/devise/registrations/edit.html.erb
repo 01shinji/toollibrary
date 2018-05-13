@@ -83,7 +83,6 @@
 
         <script type="text/javascript">
           $(window).ready( function() {
-
            $('#address_zipcode').jpostal({
              postcode : [
                '#address_zipcode'
@@ -92,10 +91,8 @@
                '#address_prefecture_name'  : '%3',
                '#address_city'  : '%4%5',
                '#address_street'  : '%6%7',
-
              }
            });
-
          });
         </script>
 
@@ -161,6 +158,25 @@
         </div>
       </div>
 
+      <div class="edit-license">
+        <h4>
+          身分証明書
+          <% if current_user.license? %>
+           <span class="blue"><i class="fa fa-check"></i></span>
+          <% end %>
+        </h4>
+        <div class="container">
+          <% if !current_user.license.blank? %>
+            <button class="btn white b-green" data-toggle="modal" data-target="#update-license">
+              身分証明書を変更する
+            </button>
+          <% else %>
+            <button class="btn white b-green" data-toggle="modal" data-target="#update-license">
+              身分証明書を登録する
+            </button>
+          <% end %>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -211,6 +227,38 @@
             <div class="text-center">
               <%= f.submit "認証する", class: "btn-sm  white b-red" %>
             </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL FOR LICENSE -->
+<div id="update-license" class="modal fade text-center" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">身分証明書</h4>
+        <p>※運転免許証または健康保険証</p>
+      </div>
+
+      <div class="modal-body">
+        <%= form_for current_user, url: update_license_user_path(current_user) do |f| %>
+
+            <div class="form-group image-select" >
+             <p class="btn btn-default btn-file ">
+               <i class="fa fa-cloud-upload" aria-hidden="true"></i>画像を選択
+               <%= f.file_field :license  %>
+             </p>
+            </div>
+
+            <div class="text-center">
+              <%= f.submit "アップロード", class: "btn btn-form" %>
+            </div>
+
         <% end %>
       </div>
 
