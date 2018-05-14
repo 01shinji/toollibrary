@@ -1403,7 +1403,7 @@ input#pac-input {
   background-color: #04b4e4;
   position: absolute;
 
-  bottom: 10px;
+  bottom: 5px;
   right: 51%;
   width: 50px;
   height: 50px;
@@ -1419,8 +1419,9 @@ input#pac-input {
   }
 }
 
-.search-spot p{
-  margin: 5px;
+.search-spot button{
+  color: #ffffff;
+
   padding-top: 5px;
   font-weight: bold;
   font-size: 10px;
