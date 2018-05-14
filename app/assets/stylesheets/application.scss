@@ -12,6 +12,7 @@ html{
   }
 
 body {
+
   overflow-x: hidden;
   color: #565a5c;
   background-color: #F8F8F8;
@@ -22,6 +23,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
 }
 
 a {
@@ -1267,8 +1269,9 @@ margin-top: 5px;
 
 .search-short{
   width: 100%;
-  border: none;
-  padding: 10px;
+  border: solid 1px #28a745;
+  border-radius: 0;
+  padding: 9px;
 
 }
 
@@ -1399,7 +1402,7 @@ input#pac-input {
   color: #ffffff;
   background-color: #04b4e4;
   position: absolute;
-  z-index: 1;
+
   bottom: 10px;
   right: 51%;
   width: 50px;
