@@ -1105,6 +1105,10 @@ margin-top: 5px;
   border: none;
 }
 
+.reservation-table .text-left span a{
+  color:#C0C0C0;
+}
+
 .message-alert {
   color: #d9534f;
   font-size: 14px;
@@ -1419,13 +1423,17 @@ input#pac-input {
   }
 }
 
-.search-spot button{
+.search-spot a{
   color: #ffffff;
 
   padding-top: 5px;
   font-weight: bold;
   font-size: 10px;
+  position: relative;
+  top: 10px;
+  left: 5px;
 }
+
 #spotModal span{
 
   border-radius: 0;
