@@ -14,20 +14,22 @@ class ListingsController < ApplicationController
 
   def create
 
+    if
+      current_user.account_number.blank?
 
-    if !current_user.update_bank_account
       return redirect_to payout_method_path, alert: "振込先口座の登録をお願いします"
+
     elsif !current_user.phone_verified
       flash[:alert] = "電話番号の認証が必要です"
       return redirect_to edit_user_registration_path
 
-    elsif !current_user.license.blank?
+    elsif current_user.license_file_name.blank?
       flash[:alert] = "身分証明書の登録が必要です"
       return redirect_to edit_user_registration_path
 
     else
       current_user.nickname.blank? ||
-      current_user.image.blank? ||
+      current_user.image_file_name.blank? ||
       current_user.address_zipcode.blank? ||
       current_user.address_prefecture_name.blank?
 
