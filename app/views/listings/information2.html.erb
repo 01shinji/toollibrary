@@ -30,10 +30,12 @@
               <%= f.check_box :is_bicycle %>
               自転車
             </div>
-            <div class="col-md-4 col-sm-4 col-xs-4 check">
-              <%= f.check_box :is_wetsuit %>
+            <% if !(@listing.category2 == "ボード置き場") %>
+             <div class="col-md-4 col-sm-4 col-xs-4 check">
+               <%= f.check_box :is_wetsuit %>
               ウェットスーツ
-            </div>
+             </div>
+            <% end %>
           </div>
         </div>
 
@@ -54,7 +56,8 @@
           </div>
         </div>
 
-        <div class="purchase">
+        <% if !(@listing.category2 == "ボード置き場") %>
+         <div class="purchase">
           <p class="text-left">
             ※破損が起きた際の補償費の計算の参考にします
           </p>
@@ -90,6 +93,7 @@
 
           </div>
         </div>
+        <% end %>
 
         <div class="actions">
           <%= f.submit "登録する", class: "btn btn-form" %>
