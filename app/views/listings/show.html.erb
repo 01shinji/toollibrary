@@ -100,12 +100,13 @@
         <b><%= @listing.price_day %></b>
         円
         <br>
-        <% if !(user_signed_in?)%>
 
-         <span class="red">レンタルするにはログインが必要です</span>
+        <% if !(user_signed_in?)%>
+         <span>※レンタルするには<%= link_to "ログイン", new_user_session_path %>または<%= link_to "登録", new_user_registration_path %>が必要です</span>
         <% elsif current_user == @listing.user %>
          <span class="red">自分の商品を予約することはできません</span>
         <% end %>
+
       </p>
 
 
@@ -235,7 +236,7 @@
    <% if @listing.nearbys.present? %>
 
    <div class="row nearby listings-list">
-     <h4>近くのリスティング</h4>
+     <h4>近くの出品商品</h4>
 
      <ul class="row-eq-height">
        <% for listing in @listing.nearbys(10) %>
@@ -243,7 +244,9 @@
          <div class="listing-block">
 
            <div class="">
-             <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
+            <%= link_to  listing  do %>
+              <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
+             <% end %>
            </div>
 
            <span class="distance">

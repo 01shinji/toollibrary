@@ -39,22 +39,9 @@
           </div>
         </div>
 
-        <div class="form_box">
-          <p>
-            リクエスト&nbsp;or&nbsp;即決<br>
-            <span  class="form-explain">リクエスト&nbsp;:&nbsp;ゲストからのリクエストを受けてからレンタルの可否を返答できます<br>
-            即決&nbsp;:&nbsp;ゲストが「今すぐ予約」ボタンを押した段階で取引が成立します</span>
-          </p>
+        <%= f.hidden_field :instant, value: "Request" %>
 
-          <div class="form-group">
 
-            <select selected="selected" class="form-control" name="listing[instant]" id="listing_instant">
-              <option selected="selected" value="Request">リクエスト</option>
-              <option value="Instant">即決</option>
-            </select>
-
-          </div>
-        </div>
 
         <% if !(@listing.category2 == "ボード置き場") %>
          <div class="purchase">

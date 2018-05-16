@@ -833,6 +833,20 @@ th {
     right: 15px;
 }
 
+.listing-content .bottom {
+margin-top: 5px;
+}
+
+.listing-content .bottom .listing-type{
+  color: #ffffff;
+
+  padding: 2px;
+
+  background-color: #C0C0C0;
+}
+
+
+
 #home-listings {
     position: fixed;
     bottom: 0px;
@@ -867,6 +881,7 @@ th {
 #home-listings .listing-content a{
   color: #FFA500;
 }
+
 
 @media (max-width: 980px) {
   /* ~980px */
@@ -983,13 +998,14 @@ th {
 
 .distance{
   position: absolute;
-  top:12px;
-  left: 12px;
+  top:10px;
+  left: 10px;
   padding: 2px;
 
   color: #ffffff;
-  background-color: #808080;
+  background-color: rgba(128,128,128,1);
 }
+
 
 // パンくずリスト
 .breadcrumb{
@@ -1028,16 +1044,7 @@ th {
   color:#04b4e4;
 }
 
-.listing-content .bottom {
-margin-top: 5px;
-}
-.listing-content .bottom .listing-type{
-  color: #ffffff;
 
-  padding: 2px;
-
-  background-color: #C0C0C0;
-}
 // 予約フォーム
 .reservation-form{
 

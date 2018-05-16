@@ -6,11 +6,12 @@
 
 
   <li class="col-md-1 col-sm-1 col-xs-2  row-eq-height">
-   <div class="listing-block" >
+
+    <div class="listing-block" >
      <div class="">
-       <%= link_to  listing  do %>
+        <%= link_to  listing  do %>
          <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
-       <% end %>
+        <% end %>
      </div>
 
      <span class="address-prefecture-name">
@@ -20,7 +21,8 @@
      <p class="price-day">
          <b ><span class="red"><%= listing.price_day %>円</span></b>
      </p>
-   </div>
+    </div>
+
   </li>
   <script type="text/javascript">
     $(function(){
@@ -38,14 +40,19 @@
      request.path == '/search' || request.path == '/ajaxsearch' %>
 
    <li class="col-md-6 col-sm-6 col-xs-6  row-eq-height">
+
     <div class="listing-block">
 
+
       <div class="">
-        <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
+        <%= link_to  listing  do %>
+          <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
+        <% end %>
       </div>
 
       <div class="listing-content">
-        <%= link_to listing.listing_title, listing %>
+        <%= link_to listing.listing_title, listing  %>
+
         <div class="row case">
           <div class="col-md-3 col-sm-3 col-xs-4">
             <% if (user_signed_in?)%>
@@ -68,15 +75,19 @@
       </div>
 
     </div>
+
    </li>
 
   <% else %>
 
   <li class="col-md-3 col-sm-3 col-xs-6  row-eq-height">
+
    <div class="listing-block">
 
      <div class="">
-       <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
+       <%= link_to  listing  do %>
+         <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
+       <% end %>
      </div>
 
      <div class="listing-content">

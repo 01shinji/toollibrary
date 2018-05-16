@@ -22,7 +22,9 @@ class Listing < ApplicationRecord
     if self.photos.length > 0
       self.photos[0].image.url(size)
     else
-      "blank.jpg"
+
+       "blank.jpg"
+
     end
   end
 

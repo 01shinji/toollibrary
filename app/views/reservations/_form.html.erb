@@ -93,7 +93,7 @@
    <% end %>
 
 
-   <script type="text/javascript">
+<script type="text/javascript">
 
 function checkDate(date){
   ymd = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
@@ -109,7 +109,7 @@ $(document).ready(function(){
     url: '<%= preload_listing_path(@listing) %>',
     dateTyp: 'json',
     success: function(data){
-      $.each(data, function(arrID, arrValue){
+      $.each( data, function(arrID, arrValue){
         for(var d = new Date(arrValue.start_date); d <= new Date(arrValue.end_date); d.setDate(d.getDate()+ 1)){
          unavailableDates.push($.datepicker.formatDate("yy/m/d",d));
         }

@@ -21,16 +21,30 @@
       </div>
 
       <p class="text-center">
-        ※登録することで<%= link_to "利用規約", pages_rules_path %>および<%= link_to "プライバシーポリシー", pages_policy_path %>に同意したものとみなされます
+        <input type="checkbox" id="" >
+        <%= link_to "利用規約", pages_rules_path %>および<%= link_to "プライバシーポリシー", pages_policy_path %>に同意して登録する
       </p>
 
       <div class="actions text-center">
-        <%= f.submit "登録", class: "btn btn-normal btn-sm" %>
+        <%= f.submit "登録", class: "btn btn-normal btn-sm", id: "new-registration" , disabled: true %>
       </div>
     <% end %>
 
+    <p class="text-center " >
+      すでにアカウントをお持ちですか?&nbsp;
 
+      <%= link_to "ログイン", new_user_session_path %>
+    </p>
 
 
   </div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $('input[type="checkbox"]').change(function(){
+      $("#new-registration").prop("disabled", false);
+    });
+  });
+</script>
