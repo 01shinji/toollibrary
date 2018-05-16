@@ -167,7 +167,7 @@ function initMap() {
     //markerはこの関数の中で同じ変数
     var marker = new google.maps.Marker({
       position: new google.maps.LatLng(<%= listing.latitude %>, <%= listing.longitude %>),
-      icon: {url: 'assets/surfboard.png',scaledSize: new google.maps.Size(40, 40)},
+      icon: <% if listing.category2 == "ボード置き場" %> {url: 'assets/warehouse.png',scaledSize: new google.maps.Size(35, 35)} <% else %> {url: 'assets/surfboard.png',scaledSize: new google.maps.Size(40, 40)} <% end %>,
       map: map
     });
 
