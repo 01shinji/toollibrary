@@ -2034,10 +2034,15 @@ input#autolocation {
 }
 
 .flow .list{
-
-  background-color: #C0C0C0;
+  margin: 5px 0;
   padding: 5px;
-  margin: 0;
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: solid 1px #C0C0C0 ;
+}
+
+.list p {
+  margin: 10px 0;
 }
 
 // ガイダンス内リンク

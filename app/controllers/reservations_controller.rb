@@ -25,6 +25,14 @@ class ReservationsController < ApplicationController
       flash[:alert] = "身分証明書の登録が必要です"
       return redirect_to edit_user_registration_path
 
+    elsif
+     !current_user.nickname ||
+     !current_user.image_file_name ||
+     !current_user.address_zipcode ||
+     !current_user.address_prefecture_name
+
+     return redirect_to edit_user_registration_path, alert: "プロフィールの登録をお願いします"
+
     else
 
       @reservation = current_user.reservations.build(reservation_params)
