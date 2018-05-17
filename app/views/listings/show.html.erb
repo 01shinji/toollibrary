@@ -103,18 +103,16 @@
 
         <% if !(user_signed_in?)%>
          <span>※レンタルするには<%= link_to "ログイン", new_user_session_path %>または<%= link_to "登録", new_user_registration_path %>が必要です</span>
-        <% elsif current_user == @listing.user %>
-         <span class="red">自分の商品を予約することはできません</span>
+
         <% end %>
 
       </p>
-
 
     </div>
    </div>
 
 
-   <% if (user_signed_in?) && !(current_user == @listing.user) %>
+   <% if (user_signed_in?)  %>
    <!-- 予約フォーム -->
    <div class="row" id="reservation">
      <div class="col-md-12 text-center">

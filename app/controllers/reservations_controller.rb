@@ -6,21 +6,26 @@ class ReservationsController < ApplicationController
   def create
     listing = Listing.find(params[:listing_id])
 
+    start_date = Date.parse(reservation_params[:start_date])
+    end_date = Date.parse(reservation_params[:end_date])
+    days = (end_date - start_date).to_i + 1
+
     if current_user == listing.user
-      flash[:alert] = "自分の商品を予約することはできません..."
-    elsif current_user.stripe_id.blank?
-      flash[:alert] = "支払い方法を登録してください"
+      flash[:alert] = "自分の商品を予約することはできません"
+
+    elsif !current_user.stripe_id
+      flash[:alert] = "クレジットカードを登録してください"
       return redirect_to payment_method_path
+
     elsif !current_user.phone_verified
       flash[:alert] = "電話番号の認証が必要です"
       return redirect_to edit_user_registration_path
-    elsif current_user.license_file_name.blank?
+
+    elsif !current_user.license_file_name
       flash[:alert] = "身分証明書の登録が必要です"
       return redirect_to edit_user_registration_path
+
     else
-      start_date = Date.parse(reservation_params[:start_date])
-      end_date = Date.parse(reservation_params[:end_date])
-      days = (end_date - start_date).to_i + 1
 
       @reservation = current_user.reservations.build(reservation_params)
       @reservation.listing = listing
@@ -37,7 +42,7 @@ class ReservationsController < ApplicationController
           charge(listing, @reservation)
         end
       else
-        flash[:alert] = "予約ができませんでした..."
+        flash[:alert] = "予約ができませんでした"
       end
 
     end
@@ -90,7 +95,7 @@ class ReservationsController < ApplicationController
 
      else
       reservation.Declined!
-      flash[:alert] = "予約が成立しませんでした..."
+      flash[:alert] = "予約が成立しませんでした"
      end
     end
   rescue Stripe::CardError => e

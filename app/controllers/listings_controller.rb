@@ -10,45 +10,42 @@ class ListingsController < ApplicationController
   end
 
   def new
-    @listing = current_user.listings.build
+
+
+    if !current_user.phone_verified
+     flash[:alert] = "電話番号の認証が必要です"
+     return redirect_to edit_user_registration_path
+
+    elsif !current_user.license_file_name
+     flash[:alert] = "身分証明書の登録が必要です"
+     return redirect_to edit_user_registration_path
+
+    elsif
+     !current_user.nickname ||
+     !current_user.image_file_name ||
+     !current_user.address_zipcode ||
+     !current_user.address_prefecture_name
+
+     return redirect_to edit_user_registration_path, alert: "プロフィールの登録をお願いします"
+
+    else
+     @listing = current_user.listings.build
+    end
+
   end
 
   def create
 
-    if
-      current_user.account_number.blank?
-
-      return redirect_to payout_method_path, alert: "振込先口座の登録をお願いします"
-
-    elsif !current_user.phone_verified
-      flash[:alert] = "電話番号の認証が必要です"
-      return redirect_to edit_user_registration_path
-
-    elsif !current_user.license_file_name
-      flash[:alert] = "身分証明書の登録が必要です"
-      return redirect_to edit_user_registration_path
-
-    elsif
-      !current_user.nickname ||
-      !current_user.image_file_name ||
-      !current_user.address_zipcode ||
-      !current_user.address_prefecture_name
-
-      return redirect_to edit_user_registration_path, alert: "プロフィールの登録をお願いします"
-
-    else
-
     @listing = current_user.listings.build(listing_params)
 
     @photos = @listing.photos
-      if @listing.save
-       redirect_to information1_listing_path(@listing), notice: "商品の仮登録が成功しました!最後まで入力をお願いします〜"
-      else
-       flash[:alert] = "出品がうまくいきませんでした..."
+     if @listing.save
+      redirect_to information1_listing_path(@listing), notice: "商品の仮登録が成功しました!最後まで入力をお願いします〜"
+     else
+      flash[:alert] = "出品がうまくいきませんでした..."
       render :new
-      end
+     end
 
-    end
   end
 
   def show
@@ -79,7 +76,7 @@ class ListingsController < ApplicationController
        @listing.update(new_params)
       flash[:notice] = "商品情報を編集しました"
     else
-      flash[:alert] = "商品情報の編集がうまくいきませんでした..."
+      flash[:alert] = "商品情報の編集がうまくいきませんでした"
     end
     redirect_back(fallback_location: request.referer)
 

@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     if current_user.phone_verified
       flash[:notice] = "電話番号の認証に成功しました!"
     else
-      flash[:alert] = "電話番号の認証に失敗しました..."
+      flash[:alert] = "電話番号の認証に失敗しました"
     end
 
     redirect_to edit_user_registration_path

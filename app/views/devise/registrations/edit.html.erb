@@ -130,30 +130,35 @@
 
 
       <div class="edit-phone">
-        <h4>電話番号</h4>
+        <h4>
+          電話番号
+          <% if current_user.phone_verified %>
+            <span class="blue"><i class="fa fa-check"></i></span>
+          <% end %>
+        </h4>
         <div class="container">
 
-          <% if !current_user.phone_number.blank? %>
-            <h4>
+        <% if !current_user.phone_number.blank? %>
+            <h4 class="phone-number">
               <%= current_user.phone_number %>
-              <% if current_user.phone_verified %>
-
-               <span class="blue"><i class="fa fa-check"></i></span>
-              <% end %>
             </h4>
+
+            <% if current_user.phone_verified == false %>
+              <button class="btn white b-red" data-toggle="modal" data-target="#verify-phone">
+                電話番号を認証する
+              </button>
+            <% end %>
+            <br>
             <button class="btn white b-green" data-toggle="modal" data-target="#update-phone">
               電話番号を変更する
             </button>
-            <% if current_user.phone_verified == false %>
-            <button class="btn white b-gray" data-toggle="modal" data-target="#verify-phone">
-              電話番号を認証する
-            </button>
-            <% end %>
-          <% else %>
+
+        <% else %>
             <button class="btn white b-green" data-toggle="modal" data-target="#update-phone">
               電話番号を登録する
             </button>
-          <% end %>
+
+        <% end %>
 
         </div>
       </div>
