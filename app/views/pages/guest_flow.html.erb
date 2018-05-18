@@ -1,4 +1,13 @@
-<%= render 'guidance_menu' %>
+<div class="guidance-link">
+  <ul class="">
+    <li class=""><%= link_to "チャレンタ!について", about_path %></li>
+    <li class=""><%= link_to "取引きの仕組み", pages_guide_path %></li>
+    <li class=""><%= link_to "サーフボードを貸す", pages_host_flow_path %></li>
+    <li class="active"><%= link_to "サーフボードを借りる",pages_guest_flow_path %></li>
+    <li class=""><%= link_to "Q&A", pages_qanda_path %></li>
+    <li class=""><%= link_to "運営者", pages_management_path %></li>
+  </ul>
+</div>
 
 <h3 class="text-center">サーフボードを借りる</h3>
 

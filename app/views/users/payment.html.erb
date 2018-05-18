@@ -1,6 +1,6 @@
 <div class="dashboard-link">
   <ul class="">
-    <li class=""><%= link_to "支払い方法", payment_method_path, class: "active" %></li>
+    <li class="active"><%= link_to "支払い方法", payment_method_path %></li>
     <li class=""><%= link_to "売上管理", payout_method_path %></li>
     <li class=""><%= link_to "通知設定", payment_method_path %></li>
     <li class=""><%= link_to "プロフィールを見る", user_path(current_user.id) %></li>
@@ -30,7 +30,7 @@
          </div>
 
          <p>
-          ※レンタル代金の支払いはカード決済システムStripeを通して、クレジットカードによっておこなわれ、VISAとMastercardに対応しています。(Stripeについては<%= link_to "こちら", "https://stripe.com/jp" %>) 
+          ※レンタル代金の支払いはカード決済システムStripeを通して、クレジットカードによっておこなわれ、VISAとMastercardに対応しています。(Stripeについては<%= link_to "こちら", "https://stripe.com/jp" %>)
          </p>
 
 

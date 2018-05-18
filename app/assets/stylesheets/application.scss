@@ -373,9 +373,15 @@ th {
   float: left;
   }
 
+.dashboard-link ul .active{
+  border-bottom:solid 3px #04b4e4;
+}
+
 .dashboard-link ul li a{
   color:#000000;
 }
+
+
 
 // 認証系ページ
 .devise_container{
@@ -1625,6 +1631,11 @@ input#pac-input {
   border-bottom: 1px dotted #C0C0C0;
 }
 
+.notification-box .case{
+  margin: 0;
+  padding: 5px;
+}
+
 .notification-dashboard {
   color: #575757;
   font-size: 15px;
@@ -2075,6 +2086,10 @@ input#autolocation {
   margin: 5px;
   float: left;
   }
+
+.guidance-link ul .active{
+  border-bottom:solid 3px #04b4e4;
+}
 
 .guidance-link ul li a{
   color:#000000;
