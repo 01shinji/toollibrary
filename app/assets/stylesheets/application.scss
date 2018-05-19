@@ -374,7 +374,8 @@ th {
   }
 
 .dashboard-link ul .active{
-  border-bottom:solid 3px #04b4e4;
+  border-left:solid 3px #04b4e4;
+  border-right:solid 3px #04b4e4;
 }
 
 .dashboard-link ul li a{
@@ -1462,7 +1463,23 @@ input#pac-input {
   color:#ffffff;
 }
 
+.spot-name {
+    position: absolute;
+    right: 0;
+    margin-top: 5px;
+    margin-right: 5px;
+    z-index: 1;
+    font-size: 3rem;
+    font-weight: bold;
+}
+@media (max-width: 480px) {
+  /* ~480px */
+.spot-name {
+  margin-top: 10px;
 
+  font-size: 2rem;
+}
+}
 // GoogleMap 右下の利用規約隠す
 .gm-style-cc{
   display: none;
@@ -2088,7 +2105,8 @@ input#autolocation {
   }
 
 .guidance-link ul .active{
-  border-bottom:solid 3px #04b4e4;
+  border-left:solid 3px #04b4e4;
+  border-right:solid 3px #04b4e4;
 }
 
 .guidance-link ul li a{

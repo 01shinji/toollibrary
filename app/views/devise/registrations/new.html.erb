@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" >
   <div class=" devise_container">
 
     <h3 class="text-center">新規ユーザー登録</h3>
@@ -39,6 +39,35 @@
 
   </div>
 </div>
+
+
+<div id="registration-mondal" class="modal  fade text-center" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">お問合わせ</h4>
+      </div>
+      <div class="modal-body">
+         <div class="form-group">
+           <p>
+             チャレンタ!に対してご不明点やご質問がございましたら、登録前に<%= link_to "こちら", inquiry_path %>からお気軽にお問合わせくださいませ。
+           </p>
+           <p>
+             湘南地域(藤沢市,茅ヶ崎市,平塚市,鎌倉市など)でしたら対面でお会いして、ご質問にお答えすることもできます。
+           </p>
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+ $(window).on('load',function(){
+  $('#registration-mondal').modal('show');
+ });
+</script>
 
 <script type="text/javascript">
   $(document).ready(function(){

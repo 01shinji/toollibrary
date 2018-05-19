@@ -17,23 +17,8 @@
 
       <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <div class="">
-          <h5>北海道</h5>
-          <span><%= link_to '小樽',search_path(search: '北海道小樽市築港１') %></span>
-          <span><%= link_to '苫小牧',search_path(search: '北海道勇払郡厚真町') %></span>
-          <span><%= link_to '室蘭',search_path(search: '北海道室蘭市母恋南町４丁目４−７７') %></span>
-          <span><%= link_to '函館',search_path(search: '〒041-0521 北海道函館市御崎町') %></span>
-        </div>
 
-        <div class="">
-          <h5>東北</h5>
-          <span><%= link_to '青森',search_path(search: '〒031-0841 青森県八戸市鮫町横道通') %></span>
-          <span><%= link_to '岩手浪板',search_path(search: '〒028-1101 岩手県上閉伊郡大槌町吉里々々第１０地割') %></span>
-          <span><%= link_to '宮城本吉',search_path(search: '〒988-0309 宮城県気仙沼市本吉町津谷松尾') %></span>
-          <span><%= link_to '宮城仙台',search_path(search: '〒983-0013 宮城県仙台市宮城野区中野') %></span>
-          <span><%= link_to '福島',search_path(search: '〒975-0022 福島県南相馬市原町区北泉地蔵堂') %></span>
-        </div>
-
+        <!-- 茨城 -->
         <div class="">
           <h5>茨城</h5>
           <span><%= link_to '日立',search_path(search: '〒317-0061 茨城県日立市東町３丁目１３') %></span>
@@ -42,7 +27,7 @@
           <span><%= link_to '鹿島',search_path(search: '〒314-0004 茨城県鹿嶋市下津') %></span>
           <span><%= link_to '波崎',search_path(search: '〒314-0408 茨城県神栖市波崎') %></span>
         </div>
-
+        <!-- 千葉 -->
         <div class="">
           <h5>千葉</h5>
           <span><%= link_to '銚子',search_path(search: '〒288-0025 千葉県銚子市潮見町') %></span>
@@ -61,7 +46,7 @@
           <span><%= link_to '平砂浦',search_path(search: '〒294-0235 千葉県館山市相浜') %></span>
 
         </div>
-
+        <!-- 湘南 -->
         <div class="">
           <h5>湘南</h5>
           <span><%= link_to '鎌倉',search_path(search: '〒248-0000 神奈川県鎌倉市稲村ガ崎１丁目１９') %></span>
@@ -71,7 +56,7 @@
           <span><%= link_to '湯河原',search_path(search: '〒259-0312 神奈川県足柄下郡湯河原町吉浜') %></span>
 
         </div>
-
+        <!-- 伊豆 -->
         <div class="">
           <h5>伊豆</h5>
           <span><%= link_to '今井浜/白浜',search_path(search: '〒415-0012 静岡県下田市白浜') %></span>
@@ -83,92 +68,7 @@
 
         </div>
 
-        <div class="">
-          <h5>静岡</h5>
-          <span><%= link_to '静波',search_path(search: '〒421-0422 静岡県牧之原市静波') %></span>
-          <span><%= link_to '御前崎',search_path(search: '〒437-1621 静岡県御前崎市御前崎') %></span>
-          <span><%= link_to '磐田/中田島',search_path(search: '〒438-0233 静岡県磐田市駒場６８６６−５') %></span>
 
-          <span><%= link_to '舞阪/潮見',search_path(search: '〒431-0302 静岡県湖西市新居町新居官有無番地') %></span>
-
-
-        </div>
-
-        <div class="">
-          <h5>伊良湖</h5>
-          <span><%= link_to '寺沢/百々',search_path(search: '〒441-3211 愛知県豊橋市伊古部町枇杷ケ谷５７') %></span>
-
-          <span><%= link_to 'ロングビーチ/港',search_path(search: '〒441-3502 愛知県田原市赤羽根町長沢長沢50番地７') %></span>
-          <span><%= link_to '先端',search_path(search: '〒441-3624 愛知県田原市伊良湖町恋路浦') %></span>
-
-        </div>
-
-        <div class="">
-          <h5>伊勢志摩〜和歌山</h5>
-          <span><%= link_to '国府の浜/市後浜',search_path(search: '〒517-0505 三重県志摩市阿児町甲賀') %></span>
-
-          <span><%= link_to '南張',search_path(search: '〒517-0405 三重県志摩市浜島町南張') %></span>
-          <span><%= link_to '磯ノ浦',search_path(search: '〒640-0114 和歌山県和歌山市磯の浦') %></span>
-
-        </div>
-
-        <div class="">
-          <h5>四国</h5>
-
-          <span><%= link_to '内妻/海部',search_path(search: '〒775-0301 徳島県海部郡海陽町鞆浦') %></span>
-          <span><%= link_to '穴喰',search_path(search: '〒775-0501 徳島県海部郡海陽町宍喰浦宍喰') %></span>
-          <span><%= link_to '生見',search_path(search: '〒781-7414 高知県安芸郡東洋町生見') %></span>
-          <span><%= link_to '尾崎',search_path(search: '〒781-7220 高知県室戸市佐喜浜町７０８') %></span>
-          <span><%= link_to '四万十',search_path(search: '〒789-1931 高知県幡多郡黒潮町入野３８８') %></span>
-
-        </div>
-
-        <div class="">
-          <h5>九州</h5>
-          <span><%= link_to '日向',search_path(search: '〒883-0021 宮崎県日向市財光寺１９４２') %></span>
-          <span><%= link_to '一ツ葉',search_path(search: '〒880ー0204 宮崎県宮崎市佐土原町下富田') %></span>
-          <span><%= link_to '木崎浜',search_path(search: '〒889-2151 宮崎県宮崎市大字熊野１４４３−１２') %></span>
-          <span><%= link_to '日南',search_path(search: '〒887-0023 宮崎県日南市隈谷甲２３４８') %></span>
-          <span><%= link_to '串間',search_path(search: '〒888-0002 宮崎県串間市高松') %></span>
-          <span><%= link_to '鹿児島',search_path(search: '〒899-2203 鹿児島県日置市東市来町伊作田７４２５−１２') %></span>
-          <span><%= link_to '北九州',search_path(search: '〒807-0141 福岡県遠賀郡芦屋町山鹿４') %></span>
-          <span><%= link_to '福岡',search_path(search: '〒811-0204 福岡県福岡市東区奈多１３０２−５３') %></span>
-          <span><%= link_to '糸満/唐津',search_path(search: '〒819-1303 福岡県糸島市志摩野北') %></span>
-          <span><%= link_to '長崎',search_path(search: '〒854-0703 長崎県雲仙市南串山町丙') %></span>
-          <span><%= link_to '天草',search_path(search: '〒863-2611 熊本県天草郡苓北町都呂々') %></span>
-
-        </div>
-
-        <div class="">
-          <h5>日本海</h5>
-          <span><%= link_to '秋田',search_path(search: '〒018-0602 秋田県由利本荘市西目町出戸浜山') %></span>
-          <span><%= link_to '新潟',search_path(search: '〒950-2101 新潟県新潟市西区西区五十嵐１の町６３７９−８０') %></span>
-          <span><%= link_to '富山',search_path(search: '〒931-8332 富山県富山市森５丁目１−１７') %></span>
-          <span><%= link_to '石川',search_path(search: '〒920-0000 石川県金沢市普正寺町11字1番地１') %></span>
-
-          <span><%= link_to '福井鷹巣',search_path(search: '〒910-3377 福井県福井市浜住町') %></span>
-
-          <span><%= link_to '福井高浜',search_path(search: '〒919-2227 福井県大飯郡高浜町若宮') %></span>
-          <span><%= link_to '京都',search_path(search: '〒629-3104 京都府京丹後市網野町浅茂川') %></span>
-          <span><%= link_to '鳥取',search_path(search: '〒689-0105 鳥取県鳥取市福部町湯山２１６４−６６１') %></span>
-          <span><%= link_to '島根',search_path(search: '〒690-0333 島根県松江市鹿島町古浦') %></span>
-          <span><%= link_to '山口',search_path(search: '〒759-4622 山口県長門市油谷川尻油谷向津具上１０６８−１') %></span>
-
-        </div>
-
-        <div class="">
-          <h5>離島</h5>
-          <span><%= link_to '伊豆大島',search_path(search: '東京都大島町') %></span>
-          <span><%= link_to '新島',search_path(search: '東京都新島村') %></span>
-          <span><%= link_to '神津島',search_path(search: '〒100-0601 東京都神津島村') %></span>
-          <span><%= link_to '三宅島',search_path(search: '東京都三宅島') %></span>
-          <span><%= link_to '八丈島',search_path(search: '東京都八丈町') %></span>
-          <span><%= link_to '小笠原父島',search_path(search: '東京都父島') %></span>
-          <span><%= link_to '種子島',search_path(search: '鹿児島県種子島') %></span>
-          <span><%= link_to '奄美大島',search_path(search: '鹿児島県奄美大島') %></span>
-          <span><%= link_to '沖縄',search_path(search: '沖縄県沖縄市') %></span>
-
-        </div>
 
       </div>
     </div>

@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @listings = Listing.where(active: true).limit(4)
+    @listings = Listing.where(active: true).limit(6)
   end
 
   def search
@@ -8,6 +8,7 @@ class PagesController < ApplicationController
     if params[:search].present? && params[:search].strip != ""
 
       session[:address] = params[:search]
+      @address = session[:address]
 
       if params["lat"].present? & params["lng"].present?
         @latitude = params["lat"]

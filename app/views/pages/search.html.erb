@@ -8,6 +8,16 @@
       <%= text_field_tag :search, params[:search], placeholder: "住所から検索",  class: "form-control search-location", id:"pac-input" %>
    </div>
 
+   <p class="spot-name">
+    <% if @address == "神奈川県鎌倉市稲村ガ崎１丁目１９" %>鎌倉
+    <% elsif @address == "神奈川県藤沢市鵠沼海岸１丁目１７−３" %>藤沢
+    <% elsif @address == "神奈川県茅ヶ崎市東海岸南６丁目" %>茅ヶ崎
+    <% elsif @address == "神奈川県平塚市龍城ケ丘１９" %>平塚/大磯
+    <% elsif @address == "神奈川県足柄下郡湯河原町吉浜" %>湯河原
+    <% else %> 
+    <% end %>
+   </p>
+
    <div id="map">
    </div>
 
@@ -26,6 +36,7 @@
     </div>
 
     <% else %>
+
     <!-- 出品中アイテム -->
     <div class="row listings-list" id="">
       <%= render partial: "listings/listings_list", locals: {listings: @arrListings} %>

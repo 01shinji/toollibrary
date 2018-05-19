@@ -87,8 +87,9 @@ $(".local").click(function(){
 function init() {
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 39, lng: 137},
-    zoom: 4.6,
+    center: {lat: 35.5, lng: 139.881992
+},
+    zoom: 7.9,
     // デフォルトのコントロールセット非表示
     disableDefaultUI: true,
     // デフォルトの情報ウィンドウ非表示
@@ -101,65 +102,128 @@ function init() {
   var autocomplete = new google.maps.places.Autocomplete(input);
 
   var data = new Array();
-  // 北海道
-  data.push({
-   lat: '43.180908', //緯度
-   lng: '141.027971', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=北海道小樽市築港１&commit=検索"
-  });
-  data.push({
-   lat: '42.723662', //緯度
-   lng: '141.877935', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=北海道勇払郡厚真町&commit=検索"
-  });
-  data.push({
-   lat: '42.306818', //緯度
-   lng: '141.002234', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=北海道室蘭市母恋南町４丁目４−７７&commit=検索"
-  });
-  data.push({
-   lat: '41.797894', //緯度
-   lng: '141.175521', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=北海道函館市御崎町&commit=検索"
-  });
-  // 東北
-  data.push({
-   lat: '40.517130', //緯度
-   lng: '141.592366', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=青森県八戸市鮫町横道通&commit=検索"
-  });
-  data.push({
-   lat: '39.383537', //緯度
-   lng: '141.933371', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=岩手県上閉伊郡大槌町吉里々々第１０地割&commit=検索"
-  });
-  data.push({
-   lat: '38.788817', //緯度
-   lng: '141.504033', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=宮城県気仙沼市本吉町津谷松尾&commit=検索"
-  });
-  data.push({
-   lat: '38.282415', //緯度
-   lng: '140.989038', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=宮城県仙台市宮城野区中野&commit=検索"
-  });
-  data.push({
-   lat: '37.655512', //緯度
-   lng: '141.016626', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=福島県南相馬市原町区北泉地蔵堂&commit=検索"
-  });
   // 茨城
   data.push({
    lat: '36.596590', //緯度
    lng: '140.668299', //経度
    url: "/search?utf8=✓&lat=&lng=&search=茨城県日立市東町３丁目１３&commit=検索"
   });
+  data.push({
+   lat: '36.382196', //緯度
+   lng: '140.609154', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=茨城県ひたちなか市阿字ケ浦町&commit=検索"
+  });
+  data.push({
+   lat: '36.310496', //緯度
+   lng: '140.574486', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=茨城県東茨城郡大洗町港中央&commit=検索"
+  });
+  data.push({
+   lat: '35.975255', //緯度
+   lng: '140.659842', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=茨城県鹿嶋市下津&commit=検索"
+  });
+  data.push({
+   lat: '35.745378', //緯度
+   lng: '140.827290', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=茨城県神栖市波崎&commit=検索"
+  });
+  // 千葉
+  data.push({
+   lat: '35.704110', //緯度
+   lng: '140.844648', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=千葉県銚子市潮見町&commit=検索"
+  });
+  data.push({
+   lat: '35.704110', //緯度
+   lng: '140.844648', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=千葉県山武郡九十九里町片貝&commit=検索"
+  });
+  data.push({
+   lat: '35.355873', //緯度
+   lng: '140.388274', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=千葉県長生郡一宮町東浪見&commit=検索"
+  });
+  data.push({
+   lat: '35.293079', //緯度
+   lng: '140.403677', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=千葉県いすみ市岬町和泉４４４８−１&commit=検索"
+  });
+  data.push({
+   lat: '35.165243', //緯度
+   lng: '140.332695', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=千葉県勝浦市部原&commit=検索"
+  });
+  data.push({
+   lat: '35.105099', //緯度
+   lng: '140.103352', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=千葉県鴨川市横渚&commit=検索"
+  });
+  data.push({
+   lat: '35.040621', //緯度
+   lng: '140.019128', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=千葉県南房総市和田町仁我浦&commit=検索"
+  });
+  data.push({
+   lat: '34.975407', //緯度
+   lng: '139.958146', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=千葉県南房総市千倉町瀬戸&commit=検索"
+  });
+  data.push({
+    title: "",
+   lat: '34.924269', //緯度
+   lng: '139.829140', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=千葉県館山市相浜&commit=検索"
+  });
+  // 湘南
+  data.push({
+   lat: '35.302457', //緯度
+   lng: '139.525644', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=神奈川県鎌倉市稲村ガ崎１丁目１９&commit=検索"
+  });
+  data.push({
+   lat: '35.315711', //緯度
+   lng: '139.470007', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=神奈川県藤沢市鵠沼海岸１丁目１７−３&commit=検索"
+  });
+  data.push({
+
+   lat: '35.320212', //緯度
+   lng: '139.417428', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=神奈川県茅ヶ崎市東海岸南６丁目&commit=検索"
+  });
+  data.push({
+   lat: '35.314952', //緯度
+   lng: '139.346261', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=神奈川県平塚市龍城ケ丘１９&commit=検索"
+  });
+  data.push({
+   lat: '35.156015', //緯度
+   lng: '139.127862', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=神奈川県足柄下郡湯河原町吉浜&commit=検索"
+  });
+  // 伊豆
+  data.push({
+   lat: '34.691977', //緯度
+   lng: '138.971825', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=静岡県下田市白浜&commit=検索"
+  });
+  data.push({
+   lat: '34.661949', //緯度
+   lng: '138.918642', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=静岡県下田市吉佐美&commit=検索"
+  });
+  data.push({
+   lat: '35.005852', //緯度
+   lng: '139.081592', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=静岡県伊東市宇佐美&commit=検索"
+  });
 
   for (i = 0; i < data.length; i++) {
    var marker = new google.maps.Marker({
      position: new google.maps.LatLng(data[i].lat, data[i].lng),
      map: map,
-     icon: {url: 'assets/wind.png',scaledSize: new google.maps.Size(15, 15)}
+     icon: {url: 'assets/wind.png',scaledSize: new google.maps.Size(20, 20)}
    });
 
    //クリックしたら指定したurlに遷移するイベント
