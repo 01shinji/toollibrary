@@ -87,9 +87,8 @@ $(".local").click(function(){
 function init() {
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 35.5, lng: 139.881992
-},
-    zoom: 7.9,
+    center: {lat: 39, lng: 137},
+    zoom: 4.6,
     // デフォルトのコントロールセット非表示
     disableDefaultUI: true,
     // デフォルトの情報ウィンドウ非表示
@@ -223,7 +222,7 @@ function init() {
    var marker = new google.maps.Marker({
      position: new google.maps.LatLng(data[i].lat, data[i].lng),
      map: map,
-     icon: {url: 'assets/wind.png',scaledSize: new google.maps.Size(20, 20)}
+     icon: {url: 'assets/stick.png',scaledSize: new google.maps.Size(20, 20)}
    });
 
    //クリックしたら指定したurlに遷移するイベント
