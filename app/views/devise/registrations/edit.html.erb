@@ -1,7 +1,7 @@
 <div class="dashboard-link">
   <ul class="">
-    <li class=""><%= link_to "プロフィールの編集", edit_user_registration_path %></li>
-    <li class=""><%= link_to "電話番号の認証", edit_user_registration_path %></li>
+    <li class="active"><%= link_to "プロフィールの編集", edit_user_registration_path %></li>
+    <li class=""><%= link_to "電話番号の認証",  anchor: "phone" %></li>
     <li class=""><%= link_to "プロフィールを見る", user_path(current_user.id) %></li>
   </ul>
 </div>
@@ -129,7 +129,7 @@
       </div>
 
 
-      <div class="edit-phone">
+      <div class="edit-phone" id="phone" >
         <h4>
           電話番号
           <% if current_user.phone_verified %>
@@ -163,7 +163,7 @@
         </div>
       </div>
 
-      <div class="edit-license">
+      <div class="edit-license" id="license">
 
         <h4>
           身分証明書
