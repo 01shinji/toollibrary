@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
       @other = current_user == @conversation.sender ? @conversation.recipient : @conversation.sender
       @messages = @conversation.messages.order("created_at ASC")
     else
-      redirect_to conversations_path, alert: "このメッセージを見る権限がありません..."
+      redirect_to conversations_path, alert: "このメッセージを見る権限がありません"
     end
   end
 

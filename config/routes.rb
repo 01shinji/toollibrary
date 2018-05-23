@@ -1,5 +1,20 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    resources :users
+    resources :conversations
+    resources :reviews
+    resources :listings
+    resources :messages
+    resources :notifications
+    resources :photos
+    resources :reservations
+    resources :guest_reviews
+    resources :host_reviews
+
+    root to: "users#index"
+  end
+
   root 'pages#home'
 
   devise_for :users,

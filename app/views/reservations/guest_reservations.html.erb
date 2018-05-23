@@ -13,7 +13,7 @@
       <h3 class="">貸出し販売履歴</h3>
       <div class="">
         <% if @listings.count == 0 %>
-         <p>まだ貸出し販売履歴がありません...</p><br/>
+         <p>まだ貸出し販売履歴がありません</p><br/>
          <%= link_to "出品する", new_listing_path, class: "btn btn-form" %>
 
         <% else %>
@@ -25,13 +25,13 @@
               <%= reservation.start_date.strftime('%Y年%m月%d日') %>&nbsp;
 
               <% if reservation.Waiting? %>
-                <span class="status">返答待ち</span>&nbsp;
-                  <%= link_to approve_reservation_path(reservation), method: :post do %><span class="blue"><i class="fa fa-thumbs-up fa-lg"></i></span><% end %> |
-                  <%= link_to decline_reservation_path(reservation), method: :post do %><span class="blue"><i class="fa fa-thumbs-down fa-lg"></i></span><% end %>
+                <span class="status b-red">返答待ち</span>&nbsp;
+                  <%= link_to approve_reservation_path(reservation), method: :post do %><span class="red"><i class="fa fa-thumbs-up fa-lg"></i></span><% end %> |
+                  <%= link_to decline_reservation_path(reservation), method: :post do %><span class="red"><i class="fa fa-thumbs-down fa-lg"></i></span><% end %>
                <% elsif reservation.Approved? %>
-                 <span class="status">予約成立!</span>
+                 <span class="status b-orange">予約成立!</span>
                <% else reservation.Declined? %>
-                 <span class="status">不成立</span>
+                 <span class="status b-thick-gray">不成立</span>
                <% end %>
             </p>
 

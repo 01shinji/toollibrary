@@ -19,11 +19,17 @@ class ListingsController < ApplicationController
 
     elsif
      !current_user.nickname ||
-     !current_user.image_file_name ||
+
      !current_user.address_zipcode ||
      !current_user.address_prefecture_name
 
      return redirect_to edit_user_registration_path, alert: "プロフィールの登録をお願いします"
+
+    elsif
+
+    !current_user.image_file_name 
+
+    return redirect_to edit_user_registration_path, alert: "プロフィール画像を変更してください"
 
     else
      @listing = current_user.listings.build
@@ -37,9 +43,9 @@ class ListingsController < ApplicationController
 
     @photos = @listing.photos
      if @listing.save
-      redirect_to information1_listing_path(@listing), notice: "商品の仮登録が成功しました!最後まで入力をお願いします〜"
+      redirect_to information1_listing_path(@listing), notice: "商品の仮登録が成功しました!最後まで入力をお願いします"
      else
-      flash[:alert] = "出品がうまくいきませんでした..."
+      flash[:alert] = "出品がうまくいきませんでした"
       render :new
      end
 

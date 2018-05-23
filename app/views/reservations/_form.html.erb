@@ -54,7 +54,7 @@
            </div>
 
          </td>
-         <td class="text-right"><%= @listing.price_day * 0.10 %>円</td>
+         <td class="text-right"><%= (@listing.price_day * 0.10).to_i %>円</td>
        </tr>
        <tr>
          <td class="text-left">日数</td>
@@ -138,7 +138,7 @@ $(document).ready(function(){
              success: function(data){
 
               if(data.conflict){
-                $('#message').text('この期間は予約できません...');
+                $('#message').text('この期間は予約できません');
                 $('#preview').hide();
                 $('#btn_book').attr('disabled', true);
               } else {
@@ -146,7 +146,7 @@ $(document).ready(function(){
                 $('#preview').show();
                 $('#btn_book').attr('disabled', false);
 
-                var total = days * ( <%= @listing.price_day %> +  <%= @listing.price_day * 0.10 %> )
+                var total = days * ( <%= @listing.price_day %> +  <%= (@listing.price_day * 0.10).to_i %> )
                 $('#reservation_days').text(days);
                 $('#reservation_total').text(total);
               }
@@ -186,7 +186,7 @@ $(document).ready(function(){
              success: function(data){
 
               if(data.conflict){
-                $('#message').text('この期間は予約できません...');
+                $('#message').text('この期間は予約できません');
                 $('#preview').hide();
                 $('#btn_book').attr('disabled', true);
               } else {
@@ -194,7 +194,7 @@ $(document).ready(function(){
                 $('#preview').show();
                 $('#btn_book').attr('disabled', false);
 
-                var total = days * ( <%= @listing.price_day %> +  <%= @listing.price_day * 0.10 %> )
+                var total = days * ( <%= @listing.price_day %> +  <%= (@listing.price_day * 0.10).to_i %> )
                 $('#reservation_days').text(days);
                 $('#reservation_total').text(total);
               }

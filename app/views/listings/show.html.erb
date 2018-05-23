@@ -248,7 +248,7 @@
            </div>
 
            <span class="distance">
-             <%= listing.distance.round(3)*1000 %><menuitem type="command" label="Save">m
+             <%= (listing.distance.round(3)*1000).to_i %><menuitem type="command" label="Save">m
            </span>
 
            <div class="listing-content">

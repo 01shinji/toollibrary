@@ -156,6 +156,10 @@ ja:
       create: 登録する
       submit: 保存する
       update: 更新する
+    label:
+      Users:
+        Listings: リスティング
+
   number:
     currency:
       format:
