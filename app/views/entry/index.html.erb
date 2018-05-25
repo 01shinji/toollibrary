@@ -1,26 +1,112 @@
+<div class="" id="entry">
 
-<h3 class="text-center">サーフ文庫について</h3>
+<div class="entry-box">
+  <ul>
+   <li id="title" class="">
+     <%= link_to "サーフ文庫", entry_path, class: "navbar-brand " %>
+   </li>
+   <li class="sentence font-md">
+     サーフィンのシェアリングサービス
+   </li>
+   <li class="sentence font-sm">
+     サーフィンの<br>シェアリングサービス
+   </li>
+
+   <script type="text/javascript">
+     $(function(){
+      var w = window.innerWidth;
+      if (w > 480){
+
+        $(".font-sm").remove();
+
+      }
+      if (w <= 480){
+
+        $(".font-md").remove();
+        $(".font-sm").append();
+
+      }
+      console.log(w);
+     });
+   </script>
+
+  </ul>
+  <div class="entry-case">
+
+      <%= link_to "応募する", anchor: "entry-form"  %>
+
+
+  </div>
+</div>
+
+<p class="animated infinite slideOutLeft" id="motion">
+ <span class="">🌊🏄</span>
+</p>
+
+<nav class="">
+  <div class="message text-center">
+    <p>
+      7月にサービスがオープンします<br>
+      湘南と千葉でサーフボードやボード置き場を貸してくれる方を募集中
+    </p>
+  </div>
+</nav>
 
 <!--about-->
 <div class="about-box">
-  <div class="box-circle">
-    <div class="circle-top">About</div>
-  </div>
 
   <!--イメージ写真-->
   <div class="image-box">
     <div class="image-case">
-
-      <h3>
+      <h2>
         <b>
-          プレイヤーの<br>
-          プレイヤーによる<br>
-          プレイヤーのための
+          サーフボードを<br>
+          貸してください!
         </b>
-      </h3>
-
+      </h2>
     </div>
   </div>
+
+  <div class="table_container">
+    <h4><b>報酬例</b></h4>
+    <div class="table-responsive">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>商品</th>
+            <th>報酬</th>
+
+          </tr>
+          <tr>
+            <td>
+              サーフボード<br>
+              (ショート,ファン,ロングなど)
+            </td>
+            <td class="red"><b>￥1,000~5,000(1⽇)</b></td>
+
+          </tr>
+          <tr>
+            <td>
+              SUPボード<br>
+              (オールラウンド,フィッシングなど)
+            </td>
+            <td class="red"><b>￥3,000~5,000(1⽇)</b></td>
+
+          </tr>
+          <tr>
+            <td>ボード置き場</td>
+            <td class="red"><b>￥3,000~(1ヶ⽉)</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="box-circle">
+    <div class="circle-top">About</div>
+  </div>
+
+  <h3 class="text-center">サーフ文庫について</h3>
 
   <div class="about-sentence">
 
@@ -28,35 +114,7 @@
     <p>日本は海に囲まれており、全国にサーフィンが盛んな地域(メッカ)があり、そしてそこにはたくさんのサーファー(プレイヤー)がいます。</p>
     <p>メッカに在住するプレイヤー個人から直接サーフボードを借りたり、サーフガイドを受けることができ、今までにない新しい出逢いを提供します!</p>
 
-    <div class="table_container">
-      <h4><b>利用例</b></h4>
-      <div class="table-responsive">
-        <table class="table">
-          <tbody>
-            <tr>
-              <th>ユーザー</th>
-              <th>サーフィン歴(頻度)</th>
-              <th>現状</th>
-            </tr>
-            <tr>
-              <td>湘南在住の会社員</td>
-              <td>2年(週2回)</td>
-              <td>既に1本ボード所有、2本目はいろんなボード試したい!</td>
-            </tr>
-            <tr>
-              <td>東京都在住の会社員</td>
-              <td>3年(月2回)</td>
-              <td>週末に千葉へ、ローカルのショップと契約中だがロッカー代などの固定費用を削減したい!</td>
-            </tr>
-            <tr>
-              <td>東京都在住の学生</td>
-              <td>ビギナー</td>
-              <td>サーフィンをやるのは夏のみ、ボードをわざわざ購入したくない!</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+
 
     <p>海に入るときだけ借りることも、借りっぱなしもどちらもOK</p>
     <p>全国のサーフスポットで地元のサーファーから直接サーフボードやSUPボード、ボード置き場を借りることができ、ローカルの波にあったボードが揃っています</p>
@@ -306,7 +364,7 @@
 
 <div class="row">
   <div class=" text-center">
-    <div class="panel panel-default">
+    <div class="panel panel-default" id="entry-form">
       <h3>登録•お問合わせ</h3>
 
       <div class="container">
@@ -881,7 +939,7 @@
 
     </p>
     <p>
-      <%= link_to("第18回湘南ビジネスコンテスト", "http://www.s-cns.com/contest/contest2017.html", class: "gray")%>で来場者賞受賞
+      <%= link_to("第18回湘南ビジネスコンテスト", "http://www.s-cns.com/contest/contest2017.html", class: "gray")%>で来場者賞受賞う
     </p>
     <p>
       サーフィン歴は1年、ホームポイントは「鵠沼銅像前」「引地川河口」。<br>
@@ -892,6 +950,8 @@
       「アフリカで使ったAirbnb(エアビーエヌビー)がとてつもなく楽しく、個人間の取引にハマりました。人との出逢いこそが人生を豊かにすると思っており、そのきっかけを作るサービスを作りたいです!」
     </p>
   </div>
+
+</div>
 
 </div>
 

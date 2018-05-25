@@ -52,7 +52,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ZRYgtCagsAWTqGbqxkpW09Y
    <div id="wrapper">
 
     <% if  request.path == '/entry' || request.path == '/entry/confirm' || request.path == '/entry/thanks' %>
-      <div class="container">
+      <div class="">
        <%= yield %>
       </div>
     <% else %>
