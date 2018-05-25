@@ -1,12 +1,382 @@
-<div class="guidance-link">
-  <ul class="">
-    <li class=""><%= link_to "サーフ文庫について", about_path %></li>
-    <li class=""><%= link_to "取引きの仕組み", pages_guide_path %></li>
-    <li class=""><%= link_to "サーフボードを貸す", pages_host_flow_path %></li>
-    <li class=""><%= link_to "サーフボードを借りる",pages_guest_flow_path %></li>
-    <li class="active"><%= link_to "Q&A", pages_qanda_path %></li>
-    <li class=""><%= link_to "運営者", pages_management_path %></li>
-  </ul>
+
+<h3 class="text-center">サーフ文庫について</h3>
+
+<!--about-->
+<div class="about-box">
+  <div class="box-circle">
+    <div class="circle-top">About</div>
+  </div>
+
+  <!--イメージ写真-->
+  <div class="image-box">
+    <div class="image-case">
+
+      <h3>
+        <b>
+          プレイヤーの<br>
+          プレイヤーによる<br>
+          プレイヤーのための
+        </b>
+      </h3>
+
+    </div>
+  </div>
+
+  <div class="about-sentence">
+
+    <h3><span class="blue">サーフ文庫</span>は全国のどこでもローカルのサーファーからサーフボードやボード置き場を借りれる、日本初のサーフィンのシェアリングサービスです。</h3>
+    <p>日本は海に囲まれており、全国にサーフィンが盛んな地域(メッカ)があり、そしてそこにはたくさんのサーファー(プレイヤー)がいます。</p>
+    <p>メッカに在住するプレイヤー個人から直接サーフボードを借りたり、サーフガイドを受けることができ、今までにない新しい出逢いを提供します!</p>
+
+    <div class="table_container">
+      <h4><b>利用例</b></h4>
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>ユーザー</th>
+              <th>サーフィン歴(頻度)</th>
+              <th>現状</th>
+            </tr>
+            <tr>
+              <td>湘南在住の会社員</td>
+              <td>2年(週2回)</td>
+              <td>既に1本ボード所有、2本目はいろんなボード試したい!</td>
+            </tr>
+            <tr>
+              <td>東京都在住の会社員</td>
+              <td>3年(月2回)</td>
+              <td>週末に千葉へ、ローカルのショップと契約中だがロッカー代などの固定費用を削減したい!</td>
+            </tr>
+            <tr>
+              <td>東京都在住の学生</td>
+              <td>ビギナー</td>
+              <td>サーフィンをやるのは夏のみ、ボードをわざわざ購入したくない!</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p>海に入るときだけ借りることも、借りっぱなしもどちらもOK</p>
+    <p>全国のサーフスポットで地元のサーファーから直接サーフボードやSUPボード、ボード置き場を借りることができ、ローカルの波にあったボードが揃っています</p>
+
+
+
+  </div>
+</div>
+
+<!--特徴-->
+<div class="about-box">
+  <div class="box-circle">
+    <div class="circle-top">特徴</div>
+  </div>
+
+  <div class="about-sentence">
+    <h3 class="text-center">サーフ文庫の5つの特徴</h3>
+    <div class="case">
+      <h4><b>認証</b></h4>
+      <p>
+        サーフ文庫を利用できるのはFacebook、電話番号、身分証で身分が確認できた人だけです<br>
+        そして実名制とすることで「誰が貸しているの？誰が借りるの？相手は信用できる人なの？」という不安を取り除いています。<br>
+        またユーザーの顔写真や名前を見ることができるのは登録ユーザーのみとすることで安心して利用できる仕様になっています(※一般の人には顔写真や名前は公開されません)
+      </p>
+      <div class="">
+        <img id="" class="img-responsive" src="/assets/show-comparison.jpg" alt="" width="" height="" />
+      </div>
+    </div>
+
+    <div class="case">
+      <h4><b>安心決済</b></h4>
+      <p>
+        個人間のレンタルはトラブルが付き物です。「レンタル代金を支払ったのにホスト(貸し手)と連絡がつかない!取引き当日にゲスト(借り手)が現れなかった!」という事がないよう、サーフ文庫では決済をクレジットカードに限定し、取引きが無事完了した場合のみに引き起こしがおこなわれます。
+      </p>
+    </div>
+
+    <div class="case">
+      <h4><b>補償</b></h4>
+      <p>
+        万が一ボードをレンタル中に破損が発生した場合には「サーフ文庫」が間に入って対応し、ホスト(貸し手)向けには修理費用の全額を補償します。(詳しくは<%= link_to "こちら", pages_guide_path %>をご覧ください。)
+      <p>
+    </div>
+    <div class="case">
+      <h4><b>評価制度</b></h4>
+      <p>
+        ホスト(貸し手)、ゲスト(借り手)に対して取引後に必ず相互評価を行なっていただいているので、ホストとゲストが過去にどのような取引をおこなったのかを知る事ができます。<br>
+        サーフ文庫で何度も取引いただく事によって、信頼度が増す仕組みとなっています。
+      </p>
+    </div>
+    <div class="case">
+      <h4><b>安心サポート</b></h4>
+      <p>
+        レンタルした商品が掲載されていた商品と状態が大幅に違う、壊れていた、レンタル中に壊れたなど、取引時のトラブルは最後まで必ずサポートし、解決します。<br>
+        また、予約前のわからない事の質問や相談、サービスに対する要望なども受け付けております。サーフ文庫の<%= link_to "お問い合わせフォーム", inquiry_path %>からお問い合わせください。24時間以内に対応させていただきます。
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<h3 class="text-center">取引きの仕組み</h3>
+
+
+<!--仕組み-->
+<div class="about-box">
+  <div class="box-circle">
+    <div class="circle-top">仕組み</div>
+  </div>
+
+  <div class="about-sentence">
+    <div class="">
+      <img id="" class="img-responsive" src="/assets/rental-min.jpg" alt="" width="" height="" />
+    </div>
+
+
+  </div>
+</div>
+
+<div class="about-box">
+  <div class="box-circle">
+    <div class="circle-top">取扱い商品</div>
+  </div>
+
+  <div class="about-sentence">
+    <table class="table table-bordered">
+     <tbody>
+      <tr>
+        <th scope="row">
+          サーフボード
+        </th>
+        <td colspan="3">
+          ショートボード<br>
+          ファンボード<br>
+          ロングボード
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          SUPボード
+        </th>
+        <td colspan="3">
+          サーフ<br>
+          オールラウンド<br>
+          フィッシング<br>
+          クルージング
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          その他
+        </th>
+        <td colspan="3">
+          ボード置き場<br>
+
+        </td>
+      </tr>
+
+     </tbody>
+    </table>
+
+
+  </div>
+</div>
+
+<div class="about-box">
+  <div class="box-circle">
+    <div class="circle-top ">サポーター費</div>
+  </div>
+  <div class="about-sentence">
+    <p>
+      一度の取引において、ホスト(貸し手)とゲスト(借り手)の双方から、1日あたりレンタル価格の10%をサポーター費として頂いております。
+    </p>
+
+    <p>
+      サポーター費は3ヶ月スパンで積み立てし、サーフ文庫の運営費やこの期間中の取引きで発生した破損への修理費用などに当てられます。そして使われなかったサポーター費は3ヶ月ごとに精算し、環境保護団体などへ寄付されます。(返金はされません)
+    </p>
+    <p>
+      またサポーター費の積み立てや寄付の状況は<%= link_to "こちら", pages_guide_path %>のページで公開しています。
+    </p>
+    <div class="table_container">
+      <h4><b>費用</b></h4>
+      <h4>例&nbsp;:&nbsp;1日3,000円でレンタルされた場合</h4>
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th></th>
+              <th>登録料</th>
+              <th>利用料</th>
+              <th>レンタル代</th>
+              <th>サポーター費</th>
+              <th>トータル</th>
+            </tr>
+            <tr>
+              <td>ゲスト(借り手)</td>
+              <td>無料</td>
+              <td>無料</td>
+              <td>3,000円</td>
+              <td>300円</td>
+              <td><b>3,300円(3,000円＋300円)の支払い</b></td>
+            </tr>
+            <tr>
+              <td>ホスト(貸し手)</td>
+              <td>無料</td>
+              <td>無料</td>
+              <td>3,000円</td>
+              <td>300円</td>
+              <td><b>2,700円(3,000円-300円)の収入</b></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="about-box">
+  <div class="box-circle">
+    <div class="circle-top ">ホストへの補償</div>
+  </div>
+  <div class="about-sentence">
+
+    <p>
+      ホストが商品を貸出し中に発生した破損や盗難に関しては<span>全額</span>補償されます。また保障費は購入時期と購入価格やブランド、中古市場価格を基に算出され、その上限は以下のとおりです。
+    </p>
+
+    <div class="table_container">
+      <h4><b>補償費の上限</b></h4>
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th></th>
+              <th>購入時期</th>
+              <th>全損と盗難の補償上限</th>
+              <th>修理の補償上限</th>
+
+            </tr>
+            <tr>
+              <td>サーフボード,SUPボード</td>
+              <td>1年以内</td>
+              <td>購入価格&nbsp;×&nbsp;0.6</td>
+              <td>15,000円</td>
+
+            </tr>
+            <tr>
+              <td>サーフボード,SUPボード</td>
+              <td>1年以上2年以内</td>
+              <td>購入価格&nbsp;×&nbsp;0.5</td>
+              <td>15,000円</td>
+            </tr>
+            <tr>
+              <td>サーフボード,SUPボード</td>
+              <td>2年以上3年以内</td>
+              <td>購入価格&nbsp;×&nbsp;0.4</td>
+              <td>10,000円</td>
+            </tr>
+            <tr>
+              <td>サーフボード,SUPボード</td>
+              <td>3年以上</td>
+
+              <td>購入価格&nbsp;×&nbsp;0.3</td>
+              <td>10,000円</td>
+            </tr>
+            <tr>
+              <td>リシューコード</td>
+              <td></td>
+
+              <td>2,000円</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>ウェットスーツ</td>
+              <td></td>
+              <td></td>
+              <td>5,000円</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class=" text-center">
+    <div class="panel panel-default">
+      <h3>登録•お問合わせ</h3>
+
+      <div class="container">
+
+        <%= form_for @entry, :url => entry_confirm_path do |f| %>
+
+        <% if @entry.errors.any? %>
+         <div class="alert alert-danger" role="alert">
+          <strong>入力内容にエラーがあります</strong>
+           <ul>
+             <% @entry.errors.each do |attr, msg| %>
+              <li><%= msg %></li>
+             <% end %>
+           </ul>
+         </div>
+        <% end %>
+
+
+
+        <div class="form_box">
+          <p>名前&nbsp;<span class="essential">(必須項目)</span></p>
+          <div class="form-group">
+            <%= f.text_field :name, autofocus: true, placeholder: "湘南太郎", class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form_box">
+          <p>メールアドレス&nbsp;<span class="essential">(必須項目)</span></p>
+          <div class="form-group">
+            <%= f.email_field :email, autofocus: true, placeholder: "sample@gmail.com", class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form_box">
+          <p>住所</p>
+          <div class="form-group">
+            <%= f.text_field :address, autofocus: true, placeholder: "神奈川県藤沢市辻堂1-1-1", class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form_box">
+          <p>電話番号</p>
+          <div class="form-group">
+            <%= f.text_field :phone_number, autofocus: true, placeholder: "08012345678", class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form_box">
+          <p>貸出し可能な商品</p>
+          <div class="form-group">
+            <%= f.text_field :product, autofocus: true, placeholder: "例:キャッチサーフのファンボード、ボード置き場", class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form_box inquiry-text">
+          <p>お問合わせ</p>
+          <div class="form-group">
+            <%= f.text_area :message, autofocus: true, class: "form-control" %>
+          </div>
+        </div>
+
+
+        <div class="actions">
+          <%= f.submit "確認する", class: "btn btn-form" %>
+        </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
 <h3 class="text-center">Q&A</h3>
@@ -481,6 +851,50 @@
   </div>
 
 </div>
+
+
+<div class="about-box" id="shinji">
+  <div class="shinji-circle">
+    <h3>運営者</h3>
+    <div class="shinji-logo"><!--写真なのでclass="about_logo"を使わない-->
+      <img class="alignnone shinji_photo" src="/assets/shinji.jpg" alt="" width="300" height="300" />
+    </div>
+    <h4>
+      <a href="https://twitter.com/0101shinji">
+        <span id="shinji_name">川端伸治</span>
+        <svg
+        id="shinji_twitter"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 350 300">
+        <path
+        class="fill"
+        d="M350.001,35.509 C346.026,42.167 340.649,49.197 333.870,56.595 C328.493,62.513 321.944,68.556 314.231,74.720 C314.231,74.720 314.231,76.940 314.231,76.940 C314.231,76.940 314.231,79.530 314.231,79.530 C314.231,80.762 314.346,81.626 314.579,82.119 C314.579,82.119 314.579,84.708 314.579,84.708 C314.579,110.109 310.022,135.572 300.903,161.097 C291.785,186.620 278.809,209.494 261.975,229.715 C243.971,251.417 222.113,268.556 196.394,281.134 C170.674,293.711 141.917,299.999 110.122,299.999 C89.546,299.999 70.142,297.041 51.904,291.122 C33.201,285.202 15.899,276.818 -0.001,265.967 C0.936,266.214 2.337,266.338 4.208,266.338 C7.948,266.831 10.755,267.077 12.626,267.077 C12.626,267.077 17.183,267.077 17.183,267.077 C33.550,267.077 49.567,264.242 65.231,258.569 C79.727,253.144 93.403,245.253 106.263,234.895 C91.300,234.649 77.387,229.469 64.531,219.357 C51.904,209.494 43.486,197.040 39.279,181.997 C42.786,182.737 45.007,183.105 45.943,183.105 C45.943,183.105 49.447,183.105 49.447,183.105 C50.151,183.352 51.202,183.476 52.605,183.476 C54.708,183.476 56.346,183.352 57.516,183.105 C59.853,183.105 63.128,182.612 67.335,181.626 C67.801,181.626 68.505,181.502 69.439,181.256 C70.376,181.009 71.075,180.887 71.542,180.887 C54.941,177.434 41.265,168.679 30.509,154.622 C19.520,140.565 14.029,124.536 14.029,106.534 C14.029,106.534 14.029,106.163 14.029,106.163 C14.029,106.163 14.029,105.794 14.029,105.794 C14.029,105.794 14.029,105.424 14.029,105.424 C18.471,108.383 23.615,110.603 29.460,112.082 C35.538,114.054 41.265,115.042 46.644,115.042 C36.354,107.644 28.640,98.642 23.497,88.038 C17.651,77.187 14.729,65.102 14.729,51.786 C14.729,44.388 15.546,37.729 17.183,31.810 C18.120,27.617 20.457,21.576 24.198,13.685 C42.435,37.358 64.177,55.854 89.429,69.172 C115.382,83.475 142.969,91.366 172.195,92.847 C171.494,87.667 171.145,84.832 171.145,84.339 C170.674,80.886 170.441,78.051 170.441,75.830 C170.441,54.868 177.456,36.989 191.483,22.193 C205.512,7.396 222.462,-0.002 242.337,-0.002 C252.623,-0.002 262.325,2.094 271.444,6.286 C280.562,10.971 288.394,16.891 294.942,24.042 C302.423,22.315 310.372,19.850 318.788,16.644 C325.803,13.931 333.051,10.232 340.532,5.547 C337.729,14.424 333.634,22.439 328.260,29.591 C322.179,36.989 315.751,42.907 308.969,47.347 C315.984,46.113 322.999,44.634 330.010,42.907 C335.388,41.428 342.052,38.961 350.001,35.509 Z"/>
+        </svg>
+      </a>
+    </h4>
+  </div><!--// div class="shinji-circle"-->
+  <div class="about-sentence">
+    <p>
+      湘南のWEB企業で働くエンジニア(Ruby,RubyonRails)<br>
+      2017年の春から藤沢市在住で、サーフィンのシェアリングサービスを思いつき2018年夏から運営予定(これまでの経緯は<%= link_to("こちら", "http://toollibrary.jp/media/" , class: "gray" )%>のブログに掲載)<br>
+
+    </p>
+    <p>
+      <%= link_to("第18回湘南ビジネスコンテスト", "http://www.s-cns.com/contest/contest2017.html", class: "gray")%>で来場者賞受賞
+    </p>
+    <p>
+      サーフィン歴は1年、ホームポイントは「鵠沼銅像前」「引地川河口」。<br>
+      Mail&nbsp;:&nbsp;s-kawabata[at]digisurf.co.jp&nbsp;[at]を@に変更してください<br>
+      趣味:ジョギング、海外旅行
+    </p>
+    <p>
+      「アフリカで使ったAirbnb(エアビーエヌビー)がとてつもなく楽しく、個人間の取引にハマりました。人との出逢いこそが人生を豊かにすると思っており、そのきっかけを作るサービスを作りたいです!」
+    </p>
+  </div>
+
+</div>
+
 
 <script>
   $(".qanda").click(function(){

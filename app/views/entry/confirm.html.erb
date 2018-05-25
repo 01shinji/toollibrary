@@ -1,0 +1,84 @@
+<p class="text-center">
+
+サーフ文庫への応募•お問い合わせフォームです。<br>返信は通常24時間以内に行なっております。
+</p>
+
+<div class="row">
+  <div class=" text-center">
+    <div class="panel panel-default">
+      <h3>確認画面</h3>
+
+
+      <div class="container">
+
+        <%= form_for @entry, :url => entry_thanks_path do |f| %>
+
+        <table class="table table-bordered text-left">
+         <tbody>
+          <tr>
+            <th scope="row">
+              名前
+            </th>
+            <td colspan="3">
+              <%= f.hidden_field :name %>
+              <%= @entry.name %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              メールアドレス
+            </th>
+            <td colspan="3">
+              <%= f.hidden_field :email %>
+              <%= @entry.email %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              住所
+            </th>
+            <td colspan="3">
+              <%= f.hidden_field :address %>
+              <%= @entry.address %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              電話番号
+            </th>
+            <td colspan="3">
+              <%= f.hidden_field :phone_number %>
+              <%= @entry.phone_number %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              貸出し可能な商品
+            </th>
+            <td colspan="3">
+              <%= f.hidden_field :product %>
+              <%= @entry.product %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              問い合わせ内容
+            </th>
+            <td colspan="3">
+              <%= f.hidden_field :message %>
+              <%= simple_format(@entry.message) %>
+            </td>
+          </tr>
+         </tbody>
+        </table>
+
+        <div class="actions">
+          <%= f.submit "送信する", class: "btn btn-form" %>
+        </div>
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

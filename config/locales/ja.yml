@@ -149,6 +149,7 @@ ja:
       header:
         one: "%{model}にエラーが発生しました"
         other: "%{model}に%{count}個のエラーが発生しました"
+
   helpers:
     select:
       prompt: 選択してください
@@ -156,9 +157,92 @@ ja:
       create: 登録する
       submit: 保存する
       update: 更新する
+
     label:
-      Users:
-        Listings: リスティング
+
+      user:
+
+        listings: リスティング
+        reservations: 予約
+        guest_reviews: ゲストからのレビュー
+        host_reviews: ホストからのレビュー
+        notifications: 通知
+        email: メール
+        created_at: 作成日
+        updated_at: 編集日
+        fullname: 本名
+        image: イメージ画像
+        phone_number: 電話番号
+        description: 自己紹介
+        unread: 未読
+        address_zipcode: 郵便番号
+        address_prefecture_name: 都道府県
+        address_city:  市町村
+        address_street: 番地
+        address_building: 建物名
+        nickname: ニックネーム
+        latitude: 緯度
+        longitude: 経度
+        phone_verified: 電話番号認証
+        license_file_name: 身分証ファイル名
+
+      conversation:
+        sender: 送り手
+        recipient: 受け手
+        messages: メッセージ
+        created_at: 作成日
+        updated_at: 編集日
+
+
+      listing:
+        user: ユーザー
+        photos: 写真
+        reservations: 予約
+        guest_reviews: ゲストからのレビュー
+        listing_title: タイトル
+        listing_type: タイプ
+        category1: カテゴリー1
+        category2: カテゴリー2
+        description: 商品説明
+        location: 場所
+        active: アクティビティ
+        created_at: 作成日
+        updated_at: 編集日
+        latitude: 緯度
+        longitude: 経度
+        price_day: レンタル価格(1日)
+        is_shower: シャワー
+        is_bicycle: 自転車
+        is_wetsuit: ウェットスーツ
+
+
+      message:
+        user: ユーザー
+        conversation: チャット
+        context: テキスト
+
+      notification:
+        user: ユーザー
+        content: 内容
+        created_at: 作成日
+        updated_at: 編集日
+
+      photo:
+        listing: リスティング
+        created_at: 作成日
+        updated_at: 編集日
+
+      reservation:
+        user: ユーザー
+        listing: リスティング
+        start_date: 開始日
+        end_date: 終了日
+        price: 価格
+        total: 合計価格
+        created_at: 作成日
+        updated_at: 編集日
+        status: 返答状況
+
 
   number:
     currency:
@@ -220,6 +304,19 @@ ja:
     pm: 午後
 
   activerecord:
+
+
+    models:
+      user: ユーザー
+      conversation: チャット
+      review: レビュー
+      listing: リスティング
+      message: メッセージ
+      notification: 通知
+      photo: 写真
+      reservation: 予約
+
+
     attributes:
       user:
         fullname: 名前

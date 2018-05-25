@@ -96,5 +96,11 @@ Rails.application.routes.draw do
   post 'inquiry/confirm' => 'inquiry#confirm'
   post 'inquiry/thanks' => 'inquiry#thanks'
 
+  get 'entry' => 'entry#index'
+  get 'entry/confirm' => redirect("/entry")
+  get 'entry/thanks' => redirect("/entry")
+  post 'entry/confirm' => 'entry#confirm'
+  post 'entry/thanks' => 'entry#thanks'
+
   resources :fees, only: [:index]
 end

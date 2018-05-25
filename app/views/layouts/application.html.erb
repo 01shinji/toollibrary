@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <title>チャレンタ!</title>
+    <title>サーフ文庫</title>
 
 
 
@@ -51,26 +51,34 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ZRYgtCagsAWTqGbqxkpW09Y
   <body>
    <div id="wrapper">
 
-    <%= render 'shared/navbar'%>
-    <%= render 'shared/message'%>
-
-    <% if current_user %>
-      <input type="hidden" id="user_id" value="<%= current_user.id %>">
-    <% end %>
-
-
-    <% if  request.path == '/' || request.path == '/search'%>
-       <%= yield %>
-
-    <% elsif request.path == '/about' || request.path == '/information' || request.path == '/pages/guide' %>
-       <%= yield %>
-       <%= render 'shared/footer'%>
-
-    <% else %>
+    <% if  request.path == '/entry' || request.path == '/entry/confirm' || request.path == '/entry/thanks' %>
       <div class="container">
        <%= yield %>
       </div>
+    <% else %>
+
+      <%= render 'shared/navbar'%>
+      <%= render 'shared/message'%>
+
+      <% if current_user %>
+      <input type="hidden" id="user_id" value="<%= current_user.id %>">
+      <% end %>
+
+
+      <% if  request.path == '/' || request.path == '/search'%>
+      <%= yield %>
+
+      <% elsif request.path == '/about' || request.path == '/information' || request.path == '/pages/guide' %>
+      <%= yield %>
       <%= render 'shared/footer'%>
+
+      <% else %>
+      <div class="container">
+        <%= yield %>
+      </div>
+      <%= render 'shared/footer'%>
+
+      <% end %>
 
     <% end %>
 
