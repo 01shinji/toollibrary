@@ -2376,6 +2376,13 @@ input#autolocation {
   }
 }
 
+@media (max-width: 480px) {
+  /* ~480px */
+  .frame{
+    margin:0 5%;
+  }
+}
+
 .question{
   font-size: 16px;
   font-weight: bold;
@@ -2383,6 +2390,11 @@ input#autolocation {
 
 #vision{
   margin-top: 30px;
+}
+
+#vision p {
+  font-size: 16px;
+  color: #808080;
 }
 
 .table-bordered{
