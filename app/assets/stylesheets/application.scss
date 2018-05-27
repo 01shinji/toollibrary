@@ -601,6 +601,7 @@ th {
 
 .form_box p{
   text-align: left;
+  font-weight: bold;
 }
 .form-group {
 
@@ -1758,7 +1759,7 @@ input#pac-input {
   animation-fill-mode: both;
 }
 
-#motion span{
+.slideOutLeft#motion span{
   float: right;
   position: relative;
   top: 5px;
@@ -1842,7 +1843,7 @@ input#autolocation {
 
 .about-box{
 
- margin-top: 10px;
+ margin-top: 0;
  margin-bottom: 50px;
 
  }
@@ -1856,7 +1857,7 @@ input#autolocation {
 }
 
 .about-box h4{
-  text-align: center;
+
 }
 
 .about-box p{
@@ -1870,8 +1871,8 @@ input#autolocation {
   margin:5px auto;
   padding:0;
   text-align:center;
-  width:70px;
-  height:70px;
+  width:75px;
+  height:75px;
   background-color:#04b4e4;
 
   border-radius: 50%;
@@ -1882,11 +1883,8 @@ input#autolocation {
 
 .circle-top{
   position:relative;
-  top:25px;
+  top:27px;
 
-  font-size: 12px;
-
-  font-weight:bold;
   padding:0;
   margin:0;
 
@@ -2057,16 +2055,7 @@ input#autolocation {
   margin: 5px 0;
 }
 
-.voice:after {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  top: 30px;
 
-  border: 10px solid transparent;
-  border-bottom: 10px solid #808080;
-
-}
 
 .appeal{
   color: #ffffff;
@@ -2129,13 +2118,13 @@ input#autolocation {
 // Q&A
 .qanda-container{
 
-  padding: 10px 15%;
+  padding: 10px;
 }
 
 @media (max-width: 768px) {
   /* ~480px */
 .qanda-container{
- padding: 10px 10%;
+ padding: 10px;
 }
 }
 
@@ -2263,7 +2252,7 @@ input#autolocation {
   position: absolute;
   right: 5px;
   margin-top: 15px;
-  margin-right: 3px;
+  margin-right: 5px;
 
   padding-left: 10px;
 }
@@ -2293,15 +2282,15 @@ input#autolocation {
 }
 }
 
-.entry-case a{
+.entry-button a{
   color: #ffffff ;
   background-color: #FFA500;
 
-  border-radius: 2px;
-  padding: 5px;
+  border-radius: 0;
+  padding: 10px;
 }
 
-#entry .message {
+#entry .inform.text-center {
   color:#ffffff ;
   margin: 0;
   padding: 5px;
@@ -2312,13 +2301,21 @@ input#autolocation {
 
 @media (max-width: 480px) {
   /* ~480px */
-#entry .message{
+#entry .inform.text-center{
   padding: 2px;
+}
+.entry-button a{
+
+  padding: 8px;
 }
 }
 
-#entry .message p{
+#entry .inform.text-center p{
   margin: 0;
+}
+
+#entry .inform.text-center p a{
+  color: #ffffff;
 }
 
 #entry .table_container{
@@ -2349,4 +2346,41 @@ input#autolocation {
 
 .essential{
   color: #d9534f;
+}
+
+.heading {
+  color: #ffffff;
+  background-color: #28a745;
+  padding: 5px;
+}
+
+.about-sentence .inform{
+  font-size: 16px;
+
+}
+
+.slideOutRight#motion span{
+  float: left;
+  position: relative;
+  top: 5px;
+}
+
+.frame{
+  margin:0 20%;
+}
+
+@media (max-width: 768px) {
+  /* ~768px */
+  .frame{
+    margin:0 10%;
+  }
+}
+
+.question{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#vision{
+  margin-top: 30px;
 }

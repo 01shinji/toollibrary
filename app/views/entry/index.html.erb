@@ -1,6 +1,6 @@
 <div class="" id="entry">
 
-<div class="entry-box">
+<div class="entry-box" id="top">
   <ul>
    <li id="title" class="">
      <%= link_to "サーフ文庫", entry_path, class: "navbar-brand " %>
@@ -31,7 +31,7 @@
    </script>
 
   </ul>
-  <div class="entry-case">
+  <div class="entry-case entry-button">
 
       <%= link_to "応募する", anchor: "entry-form"  %>
 
@@ -44,7 +44,7 @@
 </p>
 
 <nav class="">
-  <div class="message text-center">
+  <div class="inform text-center">
     <p>
       7月にサービスがオープンします<br>
       湘南と千葉でサーフボードやボード置き場を貸してくれる方を募集中
@@ -68,7 +68,7 @@
   </div>
 
   <div class="table_container">
-    <h4><b>報酬例</b></h4>
+    <h4 class="text-center"><b>報酬例</b></h4>
     <div class="table-responsive">
       <table class="table">
         <tbody>
@@ -102,81 +102,31 @@
     </div>
   </div>
 
-  <div class="box-circle">
-    <div class="circle-top">About</div>
-  </div>
-
-  <h3 class="text-center">サーフ文庫について</h3>
+  <h3 class="text-center heading">サーフ文庫について</h3>
 
   <div class="about-sentence">
 
-    <h3><span class="blue">サーフ文庫</span>は全国のどこでもローカルのサーファーからサーフボードやボード置き場を借りれる、日本初のサーフィンのシェアリングサービスです。</h3>
-    <p>日本は海に囲まれており、全国にサーフィンが盛んな地域(メッカ)があり、そしてそこにはたくさんのサーファー(プレイヤー)がいます。</p>
-    <p>メッカに在住するプレイヤー個人から直接サーフボードを借りたり、サーフガイドを受けることができ、今までにない新しい出逢いを提供します!</p>
+    <h3 class="blue">
+      サーフ文庫は全国のどこでもローカルのサーファーからサーフボードやボード置き場を直接借りることができる、サーフィンのシェアリングサービスです。
+    </h3>
+    <h4>
+      日本は海に囲まれており、全国にサーフィンが盛んな地域があって多くのサーファーの方が住んでおり、１人あたり数枚のサーフボードを所有していますが、サーフィンをやらない時はそれらは使われていません。
+    </h4>
 
-
-
-    <p>海に入るときだけ借りることも、借りっぱなしもどちらもOK</p>
-    <p>全国のサーフスポットで地元のサーファーから直接サーフボードやSUPボード、ボード置き場を借りることができ、ローカルの波にあったボードが揃っています</p>
-
-
+    <div class="">
+      <p class="voice">
+        <i class="fa fa-quote-left" aria-hidden="true"></i>
+        「家には１年以上使っていないボードがある」<br>
+        「海のそばに住んでおり、自宅にはボードを置くスペースがある」<br>
+        「海に行くのは週末だけ、平日はボードは使わない、そのボードを貸し出して副収入を得られたらな〜」<i class="fa fa-quote-right" aria-hidden="true"></i>
+      </p>
+    </div>
+    <h4>
+      サーフ文庫はローカルのサーファーのこのような声にお応えし、サーファーに副収入と新しい人との出会いを生みます。
+    </h4>
 
   </div>
 </div>
-
-<!--特徴-->
-<div class="about-box">
-  <div class="box-circle">
-    <div class="circle-top">特徴</div>
-  </div>
-
-  <div class="about-sentence">
-    <h3 class="text-center">サーフ文庫の5つの特徴</h3>
-    <div class="case">
-      <h4><b>認証</b></h4>
-      <p>
-        サーフ文庫を利用できるのはFacebook、電話番号、身分証で身分が確認できた人だけです<br>
-        そして実名制とすることで「誰が貸しているの？誰が借りるの？相手は信用できる人なの？」という不安を取り除いています。<br>
-        またユーザーの顔写真や名前を見ることができるのは登録ユーザーのみとすることで安心して利用できる仕様になっています(※一般の人には顔写真や名前は公開されません)
-      </p>
-      <div class="">
-        <img id="" class="img-responsive" src="/assets/show-comparison.jpg" alt="" width="" height="" />
-      </div>
-    </div>
-
-    <div class="case">
-      <h4><b>安心決済</b></h4>
-      <p>
-        個人間のレンタルはトラブルが付き物です。「レンタル代金を支払ったのにホスト(貸し手)と連絡がつかない!取引き当日にゲスト(借り手)が現れなかった!」という事がないよう、サーフ文庫では決済をクレジットカードに限定し、取引きが無事完了した場合のみに引き起こしがおこなわれます。
-      </p>
-    </div>
-
-    <div class="case">
-      <h4><b>補償</b></h4>
-      <p>
-        万が一ボードをレンタル中に破損が発生した場合には「サーフ文庫」が間に入って対応し、ホスト(貸し手)向けには修理費用の全額を補償します。(詳しくは<%= link_to "こちら", pages_guide_path %>をご覧ください。)
-      <p>
-    </div>
-    <div class="case">
-      <h4><b>評価制度</b></h4>
-      <p>
-        ホスト(貸し手)、ゲスト(借り手)に対して取引後に必ず相互評価を行なっていただいているので、ホストとゲストが過去にどのような取引をおこなったのかを知る事ができます。<br>
-        サーフ文庫で何度も取引いただく事によって、信頼度が増す仕組みとなっています。
-      </p>
-    </div>
-    <div class="case">
-      <h4><b>安心サポート</b></h4>
-      <p>
-        レンタルした商品が掲載されていた商品と状態が大幅に違う、壊れていた、レンタル中に壊れたなど、取引時のトラブルは最後まで必ずサポートし、解決します。<br>
-        また、予約前のわからない事の質問や相談、サービスに対する要望なども受け付けております。サーフ文庫の<%= link_to "お問い合わせフォーム", inquiry_path %>からお問い合わせください。24時間以内に対応させていただきます。
-      </p>
-    </div>
-
-  </div>
-</div>
-
-<h3 class="text-center">取引きの仕組み</h3>
-
 
 <!--仕組み-->
 <div class="about-box">
@@ -185,14 +135,20 @@
   </div>
 
   <div class="about-sentence">
+
+    <h4>
+      ヤフオクやメルカリのように個人同士が直接サーフボードやボード置き場をレンタルできます。
+    </h4>
+    <h4>
+      登録や掲載は無料でおこなうことができ、取引きが成立した場合のみ、10%の手数料(サポーター費)が発生。
+    </h4>
     <div class="">
       <img id="" class="img-responsive" src="/assets/rental-min.jpg" alt="" width="" height="" />
     </div>
 
-
   </div>
 </div>
-
+<!-- 取扱い商品 -->
 <div class="about-box">
   <div class="box-circle">
     <div class="circle-top">取扱い商品</div>
@@ -203,7 +159,7 @@
      <tbody>
       <tr>
         <th scope="row">
-          サーフボード
+          <b>サーフボード</b>
         </th>
         <td colspan="3">
           ショートボード<br>
@@ -213,7 +169,7 @@
       </tr>
       <tr>
         <th scope="row">
-          SUPボード
+          <b>SUPボード</b>
         </th>
         <td colspan="3">
           サーフ<br>
@@ -224,10 +180,10 @@
       </tr>
       <tr>
         <th scope="row">
-          その他
+          <b>ボード置き場</b>
         </th>
         <td colspan="3">
-          ボード置き場<br>
+          <br>
 
         </td>
       </tr>
@@ -238,134 +194,389 @@
 
   </div>
 </div>
-
+<!-- 手数料 -->
 <div class="about-box">
   <div class="box-circle">
-    <div class="circle-top ">サポーター費</div>
+    <div class="circle-top ">手数料</div>
   </div>
   <div class="about-sentence">
     <p>
-      一度の取引において、ホスト(貸し手)とゲスト(借り手)の双方から、1日あたりレンタル価格の10%をサポーター費として頂いております。
+      一度の取引において、1日あたりレンタル価格の10%を手数料(サポーター費)として頂きます。
     </p>
 
     <p>
-      サポーター費は3ヶ月スパンで積み立てし、サーフ文庫の運営費やこの期間中の取引きで発生した破損への修理費用などに当てられます。そして使われなかったサポーター費は3ヶ月ごとに精算し、環境保護団体などへ寄付されます。(返金はされません)
+      手数料(サポーター費)は3ヶ月スパンで積み立てし、サーフ文庫の運営費やこの期間中の取引きで発生した破損への修理費用などに当てられます。そして使われなかったサポーター費は3ヶ月ごとに精算し、環境保護団体などへ寄付されます。(返金はされません)
     </p>
-    <p>
-      またサポーター費の積み立てや寄付の状況は<%= link_to "こちら", pages_guide_path %>のページで公開しています。
-    </p>
-    <div class="table_container">
-      <h4><b>費用</b></h4>
-      <h4>例&nbsp;:&nbsp;1日3,000円でレンタルされた場合</h4>
-      <div class="table-responsive">
-        <table class="table">
-          <tbody>
-            <tr>
-              <th></th>
-              <th>登録料</th>
-              <th>利用料</th>
-              <th>レンタル代</th>
-              <th>サポーター費</th>
-              <th>トータル</th>
-            </tr>
-            <tr>
-              <td>ゲスト(借り手)</td>
-              <td>無料</td>
-              <td>無料</td>
-              <td>3,000円</td>
-              <td>300円</td>
-              <td><b>3,300円(3,000円＋300円)の支払い</b></td>
-            </tr>
-            <tr>
-              <td>ホスト(貸し手)</td>
-              <td>無料</td>
-              <td>無料</td>
-              <td>3,000円</td>
-              <td>300円</td>
-              <td><b>2,700円(3,000円-300円)の収入</b></td>
-            </tr>
 
-          </tbody>
-        </table>
-      </div>
+  </div>
+
+  <div class="table_container">
+    <h4 class="text-center"><b>費用</b></h4>
+    <h4 class="text-center">例&nbsp;:&nbsp;1日3,000円でレンタルされた場合</h4>
+    <div class="table-responsive">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th></th>
+            <th>登録料</th>
+            <th>利用料</th>
+            <th>レンタル代</th>
+            <th>サポーター費</th>
+            <th>トータル</th>
+          </tr>
+
+          <tr>
+            <td>ホスト(貸し手)</td>
+            <td class="red"><b>無料</b></td>
+            <td class="red"><b>無料</b></td>
+            <td>3,000円</td>
+            <td>300円</td>
+            <td><b>2,700円(3,000円-300円)の収入</b></td>
+          </tr>
+
+        </tbody>
+      </table>
     </div>
   </div>
 
 </div>
-
-<div class="about-box">
+<!-- 補償 -->
+<div class="about-box" id="compensation">
   <div class="box-circle">
-    <div class="circle-top ">ホストへの補償</div>
-  </div>
-  <div class="about-sentence">
-
-    <p>
-      ホストが商品を貸出し中に発生した破損や盗難に関しては<span>全額</span>補償されます。また保障費は購入時期と購入価格やブランド、中古市場価格を基に算出され、その上限は以下のとおりです。
-    </p>
-
-    <div class="table_container">
-      <h4><b>補償費の上限</b></h4>
-      <div class="table-responsive">
-        <table class="table">
-          <tbody>
-            <tr>
-              <th></th>
-              <th>購入時期</th>
-              <th>全損と盗難の補償上限</th>
-              <th>修理の補償上限</th>
-
-            </tr>
-            <tr>
-              <td>サーフボード,SUPボード</td>
-              <td>1年以内</td>
-              <td>購入価格&nbsp;×&nbsp;0.6</td>
-              <td>15,000円</td>
-
-            </tr>
-            <tr>
-              <td>サーフボード,SUPボード</td>
-              <td>1年以上2年以内</td>
-              <td>購入価格&nbsp;×&nbsp;0.5</td>
-              <td>15,000円</td>
-            </tr>
-            <tr>
-              <td>サーフボード,SUPボード</td>
-              <td>2年以上3年以内</td>
-              <td>購入価格&nbsp;×&nbsp;0.4</td>
-              <td>10,000円</td>
-            </tr>
-            <tr>
-              <td>サーフボード,SUPボード</td>
-              <td>3年以上</td>
-
-              <td>購入価格&nbsp;×&nbsp;0.3</td>
-              <td>10,000円</td>
-            </tr>
-            <tr>
-              <td>リシューコード</td>
-              <td></td>
-
-              <td>2,000円</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>ウェットスーツ</td>
-              <td></td>
-              <td></td>
-              <td>5,000円</td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
+    <div class="circle-top ">
+      補償
     </div>
   </div>
+  <div class="about-sentence">
+    <p>
+      商品を貸出し中に発生した破損や盗難に関しては<span>全額</span>補償されます。また保障費は購入時期と購入価格やブランド、中古市場価格を基に算出され、その上限は以下のとおりです。
+    </p>
+  </div>
+  <div class="table_container">
+    <h4 class="text-center"><b>補償費の上限</b></h4>
+    <div class="table-responsive">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th></th>
+            <th>購入時期</th>
+            <th>全損と盗難の補償上限</th>
+            <th>修理の補償上限</th>
+
+          </tr>
+          <tr>
+            <td>サーフボード,SUPボード</td>
+            <td>1年以内</td>
+            <td>購入価格&nbsp;×&nbsp;0.6</td>
+            <td>15,000円</td>
+
+          </tr>
+          <tr>
+            <td>サーフボード,SUPボード</td>
+            <td>1年以上2年以内</td>
+            <td>購入価格&nbsp;×&nbsp;0.5</td>
+            <td>15,000円</td>
+          </tr>
+          <tr>
+            <td>サーフボード,SUPボード</td>
+            <td>2年以上3年以内</td>
+            <td>購入価格&nbsp;×&nbsp;0.4</td>
+            <td>10,000円</td>
+          </tr>
+          <tr>
+            <td>サーフボード,SUPボード</td>
+            <td>3年以上</td>
+
+            <td>購入価格&nbsp;×&nbsp;0.3</td>
+            <td>10,000円</td>
+          </tr>
+          <tr>
+            <td>リシューコード</td>
+            <td></td>
+
+            <td>2,000円</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>ウェットスーツ</td>
+            <td></td>
+            <td></td>
+            <td>5,000円</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!--特徴-->
+<div class="about-box">
+  <div class="box-circle">
+    <div class="circle-top">特徴</div>
+  </div>
+
+  <div class="about-sentence">
+    <h3 class="text-center">サーフ文庫の5つの特徴</h3>
+
+    <div class="case">
+      <h4 class="text-center"><b>検索</b></h4>
+
+      <div class="">
+        <img id="" class="img-responsive" src="/assets/search-image-min.png" alt="" width="" height="" />
+      </div>
+      <p>
+        全国のサーフスポットから近くのボードとボード置き場を検索でき、ファンボード、ロングボード、ショートボードなどの種類からの検索にも対応
+      </p>
+
+    </div>
+
+    <div class="case">
+      <h4 class="text-center"><b>チャット</b></h4>
+
+      <div class="">
+        <img id="" class="img-responsive" src="/assets/chat-image-min.png" alt="" width="" height="" />
+      </div>
+      <p>
+        予約リクエストを送ってきたゲストとはチャットで直接やり取り。貸出し場所や時間をゲストと相談して決めることができます。
+      <p>
+
+    </div>
+
+    <div class="case">
+      <h4 class="text-center"><b>認証</b></h4>
+      <p>
+        サーフ文庫を利用できるのはFacebook、電話番号、身分証で身分が確認できた人だけです
+      </p>
+      <p>
+        そして実名制とすることで「誰が貸しているの？誰が借りるの？相手は信用できる人なの？」という不安を取り除いています。
+
+      </p>
+      <p>
+        またユーザーの顔写真や名前を見ることができるのは登録ユーザーのみとすることで安心して利用できる仕様になっています(※一般の人には顔写真や名前は公開されません)
+      </p>
+      <div class="">
+        <img id="" class="img-responsive" src="/assets/show-comparison.jpg" alt="" width="" height="" />
+      </div>
+    </div>
+
+    <div class="case">
+      <h4 class="text-center"><b>評価制度</b></h4>
+      <p>
+        ホスト(貸し手)、ゲスト(借り手)に対して取引後に必ず相互評価を行なっていただいているので、ホストとゲストが過去にどのような取引をおこなったのかを知る事ができます。
+
+      </p>
+      <p>
+        サーフ文庫で何度も取引いただく事によって、信頼度が増す仕組みとなっています。
+      </p>
+    </div>
+
+    <div class="case">
+      <h4 class="text-center"><b>安心な取引き</b></h4>
+      <p>
+        個人間のレンタルはトラブルが付き物です。「レンタル代金を支払ったのにホスト(貸し手)と連絡がつかない!取引き当日にゲスト(借り手)が現れなかった!」という事がないよう、サーフ文庫では決済をクレジットカードに限定し、取引きが無事完了した場合のみに引き起こしがおこなわれます。
+      </p>
+      <p>
+        またレンタルした商品が掲載されていた商品と状態が大幅に違う、壊れていた、レンタル中に壊れたなど、取引時のトラブルは最後までサポートし、解決します。
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<h3 class="text-center heading">Q&A</h3>
+
+<div class="qanda-container frame">
+
+  <div class="qanda-case">
+
+    <ul class="">
+      <li class="">
+        <div>
+          <p class="question">
+            <span class="symbol-1">Q</span>
+            <span >サーフボード類の受け渡しはどのように行うのですか？</span>
+          </p>
+        </div>
+
+        <div class="">
+          <p>
+            <span class="symbol-2">A</span><br>
+            サーフボード類の受け渡しは、受け渡し時に本人確認をして頂くために、ホスト・ゲストで対面で行って頂くことを原則としております。両者にとって都合の良い場所・時間をチャット等で相談して決めて頂けたらと思います。<br>
+            なお、サーフ文庫はご自宅か最寄りのサーフスポットを推奨しています。
+          </p>
+        </div>
+      </li>
+
+      <li class="qanda">
+        <div>
+          <p class="question">
+            <span class="symbol-1">Q</span>
+            <span >破損への補償はどうなっているの?</span>
+          </p>
+
+        </div>
+        <div class="">
+          <p>
+            <span class="symbol-2">A</span><br>
+            ホストが商品を貸出し中に発生した破損や盗難に関しては全額補償され、その保障費は購入時期と購入価格やブランド、中古市場価格を基に算出されます。(詳細は<%= link_to "こちら", anchor: "compensation" %>をご覧ください)
+          </p>
+        </div>
+      </li>
+
+      <li class="qanda">
+        <div>
+          <p class="question">
+            <span class="symbol-1">Q</span>
+            <span >サポーター費とは?</span>
+          </p>
+
+        </div>
+        <div class="">
+          <p>
+            <span class="symbol-2">A</span><br>
+            サポーター費とは手数料のことです。
+            一度の取引において頂く、1日あたりのレンタル価格の10%の金額です。
+            サポーター費は3ヶ月スパンで積み立てし、サーフ文庫の運営費やこの期間中の取引きで発生した破損への修理費用などに当てられ、使われなかったサポーター費は3ヶ月ごとに精算し、環境保護団体などへ寄付されます。(返金はされません)
+          </p>
+        </div>
+      </li>
+
+      <li class="qanda">
+        <div>
+          <p class="question">
+            <span class="symbol-1">Q</span>
+            <span >ホストになるためには？</span>
+          </p>
+
+
+        </div>
+        <div class="">
+          <p>
+            <span class="symbol-2">A</span><br>
+            ホスト登録するためには、貸出し予定のサーフボード類の所有者本人であることが必要です。また、氏名・携帯電話番号・身分証等所定の事項の登録が必要となります。<br>
+            ※氏名や携帯番号は、予約確定したゲストにのみ表示されます
+
+          </p>
+        </div>
+      </li>
+
+      <li class="qanda">
+        <div>
+          <p class="question">
+            <span class="symbol-1">Q</span>
+            <span>借り手(ゲスト)は信用できる人なの？</span>
+          </p>
+
+        </div>
+        <div class="">
+          <p>
+            <span class="symbol-2">A</span><br>
+            借り手(ゲスト)に登録するためには、氏名・携帯電話番号・身分証等所定の事項の登録が必要となっており、それらをすべて登録した人のみが借りることができる仕様になっています。<br>
+            また、予約はリクエスト制をとっており、ゲストからの予約リクエストをホストの判断で拒否することもできます。
+
+          </p>
+        </div>
+      </li>
+
+      <li class="qanda">
+        <div>
+          <p class="question">
+            <span class="symbol-1">Q</span>
+            <span>貸し出し可能な日と不可の日があるがどうすればいい？</span>
+          </p>
+
+        </div>
+        <div class="">
+          <p>
+            <span class="symbol-2">A</span><br>
+            予約はリクエスト制をとっておりますので、貸出しできない日はゲストからの予約リクエストをホストの判断で拒否することができます。
+          </p>
+        </div>
+      </li>
+
+      <li class="qanda">
+        <div>
+          <p class="question">
+            <span class="symbol-1">Q</span>
+            <span >登録できるサーフボードは？</span>
+          </p>
+
+        </div>
+        <div class="">
+          <p>
+            <span class="symbol-2">A</span><br>
+            貸し手(ホスト)自身がそのサーフボード類の所有者であることが登録の条件です
+
+          </p>
+        </div>
+      </li>
+
+      <li class="qanda">
+        <div>
+          <p class="question">
+            <span class="symbol-1">Q</span>
+            <span >料金はどうやって、いつ振り込まれますか？</span>
+          </p>
+
+        </div>
+        <div class="">
+          <p>
+            <span class="symbol-2">A</span><br>
+            サーフ文庫からホスト(貸し手)への振込は、ご登録頂いた銀行口座へ行います。<br>
+            振込タイミングは、レンタル完了日の翌日がn月の場合、n+1月 の最終営業日となります。<br>
+           （例：レンタル完了日が5月10日の場合、7月の最終営業日に振込まれます。）<br>
+            ただし、登録された口座情報が間違っている場合には振り込みが実施されませんので、ご注意ください。
+          </p>
+
+          </p>
+        </div>
+      </li>
+
+      <li class="qanda">
+        <div>
+          <p class="question">
+            <span class="symbol-1">Q</span>
+            <span>サーフ文庫でサーフボード類をシェアしたことによって得た収入は、所得税法上、どの所得区分になりますか？</span>
+          </p>
+
+        </div>
+        <div class="">
+          <p>
+            <span class="symbol-2">A</span><br>
+            サーフ文庫でのレンタル収入は、所得税法上、雑所得に区分される所得と当社は考えております。レンタル収入を雑所得以外の所得として区分する場合には、税務の専門家もしくはお近くの税務署へ相談の上、区分することをおすすめします。
+          </p>
+
+          </p>
+        </div>
+      </li>
+
+      <li class="qanda">
+        <div>
+          <p class="question">
+            <span class="symbol-1">Q</span>
+            <span>サーフ文庫に興味はあるが、いまいち仕組みがよく分からない!</span>
+          </p>
+
+        </div>
+        <div class="">
+          <p>
+            <span class="symbol-2">A</span><br>
+            <%= link_to "こちら", anchor: "entry-form" %>からお気軽にお問合わせくださいませ。また直接会ってサービスについてお話させて頂くことも可能です。
+          </p>
+
+          </p>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
 </div>
 
 <div class="row">
-  <div class=" text-center">
+  <div class="text-center frame">
     <div class="panel panel-default" id="entry-form">
-      <h3>登録•お問合わせ</h3>
+      <h3><b>貸し手に応募する•お問合わせ</b></h3>
 
       <div class="container">
 
@@ -381,8 +592,6 @@
            </ul>
          </div>
         <% end %>
-
-
 
         <div class="form_box">
           <p>名前&nbsp;<span class="essential">(必須項目)</span></p>
@@ -437,477 +646,54 @@
   </div>
 </div>
 
-<h3 class="text-center">Q&A</h3>
+<!--about-->
+<div class="about-box" id="vision">
 
-<div class="qanda-container">
-
-  <div class="qanda-case">
-    <h4 class="text-center">会員登録・ログイン・退会について</h4>
-    <ul class="">
-
-      <li class="qanda">
-        <div class="">
-          <span class="symbol-1">Q</span>
-          会員登録は無料ですか？
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            会員登録やサーフボード類の登録は、無料です。<br>
-            ※一度の取引において、ホスト(貸し手)とゲスト(借り手)の双方から、1日あたりレンタル価格の10%をサポーター費として頂いております。
-          </p>
-        </div>
-      </li>
-
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          メールアドレスで会員登録が出来ない
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            「このメールアドレスは登録済です」と表示される場合、ご利用のメールアドレスは、すでにサーフ文庫にご登録済となります。メールアドレスを登録されたアカウントへのログインをお願いいたします。<br>
-            ※サーフ文庫は、サーファー同士の信頼関係を重視したサービスとなります。そのため、1人1アカウントの原則を掲げております。ご理解をいただけますと幸いです
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          メールが届かない
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            メールの受信設定をご確認ください。ドメイン指定または、アドレスによる指定受信設定をされている場合には、お客様のもとにメールが届きません。<br>
-            サーフ文庫からお送りするメールは[info@サーフ文庫.net]となっております。お手数ではございますが、上記のメールアドレスからのメールが受信できる設定になっているか、URL付きメールを受信できる設定になっているかをご確認ください。
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          ログイン出来ない
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            「メールアドレスかパスワードが違います」と表示される場合、ご入力内容にお間違いがございます。お手数ですが、ご入力内容をお確かめのうえ、再度お手続きください。
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-            パスワードを忘れてしまった
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            パスワードがご不明な場合には、以下の手順で再設定が可能となっております。<br>
-           【パスワードの再設定方法】<br>
-            1. ログインページにて「パスワードをお忘れですか？」を選択し、該当のメールアドレス宛にパスワード再設定用のメールを送信<br>
-            3. 該当のメールアドレスに届いたメール内の「パスワードを再設定」を選択し、パスワード設定ページに新規パスワードを登録
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          会員情報を変更したい
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            プロフィール情報は、ログイン後にメニューバーの「プロフィール編集」から編集することが可能です。
-          </p>
-        </div>
-      </li>
-
-
-    </ul>
+  <div class="box-circle">
+    <div class="circle-top">ビジョン</div>
   </div>
 
-  <div class="qanda-case">
-    <h4 class="text-center">取引全般について</h4>
-    <ul class="">
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          サーフボード類の受け渡しはどのように行うのですか？
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            サーフボード類の受け渡しは、受け渡し時に本人確認をして頂くために、ホスト・ゲストで対面で行って頂くことを原則としております。両者にとって都合の良い場所・時間をチャット等で相談して決めて頂けたらと思います。<br>
-            なお、現在サーフ文庫で登録しているホストはご自宅・最寄りのサーフスポットで受渡されているケースが多いです。
-          </p>
-        </div>
-      </li>
+  <h3 class="blue text-center">サーフィンが好きな人が気軽につながることができる世界を作りたい</h3>
 
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          サーフボード類の受け渡しに遅れてしまいそう
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            受け渡し時刻に間に合わない場合は、直接取引のお相手にご連絡をお願いいたします。
-          </p>
-        </div>
-      </li>
+  <div class="about-sentence inform">
+    <p>
+      僕がサーフ文庫のアイデアを思いついたのは、湘南の藤沢市に引越してきた1年前の2017年春。
+    </p>
+    <p>
+      もともと自然の中で過ごすことが好きで、海に近い住環境に憧れてここを選んだのですが、実際に住み始めると、想像以上に海が近くにある環境に驚き、未経験のサーフィンを始めたくなりました。
+    </p>
+    <p>
+      そして近所に「サーフボードを貸してください」と書いたチラシを配り、個人の方からボードを借りようと試みたのです。
+    </p>
+    <p>
+      なぜそんなことをしたのか?
+    </p>
+    <p>
+      普通に考えれば新しくボードを購入するか、サーフショップからレンタルすると思います。
+    </p>
+    <p>
+      しかし僕にはどうしても個人の方から借りたいという気持ちがありました。
+    </p>
+    <p>
+      1つ目の理由として継続できるかどうか分からない段階で、いきなり購入することが不安でしたし、住んでいるアパートが狭いので買っても置き場所に困りという理由。
+    </p>
+    <p>
+      もう１つは海外旅行でAirbnb(エアビーエヌビー)という民泊サービスを利用し、現地の住人との交流を楽しんだことから、ローカルのサーファーから直接借りたほうが満足度が高いのではという思いがありました。
+    </p>
+    <p>
+      その後、チラシを見たローカルのサーファーから連絡をもらい、ボードを借りて一緒に海に入りましたが、やっぱり楽しかった!
+    </p>
+    <p>
+      そもそもサーファーは人柄が良い人が多く、お喋りを楽しみ、自然の中で同じ時間を共有することは最高に気持ちいい。
+    </p>
+    <p class="blue">
+      「この心地よい体験をもっと気軽に日本中のサーフスポットでできたら、そして日本中のローカルのサーファーとの出会いを楽しめたら」
+    </p>
+    <p>
+      こんな思いでサーフィンのシェアリングサービス「サーフ文庫」を作ることに決めました。
+    </p>
 
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          相手方と連絡が取れない
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            取引のお相手とチャット経由での連絡が取れない場合、予約確定済みの取引のお相手であれば、直接お電話をお願いいたします。<br>
-            ※お客様同士でのご連絡をお願いしております。サーフ文庫では連絡の代行はおこなっておりません
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          破損への補償はどうなっているの?
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            ホストが商品を貸出し中に発生した破損や盗難に関しては全額補償され、その保障費は購入時期と購入価格やブランド、中古市場価格を基に算出されます。(詳細はご利用ガイドをご覧ください)<br>
-            一方ゲストが商品をレンタル中に発生した破損や盗難に関しては半額まではサーフ文庫が補償し、残りの半額はゲストに弁償する義務があります。(レンタル中に怪我した場合や他人を怪我させた場合への補償はありません。)また弁償費用はホストが商品を購入時期と購入価格やブランド、中古市場価格を基に算出されます。
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          サポーター費とは?
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            サポーター費とは一度の取引において、ホスト(貸し手)とゲスト(借り手)の双方から頂いている1日あたりのレンタル価格の10%の金額です。
-            サポーター費は3ヶ月スパンで積み立てし、サーフ文庫の運営費やこの期間中の取引きで発生した破損への修理費用などに当てられ、使われなかったサポーター費は3ヶ月ごとに精算し、環境保護団体などへ寄付されます。(返金はされません)
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          トラブルに備えてすべきことは？
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            トラブルを起こさないために、以下の点を事前にご確認ください。<br>
-            ・取引きを行う前に信頼できる相手かよく確認し、相手と情報交換をする<br>
-            ・事前にトラブル発生時の責任範囲や対応について、ホスト・ゲストで相談・合意をしておく<br>
-            ・ホストはゲストに貸し出す前にサーフボード類の写真をとっておき、ゲストは借りる前にキズの有無をホストと一緒に確認する <br>
-            ・サーフボード類を破損、紛失した場合や事故が発生した場合は、直ちにホストに連絡する
-
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          事故などのトラブルが起きてしまった
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            万が一、事故、トラブルが起きた場合は直ちにホスト・ゲストで連絡を取って下さい。また、必要がある場合には、警察にゲストからご連絡をお願い致します。問題解決に向け、サーフ文庫も法律上許される範囲内でサポートに入らせて頂きます。
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          レビューを書く際の注意点
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            レビューは、サーフ文庫が重視する会員同士の信頼関係を築くうえで非常に重要となります。気持ちの良いサービス利用ができるよう、事実に基づいた誠実な記載をお願いいたします。
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          直接取引・金銭の手渡しをお願いされた
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            直接での取引や金銭授受は会員規約で禁止されております。また、トラブルの原因にもなります。万が一、そのような提案をされた場合には、お手数ですが問い合わせフォームからご連絡ください。
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          サーフ文庫で利用可能なクレジットカードについて
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            ゲスト登録時にご登録可能なクレジットカードについては、現在のところVISA、またはMasterCardのみとなっております。<br>
-            また、ご本人様名義以外のクレジットカードのご利用はお断りしています。
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          メールが届かない
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            メールの受信設定をご確認ください。ドメイン指定または、アドレスによる指定受信設定をされている場合には、お客様のもとにメールが届きません。<br>
-            サーフ文庫からお送りするメールは[info@サーフ文庫.net]となっております。お手数ではございますが、上記のメールアドレスからのメールが受信できる設定になっているか、URL付きメールを受信できる設定になっているかをご確認ください。
-          </p>
-        </div>
-      </li>
-
-    </ul>
   </div>
-
-  <div class="qanda-case">
-    <h4 class="text-center">ゲスト登録・ゲスト利用について</h4>
-    <ul class="">
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          ゲスト登録するには？
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            ゲスト登録をする際は、事前に以下の条件をご確認ください。<br>
-            1.日本在住者であること<br>
-            2.身分証保持者であること(運転免許証または保険証) <br>
-            ※実際にサーフボード類を利用するためには、携帯電話番号の登録が必要となります<br>
-            ※登録していただくクレジットカードは、登録者本人の名義である必要があります<br>
-
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          電話番号認証をするのは何故ですか？
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            サーフ文庫は会員相互の安全性と信頼性を重視したサービス運営をおこなっており、ご利用いただくお客様には携帯電話番号での個人認証をお願いしております。携帯電話番号のご登録は本人確認の為、サービスをご利用頂く際には必須登録項目とさせて頂いております。なにとぞご理解くださいますようお願いします。<br>
-            ※携帯電話番号は、予約確定した際に、ホストに開示されます
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          SMSが届かない
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            電話番号認証にてSMSを受信できない場合には、以下についてご確認ください。<br>
-           ・入力した携帯電話番号に間違いがないか(11桁のハイフン無しのみ可)<br>
-           ・入力した携帯電話番号が日本のものか<br>
-           ・SMSの受信設定をおこなっているか<br>
-            上記をご確認いただきましてもSMSが受信できない場合、ご契約状況や受信設定の詳細について、お使いの携帯電話会社様までご確認くださいますようお願いいたします。
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          引き落としはいつされますか？
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-
-            サーフ文庫では、レンタル利用最終日の翌日が決済日となっています。<br>
-           （例：3月30日から4月2日まで利用した場合、4月3日になります）<br>
-            実際の料金の引き落としについては、クレジットカード会社によって異なるため、クレジットカード会社にご確認ください。
-          </p>
-        </div>
-      </li>
-
-    </ul>
-  </div>
-
-  <div class="qanda-case">
-    <h4 class="text-center">ホスト登録・ホスト利用について</h4>
-    <ul class="">
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          ホストになるためには？
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            ホスト登録するためには、貸出し予定のサーフボード類の所有者本人であることが必要です。また、氏名・生年月日・住所・携帯電話番号等所定の事項の登録が必要となります。<br>
-            ※氏名・住所・携帯番号は、予約確定したゲストにのみ表示されます
-
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          サーフボード類を登録する時の注意点はありますか？
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            サーフボード類の魅力がドライバーに伝わるよう、サーフボード類の写真・紹介文・価格について設定をしてみて下さい。サーフボード類の紹介文には受け渡しの日時・場所について記載するとゲストとのやり取りがスムーズになると思います。<br>
-            また前提として、サーフボード類の登録時には真正な情報の入力をお願い致します。ご登録頂く各種情報はサービス上で重要なものに使われるため、間違った情報入力は思わぬトラブルを引き起こすことになります。
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          電話番号認証をするのは何故ですか？
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            サーフ文庫は会員相互の安全性と信頼性を重視したサービス運営をおこなっており、ご利用いただくお客様には携帯電話番号での個人認証をお願いしております。携帯電話番号のご登録は本人確認の為、サービスをご利用頂く際には必須登録項目とさせて頂いております。なにとぞご理解くださいますようお願いします。<br>
-            ※携帯電話番号は、予約確定した際に、ゲストに開示されます
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          SMSが届かない
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            電話番号認証にてSMSを受信できない場合には、以下についてご確認ください。<br>
-           ・入力した携帯電話番号に間違いがないか(11桁のハイフン無しのみ可)<br>
-           ・入力した携帯電話番号が日本のものか<br>
-           ・SMSの受信設定をおこなっているか<br>
-            上記をご確認いただきましてもSMSが受信できない場合、ご契約状況や受信設定の詳細について、お使いの携帯電話会社様までご確認くださいますようお願いいたします。
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          登録できるサーフボード類は？
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            登録可能なサーフボード類の条件は以下をご確認ください。
-           【登録可能なサーフボード類の条件】
-            ・ホスト自身がそのサーフボード類の所有者であること
-
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          料金はどうやって、いつ振り込まれますか？
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            サーフ文庫からホスト(貸し手)への振込は、ご登録頂いた銀行口座へ行います。<br>
-            振込タイミングは、レンタル完了日の翌日がn月の場合、n+1月 の最終営業日となります。<br>
-           （例：レンタル完了日が5月10日の場合、7月の最終営業日に振込まれます。）<br>
-            ただし、登録された口座情報が間違っている場合には振り込みが実施されませんので、ご注意ください。
-          </p>
-
-          </p>
-        </div>
-      </li>
-
-      <li class="qanda">
-        <div>
-          <span class="symbol-1">Q</span>
-          サーフ文庫でサーフボード類をシェアしたことによって得た収入は、所得税法上、どの所得区分になりますか？
-          <span class="sign">+</span>
-        </div>
-        <div class="qanda-list">
-          <p>
-            <span class="symbol-2">A</span><br>
-            サーフ文庫でのレンタル収入は、所得税法上、雑所得に区分される所得と当社は考えております。レンタル収入を雑所得以外の所得として区分する場合には、税務の専門家もしくはお近くの税務署へ相談の上、区分することをおすすめします。
-          </p>
-
-          </p>
-        </div>
-      </li>
-
-    </ul>
-  </div>
-
 </div>
 
 
@@ -935,11 +721,11 @@
   <div class="about-sentence">
     <p>
       湘南のWEB企業で働くエンジニア(Ruby,RubyonRails)<br>
-      2017年の春から藤沢市在住で、サーフィンのシェアリングサービスを思いつき2018年夏から運営予定(これまでの経緯は<%= link_to("こちら", "http://toollibrary.jp/media/" , class: "gray" )%>のブログに掲載)<br>
+      2017年の春から藤沢市在住で、サーフィンのシェアリングサービスを思いつき2018年夏から運営予定
 
     </p>
     <p>
-      <%= link_to("第18回湘南ビジネスコンテスト", "http://www.s-cns.com/contest/contest2017.html", class: "gray")%>で来場者賞受賞う
+      <%= link_to("第18回湘南ビジネスコンテスト", "http://www.s-cns.com/contest/contest2017.html", class: "gray")%>で来場者賞受賞
     </p>
     <p>
       サーフィン歴は1年、ホームポイントは「鵠沼銅像前」「引地川河口」。<br>
@@ -947,11 +733,28 @@
       趣味:ジョギング、海外旅行
     </p>
     <p>
-      「アフリカで使ったAirbnb(エアビーエヌビー)がとてつもなく楽しく、個人間の取引にハマりました。人との出逢いこそが人生を豊かにすると思っており、そのきっかけを作るサービスを作りたいです!」
+      「海外で使ったAirbnb(エアビーエヌビー)というシェアリングサービスがすごく楽しく、個人間の取引にハマりました。人との出逢いこそが人生を豊かにすると思っており、そのきっかけを作るサービスを作りたいです」
     </p>
   </div>
 
 </div>
+
+  <p class="entry-button text-center">
+    <%= link_to "貸し手に応募する•問い合わせる", anchor: "entry-form" %>
+  </p>
+
+
+  <p class="animated infinite slideOutLeft" id="motion">
+   <span class="">🌊🏄</span>
+  </p>
+
+  <nav class="">
+    <div class="inform text-center">
+      <p>
+        <%= link_to "トップへ戻る", anchor: "top" %>
+      </p>
+    </div>
+  </nav>
 
 </div>
 
