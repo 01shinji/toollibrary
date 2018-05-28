@@ -2423,3 +2423,15 @@ input#autolocation {
 
 
 }
+
+.scroll-box::-webkit-scrollbar {
+  height: 5px;
+}
+.scroll-box::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background: #F4F6F6;
+}
+.scroll-box::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #808080;
+}
