@@ -2403,12 +2403,23 @@ input#autolocation {
 }
 
 #vision p {
-  font-size: 16px;
-  color: #808080;
+  font-weight: bold;
+  font-size: 17px;
+  color: #ffffff ;
 }
-
-
 
 .table-bordered{
   margin-top: 20px;
+}
+
+
+#vision .about-sentence {
+  padding: 5%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-image: url("/assets/vision-image-min.png");
+  background-size: cover;
+  background-blend-mode: soft-light;
+
+
 }
