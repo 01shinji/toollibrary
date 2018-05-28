@@ -1853,7 +1853,9 @@ input#autolocation {
 }
 
 .about-box .about-sentence h3{
-  margin: 0;
+  margin-right: 0;
+  margin-left: 0;
+  margin-top: 0;
 }
 
 .about-box h4{
@@ -2352,6 +2354,7 @@ input#autolocation {
   color: #ffffff;
   background-color: #28a745;
   padding: 5px;
+  margin: 10px 10%;
 }
 
 .about-sentence .inform{
@@ -2374,6 +2377,9 @@ input#autolocation {
   .frame{
     margin:0 10%;
   }
+  .heading{
+    margin: 10px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -2392,10 +2398,16 @@ input#autolocation {
   margin-top: 30px;
 }
 
+#vision p.blue {
+ color: #04b4e4;
+}
+
 #vision p {
   font-size: 16px;
   color: #808080;
 }
+
+
 
 .table-bordered{
   margin-top: 20px;
