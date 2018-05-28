@@ -20,6 +20,7 @@ class InquiryController < ApplicationController
   # メール送信
   def thanks
     @inquiry = Inquiry.new(inquiry_params)
+    InquiryMailer.sent_email(@inquiry).deliver
     InquiryMailer.received_email(@inquiry).deliver
 
     # 完了画面を表示

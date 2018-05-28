@@ -20,6 +20,7 @@ class EntryController < ApplicationController
   # メール送信
   def thanks
     @entry = Entry.new(entry_params)
+    EntryMailer.sent_email(@entry).deliver
     EntryMailer.received_email(@entry).deliver
 
     # 完了画面を表示

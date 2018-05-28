@@ -1,9 +1,58 @@
+<div class="" id="entry">
+
+  <div class="entry-box" id="top">
+    <ul>
+     <li id="title" class="">
+       <%= link_to "サーフ文庫", entry_path, class: "navbar-brand " %>
+     </li>
+     <li class="sentence font-md">
+       サーフィンのシェアリングサービス
+     </li>
+     <li class="sentence font-sm">
+       サーフィンの<br>シェアリングサービス
+     </li>
+
+     <script type="text/javascript">
+       $(function(){
+        var w = window.innerWidth;
+        if (w > 480){
+
+          $(".font-sm").remove();
+
+        }
+        if (w <= 480){
+
+          $(".font-md").remove();
+          $(".font-sm").append();
+
+        }
+        console.log(w);
+       });
+     </script>
+
+    </ul>
+
+  </div>
+
+  <p class="animated infinite slideOutLeft" id="motion">
+   <span class="">🌊🏄</span>
+  </p>
+
+  <nav class="">
+    <div class="inform text-center">
+      <p>
+        7月にサービスがオープンします<br>
+        湘南と千葉でサーフボードやボード置き場を貸してくれる方を募集中
+      </p>
+    </div>
+  </nav>
+
 <p class="text-center">
 
 サーフ文庫への応募•お問い合わせフォームです。<br>返信は通常24時間以内に行なっております。
 </p>
 <div class="row">
-  <div class=" text-center">
+  <div class=" text-center frame">
     <div class="panel panel-default">
       <h3>完了画面</h3>
 
@@ -12,4 +61,6 @@
       </h4>
     </div>
   </div>
+</div>
+
 </div>
