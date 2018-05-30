@@ -2450,3 +2450,49 @@ input#autolocation {
   font-weight: bold;
 
 }
+
+.social_block {
+ padding-top: 20px;
+}
+
+.social_block:after{
+ content:"";
+ clear:both;
+ display:block;
+ }
+
+.social_block ul{
+  position:relative;
+  left:50%;
+  float:left;
+  padding: 0;
+
+ }
+
+.social_block ul li{
+  list-style: none;
+  position:relative;
+  left:-50%;
+  float:left;
+  }
+
+
+
+#facebook_btn{
+  color: #ffffff;
+  margin: 5px;
+  padding:10px;
+  background: #3b5998;
+}
+
+#twitter_btn{
+  color: #ffffff;
+  margin: 5px;
+  padding:10px;
+  background: #1da1f2;
+}
+
+.social_block svg {
+    position: relative;
+    top: 1px;
+}
