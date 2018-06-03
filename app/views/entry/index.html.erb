@@ -94,7 +94,7 @@
 <div class="about-box">
 
   <p class="entry-button text-center">
-    <%= link_to "応募する•問い合わせる", anchor: "entry-form" %>
+    <%= link_to "応募する", anchor: "entry-form" %>
   </p>
 
 
@@ -284,7 +284,7 @@
 <div class="row">
   <div class="text-center frame">
     <div class="panel panel-default" id="entry-form">
-      <h3><b>応募する•お問合わせ</b></h3>
+      <h3><b>応募する</b></h3>
 
       <div class="container">
 
@@ -337,7 +337,7 @@
         </div>
 
         <div class="form_box inquiry-text">
-          <p>お問合わせ</p>
+          <p>その他&nbsp;自由記入欄</p>
           <div class="form-group">
             <%= f.text_area :message, class: "form-control" %>
           </div>
@@ -450,7 +450,7 @@
 </div>
 
   <p class="entry-button text-center">
-    <%= link_to "応募する•問い合わせる", anchor: "entry-form" %>
+    <%= link_to "応募する", anchor: "entry-form" %>
   </p>
 
   <div class="social_logo">
@@ -500,3 +500,48 @@
 </script>
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "834b2b9d-3f8f-49dc-8ce2-70209e933f7a"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->
