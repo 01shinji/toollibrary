@@ -255,6 +255,7 @@ th {
 }
 
 .navbar-nav > li > a{
+  font-weight: bold;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -272,6 +273,7 @@ th {
 
 }
 }
+
 
 // 地域ナビゲーション
 .navbar.area {
@@ -456,12 +458,28 @@ th {
   font-weight: normal;
 }
 
+
+.btn.btn-normal {
+  box-shadow: 0 3px 0 #cc8500;
+  border-radius: 2px;
+  font-weight: bold;
+
+}
+
 .btn-sm {
   margin: 5px;
   width: 165px;
   border: none;
-  border-radius: 0;
+
   font-weight: normal;
+}
+
+.btn-sm.b-green{
+  box-shadow: 0 3px 0 #19672b;
+}
+
+.btn-sm.b-gray{
+  box-shadow: 0 3px 0 #808080;
 }
 
 .btn-xs {
@@ -484,10 +502,21 @@ th {
 }
 
 .btn-orage{
-  color:#FFA500;
-  border: solid 2px #FFA500;
+  position: relative;
+  bottom: 2px;
   border-radius: 2px;
   padding: 5px;
+
+  color: #ffffff ;
+  background-color: #FFA500;
+  border-radius: 2px;
+  box-shadow: 0 3px 0 #cc8500;
+}
+
+.btn-orage:hover{
+
+  color: #ffffff ;
+  font-weight: bold;
 }
 
 .btn
@@ -515,6 +544,8 @@ th {
 .btn.btn-form {
   border: 1px solid #FFA500;
   background-color: #FFA500;
+  border-radius: 2px;
+  box-shadow: 0 3px 0 #cc8500;
 }// オレンジ
 
 .btn.btn-form:active {
@@ -601,7 +632,7 @@ th {
 
 .form_box p{
   text-align: left;
-  font-weight: bold;
+
 }
 .form-group {
 

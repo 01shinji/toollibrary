@@ -13,14 +13,14 @@
         <%= f.hidden_field :location, value: @user.address_city %>
 
         <div class="form_box">
-          <p>商品の詳細説明</p>
+          <p><b>商品の詳細説明</b></p>
           <div class="form-group">
             <%= f.text_area :description, rows: 5, placeholder: "例:昨年の夏に購入しました。湘南の波にピッタリで、上級者からビギナーまで楽しめます。シングルフィン、リシューコード付き、サイズ7'0×22×3 1/8", class: "form-control", required: true %>
           </div>
         </div>
 
         <div class="form_box">
-          <p>利用可能なアメニティ</p>
+          <p><b>利用可能なアメニティ</b></p>
           <div class="form-group row">
             <div class="col-md-4 col-sm-4 col-xs-4 check">
               <%= f.check_box :is_shower %>
@@ -50,14 +50,14 @@
           </p>
 
           <div class="form_box">
-            <p>購入時期</p>
+            <p><b>購入時期</b></p>
             <div class="form-group">
               <%= f.text_field :purchase_time, placeholder: "例:2016年春ごろ", class: "form-control", required: true %>
             </div>
           </div>
 
           <div class="form_box">
-            <p>購入価格</p>
+            <p><b>購入価格</b></p>
             <div class="">
 
               <div class="form-group" >

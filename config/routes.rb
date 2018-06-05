@@ -102,5 +102,7 @@ Rails.application.routes.draw do
   post 'entry/confirm' => 'entry#confirm'
   post 'entry/thanks' => 'entry#thanks'
 
+  get 'notice' => 'pages#notice'
+
   resources :fees, only: [:index]
 end

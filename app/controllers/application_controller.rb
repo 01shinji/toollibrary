@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
     dashboard_path
   end
 
+
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:fullname])
     devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :fullname, :phone_number, :description, :image, :address_zipcode, :address_prefecture_name, :address_city, :address_street, :address_building, :bank_name, :account_type, :branch_code, :account_number, :account_name])

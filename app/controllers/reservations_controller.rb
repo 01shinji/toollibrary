@@ -25,6 +25,7 @@ class ReservationsController < ApplicationController
       return redirect_to edit_user_registration_path
 
     elsif
+     !current_user.fullname ||
      !current_user.nickname ||
      !current_user.image_file_name ||
      !current_user.address_zipcode ||

@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :omniauthable
 
-  validates :fullname, presence: true, length: {maximum: 50}
+
 
   has_many :listings
   has_many :reservations

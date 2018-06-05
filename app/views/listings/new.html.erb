@@ -8,16 +8,11 @@
 
         <%= form_for @listing,html: {multipart: true} do |f| %>
 
-        <div class="form_box ">
-          <p>出品タイプ</p>
-          <div class="form-group select">
-            <%= f.select :listing_type, [["貸す","レンタル"]], {prompt:"選択してください"}, {required: true, autofocus: 'true', class: 'form-control',id: "listing_type"} %>
-          </div>
-        </div>
+        <%= f.hidden_field :listing_type, value: "レンタル"  %>
 
 
         <div class="form_box">
-          <p>カテゴリー</p>
+          <p><b>カテゴリー</b></p>
           <div class="form-group">
            <%= f.select :category1,
            [["サーフボード", "サーフボード"],
@@ -50,14 +45,14 @@
         </div>
 
         <div class="form_box">
-          <p>商品名</p>
+          <p><b>商品名</b></p>
           <div class="form-group">
             <%= f.text_field :listing_title, placeholder: "例:キャッチサーフのファンボード", class: "form-control", required: true %>
           </div>
         </div>
 
         <div class="form_box">
-          <p>レンタル価格</p>
+          <p><b>レンタル価格</b></p>
           <div class="" id="information2-price">
 
             <div class="form-group" >
