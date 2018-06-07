@@ -1,30 +1,29 @@
 <div class="dashboard-link">
   <ul class="">
     <li class="active"><%= link_to "プロフィールの編集", edit_user_registration_path %></li>
-    <li class=""><%= link_to "電話番号の認証",  anchor: "phone" %></li>
-    <li class=""><%= link_to "身分証の登録",  anchor: "license" %></li>
-    <li class=""><%= link_to "プロフィールを見る", user_path(current_user.id) %></li>
+    <li class=""><%= link_to "認証",  certification_path %></li>
+
+    <li class=""><%= link_to "支払い方法",  payment_method_path %></li>
+
+
   </ul>
 </div>
 
-<div class="registration-alert">
-    <ul>
-      <% if current_user.fullname.empty? || current_user.nickname.empty? || current_user.address_zipcode.empty? || current_user.address_prefecture_name.empty? || current_user.description.empty?  %>
 
-        <li>プロフィールの登録が完了していません</li>
+
+      <% if current_user.fullname.nil? || current_user.nickname.nil? || current_user.address_zipcode.nil? || current_user.address_prefecture_name.nil? || current_user.description.nil?  %>
+        <div class="registration-alert b-light-red">
+         <p>プロフィールの登録が完了していません</p>
+        </div>
+      <% else %>
+        <div class="registration-alert b-light-green">
+         <p>プロフィール登録済み</p>
+        </div>
       <% end %>
-      <% if !current_user.phone_verified %>
-        <li>電話番号の認証が完了していません</li>
 
-      <% end %>
-      <% if !current_user.license_file_name %>
-        <li>身分証明書が未登録です</li>
 
-      <% end %>
-    </ul>
 
-  </p>
-</div>
+
 
 <div class="row">
 
@@ -32,15 +31,18 @@
     <div class="panel panel-default">
 
       <h3>
-        プロフィール
-        <% if !current_user.fullname.empty? && !current_user.nickname.empty? && !current_user.address_zipcode.empty? && !current_user.address_prefecture_name.empty? %>
-          <span class="blue"><i class="fa fa-check"></i></span>
+        <b>
+          プロフィール
+          <% if !current_user.fullname.nil? && !current_user.nickname.nil? && !current_user.address_zipcode.nil? && !current_user.address_prefecture_name.nil? %>
+            <span class="blue"><i class="fa fa-check"></i></span>
+        </b>
+
         <% end %>
       </h3>
 
+      <%= link_to "プロフィールを見る", user_path(current_user.id) %>
+
       <div class="container">
-
-
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
@@ -158,148 +160,8 @@
       </div>
 
 
-      <div class="edit-phone" id="phone" >
-        <h4>
-          電話番号
-          <% if current_user.phone_verified %>
-            <span class="blue"><i class="fa fa-check"></i></span>
-          <% end %>
-        </h4>
-        <div class="container">
-
-        <% if !current_user.phone_number.blank? %>
-            <h4 class="phone-number">
-              <%= current_user.phone_number %>
-            </h4>
-
-            <% if current_user.phone_verified == false %>
-              <button class="btn white b-red" data-toggle="modal" data-target="#verify-phone">
-                電話番号を認証する
-              </button>
-            <% end %>
-            <br>
-            <button class="btn white b-green" data-toggle="modal" data-target="#update-phone">
-              電話番号を変更する
-            </button>
-
-        <% else %>
-            <button class="btn white b-green" data-toggle="modal" data-target="#update-phone">
-              電話番号を登録する
-            </button>
-
-        <% end %>
-
-        </div>
-      </div>
-
-      <div class="edit-license" id="license">
-
-        <h4>
-          身分証明書
-          <% if current_user.license? %>
-           <span class="blue"><i class="fa fa-check"></i></span>
-          <% end %>
-        </h4>
-        <div class="container">
-          <% if !current_user.license.blank? %>
-            <button class="btn white b-green" data-toggle="modal" data-target="#update-license">
-              身分証明書を変更する
-            </button>
-          <% else %>
-            <button class="btn white b-green" data-toggle="modal" data-target="#update-license">
-              身分証明書を登録する
-            </button>
-          <% end %>
-        </div>
-      </div>
 
     </div>
   </div>
 
-</div>
-
-<!-- MODAL FOR PHONE NUMBER -->
-<div id="update-phone" class="modal fade text-center" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <button class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">電話番号</h4>
-        <p>※11桁のハイフン無し</p>
-      </div>
-
-      <div class="modal-body">
-        <%= form_for current_user, url: update_phone_number_user_path(current_user) do |f| %>
-            <div class="form-group">
-              <%= f.phone_field :phone_number, class: "form-control", placeholder: "08012345678" %>
-            </div>
-            <div class="text-center">
-              <%= f.submit "登録する", class: "btn btn-form" %>
-            </div>
-        <% end %>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- MODAL FOR VERIFICATION -->
-<div id="verify-phone" class="modal fade text-center" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <button class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">認証コード</h4>
-      </div>
-
-      <div class="modal-body">
-        <%= form_for current_user, url: verify_phone_number_user_path(current_user), method: :post do |f| %>
-            <div class="form-group">
-              <%= f.text_field :pin, class: "form-control", placeholder: "４桁の認証コード", value: "" %>
-            </div>
-            <div class="text-center">
-              <%= f.submit "認証する", class: "btn-sm  white b-red" %>
-            </div>
-        <% end %>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- MODAL FOR LICENSE -->
-<div id="update-license" class="modal fade text-center" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <button class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">身分証明書</h4>
-
-        <p>ご利用いただける本人確認画像は以下となります</p>
-        <p>運転免許証&nbsp;/&nbsp;パスポート&nbsp;/&nbsp;外国国籍を持つ方の場合は在留カード&nbsp;/&nbsp;住基カード(顔写真入り)&nbsp;/&nbsp;健康保険証(保険証をご提出の場合は住民票または国民年金手帳等のご提出も必要です)</p>
-        <p>※2枚ある場合は、1つの画像にしてください。</p>
-      </div>
-
-      <div class="modal-body">
-        <%= form_for current_user, url: update_license_user_path(current_user) do |f| %>
-
-            <div class="form-group image-select" >
-             <p class="btn btn-default btn-file ">
-               <i class="fa fa-cloud-upload" aria-hidden="true"></i>画像を選択
-               <%= f.file_field :license  %>
-             </p>
-            </div>
-
-            <div class="text-center">
-              <%= f.submit "アップロード", class: "btn btn-form" %>
-            </div>
-
-        <% end %>
-      </div>
-
-    </div>
-  </div>
 </div>

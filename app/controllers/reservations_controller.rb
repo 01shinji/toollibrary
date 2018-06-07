@@ -19,17 +19,17 @@ class ReservationsController < ApplicationController
 
     elsif !current_user.phone_verified
       flash[:alert] = "電話番号の認証が必要です"
-      return redirect_to edit_user_registration_path
+      return redirect_to certification_path
     elsif !current_user.license_file_name
       flash[:alert] = "身分証明書の登録が必要です"
-      return redirect_to edit_user_registration_path
+      return redirect_to certification_path
 
     elsif
-     current_user.fullname.empty? ||
-     current_user.nickname.empty? ||
+     current_user.fullname.nil? ||
+     current_user.nickname.nil? ||
 
-     current_user.address_zipcode.empty? ||
-     current_user.address_prefecture_name.empty?
+     current_user.address_zipcode.nil? ||
+     current_user.address_prefecture_name.nil?
 
      return redirect_to edit_user_registration_path, alert: "プロフィールの登録をお願いします"
 

@@ -12,7 +12,9 @@ class UsersController < ApplicationController
     @host_reviews = Review.where(type: "HostReview", guest_id: @user.id)
   end
 
+  def certification
 
+  end
 
   def update_phone_number
     current_user.update_attributes(user_params)
@@ -21,7 +23,7 @@ class UsersController < ApplicationController
 
     redirect_to edit_user_registration_path, notice: "認証コードを送りました、電話番号の認証をお願いします"
   rescue Exception => e
-    redirect_to edit_user_registration_path, alert: "#{e.message}"
+    redirect_to certification_path, alert: "#{e.message}"
   end
 
   def verify_phone_number
@@ -33,15 +35,15 @@ class UsersController < ApplicationController
       flash[:alert] = "電話番号の認証に失敗しました"
     end
 
-    redirect_to edit_user_registration_path
+    redirect_to certification_path
 
   rescue Exception => e
-    redirect_to edit_user_registration_path, alert: "#{e.message}"
+    redirect_to certification_path, alert: "#{e.message}"
   end
 
   def update_license
     current_user.update_attributes(user_params)
-    redirect_to edit_user_registration_path, notice: "身分証を登録しました!"
+    redirect_to certification_path, notice: "身分証を登録しました!"
   end
 
   def payment

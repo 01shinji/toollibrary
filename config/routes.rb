@@ -25,12 +25,23 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do
     member do
+
       post '/verify_phone_number' => 'users#verify_phone_number'
       patch '/update_phone_number' => 'users#update_phone_number'
-      patch '/update_bank_account' => 'users#update_bank_account'
+
       patch '/update_license' => 'users#update_license'
+
+      patch '/update_bank_account' => 'users#update_bank_account'
+
     end
   end
+
+  get '/certification' => "users#certification"
+
+  get '/payment_method' => "users#payment"
+  get '/payout_method' => "users#payout"
+  post '/add_card' => "users#add_card"
+
 
   resources :listings, except: [:edit] do
     member do
@@ -70,9 +81,7 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :create]
   end
 
-  get '/payment_method' => "users#payment"
-  get '/payout_method' => "users#payout"
-  post '/add_card' => "users#add_card"
+
 
   get '/notifications' => 'notifications#index'
 
