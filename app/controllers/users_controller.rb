@@ -39,6 +39,10 @@ class UsersController < ApplicationController
     redirect_to edit_user_registration_path, alert: "#{e.message}"
   end
 
+  def update_license
+    current_user.update_attributes(user_params)
+    redirect_to edit_user_registration_path, notice: "身分証を登録しました!"
+  end
 
   def payment
   end
@@ -76,10 +80,7 @@ class UsersController < ApplicationController
     redirect_to payout_method_path, notice: "振込先口座を変更しました!"
   end
 
-  def update_license
-    current_user.update_attributes(user_params)
-    redirect_to edit_user_registration_path, notice: "身分証を登録しました!"
-  end
+
 
   private
 

@@ -389,15 +389,16 @@ th {
   }
 
 .dashboard-link ul .active{
-  border-left:solid 3px #04b4e4;
-  border-right:solid 3px #04b4e4;
+  background-color: #04b4e4;
 }
 
 .dashboard-link ul li a{
   color:#000000;
 }
 
-
+.dashboard-link .active a {
+    color: #ffffff;
+}
 
 // 認証系ページ
 .devise_container{
@@ -454,7 +455,7 @@ th {
   color: #fff;
 
   padding: 9px 27px;
-  border-radius: 0;
+  border-radius: 2px;
   font-weight: normal;
 }
 
@@ -464,6 +465,14 @@ th {
   border-radius: 2px;
   font-weight: bold;
 
+}
+
+.btn.b-green{
+  box-shadow: 0 3px 0 #19672b;
+}
+
+.btn.b-red{
+  box-shadow: 0 3px 0 #d1332e;
 }
 
 .btn-sm {
@@ -480,6 +489,10 @@ th {
 
 .btn-sm.b-gray{
   box-shadow: 0 3px 0 #808080;
+}
+
+.btn-sm.b-red{
+  box-shadow: 0 3px 0 #d1332e;
 }
 
 .btn-xs {
@@ -563,6 +576,15 @@ th {
   outline: none;
   border-color: #2d467b;
   background-color: #2d467b;
+}
+
+
+
+
+
+html input[disabled]{
+  cursor: not-allowed;
+  opacity: 0.65;
 }
 
 // panel
@@ -650,6 +672,18 @@ th {
 
 
 // リスティング作成
+.listing_title{
+  padding: 5px;
+}
+
+.listing_title a{
+  color: #ffffff;
+}
+
+.listing_title .b-red{
+  padding: 2px;
+}
+
 .children{
   display: none;
 }
@@ -869,6 +903,10 @@ th {
   margin: 5px;
 }
 
+.listing-index .bottom .b-red{
+  padding: 2px;
+}
+
 .address-prefecture-name{
   font-size: 10px;
   position: absolute;
@@ -889,6 +927,8 @@ th {
 .listing-content .bottom {
 margin-top: 5px;
 }
+
+
 
 .listing-content .bottom .listing-type{
   color: #ffffff;
@@ -1276,6 +1316,30 @@ margin-top: 5px;
 
 .edit-phone .phone-number{
   margin: 0;
+}
+
+.registration-alert{
+  padding: 0 20%;
+  background-color: #ff6666;
+  border-radius: 10px;
+}
+@media (max-width: 768px) {
+  /* ~480px */
+.registration-alert{
+  padding: 0 10%;
+
+}
+}
+@media (max-width: 480px) {
+  /* ~480px */
+.registration-alert{
+  padding: 0 10px;
+
+}
+}
+.registration-alert li{
+  color: #ffffff ;
+  padding: 5px;
 }
 
 // プロフィール詳細

@@ -29,14 +29,18 @@
       </li>
 
     </ul>
+
+    <% if @listing.active.blank? %>
     <p>
       <% is_ready = !@listing.active && !@listing.description.blank? && !@listing.photos.blank?  %>
 
       <%= form_for @listing do |f| %>
-      <%= f.hidden_field :active, value: true %>
-      <%= f.submit "公開する", class:  'btn-sm  white b-green', disabled: !is_ready %>
+        <%= f.hidden_field :active, value: true %>
+        <%= f.submit "公開する", class:  'btn-sm  white b-green', disabled: !is_ready %>
       <% end %>
     </p>
+    <% end %>
+
 
   </div>
 </div>

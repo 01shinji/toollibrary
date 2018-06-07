@@ -19,11 +19,12 @@ class ListingsController < ApplicationController
 
     elsif
 
-     !current_user.fullname ||
-     !current_user.nickname ||
+     current_user.fullname.empty? ||
+     current_user.nickname.empty? ||
 
-     !current_user.address_zipcode ||
-     !current_user.address_prefecture_name
+     current_user.address_zipcode.empty? ||
+     current_user.address_prefecture_name.empty? ||
+     current_user.description.empty?
 
      return redirect_to edit_user_registration_path, alert: "プロフィールの登録をお願いします"
 
@@ -77,9 +78,7 @@ class ListingsController < ApplicationController
 
     if @listing.update(new_params)
       flash[:notice] = "商品情報を編集しました"
-    elsif
-       @listing.update(new_params)
-      flash[:notice] = "商品情報を編集しました"
+    
     else
       flash[:alert] = "商品情報の編集がうまくいきませんでした"
     end

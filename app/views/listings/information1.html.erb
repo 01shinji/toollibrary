@@ -4,7 +4,15 @@
     <div class="panel panel-default">
       <h3>商品の基本情報</h3>
 
-      <p><b><%= @listing.listing_title %></b></p>
+      <p class="b-blue  listing_title">
+
+        <%= link_to @listing.listing_title, listing_path(@listing) , class: "white" %>
+        <% if !@listing.active.blank? %>
+         <span class="white b-red">
+          公開中
+         </span>
+        <% end %>
+      </p>
 
       <div class="container">
         <%= form_for @listing,html: {multipart: true} do |f| %>

@@ -2,8 +2,28 @@
   <ul class="">
     <li class="active"><%= link_to "プロフィールの編集", edit_user_registration_path %></li>
     <li class=""><%= link_to "電話番号の認証",  anchor: "phone" %></li>
+    <li class=""><%= link_to "身分証の登録",  anchor: "license" %></li>
     <li class=""><%= link_to "プロフィールを見る", user_path(current_user.id) %></li>
   </ul>
+</div>
+
+<div class="registration-alert">
+    <ul>
+      <% if current_user.fullname.empty? || current_user.nickname.empty? || current_user.address_zipcode.empty? || current_user.address_prefecture_name.empty? || current_user.description.empty?  %>
+
+        <li>プロフィールの登録が完了していません</li>
+      <% end %>
+      <% if !current_user.phone_verified %>
+        <li>電話番号の認証が完了していません</li>
+
+      <% end %>
+      <% if !current_user.license_file_name %>
+        <li>身分証明書が未登録です</li>
+
+      <% end %>
+    </ul>
+
+  </p>
 </div>
 
 <div class="row">
@@ -11,8 +31,17 @@
   <div class=" text-center">
     <div class="panel panel-default">
 
-      <h3>プロフィールの編集</h3>
+      <h3>
+        プロフィール
+        <% if !current_user.fullname.empty? && !current_user.nickname.empty? && !current_user.address_zipcode.empty? && !current_user.address_prefecture_name.empty? %>
+          <span class="blue"><i class="fa fa-check"></i></span>
+        <% end %>
+      </h3>
+
       <div class="container">
+
+
+
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
         <%= render 'shared/devisemes' %>
@@ -206,7 +235,7 @@
               <%= f.phone_field :phone_number, class: "form-control", placeholder: "08012345678" %>
             </div>
             <div class="text-center">
-              <%= f.submit "登録する", class: "btn-sm  white b-red" %>
+              <%= f.submit "登録する", class: "btn btn-form" %>
             </div>
         <% end %>
       </div>
@@ -248,7 +277,10 @@
       <div class="modal-header">
         <button class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">身分証明書</h4>
-        <p>※運転免許証または健康保険証</p>
+
+        <p>ご利用いただける本人確認画像は以下となります</p>
+        <p>運転免許証&nbsp;/&nbsp;パスポート&nbsp;/&nbsp;外国国籍を持つ方の場合は在留カード&nbsp;/&nbsp;住基カード(顔写真入り)&nbsp;/&nbsp;健康保険証(保険証をご提出の場合は住民票または国民年金手帳等のご提出も必要です)</p>
+        <p>※2枚ある場合は、1つの画像にしてください。</p>
       </div>
 
       <div class="modal-body">
