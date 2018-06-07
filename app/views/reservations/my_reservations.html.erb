@@ -1,19 +1,18 @@
 <!-- ゲストとしてのレンタル購入履歴 -->
 <div class="dashboard-link">
   <ul class="">
-    <li class=""><%= link_to "出品アイテム管理", listings_path %></li>
-    <li class=""><%= link_to "貸出し販売履歴",  guest_reservations_path %></li>
-    <li class="active"><%= link_to "レンタル購入履歴", my_reservations_path  %></li>
+
+    <li class="active"><%= link_to "レンタル履歴", my_reservations_path  %></li>
   </ul>
 </div>
 
 <div class="row my-reservation">
   <div class="col-md-8 col-md-offset-2">
     <div class="">
-      <h3 class="">レンタル購入履歴</h3>
+      <h3 class="">レンタル履歴</h3>
       <div class="">
         <% if @my_reservations.count == 0 %>
-         <p>まだレンタル購入履歴がありません...</p>
+         <p>まだレンタル購入履歴はありません</p>
 
         <% else %>
 

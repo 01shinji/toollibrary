@@ -2,14 +2,19 @@
   <ul class="">
     <li class="active"><%= link_to "貸出しアイテム", listings_path %></li>
     <li class=""><%= link_to "貸出し履歴",  guest_reservations_path %></li>
-    <li class=""><%= link_to "レンタル購入履歴", my_reservations_path %></li>
+    <li class=""><%= link_to "振込先", payout_method_path %></li>
   </ul>
 </div>
 
 <div class="row listing-index">
   <div class="col-md-8 col-md-offset-2">
     <div class="">
-      <h3>出品アイテム管理</h3>
+      <h3>
+        <b>
+          貸出しアイテム
+        </b>
+
+      </h3>
 
       <div class="">
         <% if @listings.count == 0 %>

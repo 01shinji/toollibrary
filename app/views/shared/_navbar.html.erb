@@ -16,7 +16,7 @@
             </li>
             <li class="header-case">
 
-                <%= link_to "貸す", new_listing_path, class: 'btn-orage' %>
+                <%= link_to "出品する", new_listing_path, class: 'btn-orage' %>
 
               <% if (user_signed_in?)%>
                <%= link_to notifications_path do %>
@@ -49,22 +49,8 @@
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
-                <li>
-                  <%= link_to "ダッシュボード", dashboard_path %>
-                <li>
-                  <%= link_to "貸す", new_listing_path %>
-                </li>
-                <li>
-                  <%= link_to "出品アイテム管理", listings_path %>
-                </li>
-                <li>
-                  <%= link_to "貸出し販売履歴", guest_reservations_path %>
-                </li>
-                <li>
-                  <%= link_to "レンタル購入履歴", my_reservations_path %>
-                </li>
-                <li role="separator" class="divider"></li>
-                <li><%= link_to "プロフィール編集", edit_user_registration_path %></li>
+
+
                 <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
               </ul>
             </li>
@@ -85,9 +71,9 @@
         <ul class="">
           <li <% if current_page?(dashboard_path) %> class="active" <% end %> ><%= link_to "ダッシュボード", dashboard_path %></li>
 
-          <li <% if current_page?(listings_path) %> class="active" <% end %> ><%= link_to "貸す", listings_path %></li>
+          <li <% if current_page?(listings_path) || current_page?(guest_reservations_path) || current_page?(payout_method_path) %> class="active" <% end %> ><%= link_to "貸出し", listings_path %></li>
 
-          <li <% if current_page?(my_reservations_path)  %> class="active" <% end %> ><%= link_to "借りる", my_reservations_path %></li>
+          <li <% if current_page?(my_reservations_path)  %> class="active" <% end %> ><%= link_to "レンタル", my_reservations_path %></li>
 
           <li <% if current_page?(edit_user_registration_path) ||  current_page?(certification_path) || current_page?(payment_method_path) %> class="active" <% end %> ><%= link_to "設定", edit_user_registration_path %></li>
 

@@ -1,19 +1,25 @@
 <div class="dashboard-link">
   <ul class="">
-    <li class=""><%= link_to "支払い方法", payment_method_path %></li>
-    <li class="active"><%= link_to "売上管理", payout_method_path %></li>
-    <li class=""><%= link_to "通知設定", payment_method_path %></li>
-    <li class=""><%= link_to "プロフィールを見る", user_path(current_user.id) %></li>
+    <li class=""><%= link_to "貸出しアイテム", listings_path %></li>
+    <li class=""><%= link_to "貸出し履歴",  guest_reservations_path %></li>
+    <li class="active"><%= link_to "振込先", payout_method_path %></li>
   </ul>
 </div>
 
 <div class="row">
   <div class=" text-center">
     <div class="panel panel-default">
-      <h3><b>売上管理</b></h3>
+      <h3>
+        <b>
+          振込先
+          <% if !current_user.account_number.blank? %>
+            <span class="blue"><i class="fa fa-check"></i></span>
+          <% end %>
+        </b>
+      </h3>
 
       <div class="edit-bank">
-        <h4>振込先口座</h4>
+        <h4>銀行口座</h4>
         <div class="container">
 
           <% if !current_user.account_number.blank? %>
