@@ -87,7 +87,7 @@
         <ul class="">
           <li <% if current_page?(dashboard_path) %> class="active" <% end %> ><%= link_to "ダッシュボード", dashboard_path %></li>
 
-          <li <% if current_page?(listings_path) || current_page?(guest_reservations_path) || current_page?(payout_method_path) || current_page?(information_listing_path) || current_page?(photo_upload_listing_path) %> class="active" <% end %> ><%= link_to "貸出し", listings_path %></li>
+          <li <% if current_page?(listings_path) || current_page?(guest_reservations_path) || current_page?(payout_method_path) %> class="active" <% end %> ><%= link_to "貸出し", listings_path %></li>
 
           <li <% if current_page?(my_reservations_path)  %> class="active" <% end %> ><%= link_to "レンタル", my_reservations_path %></li>
 
