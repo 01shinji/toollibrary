@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   post '/add_card' => "users#add_card"
 
 
-  resources :listings do
+  resources :listings, except: [:edit] do
     member do
 
 
