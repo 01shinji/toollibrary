@@ -1,0 +1,64 @@
+
+
+<div class="row" id="exhibition">
+  <div class=" text-center">
+    <div class="panel panel-default">
+
+    <% if !@listing.active  %>
+     <div class="">
+
+      <h3>
+        <b>
+          <span class="blue">ステップ3</span>
+          商品を出品する
+        </b>
+      </h3>
+
+      <p class="b-blue  listing_title">
+        <%= link_to @listing.listing_title, listing_path(@listing) , class: "white" %>
+      </p>
+
+      <p>
+        <%= form_for @listing do |f| %>
+         <%= f.hidden_field :active, value: true %>
+         <%= f.submit "公開する", class:  'btn-sm  white b-green' %>
+        <% end %>
+      </p>
+      <p>
+        <%= link_to "画像を確認する", photo_upload_listing_path(@listing)  %>
+      </p>
+      <p>
+        <%= link_to "商品情報を確認する", information_listing_path(@listing)  %>
+      </p>
+
+     </div>
+
+    <% else %>
+
+     <div class="">
+       <div class="ribbon">
+         <h3 class="">
+           <b>出品が完了しました!</b>
+         </h3>
+       </div>
+
+       <p>あなたが出品した商品は<%= link_to "貸出しアイテム", listings_path %>からいつでも見ることができます</p>
+       <p><%= link_to @listing.listing_title, listing_path(@listing)  %>の商品ページを見る</p>
+       <p>出品した商品をシェアする</p>
+     </div>
+
+
+      <% end %>
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>

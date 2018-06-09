@@ -43,7 +43,19 @@
                      </span>
                     <% end %>
                   </p>
-                  <p><b><%= link_to "編集する", information1_listing_path(listing) , class: "btn-sm white b-gray" %></b></p>
+                  <p>
+                    <span>
+                      <%= link_to "編集", information_listing_path(listing) , class: "btn-sm white b-orange" %>
+                    </span>
+                    <span>
+                      <%= link_to  listing_path(listing),  class: "btn-sm white b-gray", method: :delete, data: {confirm: "削除しても大丈夫ですか?"} do %>
+                        削除
+                      <% end %>
+
+                    </span>
+
+
+                  </p>
                 </li>
               </ul>
             </div>

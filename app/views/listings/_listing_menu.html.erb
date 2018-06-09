@@ -19,18 +19,18 @@
 
         <% if !@listing.photos.blank? %>
 
-        <%= link_to "商品画像のアップロード", photo_upload_listing_path, class: "listing-link active blue" %>
+        <%= link_to "画像のアップロード", photo_upload_listing_path, class: "listing-link active blue" %>
         <span id='photo_check' class=" blue"><i class="fa fa-check"></i></span>
         <% else %>
 
-        <%= link_to "商品画像のアップロード", photo_upload_listing_path, class: "listing-link active text-gray" %>
+        <%= link_to "画像のアップロード", photo_upload_listing_path, class: "listing-link active text-gray" %>
         <span class=" text-gray"><i class="fa fa-check"></i></span>
         <% end %>
       </li>
 
     </ul>
 
-    <% if @listing.active.blank? %>
+
     <p>
       <% is_ready = !@listing.active && !@listing.description.blank? && !@listing.photos.blank?  %>
 
@@ -39,7 +39,7 @@
         <%= f.submit "公開する", class:  'btn-sm  white b-green', disabled: !is_ready %>
       <% end %>
     </p>
-    <% end %>
+    
 
 
   </div>

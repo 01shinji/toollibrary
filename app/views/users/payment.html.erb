@@ -9,6 +9,16 @@
   </ul>
 </div>
 
+<% if current_user.stripe_id.nil?   %>
+  <div class="registration-alert b-light-red">
+   <p>クレジットカードが登録されていません</p>
+  </div>
+<% else %>
+  <div class="registration-alert b-light-green">
+   <p>クレジットカード登録済み</p>
+  </div>
+<% end %>
+
 <div class="row">
   <div class="text-center">
     <div class="panel panel-default">

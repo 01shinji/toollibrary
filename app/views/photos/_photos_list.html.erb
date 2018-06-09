@@ -1,5 +1,4 @@
-<% if @photos.count > 0 %>
-  <br/><br/>
+<% if !@photos.nil? && @photos.count > 0 %>
 
   <div class="row">
     <% @photos.each do |photo| %>

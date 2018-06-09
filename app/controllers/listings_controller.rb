@@ -2,11 +2,16 @@ class ListingsController < ApplicationController
   before_action :set_listing, except: [:index, :new, :create]
   before_action :authenticate_user!, except: [:show]
 
-  before_action :is_authorised, only: [ :information1, :information2, :photo_upload, :update]
+  before_action :is_authorised, only: [ :exhibition, :information, :photo_upload, :update]
 
   def index
     @listings = current_user.listings
 
+  end
+
+  def show
+    @photos = @listing.photos
+    @guest_reviews = @listing.guest_reviews
   end
 
   def new
@@ -35,55 +40,65 @@ class ListingsController < ApplicationController
     return redirect_to edit_user_registration_path, alert: "プロフィール画像を変更してください"
 
     else
+     @user = current_user
      @listing = current_user.listings.build
+     @photos = @listing.photos
     end
-
   end
 
-  def create
 
+  def create
     @listing = current_user.listings.build(listing_params)
 
     @photos = @listing.photos
      if @listing.save
-      redirect_to information1_listing_path(@listing), notice: "商品の仮登録が成功しました!最後まで入力をお願いします"
+      redirect_to photo_upload_listing_path(@listing), notice: "商品情報の入力が終わりました、次は画像を登録しましょう"
      else
       flash[:alert] = "出品がうまくいきませんでした"
       render :new
      end
-
   end
 
-  def show
-    @photos = @listing.photos
-    @guest_reviews = @listing.guest_reviews
+  def exhibition
   end
 
-  def information1
-  end
-
-  def information2
+  def information
     @listing = Listing.find(params[:id])
     @user = User.find(@listing.user_id)
   end
 
   def photo_upload
     @photos = @listing.photos
+
   end
 
 
   def update
     new_params = listing_params
-    new_params = listing_params.merge(active: true) if is_ready_listing
+
 
     if @listing.update(new_params)
-      flash[:notice] = "商品情報を編集しました"
+       if @listing.active.blank?
+         redirect_to exhibition_listing_path(@listing), notice: "商品を編集しました"
 
+       else
+
+         flash[:notice] = "商品を編集しました"
+         redirect_back(fallback_location: request.referer)
+       end
     else
-      flash[:alert] = "商品情報の編集がうまくいきませんでした"
+      flash[:alert] = "商品の編集がうまくいきませんでした"
+      redirect_back(fallback_location: request.referer)
     end
-    redirect_back(fallback_location: request.referer)
 
+
+  end
+
+  def destroy
+    @listing = Listing.find(params[:listing_id])
+    @listing.destroy
+    flash[:notice] = "商品を削除しました"
+    redirect_to listings_path
   end
 
   # 予約フォーム

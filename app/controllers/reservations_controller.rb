@@ -65,6 +65,8 @@ class ReservationsController < ApplicationController
   # ホストである自分に対してのゲストからの予約
   def guest_reservations
     @listings = current_user.listings
+
+
   end
 
   def approve

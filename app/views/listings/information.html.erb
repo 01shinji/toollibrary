@@ -1,22 +1,49 @@
+<% if @listing.active.blank? %>
+  <div class="registration-alert b-light-red">
+    <p>
+      まだ公開されていません&nbsp;
+      <%= link_to "公開する", exhibition_listing_path(@listing)  %>
+    </p>
+  </div>
+<% end %>
+<% if !@listing.active.blank?  %>
+  <div class="dashboard-link">
+  <ul class="">
+
+    <li class="active"><%= link_to "商品の編集",  information_listing_path(@listing) %></li>
+    <li class=""><%= link_to "画像アップロード",  photo_upload_listing_path(@listing)  %></li>
+
+  </ul>
+</div>
+  <div class="registration-alert b-light-green">
+    <p>公開中</p>
+  </div>
+
+<% end %>
+
 <div class="row">
   <div class=" text-center">
     <div class="panel panel-default">
       <h3>
         <b>
-          <span class="blue">ステップ1</span>
-          商品情報を入力
+          <% if @listing.active.blank? %>
+           <span class="blue">ステップ1</span>
+           商品情報を入力
+          <% else %>
+           商品の編集
+          <% end %>
         </b>
 
       </h3>
 
+      <p class="b-blue  listing_title">
+
+        <%= link_to @listing.listing_title, listing_path(@listing) , class: "white" %>
+
+      </p>
 
       <div class="container">
-
-
-
-        <%= form_for @listing, html: {multipart: true} do |f| %>
-
-
+        <%= form_for @listing,html: {multipart: true} do |f| %>
 
         <div class="form_box">
           <p><b>カテゴリー</b></p>
@@ -150,7 +177,7 @@
         <%= f.hidden_field :instant, value: "Request" %>
 
         <div class="actions">
-          <%= f.submit "登録する", class: "btn btn-form" %>
+          <%= f.submit "編集する", class: "btn btn-form" %>
         </div>
 
         <% end %>
@@ -159,73 +186,8 @@
   </div>
 </div>
 
-<div id="listings-mondal" class="modal  fade text-center" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <button class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">出品代行できます！</h4>
-      </div>
-      <div class="modal-body">
-         <div class="form-group">
-           <p>
-             商品の写真撮影や説明文作成などをご自宅に伺っておこなう出品代行を受付けております(無料)。
-           </p>
-           <p>
-             「自分で出品するのは面倒だ」「どう出品すればいいかよく分からない」
-           </p>
-             そんな方は出品代行を<%= link_to "問合せフォーム", inquiry_path %>から申し込みください!<br>
-             ※湘南地域(藤沢市,茅ヶ崎市,平塚市,鎌倉市など)限定
-           </p>
-           <p>
-             また出品方法が分かりにくい場合も<%= link_to "問合せフォーム", inquiry_path %>からお気軽にお問合わせくださいませ。
-           </p>
-
-         </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script type="text/javascript">
- $(window).on('load',function(){
-  $('#listings-mondal').modal('show');
- });
-</script>
-
-
-<script type="text/javascript">
-$(document).ready(function(){
-
-  var $children = $('.children'); //カテゴリー2の要素を変数に入れます。
-  var original = $children.html(); //後のイベントで、不要なoption要素を削除するため、オリジナルをとっておく
-
-  //カテゴリー1のselect要素が変更になるとイベントが発生
-  $('.parent').change(function() {
-    //選択されたカテゴリー1のvalueを取得し変数に入れる
-    var val1 = $(this).val();
-
-    //削除された要素をもとに戻すため.html(original)を入れておく
-    $children.html(original).find('option').each(function() {
-      var val2 = $(this).data('val'); //data-valの値を取得
-
-      //valueと異なるdata-valを持つ要素を削除
-      if (val1 != val2) {
-        $(this).not(':first-child').remove();
-      }
-
-    });
-
-    //カテゴリー1のselect要素が未選択の場合、カテゴリー2をdisabledにする
-    if ($(this).val() !== "") {
-      $children.fadeIn(100);
-    } else {
-      $children.fadeOut(100);
-    }
-
-  });
-
-
-});
+<script>
+  $(function() {
+    $("#autoaddress").geocomplete();
+  })
 </script>

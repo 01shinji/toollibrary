@@ -43,10 +43,12 @@ Rails.application.routes.draw do
   post '/add_card' => "users#add_card"
 
 
-  resources :listings, except: [:edit] do
+  resources :listings do
     member do
-      get 'information1'
-      get 'information2'
+
+
+      get 'information'
+      get 'exhibition'
       get 'photo_upload'
       get 'preload'
       get 'preview'

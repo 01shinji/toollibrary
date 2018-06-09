@@ -6,13 +6,23 @@
   </ul>
 </div>
 
+<% if current_user.account_number.nil?   %>
+  <div class="registration-alert b-light-red">
+   <p>銀行口座が登録されていません</p>
+  </div>
+<% else %>
+  <div class="registration-alert b-light-green">
+   <p>銀行口座は登録済み</p>
+  </div>
+<% end %>
+
 <div class="row">
   <div class=" text-center">
     <div class="panel panel-default">
       <h3>
         <b>
           振込先
-          <% if !current_user.account_number.blank? %>
+          <% if !current_user.account_number.nil? %>
             <span class="blue"><i class="fa fa-check"></i></span>
           <% end %>
         </b>

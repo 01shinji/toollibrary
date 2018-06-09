@@ -356,6 +356,7 @@ th {
 
 .navbar.dashboard li.active a{
   color:#04b4e4;
+  font-weight: bold;
 }
 .navbar.dashboard a{
   padding-top: 5px;
@@ -489,6 +490,10 @@ th {
   font-weight: normal;
 }
 
+.btn-sm.b-orange{
+  box-shadow: 0 3px 0 #cc8500;
+}
+
 .btn-sm.b-green{
   box-shadow: 0 3px 0 #19672b;
 }
@@ -522,7 +527,7 @@ th {
 
 .btn-orage{
   position: relative;
-  bottom: 2px;
+  bottom: 4px;
   border-radius: 2px;
   padding: 5px;
 
@@ -704,7 +709,7 @@ html input[disabled]{
 }
 
 
-#information2-price p {
+#information-price p {
   font-size: 15px;
   margin: 10px 5px;
 }
@@ -771,6 +776,70 @@ html input[disabled]{
 
 .fa-cloud-upload{
   margin-right: 5px;
+}
+
+// 出品完了ページ
+.ribbon {
+    display: inline-block;
+    position: relative;
+    height: 45px;
+    vertical-align: middle;
+    text-align: center;
+    box-sizing: border-box;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.ribbon:before{/*左側のリボン端*/
+    content: '';
+    position: absolute;
+    width: 10px;
+    bottom: -10px;
+    left: -25px;
+
+    border: 20px solid #1dcbfc;
+    border-left-color: transparent;/*山形に切り抜き*/
+    z-index: 0;
+}
+
+.ribbon:after{/*右側のリボン端*/
+    content: '';
+    position: absolute;
+    width: 10px;
+    bottom: -10px;
+    right: -25px;
+    z-index: 0;
+    border: 20px solid #1dcbfc;
+    border-right-color: transparent;/*山形に切り抜き*/
+}
+
+.ribbon h3 {
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    padding: 0 20px;
+    line-height: 45px;
+    font-size: 18px;
+    color: #FFF;
+    background: #04b4e4;/*真ん中の背景色*/
+    z-index: 1;
+}
+.ribbon h3:before {
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: 0;
+    border: none;
+    border-bottom: solid 10px transparent;
+    border-right: solid 15px #038ab0;/*左の折り返し部分*/
+}
+.ribbon h3:after {
+    position: absolute;
+    content: '';
+    top: 100%;
+    right: 0;
+    border: none;
+    border-bottom: solid 10px transparent;
+    border-left: solid 15px #038ab0;/*右の折り返し部分*/
 }
 
 // リスティングコンテナ
@@ -910,7 +979,7 @@ html input[disabled]{
 }
 
 .listing-index .bottom .b-red{
-  padding: 2px;
+
 }
 
 .address-prefecture-name{

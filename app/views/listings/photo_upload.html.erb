@@ -1,21 +1,50 @@
-<%= render 'listing_menu' %>
+<% if @listing.active.blank? %>
+  <div class="registration-alert b-light-red">
+    <p>
+      まだ公開されていません&nbsp;
+      <%= link_to "公開する", exhibition_listing_path(@listing)  %>
+    </p>
+  </div>
+<% end %>
+<% if !@listing.active.blank?  %>
+  <div class="dashboard-link">
+  <ul class="">
+
+    <li class=""><%= link_to "商品の編集",  information_listing_path(@listing) %></li>
+    <li class="active"><%= link_to "画像アップロード",  photo_upload_listing_path(@listing)  %></li>
+
+  </ul>
+</div>
+  <div class="registration-alert b-light-green">
+    <p>公開中</p>
+  </div>
+
+<% end %>
+
 <div class="row" >
   <div class=" text-center">
     <div class="panel panel-default">
-      <h3>商品画像のアップロード</h3>
+      <h3>
+        <b>
+          <% if @listing.active.blank?  %>
+            <span class="blue">ステップ2</span>
+          <% end %>
+          画像アップロード
+        </b>
+
+      </h3>
 
       <p class="b-blue  listing_title">
 
         <%= link_to @listing.listing_title, listing_path(@listing) , class: "white" %>
-        <% if !@listing.active.blank? %>
-         <span class="white b-red">
-          公開中
-         </span>
-        <% end %>
+
       </p>
+
+
 
       <div class="panel-body">
         <div class="container">
+          <div id="photos"><%= render 'photos/photos_list' %></div>
           <div class="row">
             <div class="col-md-offset-3 col-md-6">
               <!-- PHOTOS UPLOAD GOES HERE -->
@@ -30,15 +59,21 @@
                   </div>
                 </div>
 
+
+
                 <div class="text-center">
                   <%= f.submit "アップロード", class: "btn btn-form" %>
                 </div>
 
               <% end %>
+
+
+
+
+
             </div>
           </div>
 
-          <div id="photos"><%= render 'photos/photos_list' %></div>
         </div>
       </div>
 
