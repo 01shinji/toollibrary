@@ -96,13 +96,15 @@ th {
   color: #ffffff;
 }
 .b-white{
-  color: #ffffff;
+  background-color: #ffffff;
 }
 
 .red {
   color: #d9534f;
 }
-
+.light-red{
+  color: #ff6666;
+}
 .b-light-red{
   background-color: #ff6666;
 }
@@ -137,7 +139,9 @@ th {
 .b-orange{
   background-color: #FFA500;
 }
-
+a.b-orange:hover{
+  color: #04b4e4 ;
+}
 .b-green{
   background-color: #28a745;
 }
@@ -1416,6 +1420,9 @@ margin-top: 5px;
   padding: 5px;
 }
 
+.registration-alert p .b-white{
+  padding: 2px;
+}
 // プロフィール詳細
 .profile p{
  margin: 10px;

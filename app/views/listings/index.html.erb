@@ -38,7 +38,7 @@
                   <p>
                     <%= link_to listing.listing_title, listing_path(listing) %>
                     <% if !listing.active.blank? %>
-                     <span class="white b-red ">
+                     <span class="white b-light-green ">
                       公開中
                      </span>
                     <% end %>
@@ -51,11 +51,12 @@
                       <%= link_to  listing_path(listing),  class: "btn-sm white b-gray", method: :delete, data: {confirm: "削除しても大丈夫ですか?"} do %>
                         削除
                       <% end %>
-
                     </span>
 
-
                   </p>
+
+
+
                 </li>
               </ul>
             </div>

@@ -95,10 +95,12 @@ class ListingsController < ApplicationController
   end
 
   def destroy
-    @listing = Listing.find(params[:listing_id])
+    @listing = Listing.find(params[:id])
+
     @listing.destroy
     flash[:notice] = "商品を削除しました"
-    redirect_to listings_path
+
+    redirect_back(fallback_location: request.referer)
   end
 
   # 予約フォーム
@@ -143,4 +145,5 @@ class ListingsController < ApplicationController
   def listing_params
     params.require(:listing).permit(:listing_title, :listing_type, :category1, :category2,  :price, :price_per,  :price_hour, :price_day, :price_month, :description, :location, :is_shower, :is_bicycle, :is_wetsuit, :purchase_price, :purchase_time, :active, :instant)
   end
+
 end
