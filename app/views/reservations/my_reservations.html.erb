@@ -9,7 +9,10 @@
 <div class="row my-reservation">
   <div class="col-md-8 col-md-offset-2">
     <div class="">
-      <h3 class="">レンタル履歴</h3>
+      <h3 class="">
+        <b>レンタル履歴</b>
+
+      </h3>
       <div class="">
         <% if @my_reservations.count == 0 %>
          <p>まだレンタル購入履歴はありません</p>
@@ -18,21 +21,40 @@
 
          <% @my_reservations.each do |my_reservation| %>
          <div class="box">
-           <p class="">
-             <%= my_reservation.start_date.strftime('%Y年%m月%d日') %>&nbsp;
+           <p class="<% if my_reservation.Declined?  %> text-line-through <% end %>">
+             <i class="fa fa-calendar" aria-hidden="true"></i>
+             予約日:
+             <b>
+               <%= my_reservation.start_date.strftime('%Y年%m月%d日') %>&nbsp;
+               ~
+               <%= my_reservation.end_date.strftime('%Y年%m月%d日') %>
+             </b>
+
 
              <% if my_reservation.Waiting? %>
-              <span class="status">返答待ち</span>
-             <% elsif my_reservation.Approved? %>
-              <span class="status">予約成立!</span>
-             <% else my_reservation.Declined? %>
-              <span class="status">不成立</span>
+              <span class="status b-red">リクエスト中</span>
+
+             <% elsif my_reservation.Approved? && my_reservation.start_date.day > @date.day %>
+              <span class="status b-orange">予約成立</span>
+
+             <% elsif my_reservation.Declined? %>
+              <span class="status b-black">不成立</span>
+
+             <% elsif my_reservation.Approved? && my_reservation.start_date.day <= @date.day &&  @date.day <= my_reservation.end_date.day %>
+               <span class="status b-orange">レンタル当日</span>
+
+             <% else my_reservation.Approved? && my_reservation.end_date.day < @date.day %>
+               <span class="status b-orange">完了</span>
+
              <% end %>
            </p>
 
            <div class="bottom">
              <p>
-               <%= link_to my_reservation.listing.listing_title, listing_path(my_reservation.listing) %>
+               <b>
+                 <%= link_to my_reservation.listing.listing_title, listing_path(my_reservation.listing) %>
+               </b>
+
              </p>
              <ul>
                <li class="">
@@ -54,12 +76,84 @@
                   </p>
                  </div>
 
-                 <%= render partial: "reviews/guest_form", locals: {reservation: my_reservation} if my_reservation.Approved? %>
+
+
+                 <%= render partial: "reviews/guest_form", locals: {reservation: my_reservation} if my_reservation.Approved? && my_reservation.end_date <= @date %>
                </li>
              </ul>
 
 
            </div>
+
+           <div class="price" >
+             <table class="reservation-table">
+             <tbody>
+              <tr>
+                <td class="text-left">レンタル価格</td>
+                <td class="text-right"><%= my_reservation.listing.price_day %>円</td>
+              </tr>
+              <tr>
+                <td class="text-left">
+                  サポーター費&nbsp;
+                  <span>
+                    <a href="#" class="text-gray" data-toggle="modal" data-target="#info-supporter">
+                      <i class="fa fa-info-circle"></i>
+                    </a>
+                  </span>
+
+                  <!-- MODAL FOR PHONE NUMBER -->
+                  <div id="info-supporter" class="modal fade text-center" role="dialog">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+
+                        <div class="modal-header">
+                          <button class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">サポーター費について</h4>
+                        </div>
+
+                        <div class="modal-body">
+                           <div class="form-group">
+                             一度の取引において、1日あたりレンタル価格の10%をサポーター費として頂いております。サポーター費はサービスの運営や環境保護団体への寄付に使わせて頂きます(詳細は<%= link_to "こちら", pages_guide_path %>)
+                           </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                </td>
+                <td class="text-right">＋&nbsp;<%= (my_reservation.listing.price_day * 0.10).to_i %>円</td>
+              </tr>
+              <tr>
+                <td class="text-left">日数</td>
+                <td class="text-right">
+                  <% days = my_reservation.total / (my_reservation.listing.price_day  +  my_reservation.listing.price_day * 0.10 ).to_i %>
+                  ✕&nbsp;<%= days %>日間
+                </td>
+              </tr>
+
+              <tr>
+                <td class="total text-left">
+                  <b>ご請求金額</b>
+
+                </td>
+                <td class="text-right <% if my_reservation.Declined?  %> text-line-through <% end %> ">
+                  <b><%= my_reservation.total %>円</b>
+
+                </td>
+              </tr>
+             </tbody>
+            </table>
+
+
+           </div>
+
+           <p class="check">
+             <%= link_to("/listings/#{my_reservation.listing.id}/reservations/#{my_reservation.id}", {method: "get"}) do %>
+               予約状況を確認
+             <% end %>
+           </p>
+
          </div>
 
 

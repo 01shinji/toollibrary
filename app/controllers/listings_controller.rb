@@ -4,6 +4,8 @@ class ListingsController < ApplicationController
 
   before_action :is_authorised, only: [ :exhibition, :information, :photo_upload, :update]
 
+  include ActionView::Helpers::UrlHelper
+
   def index
     @listings = current_user.listings
 
@@ -82,8 +84,13 @@ class ListingsController < ApplicationController
          redirect_to exhibition_listing_path(@listing), notice: "商品を編集しました"
 
        else
+         if current_page?(exhibition_listing_path)
+          flash[:notice] = "商品を出品しました"
+          Mailer.request_to_guest(@reservation).deliver
 
-         flash[:notice] = "商品を編集しました"
+         else
+          flash[:notice] = "商品を編集しました"
+         end
          redirect_back(fallback_location: request.referer)
        end
     else

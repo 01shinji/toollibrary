@@ -1,0 +1,40 @@
+出品が完了しました
+
+
+<p>
+  自分:<%= @listing.user.fullname %>
+</p>
+
+<div class="table_container">
+  <div class="table-responsive">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th><%= @listing.listing_title %></th>
+
+        </tr>
+
+        <tr>
+          <td>住所</td>
+          <td>
+            <%= @listing.user.address_zipcode %>
+            <%= @listing.user.address_prefecture_name %>
+            <%= @listing.user.address_city %>
+            <%= @listing.user.address_street %>
+            <% if @listing.user.address_building? %>
+             <%= @listing.user.address_building %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>ホスト名</td>
+          <td><%= @listing.user.fullname %></td>
+        </tr>
+        <tr>
+          <td>ホストの電話番号</td>
+          <td><%= @listing.user.phone_number %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

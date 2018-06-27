@@ -1,0 +1,53 @@
+リクエストが承認され、予約が確定
+
+<p>
+  自分<%= @reservation.user.fullname %>
+</p>
+<p>
+  ホスト:<%= @reservation.listing.user.fullname %>
+</p>
+
+<div class="table_container">
+  <div class="table-responsive">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th><%= @reservation.listing.listing_title %></th>
+
+        </tr>
+        <tr>
+          <td>利用開始日</td>
+          <td><%= @reservation.start_date %></td>
+        </tr>
+        <tr>
+          <td>利用終了日</td>
+          <td><%= @reservation.end_date %></td>
+        </tr>
+        <tr>
+          <td>金額</td>
+          <td><%= @reservation.total %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td>
+            <%= @reservation.listing.user.address_zipcode %>
+            <%= @reservation.listing.user.address_prefecture_name %>
+            <%= @reservation.listing.user.address_city %>
+            <%= @reservation.listing.user.address_street %>
+            <% if @reservation.listing.user.address_building? %>
+             <%= @reservation.listing.user.address_building %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>ホスト名</td>
+          <td><%= @reservation.listing.user.fullname %></td>
+        </tr>
+        <tr>
+          <td>ホストの電話番号</td>
+          <td><%= @reservation.listing.user.phone_number %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

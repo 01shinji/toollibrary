@@ -4,6 +4,7 @@
 @import "jquery-ui/datepicker";
 @import "jquery-bootstrap-datepicker";
 @import "jquery-ui/slider";
+@import "jquery.Jcrop.min";
 
 
 
@@ -97,6 +98,9 @@ th {
 }
 .b-white{
   background-color: #ffffff;
+}
+.b-black{
+  background-color: #000000;
 }
 
 .red {
@@ -494,26 +498,34 @@ a.b-orange:hover{
   font-weight: normal;
 }
 
+.btn-sm.b-blue{
+  box-shadow: 0 3px 0 #039ec9;
+}
 .btn-sm.b-orange{
   box-shadow: 0 3px 0 #cc8500;
 }
 
-.btn-sm.b-green{
+.btn-sm.b-green,
+.btn-xs.b-green{
   box-shadow: 0 3px 0 #19672b;
 }
 
 .btn-sm.b-gray{
   box-shadow: 0 3px 0 #808080;
 }
-
+.btn-sm.b-thick-gray{
+  box-shadow: 0 3px 0 #000000;
+}
 .btn-sm.b-red{
   box-shadow: 0 3px 0 #d1332e;
 }
 
 .btn-xs {
+  margin: 5px;
+  padding: 3px;
   width: 120px;
   border: none;
-  border-radius: 0;
+
   font-weight: normal;
 }
 
@@ -529,9 +541,9 @@ a.b-orange:hover{
   margin-top: 5px;
 }
 
-.btn-orage{
+.header-case .btn-orage{
   position: relative;
-  bottom: 4px;
+  bottom: 3px;
   border-radius: 2px;
   padding: 5px;
 
@@ -1231,7 +1243,7 @@ margin-top: 5px;
 
 
 #reservation .panel {
- padding-bottom: 5px;
+ padding-bottom: 15px;
 }
 
 .date-form{
@@ -1294,9 +1306,13 @@ margin-top: 5px;
 }
 
 
+#preview p{
+  margin: 10px;
+}
 
-
-
+#reservation .btn-sm{
+  margin: 10px;
+}
 
 // レンタル購入履歴,貸出し販売履歴
 .my-reservation,
@@ -1354,9 +1370,39 @@ margin-top: 5px;
   margin: 5px;
 }
 
+.my-reservation .price,
+.guest-reservation .price{
 
+  margin: 10px;
+}
 
+.my-reservation .text-line-through b,
+.guest-reservation .text-line-through b{
+  position: relative;
+}
 
+.my-reservation .text-line-through b:after,
+.guest-reservation .text-line-through b:after{
+  border-bottom: 2px solid #000000;
+  content: "";
+  left: 0;
+  line-height: 1em;
+  position: absolute;
+  right: 0;
+
+  top: 50%;
+}
+
+.my-reservation .check,
+.guest-reservation .check{
+  margin: 10px;
+}
+
+.my-reservation .check a,
+.guest-reservation .check a{
+  color: #808080;
+  text-decoration: underline;
+}
 
 .status{
   color: #ffffff;
@@ -1376,6 +1422,125 @@ margin-top: 5px;
     top: -5px;
 }
 
+// 予約状況
+.show-reservation{
+  text-align: center;
+}
+
+.reservation-menu{
+  text-align: center;
+}
+
+.reservation-menu ul{
+  list-style: none;
+  padding: 0;
+
+}
+
+.reservation-menu li {
+  float: left;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.reservation-menu li:after{
+ content:"";
+ clear:both;
+ display:block;
+ }
+
+.reservation-item a:hover{
+ opacity: 1;
+}
+.reservation-link {
+}
+.reservation-link:hover, .reservation-link:focus {
+}
+.active.reservation-link {
+}
+
+.show-reservation h3{
+  margin-bottom: 20px;
+}
+
+.show-reservation .notice{
+  margin: 30px 0;
+}
+
+
+.show-reservation .notice span{
+  margin: 5px;
+  padding: 5px;
+}
+
+.show-reservation .notice .check a{
+  color: #808080;
+  text-decoration: underline;
+}
+
+.show-reservation .box{
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #ffffff;
+}
+
+.show-reservation .bottom{
+  position:relative;
+  overflow:hidden;
+  padding:0;
+}
+
+.show-reservation .bottom ul{
+  position:relative;
+  left:50%;
+  float:left;
+  padding:0px 0px;
+  margin:0 0;
+
+ }
+
+.show-reservation .bottom ul:after{
+ content:"";
+ clear:both;
+ display:block;
+ }
+
+.show-reservation .bottom ul li{
+  list-style: none;
+  position:relative;
+  left:-50%;
+  float:left;
+  }
+
+.show-reservation .bottom p{
+  font-size:15px;
+  margin: 5px;
+}
+
+.reservation-self{
+  margin: 10px;
+
+}
+
+.show-reservation .price{
+  margin: 10px;
+}
+
+.show-reservation .text-line-through b{
+  position: relative;
+}
+
+.show-reservation .text-line-through b:after{
+  border-bottom: 2px solid #000000;
+  content: "";
+  left: 0;
+  line-height: 1em;
+  position: absolute;
+  right: 0;
+
+  top: 50%;
+}
+
 // プロフィール編集
 .edit-phone,
 .edit-license{
@@ -1384,9 +1549,20 @@ margin-top: 5px;
   padding: 10px;
 }
 
+.edit-image{
+
+  background-color: #F4F6F6;
+
+  padding: 10px;
+}
+
 .edit-phone button,
 .edit-license button{
   margin: 5px;
+}
+
+.edit-image .btn-sm{
+  margin: 0;
 }
 
 .image-select .btn{
@@ -1423,15 +1599,36 @@ margin-top: 5px;
 .registration-alert p .b-white{
   padding: 2px;
 }
+
+// プロフィール画像の編集
+#crop-image .box{
+  margin: 10px auto;
+}
+
+#cropbox{
+  margin: 0 auto;
+}
+
+#crop-image .case{
+  margin: 10px auto;
+}
+
+.jcrop-holder {
+  margin: 0 auto;
+}
 // プロフィール詳細
 .profile p{
  margin: 10px;
 }
+
 .verification{
   margin: 10px auto;
+  padding: 5px 0;
   width: 200px;
-  border: 1px solid #C0C0C0;
-  background-color: #ffffff;
+
+  background-color: #6fdc89;
+  color: #ffffff;
+
 }
 
 .verification ul{
@@ -1449,12 +1646,46 @@ margin-top: 5px;
 .send-message{
   margin: 10px;
 }
+
 // レビュー
+span#average_rating {
+    position: relative;
+    bottom: 3px;
+    left: 5px;
+}
+.list-stars{
+  position: relative;
+  bottom: 3px;
+}
+
 .list-stars img{
   width: 15px;
 }
 .form-stars img,.host-stars img{
   width:20px;
+}
+
+.host-review .case{
+  background-color: #ffffff ;
+  padding: 5px;
+  margin: 10px 0;
+}
+
+.host-review .case .packet{
+  padding: 0;
+
+}
+
+.host-review .case .comment{
+
+  margin: 5px;
+}
+
+@media (max-width: 480px) {
+  /* ~480px */
+.host-review .case .packet{
+  font-size: 10px;
+}
 }
 
 // 検索フォーム

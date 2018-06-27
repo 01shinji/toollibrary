@@ -13,6 +13,11 @@ class ConversationsController < ApplicationController
     end
 
     redirect_to conversation_messages_path(@conversation)
+
+    
+
+
+
   end
 
   private

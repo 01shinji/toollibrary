@@ -58,10 +58,23 @@
       <p><%= @user.description %></p>
      </div>
     </div>
+
     <hr class="dotted-hr" />
 
     <!-- レビュー -->
+    <div class="row">
+      <div class="col-md-12">
+        <h4>
+          レビュー&nbsp;
+          <%= pluralize(@guest_reviews.count, "件") %>
 
+        </h4>
+
+        <div class="host-review">
+          <div><%= render "reviews/guest_list" %></div>
+        </div>
+      </div>
+    </div>
 
     <!-- 出品中アイテム -->
     <div class="nearby">

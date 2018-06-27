@@ -191,3 +191,38 @@
     $("#autoaddress").geocomplete();
   })
 </script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+  var $children = $('.children'); //カテゴリー2の要素を変数に入れます。
+  var original = $children.html(); //後のイベントで、不要なoption要素を削除するため、オリジナルをとっておく
+
+  //カテゴリー1のselect要素が変更になるとイベントが発生
+  $('.parent').change(function() {
+    //選択されたカテゴリー1のvalueを取得し変数に入れる
+    var val1 = $(this).val();
+
+    //削除された要素をもとに戻すため.html(original)を入れておく
+    $children.html(original).find('option').each(function() {
+      var val2 = $(this).data('val'); //data-valの値を取得
+
+      //valueと異なるdata-valを持つ要素を削除
+      if (val1 != val2) {
+        $(this).not(':first-child').remove();
+      }
+
+    });
+
+    //カテゴリー1のselect要素が未選択の場合、カテゴリー2をdisabledにする
+    if ($(this).val() !== "") {
+      $children.fadeIn(100);
+    } else {
+      $children.fadeOut(100);
+    }
+
+  });
+
+
+});
+</script>

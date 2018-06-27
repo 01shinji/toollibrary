@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :listings
   has_many :reservations
 
+
+
   # 緯度経度取得
   geocoded_by :address_city
 
@@ -23,8 +25,27 @@ class User < ApplicationRecord
 
   has_many :notifications
 
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "avatar-default.png"
+
+
+
+
+  has_attached_file :image,
+  styles: { square:"300x300" , medium: "300x300>", thumb: "100x100>" },
+  convert_options: { square: "-gravity Center -crop 200x200+0+0" , all: "-auto-orient" },
+   default_url: "avatar-default.png"
+
+
+
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
+
+
+  def image_geometry(style=:original)
+    @geometry ||= {}
+    @geometry[style] ||= Paperclip::Geometry.from_file(image.path(style))
+  end
+
+
 
   has_attached_file :license, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :license, content_type: /\Aimage\/.*\z/
@@ -82,6 +103,16 @@ class User < ApplicationRecord
   # 番地まで
   def address2
     "%s%s%s"%([self.address_prefecture_name,self.address_city,self.address_street])
+  end
+
+
+
+
+  private
+
+  def reprocess_image # ここが、RailsCastと違う！！
+    image.assign(image)
+    image.save
   end
 
 end

@@ -3,12 +3,13 @@ class ReservationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_reservation, only: [:approve, :decline]
 
+
   def create
     listing = Listing.find(params[:listing_id])
 
     start_date = Date.parse(reservation_params[:start_date])
     end_date = Date.parse(reservation_params[:end_date])
-    days = (end_date - start_date).to_i + 1
+    @days = (end_date - start_date).to_i + 1
 
     if current_user == listing.user
       flash[:alert] = "自分の商品を予約することはできません"
@@ -38,7 +39,7 @@ class ReservationsController < ApplicationController
       @reservation = current_user.reservations.build(reservation_params)
       @reservation.listing = listing
       @reservation.price = listing.price_day
-      @reservation.total = days * (listing.price_day  +  listing.price_day * 0.10 )
+      @reservation.total = @days * (listing.price_day  +  listing.price_day * 0.10 )
 
 
       # @reservation.save
@@ -46,6 +47,11 @@ class ReservationsController < ApplicationController
       if @reservation.Waiting!
         if listing.Request?
           flash[:notice] = "ホストにリクエストが送られました!"
+
+          ReservationMailer.request_to_guest(@reservation).deliver
+          ReservationMailer.request_to_host(@reservation).deliver
+
+
         else
           charge(listing, @reservation)
         end
@@ -54,35 +60,72 @@ class ReservationsController < ApplicationController
       end
 
     end
-    redirect_to listing
+    redirect_to("/listings/#{@reservation.listing.id}/reservations/#{@reservation.id}")
+
+  end
+
+  def show
+    @reservation = Reservation.find(params[:id])
+
+    @days = @reservation.total / (@reservation.listing.price_day  +  @reservation.listing.price_day * 0.10 ).to_i
+
+    # ホストへの支払い
+    @host_total = @days * (@reservation.listing.price_day  -  @reservation.listing.price_day * 0.10 ).to_i
+
+    @date = Date.today
+
+
+    if current_user == @reservation.user || current_user == @reservation.listing.user
+
+    else
+      redirect_to dashboard_path, alert: "このページを見る権限がありません"
+    end
+
   end
 
   # ゲストとして他のホストのリスティングを予約
   def my_reservations
-    @my_reservations = current_user.reservations.order(start_date: :asc)
+    @my_reservations = current_user.reservations.order(start_date: :desc)
+
+    @date = Date.today
+
+
   end
 
   # ホストである自分に対してのゲストからの予約
   def guest_reservations
     @listings = current_user.listings
 
+    @date = Date.today
 
   end
 
   def approve
+
     charge(@reservation.listing, @reservation)
-    redirect_to guest_reservations_path
+    redirect_to("/listings/#{@reservation.listing.id}/reservations/#{@reservation.id}")
+    flash[:notice] = "ゲストからのリクエストを承認しました!"
+
+    ReservationMailer.approve_to_guest(@reservation).deliver
+    ReservationMailer.approve_to_host(@reservation).deliver
+
   end
 
   def decline
     @reservation.Declined!
-    redirect_to guest_reservations_path
+    redirect_to("/listings/#{@reservation.listing.id}/reservations/#{@reservation.id}")
+    flash[:notice] = "ゲストからのリクエストをお断りしました"
+
+    ReservationMailer.decline_to_guest(@reservation).deliver
+    ReservationMailer.decline_to_host(@reservation).deliver
+
   end
 
 
   private
 
   def charge(listing, reservation)
+
     if !reservation.user.stripe_id.blank?
      customer = Stripe::Customer.retrieve(reservation.user.stripe_id)
      charge = Stripe::Charge.create(
@@ -107,10 +150,13 @@ class ReservationsController < ApplicationController
       reservation.Declined!
       flash[:alert] = "予約が成立しませんでした"
      end
+
     end
+
   rescue Stripe::CardError => e
    reservation.Declined!
    flash[:alert] = e.message
+
   end
 
 

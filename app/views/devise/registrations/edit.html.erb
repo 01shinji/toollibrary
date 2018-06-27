@@ -35,14 +35,46 @@
           プロフィール
           <% if !current_user.fullname.nil? && !current_user.nickname.nil? && !current_user.address_zipcode.nil? && !current_user.address_prefecture_name.nil? %>
             <span class="blue"><i class="fa fa-check"></i></span>
-        </b>
 
-        <% end %>
+
+          <% end %>
+        </b>
       </h3>
 
       <%= link_to "プロフィールを見る", user_path(current_user.id) %>
 
       <div class="container">
+
+
+        <div class="form_box edit-image" id="">
+            <p>
+              <b>プロフィール画像</b><br>
+              ※顔が分かる正方形の写真を登録してください、会員にのみ表示されます
+            </p>
+            <p class="text-left">
+              <%= image_tag current_user.image.url() , class: "avatar-large" %>
+            </p>
+
+            <%= form_for current_user, url: update_image_user_path(current_user) do |f| %>
+
+                <div class="form-group image-select text-left" >
+                 <p class="btn btn-default btn-file ">
+                   <i class="fa fa-cloud-upload" aria-hidden="true"></i>画像を選択
+                   <%= f.file_field :image  %>
+                 </p>
+                </div>
+
+                <div class="text-left">
+                  <%= f.submit "変更する", class: "btn-sm white b-gray" %>
+                </div>
+
+            <% end %>
+
+        </div>
+
+
+
+
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
@@ -68,21 +100,7 @@
           </div>
         </div>
 
-        <div class="form_box">
-          <p>
-            <b>プロフィール画像</b><br>
-            ※顔が分かる正方形の写真を登録してください、会員にのみ表示されます
-          </p>
-          <p class="text-left">
-            <%= image_tag current_user.image.url() , class: "avatar-large" %>
-          </p>
-          <div class="form-group image-select text-left" >
-            <p class="btn btn-default btn-file ">
-              <i class="fa fa-cloud-upload" aria-hidden="true"></i>画像を選択
-              <%= f.file_field :image  %>
-            </p>
-          </div>
-        </div>
+
 
         <div class="form_box">
           <p><b>メールアドレス</b></p>

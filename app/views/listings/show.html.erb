@@ -1,6 +1,10 @@
 <div class="row">
 
+
  <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
+
+
+
    <!-- About -->
    <div class="row show-header">
     <div class="col-md-12">
@@ -14,6 +18,9 @@
          <span><%= @listing.instant_i18n %></span>
        </p>
      </h3>
+
+
+
      <div class="bottom">
        <ul>
          <li class="">
@@ -53,6 +60,8 @@
     </div>
    </div>
 
+
+
    <!-- Carousel -->
    <div class="row show-photo">
     <% if @photos.length > 0 %>
@@ -89,6 +98,8 @@
 
     <% end %>
    </div>
+
+
 
    <!-- 価格 -->
    <div class="row" id="show-price">
@@ -165,11 +176,12 @@
    <div class="row">
      <div class="col-md-12">
        <h4>
-         <%= pluralize(@guest_reviews.count, "レビュー") %>
+         レビュー&nbsp;
+         <%= pluralize(@guest_reviews.count, "件") %>
          <span id="average_rating"  class="host-stars"></span>
        </h4>
 
-       <div class="">
+       <div class="host-review">
          <div><%= render "reviews/guest_list" %></div>
        </div>
      </div>

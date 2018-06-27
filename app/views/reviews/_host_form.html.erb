@@ -1,6 +1,9 @@
 <!-- Trigger the modal with a button -->
-<button type="button" class="white b-red" data-toggle="modal" data-target="#myModal_<%= reservation.id %>">
+<button type="button" class="btn-xs  white b-green" data-toggle="modal" data-target="#myModal_<%= reservation.id %>">
   ゲストへレビュー
+
+
+
 </button>
 
 <!-- Modal -->
@@ -28,7 +31,7 @@
             <%= f.hidden_field :guest_id, value: reservation.user.id %>
 
             <div class="text-center">
-              <%= f.submit "レビューを掲載", class: "btn-sm  white b-red" %>
+              <%= f.submit "レビューを掲載", class: "btn-sm  white b-green" %>
             </div>
         <% end %>
       </div>

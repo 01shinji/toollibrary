@@ -1,0 +1,75 @@
+<div class="row" id="crop-image">
+  <div class=" text-center">
+    <div class="panel panel-default">
+      <h3>
+        <b>
+
+          プロフィール画像の編集
+        </b>
+
+      </h3>
+
+
+      <div class="panel-body">
+        <div class="container">
+
+
+          <div class="box">
+            <%= image_tag current_user.image.url(:medium), id: 'cropbox', class: "img-responsive" %>
+          </div>
+
+          <%= hidden_field_tag 'image_width', Paperclip::Geometry.from_file(current_user.image.url(:medium)).width %>
+          <%= hidden_field_tag 'image_height', Paperclip::Geometry.from_file(current_user.image.url(:medium)).height %>
+
+          <!-- プレビュー -->
+          <div style="width:100px; height:100px; overflow:hidden" class="case">
+            <%= image_tag current_user.image.url(:medium), id: 'preview' %>
+          </div>
+
+          <%= form_for current_user do |f| %>
+            <% for attribute in [:crop_x, :crop_y, :crop_w,  :crop_h] %>
+              <%= f.hidden_field attribute, :id => attribute %>
+            <% end %>
+
+            <p>
+              <%= f.submit "適用する", class: "btn white b-green" %>
+            </p>
+          <% end %>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    $("#cropbox").Jcrop({//サイズ変更があったら、アップデートする
+      onChange: update_crop,
+      onSelect: update_crop,
+      setSelect: [0,0,200,200],
+      aspectRatio: 1
+    });
+  });
+
+  function update_crop(coords){//アップデートする関数で、
+    var rx = 100/coords.w;
+    var ry = 100/coords.h;
+    imageWidth = parseInt(document.getElementById('image_width').value)
+    imageHeight = parseInt(document.getElementById('image_height').value)
+
+    $("#preview").css({//プレビューを更新する。
+      width: Math.round(rx * imageWidth ) + 'px',
+      height: Math.round(ry * imageHeight) + 'px',
+      marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+      marginTop: '-' + Math.round(ry * coords.y) + 'px'
+    });
+
+    $("#crop_x").val(coords.x);//クロップするための4つの変数をformの中で更新する。
+    $("#crop_y").val(coords.y);//
+    $("#crop_w").val(coords.w);//
+    $("#crop_h").val(coords.h);//
+  }
+
+</script>

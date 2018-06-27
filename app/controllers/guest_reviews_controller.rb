@@ -20,7 +20,15 @@ class GuestReviewsController < ApplicationController
       if @has_reviewed.nil?
           # Allow to review
           @guest_review = current_user.guest_reviews.create(guest_review_params)
+
+
+
           flash[:success] = "ホストへのレビューが作成されました！"
+
+          
+          GuestReviewMailer.send_email_to_guest(@guest_review).deliver
+
+
       else
           # Already reviewed
           flash[:success] = "既にレビュー済みです..."

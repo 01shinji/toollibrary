@@ -24,6 +24,8 @@
 //= require card
 //= require Chart.bundle
 
+//= require jquery.Jcrop
+
 //= require cable
 //= require markerwithlabel
 //= require jquery.jpostal

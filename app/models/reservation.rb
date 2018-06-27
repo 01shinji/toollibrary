@@ -24,6 +24,9 @@ class Reservation < ApplicationRecord
     guest = User.find(self.user_id)
 
     Notification.create(content: "#{guest.fullname}さんからの#{type}", user_id: self.listing.user_id)
+
+
+
   end
 
   def host_update_notification

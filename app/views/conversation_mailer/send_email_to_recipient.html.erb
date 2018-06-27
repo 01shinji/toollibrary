@@ -1,0 +1,7 @@
+<%= @conversation.recipient.fullname%>さん、
+<%= @conversation.sender.fullname%>さんからメッセージが届いたよ〜
+
+
+<p><%= @conversation.messages.last.context %></p>
+
+<%= @conversation.messages.last.message_time %>

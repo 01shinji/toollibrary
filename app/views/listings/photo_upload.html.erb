@@ -40,36 +40,36 @@
 
       </p>
 
-
-
       <div class="panel-body">
         <div class="container">
-          <div id="photos"><%= render 'photos/photos_list' %></div>
+
+          <div id="photos">
+            <%= render 'photos/photos_list' %>
+          </div>
+
+
           <div class="row">
             <div class="col-md-offset-3 col-md-6">
               <!-- PHOTOS UPLOAD GOES HERE -->
 
               <%= form_for @listing, url: listing_photos_path(@listing), method: 'post', html: {multipart: true} do |f| %>
+
                 <div class="row" id="photos-select">
                   <div class="form-group">
                     <span class="btn btn-default btn-file">
                       <i class="fa fa-cloud-upload" aria-hidden="true"></i>画像を選択
+
                       <%= file_field_tag "images[]", type: :file, multiple: true %>
+
                     </span>
                   </div>
                 </div>
-
-
 
                 <div class="text-center">
                   <%= f.submit "アップロード", class: "btn btn-form" %>
                 </div>
 
               <% end %>
-
-
-
-
 
             </div>
           </div>

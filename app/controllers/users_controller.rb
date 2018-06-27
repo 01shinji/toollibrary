@@ -12,16 +12,32 @@ class UsersController < ApplicationController
     @host_reviews = Review.where(type: "HostReview", guest_id: @user.id)
   end
 
+  def update_image
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+     redirect_to edit_user_registration_path, notice: "画像を登録しました"
+    else
+     redirect_to edit_user_registration_path, alert: "画像を選択してください"
+    end
+  end
+
+
+  def crop_image
+
+
+  end
+
   def certification
 
   end
+
 
   def update_phone_number
     current_user.update_attributes(user_params)
     current_user.generate_pin
     current_user.send_pin
 
-    redirect_to edit_user_registration_path, notice: "認証コードを送りました、電話番号の認証をお願いします"
+    redirect_to certification_path, notice: "認証コードを送りました、電話番号の認証をお願いします"
   rescue Exception => e
     redirect_to certification_path, alert: "#{e.message}"
   end
@@ -47,6 +63,7 @@ class UsersController < ApplicationController
   end
 
   def payment
+
   end
 
   def payout
@@ -87,6 +104,6 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:phone_number, :pin, :bank_name, :account_type, :branch_code, :account_number, :account_name, :license)
+      params.require(:user).permit(:phone_number, :pin, :bank_name, :account_type, :branch_code, :account_number, :account_name, :license , :image, :image_file_name, :image_content_type, :image_file_size, :image_updated_at )
     end
 end

@@ -18,7 +18,7 @@
     <h5><span id="message" class="message-alert"></span></h5>
 
     <div id="preview" style="display: none">
-     <table class="reservation-table">
+      <table class="reservation-table">
       <tbody>
        <tr>
          <td class="text-left">レンタル価格</td>
@@ -54,7 +54,7 @@
            </div>
 
          </td>
-         <td class="text-right"><%= (@listing.price_day * 0.10).to_i %>円</td>
+         <td class="text-right">＋&nbsp;<%= (@listing.price_day * 0.10).to_i %>円</td>
        </tr>
        <tr>
          <td class="text-left">日数</td>
@@ -64,13 +64,21 @@
        </tr>
 
        <tr>
-         <td class="total text-left">合計</td>
+         <td class="total text-left">
+           <b>合計</b>
+
+         </td>
          <td class="text-right">
-           <span id="reservation_total"></span>円
+           <b><span id="reservation_total"></span>円</b>
+
          </td>
        </tr>
       </tbody>
      </table>
+      <p>
+        <%= link_to "登録しているクレジットカードを確認", payment_method_path %>
+      </p>
+
     </div>
    </div>
 

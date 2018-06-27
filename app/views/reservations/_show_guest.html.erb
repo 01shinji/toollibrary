@@ -1,0 +1,225 @@
+<!-- ゲスト向け表示 -->
+<div class="show-reservation">
+  <div class="notice">
+
+
+      <% if @reservation.Waiting? %>
+        <div class="registration-alert b-light-red">
+          <p>リクエスト中</p>
+        </div>
+        <p>
+          ホストの<%= @reservation.listing.user.fullname %>さんがリクエストを確認中です、返答をお待ち下さい
+        </p>
+
+      <% elsif @reservation.Approved? && @reservation.start_date.day > @date.day %>
+        <div class="registration-alert b-light-green">
+          <p>リクエスト承認</p>
+        </div>
+        <p>
+          リクエストが承認され、仮支払いが完了しました<br>
+          会うまではメッセージでやり取りし、当日は楽しく過ごしてください
+        </p>
+        <p class="check">
+          <%= link_to "レンタルマニュアルを確認", pages_guest_flow_path %>
+        </p>
+
+      <% elsif @reservation.Declined? %>
+        <div class="registration-alert b-black">
+         <p>リクエストお断り</p>
+        </div>
+        <p>
+          ホストからリクエストへのお断りの連絡がありました<br>
+          またのご利用をお待ちしております
+        </p>
+
+      <% elsif @reservation.Approved? && @reservation.start_date.day <= @date.day &&  @date.day <= @reservation.end_date.day %>
+        <div class="registration-alert b-light-green">
+          <p>
+            レンタル当日
+          </p>
+        </div>
+        <p class="">
+          遂にレンタル当日を迎えましたね!<%= @reservation.listing.user.fullname %>さんとの交流を楽しんでください
+        </p>
+        <p>
+          ※サーフボードやSUPボードをレンタルする場合、レンタル前にホストと一緒に傷の有無のチェックをおこなってください
+        </p>
+        <p class="check">
+          <%= link_to "レンタルマニュアルを確認", pages_guest_flow_path %>
+        </p>
+        <p class="check">
+          <%= link_to "トラブルが起こった際はお問合わせフォームへ", inquiry_path %>
+        </p>
+
+      <% else @reservation.Approved? && @reservation.end_date.day < @date.day %>
+        <div class="registration-alert b-light-green">
+          <p>
+           レンタル終了
+          </p>
+        </div>
+        <p>
+          支払いが完了しました!<%= @reservation.listing.user.fullname %>さんからのレンタルは楽しめましたか?お互いにレビューを書いてみましょう!
+        </p>
+
+        <%= render partial: "reviews/guest_form", locals: {reservation: @reservation}  %>
+
+        <p>領収書を表示</p>
+
+      <% end %>
+
+  </div>
+
+  <div class="row ">
+
+    <div class="">
+      <div class="panel panel-default">
+
+        <h3>
+          <b>予約状況</b>
+        </h3>
+
+
+        <div class="">
+
+           <div class="box">
+             <h4 class=" <% if @reservation.Declined?  %> text-line-through <% end %> ">
+               <i class="fa fa-calendar" aria-hidden="true"></i>
+               予約日:
+
+               <b>
+                 <%= @reservation.start_date.strftime('%Y年%m月%d日') %>
+                 ~
+                 <%= @reservation.end_date.strftime('%Y年%m月%d日') %>
+               </b>
+
+             </h4>
+
+             <div class="reservation-self">
+              <p>
+
+
+                <%= image_tag @reservation.user.image, class: "img-circle avatar-medium" %>
+                <span class="font-lg">
+                  ゲスト:<%= @reservation.user.fullname %>
+                </span>
+
+
+              </p>
+             </div>
+
+             <div class="bottom">
+               <h4>
+                 <b>
+                   <%= link_to @reservation.listing.listing_title, listing_path(@reservation.listing) %>
+                 </b>
+
+               </h4>
+               <ul>
+                 <li class="">
+                   <%= link_to listing_path(@reservation.listing) do %>
+                     <%= image_tag @reservation.listing.cover_photo(:thumb) %>
+                   <% end %>
+                 </li>
+                 <li class="">
+                   <div class="reservation-user">
+                    <p>
+                     ホスト<br>
+                     <span>
+                       <%= image_tag @reservation.listing.user.image, class: "img-circle avatar-small" %>
+
+                       <%= link_to user_path(@reservation.listing.user) do %>
+                           <%= @reservation.listing.user.fullname %>
+                       <% end %>さん
+                     </span>
+                    </p>
+                   </div>
+
+
+                 </li>
+               </ul>
+
+
+             </div>
+
+             <div class="price" >
+               <table class="reservation-table">
+               <tbody>
+                <tr>
+                  <td class="text-left">レンタル価格</td>
+                  <td class="text-right"><%= @reservation.listing.price_day %>円</td>
+                </tr>
+                <tr>
+                  <td class="text-left">
+                    サポーター費&nbsp;
+                    <span>
+                      <a href="#" class="text-gray" data-toggle="modal" data-target="#info-supporter">
+                        <i class="fa fa-info-circle"></i>
+                      </a>
+                    </span>
+
+                    <!-- MODAL FOR PHONE NUMBER -->
+                    <div id="info-supporter" class="modal fade text-center" role="dialog">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+
+                          <div class="modal-header">
+                            <button class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">サポーター費について</h4>
+                          </div>
+
+                          <div class="modal-body">
+                             <div class="form-group">
+                               一度の取引において、1日あたりレンタル価格の10%をサポーター費として頂いております。サポーター費はサービスの運営や環境保護団体への寄付に使わせて頂きます(詳細は<%= link_to "こちら", pages_guide_path %>)
+                             </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </td>
+                  <td class="text-right">
+                    ＋&nbsp;<%= (@reservation.listing.price_day * 0.10).to_i %>円
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-left">日数</td>
+                  <td class="text-right">
+                    ✕&nbsp;<%= @days %>日間
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="total text-left">
+                    <b>ご請求金額</b>
+
+                  </td>
+                  <td class="text-right <% if @reservation.Declined?  %> text-line-through <% end %>" >
+
+                    <b><%= @reservation.total %>円</b>
+
+                  </td>
+                </tr>
+               </tbody>
+              </table>
+
+
+             </div>
+           </div>
+
+        </div>
+
+
+
+
+        <p>
+          <%= link_to "ホストにメッセージを送る", conversations_path(sender_id: @reservation.user.id, recipient_id: @reservation.listing.user.id), method: :post, class: "btn-sm  white b-blue" %>
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </div>
+</div>

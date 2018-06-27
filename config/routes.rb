@@ -27,14 +27,22 @@ Rails.application.routes.draw do
     member do
 
       post '/verify_phone_number' => 'users#verify_phone_number'
+
       patch '/update_phone_number' => 'users#update_phone_number'
 
       patch '/update_license' => 'users#update_license'
 
       patch '/update_bank_account' => 'users#update_bank_account'
 
+      patch '/update_image' => 'users#update_image'
+
+
+
+
     end
   end
+
+  get '/crop_image' => "users#crop_image"
 
   get '/certification' => "users#certification"
 
@@ -54,7 +62,7 @@ Rails.application.routes.draw do
       get 'preview'
     end
     resources :photos, only: [:create, :destroy]
-    resources :reservations, only: [:create]
+    resources :reservations, only: [:create, :show]
   end
 
   resources :guest_reviews, only: [:create, :destroy]

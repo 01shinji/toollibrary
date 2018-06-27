@@ -22,10 +22,16 @@ class HostReviewsController < ApplicationController
           # Allow to review
           @host_review = current_user.host_reviews.create(host_review_params)
           flash[:success] = "ゲストへのレビューが作成されました！"
+
+          HostReviewMailer.send_email_to_host(@host_review).deliver
+
+
+
       else
           # Already reviewed
           flash[:success] = "既にレビュー済みです..."
       end
+
     else
       flash[:alert] = "まだレンタル購入履歴がありません..."
     end

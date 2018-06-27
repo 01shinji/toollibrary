@@ -16,16 +16,16 @@
     <div class="verification">
       <ul>
         <% if current_user.confirmation_token %>
-          <li>メールアドレスの確認<span class=" blue"><i class="fa fa-check-circle"></i></span></li>
+          <li>メールアドレスの確認済<span class=" blue"><i class="fa fa-check"></i></span></li>
         <% end %>
         <% if current_user.provider %>
-          <li>Facebookによる認証<span class=" blue"><i class="fa fa-check-circle"></i></span></li>
+          <li>Facebookによる認証済<span class=" blue"><i class="fa fa-check"></i></span></li>
         <% end %>
         <% if current_user.phone_verified %>
-          <li>電話番号の認証<span class=" blue"><i class="fa fa-check-circle"></i></span></li>
+          <li>電話番号の認証済<span class=" blue"><i class="fa fa-check"></i></span></li>
         <% end %>
         <% if current_user.license_file_name %>
-          <li>身分証の確認<span class=" blue"><i class="fa fa-check-circle"></i></span></li>
+          <li>身分証の確認済<span class=" blue"><i class="fa fa-check"></i></span></li>
         <% end %>
       </ul>
     </div>
