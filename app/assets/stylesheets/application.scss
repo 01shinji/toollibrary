@@ -2727,6 +2727,12 @@ font-weight: bold;
   border-radius: 0;
 }
 
+#entry .upper .inform.text-center span a{
+  color: #FFA500;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
 @media (max-width: 480px) {
   /* ~480px */
 #entry .inform.text-center{
