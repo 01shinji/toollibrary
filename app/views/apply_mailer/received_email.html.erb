@@ -3,7 +3,7 @@
     サーフ文庫
   </h2>
   <h4>
-    <%= @entry.name %>さんから応募•お問合わせがありました
+    <%= @apply.name %>さんから応募•お問合わせがありました
   </h4>
 </div>
 
@@ -18,7 +18,7 @@
     </th>
     <td colspan="3">
 
-      <%= @entry.name %>
+      <%= @apply.name %>
     </td>
   </tr>
   <tr>
@@ -27,7 +27,7 @@
     </th>
     <td colspan="3">
 
-      <%= @entry.email %>
+      <%= @apply.email %>
     </td>
   </tr>
   <tr>
@@ -36,7 +36,7 @@
     </th>
     <td colspan="3">
 
-      <%= @entry.address %>
+      <%= @apply.address %>
     </td>
   </tr>
   <tr>
@@ -45,25 +45,17 @@
     </th>
     <td colspan="3">
 
-      <%= @entry.phone_number %>
+      <%= @apply.phone_number %>
     </td>
   </tr>
-  <tr>
-    <th scope="row">
-      貸出し可能な商品
-    </th>
-    <td colspan="3">
 
-      <%= @entry.product %>
-    </td>
-  </tr>
   <tr>
     <th scope="row">
       その他&nbsp;自由記入欄
     </th>
     <td colspan="3">
 
-      <%= simple_format(@entry.message) %>
+      <%= simple_format(@apply.message) %>
     </td>
   </tr>
  </tbody>

@@ -30,9 +30,12 @@ class User < ApplicationRecord
 
 
   has_attached_file :image,
+
   styles: { square:"300x300" , medium: "300x300>", thumb: "100x100>" },
-  convert_options: { square: "-gravity Center -crop 200x200+0+0" , all: "-auto-orient" },
-   default_url: "avatar-default.png"
+
+  convert_options: { square: "-gravity Center -crop 300x300+0+0" , all: "-auto-orient" },
+
+  default_url: "avatar-default.png"
 
 
 

@@ -51,7 +51,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ZRYgtCagsAWTqGbqxkpW09Y
   <body>
    <div id="wrapper">
 
-    <% if  request.path == '/entry' || request.path == '/entry/confirm' || request.path == '/entry/thanks' %>
+    <% if  request.path == '/entry'  || request.path == '/entry/confirm' || request.path == '/entry/thanks' || request.path == '/apply'  || request.path == '/apply/confirm' || request.path == '/apply/thanks' %>
       <div class="">
        <%= yield %>
       </div>

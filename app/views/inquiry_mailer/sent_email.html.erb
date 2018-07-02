@@ -1,7 +1,39 @@
-<%= @inquiry.name %>さん、お問合わせ頂きありがとうございます!
-<br/>
-問い合わせ内容&nbsp;:&nbsp;<%= @inquiry.message %>
-<br/>
-1営業日以内に返答致しますので少々お待ちください
-<br/>
-サーフ文庫
+<div >
+
+  <div style="padding: 2px; text-align: center; background-color: #04b4e4">
+    <p style="color:  #ffffff">
+      サーフ文庫
+    </p>
+
+  </div>
+
+  <div>
+    <h4 style="color: #808080; text-align: center ">
+      <b><%= @inquiry.name %></b>さん、お問合わせ頂きありがとうございます!
+    </h4>
+    <table>
+     <tbody>
+      <tr>
+        <th>
+          問い合わせ内容
+        </th>
+        <td>
+
+          <%= @inquiry.message %>
+        </td>
+      </tr>
+     </tbody>
+    </table>
+    <p style="text-align: center; " >
+      1営業日以内に返答致しますので少々お待ちくださいませ
+    </p>
+  </div>
+
+  <div style="padding: 2px; text-align: center;  background-color: #04b4e4 " >
+    <p style="color:  #ffffff ; text-align: center" >
+      Copyright(C)&nbsp;サーフ文庫&nbsp;All Rights Reserved.
+    </p>
+
+  </div>
+
+</div>

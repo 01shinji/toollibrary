@@ -2619,7 +2619,7 @@ input#autolocation {
 
 
 // 応募フォーム
-.entry-box ul {
+.entry-box ul{
   list-style: none;
   position:relative;
   left:50%;
@@ -2955,4 +2955,65 @@ font-weight: bold;
 
   background: #04b4e4 ;
   border-radius: 0;
+}
+
+
+// ボードロッカー応募フォーム
+.apply-image h2{
+  color:#FFA500;
+  font-weight: 400;
+  line-height: 2;
+}
+
+.apply-image{
+  padding: 0;
+  margin: 10px 20%;
+  text-align: center;
+
+  background:url("/assets/surfboard-min.jpg") no-repeat center rgba(0, 0, 0, 0);
+  background-size: 100% auto;
+  background-blend-mode: soft-light;
+}
+
+
+@media (max-width: 768px) {
+  /* ~768px */
+.apply-image{
+  margin: 10px 10%;
+ }
+}
+
+@media (max-width: 480px) {
+  /* ~480px */
+.apply-image{
+  padding: 0;
+  margin: 0;
+ }
+
+}
+
+// メール通知
+.mail .header{
+  padding: 5px;
+  text-align: center;
+  background-color: #04b4e4;
+}
+
+.mail .header h3{
+  color:  #ffffff ;
+}
+
+.mail .content{
+  padding: 5px;
+}
+
+.mail .footer{
+  padding: 5px;
+  text-align: center;
+  background-color: #04b4e4;
+}
+
+.mail .footer p{
+  color:  #ffffff ;
+  text-align: center;
 }
