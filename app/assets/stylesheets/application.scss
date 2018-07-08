@@ -276,7 +276,7 @@ a.b-orange:hover{
 
 .navbar-right{
   position: absolute;
-  right: 150px;
+  right: 70px;
   top: 10px;
 }
 
@@ -288,6 +288,51 @@ a.b-orange:hover{
 }
 }
 
+.exhibit {
+  color: #ffffff;
+  background-color: #FFA500 ;
+  position: fixed;
+
+  bottom: 5px;
+  right: 10px;
+  width: 80px;
+  height: 80px;
+
+  border-radius: 50%;
+}
+
+@media (max-width: 480px) {
+  /* ~480px */
+.exhibit{
+  bottom: -12px;
+  right: -12px;
+}
+}
+
+.exhibit a{
+  color: #ffffff;
+
+  font-weight: bold;
+
+  position: relative;
+  top: 10px;
+
+  text-decoration: none;
+}
+
+.exhibit .letter{
+  font-size: 15px;
+  padding-left: 2px;
+}
+
+.exhibit .icon{
+  font-size: 20px;
+
+}
+
+.exhibit .icon i{
+  margin-top: 3px;
+}
 
 // 地域ナビゲーション
 .navbar.area {

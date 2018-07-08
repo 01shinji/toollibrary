@@ -14,18 +14,37 @@
             <li id="title" class="float-left">
               <%= link_to "サーフ文庫", root_path, class: "navbar-brand " %>
             </li>
+
+
+
+            <% if (user_signed_in?)%>
             <li class="header-case">
-
-                <%= link_to "出品する", new_listing_path, class: 'btn-orage' %>
-
-              <% if (user_signed_in?)%>
-               <%= link_to notifications_path do %>
-                <i class="fa fa-bell blue"></i>
-                <span class="badge" id="navbar_num_of_unread"><%= current_user.unread if current_user.unread > 0 %></span>
-               <% end %>
-              <% end %>
+                <%= link_to notifications_path do %>
+                 <i class="fa fa-bell blue"></i>
+                 <span class="badge" id="navbar_num_of_unread"><%= current_user.unread if current_user.unread > 0 %></span>
+                <% end %>
             </li>
+            <% end %>
+
            </ul>
+
+           <div class="exhibit">
+             <p class="text-center">
+               <%= link_to  new_listing_path  do %>
+                 <span class="letter">
+                   出品
+                 </span>
+                 <br>
+                 <span class="icon">
+                   <i class="fa fa-camera" aria-hidden="true"></i>
+                 </span>
+
+               <% end %>
+
+             </p>
+
+           </div>
+
 
          </div>
        </div>
