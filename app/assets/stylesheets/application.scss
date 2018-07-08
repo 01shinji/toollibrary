@@ -699,15 +699,15 @@ html input[disabled]{
 
 
 // リスティング作成
-.listing_title{
+.listing-title{
   padding: 5px;
 }
 
-.listing_title a{
+.listing-title a{
   color: #ffffff;
 }
 
-.listing_title .b-red{
+.listing-title .b-red{
   padding: 2px;
 }
 
@@ -1915,6 +1915,10 @@ input#pac-input {
 
 
 // 支払い方法
+.b-light-gray.cardnumber{
+  padding: 5px;
+}
+
 .field {
   background: white;
   box-sizing: border-box;
@@ -2865,7 +2869,7 @@ font-weight: bold;
 }
 
 .social_block {
- padding-top: 20px;
+ padding: 10px;
 }
 
 .social_block:after{

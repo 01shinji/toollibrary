@@ -1,4 +1,4 @@
-<!-- ゲストへの予約確定メール -->
+<!-- ゲストへの後日メール -->
 <div class="">
   <div style="padding: 2px; text-align: center; background-color: #04b4e4;">
     <p style="color:  #ffffff;">
@@ -10,14 +10,17 @@
     <h4 style="color: #808080; ">
 
 
-      <%= @reservation.user.fullname %>さん、おめでとうございます!
-      ホストの<%= @reservation.listing.user.fullname %>さんへのがリクエストが承認されました。会うまではメッセージでやり取りし、当日は楽しく過ごしてください
+      <%= @reservation.user.fullname %>さん、サーフ文庫のご利用ありがとうございました!
+      ホストの<%= @reservation.listing.user.fullname %>さんと楽しい時間を過ごせましたか？素敵な時間になったことを願っています。
     </h4>
+    <p>
+      宜しければ<%= @reservation.listing.listing_title %>へのレビューの登録をお願い致します。商品へのレビューはレンタルしたゲストのみが登録可能です。レビューが多いほうが、この商品への信頼度が高まります。
+    </p>
     <p>
 
       <b>
         <%= link_to("https://www.toollibrary.jp/listings/#{@reservation.listing.id}/reservations/#{@reservation.id}", {method: "get"}) do %>
-          予約状況を確認
+          レビューを書く
         <% end %>
 
 
@@ -49,7 +52,7 @@
               <td><%= @reservation.end_date.strftime('%Y年%m月%d日') %></td>
             </tr>
             <tr>
-              <th>ご請求予定金額</th>
+              <th>ご請求金額</th>
 
               <td><%= @reservation.total %>円</td>
             </tr>

@@ -49,6 +49,38 @@ class ReservationMailer < ApplicationMailer
 
   end
 
+  # ゲストへの前日メール
+  def previous_to_guest(reservation)
+    @reservation = reservation
+
+
+    mail(to: @reservation.user.email, from: "s-kawabata@digisurf.co.jp", :subject => "[前日になりました]サーフ文庫🌊🏄")
+  end
+
+  # ホストへの前日メール
+  def previous_to_host(reservation)
+    @reservation = reservation
+
+
+    mail(to: @reservation.listing.user.email, from: "s-kawabata@digisurf.co.jp", :subject => "[前日になりました]サーフ文庫🌊🏄")
+  end
+
+  # ゲストへの後日メール
+  def following_to_guest(reservation)
+    @reservation = reservation
+
+
+    mail(to: @reservation.user.email, from: "s-kawabata@digisurf.co.jp", :subject => "[楽しい時間を過ごせましたか?]サーフ文庫🌊🏄")
+  end
+
+  # ホストへの後日メール
+  def following_to_host(reservation)
+    @reservation = reservation
+
+
+    mail(to: @reservation.listing.user.email, from: "s-kawabata@digisurf.co.jp", :subject => "[楽しい時間を過ごせましたか?]サーフ文庫🌊🏄")
+  end
+
   # ゲストへの予約リクエストお断りメール
   def decline_to_guest(reservation)
 
@@ -70,5 +102,7 @@ class ReservationMailer < ApplicationMailer
     mail(to: @reservation.listing.user.email, from: "s-kawabata@digisurf.co.jp", :subject => "[リクエストお断り]サーフ文庫🌊🏄")
 
   end
+
+
 
 end

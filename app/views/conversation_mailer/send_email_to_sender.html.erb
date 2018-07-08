@@ -1,7 +1,64 @@
-<%= @conversation.sender.fullname%>さん、<br>
-<%= @conversation.recipient.fullname%>さんからメッセージが届いたよ〜
+<div class="">
+  <div style="padding: 2px; text-align: center; background-color: #04b4e4;">
+    <p style="color:  #ffffff;">
+      サーフ文庫
+    </p>
+  </div>
+
+  <div class="">
+    <h4 style="color: #808080; ">
+      <%= @conversation.sender.fullname%>さん、
+      <%= @conversation.recipient.fullname%>さんからメッセージが届きました
 
 
-<p><%= @conversation.messages.last.context %></p>
+    </h4>
+    <p>
 
-<%= @conversation.messages.last.message_time %>
+      <b>
+        <%= link_to("https://www.toollibrary.jp/conversations/#{@conversation.id}/messages", {method: "get"}) do %>
+          メッセージを確認
+        <% end %>
+
+
+      </b>
+    </p>
+    <p>
+      メッセージ内容
+    </p>
+    <div class="table_container">
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>送信者</th>
+              <td><%= @conversation.recipient.fullname %></td>
+
+            </tr>
+            <tr>
+              <th>送信時間</th>
+              <td><%= @conversation.messages.last.message_time %></td>
+
+            </tr>
+            <tr>
+              <th>メッセージ</th>
+              <td><%= @conversation.messages.last.context %></td>
+
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div style="padding: 2px; text-align: center;  background-color: #04b4e4; " >
+    <p style="color:  #ffffff ; " >
+      Copyright(C)&nbsp;サーフ文庫&nbsp;All Rights Reserved.
+    </p>
+
+  </div>
+
+</div>

@@ -25,7 +25,7 @@ class GuestReviewsController < ApplicationController
 
           flash[:success] = "ホストへのレビューが作成されました！"
 
-          
+
           GuestReviewMailer.send_email_to_guest(@guest_review).deliver
 
 

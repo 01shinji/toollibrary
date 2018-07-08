@@ -1,4 +1,4 @@
-<!-- ホストへの予約リクエスト確認メール -->
+<!-- ゲストへの前日メール -->
 <div class="">
   <div style="padding: 2px; text-align: center; background-color: #04b4e4;">
     <p style="color:  #ffffff;">
@@ -8,14 +8,13 @@
 
   <div class="">
     <h4 style="color: #808080; ">
-      <%= @reservation.user.fullname %>さんから予約リクエストが来ました!
-      <%= link_to("https://www.toollibrary.jp/listings/#{@reservation.listing.id}/reservations/#{@reservation.id}", {method: "get"}) do %>
-        こちらのページ
-      <% end %>
-      から返答をお願いします
 
+
+      <%= @reservation.user.fullname %>さん、
+      ホストの<%= @reservation.listing.user.fullname %>さんと約束した日の前日になりました
     </h4>
     <p>
+
       <b>
         <%= link_to("https://www.toollibrary.jp/listings/#{@reservation.listing.id}/reservations/#{@reservation.id}", {method: "get"}) do %>
           予約状況を確認
@@ -25,15 +24,15 @@
       </b>
     </p>
     <p>
-      予約リクエスト内容
+      予約内容
     </p>
     <div class="table_container">
       <div class="table-responsive">
         <table class="table">
           <tbody>
             <tr>
-              <th>ゲスト</th>
-              <td><%= @reservation.user.fullname %></td>
+              <th>ホスト</th>
+              <td><%= @reservation.listing.user.fullname %></td>
 
             </tr>
             <tr>
@@ -50,11 +49,26 @@
               <td><%= @reservation.end_date.strftime('%Y年%m月%d日') %></td>
             </tr>
             <tr>
-              <th>お振込予定金額</th>
-              <% days = @reservation.total / (@reservation.listing.price_day  +  @reservation.listing.price_day * 0.10 ).to_i %>
-              <% host_total = days * (@reservation.listing.price_day  -  @reservation.listing.price_day * 0.10 ).to_i %>
+              <th>ご請求予定金額</th>
 
-              <td><%= host_total %>円</td>
+              <td><%= @reservation.total %>円</td>
+            </tr>
+            <tr>
+              <th>ホストの住所</th>
+              <td>
+                <%= @reservation.listing.user.address_zipcode %>
+                <%= @reservation.listing.user.address_prefecture_name %>
+                <%= @reservation.listing.user.address_city %>
+                <%= @reservation.listing.user.address_street %>
+                <% if @reservation.listing.user.address_building? %>
+                 <%= @reservation.listing.user.address_building %>
+                <% end %>
+              </td>
+            </tr>
+
+            <tr>
+              <th>ホストの電話番号</th>
+              <td><%= @reservation.listing.user.phone_number %></td>
             </tr>
 
           </tbody>

@@ -1,3 +1,21 @@
-<%= @inquiry.name %>さんからお問合わせがありました
-<br/>
-問い合わせ内容&nbsp;:&nbsp;<%= @inquiry.message %>
+<div class="">
+  <div class="">
+    <h4 style="color: #808080 ">
+      <b><%= @inquiry.name %></b>さんからお問合わせがありました
+    </h4>
+    <table>
+     <tbody>
+      <tr>
+        <th>
+          問い合わせ内容
+        </th>
+        <td>
+
+          <%= @inquiry.message %>
+        </td>
+      </tr>
+     </tbody>
+    </table>
+  </div>
+
+</div>

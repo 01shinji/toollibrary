@@ -1,1 +1,73 @@
-ゲストの からレビューが届きました
+<!-- ゲストからホストへのレビュー -->
+
+<div class="">
+  <div style="padding: 2px; text-align: center; background-color: #04b4e4;">
+    <p style="color:  #ffffff;">
+      サーフ文庫
+    </p>
+  </div>
+
+  <div class="">
+    <h4 style="color: #808080; ">
+      <%= @host.fullname %>さん、
+      <%= @guest_review.guest.fullname %>さんからレビューが届きました
+
+
+    </h4>
+    <p>
+
+      <b>
+        <%= link_to("
+          https://www.toollibrary.jp/#{@guest_review.listing_id}", {method: "get"}) do %>
+          レビューを見る
+        <% end %>
+      </b>
+    </p>
+    <p>
+
+      <b>
+        <%= link_to("https://www.toollibrary.jp/listings/#{@guest_review.listing_id}/reservations/#{@guest_review.reservation_id}", {method: "get"}) do %>
+          ゲストにレビューをする
+        <% end %>
+      </b>
+    </p>
+    <p>
+      レビュー内容
+    </p>
+    <div class="table_container">
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>送信者</th>
+              <td><%= @guest_review.guest.fullname %></td>
+
+            </tr>
+            <tr>
+              <th>送信時間</th>
+              <td><%= @guest_review.created_at.strftime("%Y年%m月%d日") %></td>
+
+            </tr>
+            <tr>
+              <th>レビュー</th>
+              <td><%= @guest_review.comment %></td>
+
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div style="padding: 2px; text-align: center;  background-color: #04b4e4; " >
+    <p style="color:  #ffffff ; " >
+      Copyright(C)&nbsp;サーフ文庫&nbsp;All Rights Reserved.
+    </p>
+
+  </div>
+
+</div>

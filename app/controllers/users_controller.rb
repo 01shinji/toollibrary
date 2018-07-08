@@ -63,6 +63,9 @@ class UsersController < ApplicationController
   end
 
   def payment
+    customer = Stripe::Customer.retrieve(current_user.stripe_id)
+    default_card_id = customer.default_source
+    @default_card = customer.sources[:data].find {|x| x[:id] == default_card_id }
 
   end
 

@@ -1,12 +1,30 @@
+<div class="">
+  <div style="padding: 2px; text-align: center; background-color: #04b4e4;">
+    <p style="color:  #ffffff;">
+      サーフ文庫
+    </p>
+  </div>
 
-<p>こんにちは!サーフ文庫にご登録頂き、ありがとうございます!</p>
+  <div class="">
+    <p>こんにちは!サーフ文庫にご登録頂き、ありがとうございます!</p>
 
-<p>下記の内容で仮登録を受け付けております。</p>
+    <p>下記の内容で仮登録を受け付けております。</p>
 
-<p>Eメール：<%= @email %></p>
+    <p>Eメール：<%= @email %></p>
 
-<p>本登録を確定する為に、下のリンク先からメールアドレスの認証をお願いします。</p>
+    <p>本登録を確定する為に、下のリンク先からメールアドレスの認証をお願いします。</p>
 
-<p><%= link_to '認証する', confirmation_url(@resource, confirmation_token: @token) %></p>
+    <p>
+      <b>
+        <%= link_to '認証する', confirmation_url(@resource, confirmation_token: @token) %>
+      </b>
+    </p>
+  </div>
 
-<p>Good surflife with サーフ文庫 !!</p>
+  <div style="padding: 2px; text-align: center;  background-color: #04b4e4; " >
+    <p style="color:  #ffffff ; " >
+      Copyright(C)&nbsp;サーフ文庫&nbsp;All Rights Reserved.
+    </p>
+
+  </div>
+</div>

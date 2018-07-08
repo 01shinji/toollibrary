@@ -15,10 +15,15 @@
   </div>
 <% else %>
   <div class="registration-alert b-light-green">
-   <p>クレジットカード登録済み</p>
+   <p>
+     クレジットカード登録済み
+
+   </p>
 
   </div>
 <% end %>
+
+<p></p>
 
 <div class="row">
   <div class="text-center">
@@ -31,6 +36,14 @@
           <% end %>
         </b>
       </h3>
+
+      <p class="b-light-gray cardnumber">
+        <b>
+          ****&nbsp;****&nbsp;****&nbsp;<%= @default_card.last4 %><br>
+          有効期限&nbsp;<%= @default_card.exp_year %>年<%= @default_card.exp_month %>月
+        </b>
+
+      </p>
 
       <div class="container">
         <%= form_tag("/add_card", method: "post", id: "add-card") do %>

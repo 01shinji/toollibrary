@@ -1,8 +1,91 @@
-リクエストを承認し、予約が確定
+<!-- ホストへの予約確定メール -->
+<div class="">
+  <div style="padding: 2px; text-align: center; background-color: #04b4e4;">
+    <p style="color:  #ffffff;">
+      サーフ文庫
+    </p>
+  </div>
 
-<p>
-  自分<%= @reservation.listing.user.fullname %>
-</p>
-<p>
-  ゲスト:<%= @reservation.user.fullname %>
-</p>
+  <div class="">
+    <h4 style="color: #808080; ">
+      <%= @reservation.user.fullname %>さんからのリクエストを承認し、仮支払いが完了しました<br>
+      会うまではメッセージでやり取りし、当日は楽しく過ごしてください
+
+
+    </h4>
+    <p>
+
+      <b>
+        <%= link_to("https://www.toollibrary.jp/listings/#{@reservation.listing.id}/reservations/#{@reservation.id}", {method: "get"}) do %>
+          予約状況を確認
+        <% end %>
+
+
+      </b>
+    </p>
+    <p>
+      予約内容
+    </p>
+    <div class="table_container">
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>ゲスト</th>
+              <td><%= @reservation.user.fullname %></td>
+
+            </tr>
+            <tr>
+              <th>商品名</th>
+              <td><%= @reservation.listing.listing_title %></td>
+
+            </tr>
+            <tr>
+              <th>利用開始日</th>
+              <td><%= @reservation.start_date.strftime('%Y年%m月%d日') %></td>
+            </tr>
+            <tr>
+              <th>利用終了日</th>
+              <td><%= @reservation.end_date.strftime('%Y年%m月%d日') %></td>
+            </tr>
+            <tr>
+              <th>お振込予定金額</th>
+              <% days = @reservation.total / (@reservation.listing.price_day  +  @reservation.listing.price_day * 0.10 ).to_i %>
+              <% host_total = days * (@reservation.listing.price_day  -  @reservation.listing.price_day * 0.10 ).to_i %>
+
+              <td><%= host_total %>円</td>
+            </tr>
+            <tr>
+              <th>ゲストの住所</th>
+              <td>
+                <%= @reservation.user.address_zipcode %>
+                <%= @reservation.user.address_prefecture_name %>
+                <%= @reservation.user.address_city %>
+                <%= @reservation.user.address_street %>
+                <% if @reservation.user.address_building? %>
+                 <%= @reservation.user.address_building %>
+                <% end %>
+              </td>
+            </tr>
+
+            <tr>
+              <th>ゲストの電話番号</th>
+              <td><%= @reservation.user.phone_number %></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div style="padding: 2px; text-align: center;  background-color: #04b4e4; " >
+    <p style="color:  #ffffff ; " >
+      Copyright(C)&nbsp;サーフ文庫&nbsp;All Rights Reserved.
+    </p>
+
+  </div>
+
+</div>

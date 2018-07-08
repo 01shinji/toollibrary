@@ -1,40 +1,92 @@
-出品が完了しました
-
-
-<p>
-  自分:<%= @listing.user.fullname %>
-</p>
-
-<div class="table_container">
-  <div class="table-responsive">
-    <table class="table">
-      <tbody>
-        <tr>
-          <th><%= @listing.listing_title %></th>
-
-        </tr>
-
-        <tr>
-          <td>住所</td>
-          <td>
-            <%= @listing.user.address_zipcode %>
-            <%= @listing.user.address_prefecture_name %>
-            <%= @listing.user.address_city %>
-            <%= @listing.user.address_street %>
-            <% if @listing.user.address_building? %>
-             <%= @listing.user.address_building %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td>ホスト名</td>
-          <td><%= @listing.user.fullname %></td>
-        </tr>
-        <tr>
-          <td>ホストの電話番号</td>
-          <td><%= @listing.user.phone_number %></td>
-        </tr>
-      </tbody>
-    </table>
+<div class="">
+  <div style="padding: 2px; text-align: center; background-color: #04b4e4;">
+    <p style="color:  #ffffff;">
+      サーフ文庫
+    </p>
   </div>
+
+  <div class="">
+    <h4 style="color: #808080; ">
+      <%= @listing.user.fullname %>さん、<%= @listing.listing_title %>の登録が完了しました
+
+    </h4>
+    <p>
+
+      <b>
+        <%= link_to("https://www.toollibrary.jp/listings", {method: "get"}) do %>
+          出品している商品一覧
+        <% end %>
+
+
+      </b>
+    </p>
+    <p>
+      登録内容
+    </p>
+    <div class="table_container">
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+
+            <tr>
+              <th>商品名</th>
+              <td><%= @listing.listing_title %></td>
+
+            </tr>
+            <tr>
+              <th>カテゴリー1</th>
+              <td><%= @listing.category1 %></td>
+            </tr>
+            <tr>
+              <th>カテゴリー2</th>
+              <td><%= @listing.category2 %></td>
+            </tr>
+            <tr>
+              <th>商品の詳細説明</th>
+              <td><%= @listing.description %></td>
+            </tr>
+            <tr>
+              <th>利用可能なアメニティ</th>
+
+              <td>
+                <% if @listing.is_shower? %>
+                  シャワー&nbsp;
+                <% end %>
+                <% if @listing.is_bicycle? %>
+                  自転車&nbsp;
+                <% end %>
+                <% if @listing.is_wetsuit? %>
+                  ウェットスーツ
+                <% end %>
+
+              </td>
+            </tr>
+            <tr>
+              <th>レンタル価格</th>
+              <td><%= @listing.price_day %>円</td>
+            </tr>
+            <tr>
+              <th>購入時期</th>
+              <td><%= @listing.purchase_time %></td>
+            </tr>
+            <tr>
+              <th>購入価格</th>
+              <td><%= @listing.purchase_price %>円</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div style="padding: 2px; text-align: center;  background-color: #04b4e4; " >
+    <p style="color:  #ffffff ; " >
+      Copyright(C)&nbsp;サーフ文庫&nbsp;All Rights Reserved.
+    </p>
+
+  </div>
+
 </div>

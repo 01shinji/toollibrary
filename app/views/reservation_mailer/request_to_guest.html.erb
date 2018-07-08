@@ -1,53 +1,69 @@
-リクエスト送られたよ
-
-<p>
-  自分<%= @reservation.user.fullname %>
-</p>
-<p>
-  ホスト:<%= @reservation.listing.user.fullname %>
-</p>
-
-<div class="table_container">
-  <div class="table-responsive">
-    <table class="table">
-      <tbody>
-        <tr>
-          <th><%= @reservation.listing.listing_title %></th>
-
-        </tr>
-        <tr>
-          <td>利用開始日</td>
-          <td><%= @reservation.start_date %></td>
-        </tr>
-        <tr>
-          <td>利用終了日</td>
-          <td><%= @reservation.end_date %></td>
-        </tr>
-        <tr>
-          <td>金額</td>
-          <td><%= @reservation.total %></td>
-        </tr>
-        <tr>
-          <td>住所</td>
-          <td>
-            <%= @reservation.listing.user.address_zipcode %>
-            <%= @reservation.listing.user.address_prefecture_name %>
-            <%= @reservation.listing.user.address_city %>
-            <%= @reservation.listing.user.address_street %>
-            <% if @reservation.listing.user.address_building? %>
-             <%= @reservation.listing.user.address_building %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td>ホスト名</td>
-          <td><%= @reservation.listing.user.fullname %></td>
-        </tr>
-        <tr>
-          <td>ホストの電話番号</td>
-          <td><%= @reservation.listing.user.phone_number %></td>
-        </tr>
-      </tbody>
-    </table>
+<!-- ゲストへの予約リクエスト確認メール -->
+<div class="">
+  <div style="padding: 2px; text-align: center; background-color: #04b4e4;">
+    <p style="color:  #ffffff;">
+      サーフ文庫
+    </p>
   </div>
+
+  <div class="">
+    <h4 style="color: #808080; ">
+      <%= @reservation.user.fullname %>さん、予約リクエストありがとうございます!
+      ホストの<%= @reservation.listing.user.fullname %>さんがリクエストを確認中です、返答をお待ち下さい
+    </h4>
+    <p>
+
+      <b>
+        <%= link_to("https://www.toollibrary.jp/listings/#{@reservation.listing.id}/reservations/#{@reservation.id}", {method: "get"}) do %>
+          予約状況を確認
+        <% end %>
+
+
+      </b>
+    </p>
+    <p>
+      予約リクエスト内容
+    </p>
+    <div class="table_container">
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>ホスト</th>
+              <td><%= @reservation.listing.user.fullname %></td>
+
+            </tr>
+            <tr>
+              <th>商品名</th>
+              <td><%= @reservation.listing.listing_title %></td>
+
+            </tr>
+            <tr>
+              <th>利用開始日</th>
+              <td><%= @reservation.start_date.strftime('%Y年%m月%d日') %></td>
+            </tr>
+            <tr>
+              <th>利用終了日</th>
+              <td><%= @reservation.end_date.strftime('%Y年%m月%d日') %></td>
+            </tr>
+            <tr>
+              <th>ご請求予定金額</th>
+              <td><%= @reservation.total %>円</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div style="padding: 2px; text-align: center;  background-color: #04b4e4; " >
+    <p style="color:  #ffffff ; " >
+      Copyright(C)&nbsp;サーフ文庫&nbsp;All Rights Reserved.
+    </p>
+
+  </div>
+
 </div>

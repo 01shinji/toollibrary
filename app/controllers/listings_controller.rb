@@ -54,9 +54,12 @@ class ListingsController < ApplicationController
 
     @photos = @listing.photos
      if @listing.save
-      redirect_to photo_upload_listing_path(@listing), notice: "商品情報の入力が終わりました、次は画像を登録しましょう"
+      redirect_to photo_upload_listing_path(@listing), notice: "商品情報の登録が終わりました、次は画像を登録しましょう"
+
+      ListingMailer.send_email_to_host(@listing).deliver
+
      else
-      flash[:alert] = "出品がうまくいきませんでした"
+      flash[:alert] = "登録がうまくいきませんでした"
       render :new
      end
   end
@@ -80,19 +83,17 @@ class ListingsController < ApplicationController
 
 
     if @listing.update(new_params)
+
        if @listing.active.blank?
          redirect_to exhibition_listing_path(@listing), notice: "商品を編集しました"
 
-       else
-         if current_page?(exhibition_listing_path)
-          flash[:notice] = "商品を出品しました"
-          Mailer.request_to_guest(@reservation).deliver
 
-         else
-          flash[:notice] = "商品を編集しました"
-         end
+       else
+         flash[:notice] = "商品を編集しました"
+
          redirect_back(fallback_location: request.referer)
        end
+
     else
       flash[:alert] = "商品の編集がうまくいきませんでした"
       redirect_back(fallback_location: request.referer)

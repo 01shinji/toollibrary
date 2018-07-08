@@ -52,7 +52,7 @@
               ※顔が分かる正方形の写真を登録してください、会員にのみ表示されます
             </p>
             <p class="text-left">
-              <%= image_tag current_user.image.url() , class: "avatar-large" %>
+              <%= image_tag current_user.image.url(:square) , class: "avatar-large" %>
             </p>
 
             <%= form_for current_user, url: update_image_user_path(current_user) do |f| %>

@@ -101,6 +101,7 @@ class ReservationsController < ApplicationController
   end
 
   def approve
+    @date = Date.today
 
     charge(@reservation.listing, @reservation)
     redirect_to("/listings/#{@reservation.listing.id}/reservations/#{@reservation.id}")
@@ -108,6 +109,19 @@ class ReservationsController < ApplicationController
 
     ReservationMailer.approve_to_guest(@reservation).deliver
     ReservationMailer.approve_to_host(@reservation).deliver
+
+    # 前日メール
+    if @reservation.start_date.day == @date.day + 1
+      ReservationMailer.previous_to_guest(@reservation).deliver
+      ReservationMailer.previous_to_host(@reservation).deliver
+    end
+
+    # 後日メール
+    if @reservation.end_date.day == @date.day - 1
+      ReservationMailer.following_to_guest(@reservation).deliver
+      ReservationMailer.following_to_host(@reservation).deliver
+
+    end
 
   end
 

@@ -4,8 +4,10 @@ class HostReviewMailer < ApplicationMailer
 
     @host_review = host_review
 
+    @guest = User.find_by(id: @host_review.guest_id)
 
-    mail(to: @host_review.host.email, from: "s-kawabata@digisurf.co.jp", subject: "[ホストからレビューが届きました]サーフ文庫🌊🏄")
+
+    mail(to: @guest.email, from: "s-kawabata@digisurf.co.jp", subject: "[ホストからレビューが届きました]サーフ文庫🌊🏄")
   end
 
 

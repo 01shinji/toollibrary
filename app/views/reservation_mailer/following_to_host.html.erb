@@ -1,4 +1,4 @@
-<!-- ホストへの予約リクエスト確認メール -->
+<!-- ホストへの後日メール -->
 <div class="">
   <div style="padding: 2px; text-align: center; background-color: #04b4e4;">
     <p style="color:  #ffffff;">
@@ -8,24 +8,27 @@
 
   <div class="">
     <h4 style="color: #808080; ">
-      <%= @reservation.user.fullname %>さんから予約リクエストが来ました!
-      <%= link_to("https://www.toollibrary.jp/listings/#{@reservation.listing.id}/reservations/#{@reservation.id}", {method: "get"}) do %>
-        こちらのページ
-      <% end %>
-      から返答をお願いします
+
+      <%= @reservation.listing.user.fullname %>さん、サーフ文庫のご利用ありがとうございました!
+      ゲストの<%= @reservation.user.fullname %>さんと楽しい時間を過ごせましたか？素敵な時間になったことを願っています。
+
 
     </h4>
     <p>
+      宜しければゲストの<%= @reservation.user.fullname %>さんへのレビューの登録をお願い致します。ゲストへのレビューはホストのみが登録可能です。レビューが多いほうが、ゲストへの信頼度が高まります。
+    </p>
+    <p>
+
       <b>
         <%= link_to("https://www.toollibrary.jp/listings/#{@reservation.listing.id}/reservations/#{@reservation.id}", {method: "get"}) do %>
-          予約状況を確認
+          レビューを書く
         <% end %>
 
 
       </b>
     </p>
     <p>
-      予約リクエスト内容
+      予約内容
     </p>
     <div class="table_container">
       <div class="table-responsive">
@@ -55,6 +58,23 @@
               <% host_total = days * (@reservation.listing.price_day  -  @reservation.listing.price_day * 0.10 ).to_i %>
 
               <td><%= host_total %>円</td>
+            </tr>
+            <tr>
+              <th>ゲストの住所</th>
+              <td>
+                <%= @reservation.user.address_zipcode %>
+                <%= @reservation.user.address_prefecture_name %>
+                <%= @reservation.user.address_city %>
+                <%= @reservation.user.address_street %>
+                <% if @reservation.user.address_building? %>
+                 <%= @reservation.user.address_building %>
+                <% end %>
+              </td>
+            </tr>
+
+            <tr>
+              <th>ゲストの電話番号</th>
+              <td><%= @reservation.user.phone_number %></td>
             </tr>
 
           </tbody>

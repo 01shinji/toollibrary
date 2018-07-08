@@ -1,70 +1,69 @@
 <div class="">
-  <h2 class="text-center blue">
-    サーフ文庫
-  </h2>
-  <h4>
-    <%= @entry.name %>さんから応募•お問合わせがありました
-  </h4>
+  <div class="">
+    <h4 style="color: #808080; ">
+      <b><%= @entry.name %></b>さんから応募•お問合わせがありました
+    </h4>
+    <p>応募•問い合わせ内容</p>
+    <table class="table table-bordered">
+     <tbody>
+      <tr>
+        <th scope="row">
+          名前
+        </th>
+        <td colspan="3">
+
+          <%= @entry.name %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          メールアドレス
+        </th>
+        <td colspan="3">
+
+          <%= @entry.email %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          住所
+        </th>
+        <td colspan="3">
+
+          <%= @entry.address %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          電話番号
+        </th>
+        <td colspan="3">
+
+          <%= @entry.phone_number %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          貸出し可能な商品
+        </th>
+        <td colspan="3">
+
+          <%= @entry.product %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          その他&nbsp;自由記入欄
+        </th>
+        <td colspan="3">
+
+          <%= simple_format(@entry.message) %>
+        </td>
+      </tr>
+     </tbody>
+    </table>
+  </div>
+
+
+
 </div>
-
-
-<p>応募•問い合わせ内容</p>
-
-<table class="table table-bordered">
- <tbody>
-  <tr>
-    <th scope="row">
-      名前
-    </th>
-    <td colspan="3">
-
-      <%= @entry.name %>
-    </td>
-  </tr>
-  <tr>
-    <th scope="row">
-      メールアドレス
-    </th>
-    <td colspan="3">
-
-      <%= @entry.email %>
-    </td>
-  </tr>
-  <tr>
-    <th scope="row">
-      住所
-    </th>
-    <td colspan="3">
-
-      <%= @entry.address %>
-    </td>
-  </tr>
-  <tr>
-    <th scope="row">
-      電話番号
-    </th>
-    <td colspan="3">
-
-      <%= @entry.phone_number %>
-    </td>
-  </tr>
-  <tr>
-    <th scope="row">
-      貸出し可能な商品
-    </th>
-    <td colspan="3">
-
-      <%= @entry.product %>
-    </td>
-  </tr>
-  <tr>
-    <th scope="row">
-      その他&nbsp;自由記入欄
-    </th>
-    <td colspan="3">
-
-      <%= simple_format(@entry.message) %>
-    </td>
-  </tr>
- </tbody>
-</table>

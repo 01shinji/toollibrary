@@ -9,7 +9,7 @@
     <div class="case">
       <div class="row ">
         <div class="col-md-3 col-sm-3 col-xs-3">
-          <%= image_tag r.guest.image, class: "img-circle avatar-medium" %>
+          <%= image_tag r.guest.image(:square), class: "img-circle avatar-medium" %>
         </div>
 
         <div class="col-md-3 col-sm-3 col-xs-3 packet">
@@ -28,6 +28,7 @@
       <div class="comment">
 
         <%= r.comment  %>
+
         <% if current_user && current_user == r.guest %>
 
             <span class="pull-right trash">

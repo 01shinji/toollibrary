@@ -18,7 +18,7 @@
 
       <div class="">
         <% if (user_signed_in?)%>
-          <%= image_tag @user.image, class: "img-circle avatar-full" %>
+          <%= image_tag @user.image(:square), class: "img-circle avatar-full" %>
         <% else %>
           <%= image_tag "avatar-default", class: "img-circle avatar-full" %>
         <% end %>
