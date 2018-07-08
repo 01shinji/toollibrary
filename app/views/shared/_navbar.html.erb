@@ -14,6 +14,30 @@
             <li id="title" class="float-left">
               <%= link_to "サーフ文庫", root_path, class: "navbar-brand " %>
             </li>
+            <li class="sentence font-md">
+              サーフィンのシェアリングサービス
+            </li>
+            <li class="sentence font-sm">
+              サーフィンの<br>シェアリングサービス
+            </li>
+
+            <script type="text/javascript">
+              $(function(){
+               var w = window.innerWidth;
+               if (w > 480){
+
+                 $(".font-sm").remove();
+
+               }
+               if (w <= 480){
+
+                 $(".font-md").remove();
+                 $(".font-sm").append();
+
+               }
+               console.log(w);
+              });
+            </script>
 
 
 

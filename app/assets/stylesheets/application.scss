@@ -192,6 +192,24 @@ a.b-orange:hover{
  display:block;
  }
 
+ .header-box .sentence{
+   float: left;
+   padding: 15px 5px;
+
+   line-height: 20px;
+   height: 50px;
+   font-weight: bold;
+ }
+
+ @media (max-width: 480px) {
+   /* 480px */
+   .header-box .sentence{
+
+     line-height: 11px;
+
+   }
+ }
+
 #title a{
   color:#04b4e4;
   font-family: 'Noto Sans Japanese', sans-serif;
@@ -200,6 +218,14 @@ a.b-orange:hover{
   font-size: 2em;
   padding-right: 0
 
+}
+@media (max-width: 480px) {
+  /* 480px */
+  #title a{
+
+    padding-left: 0;
+
+  }
 }
 
 .header-case {
@@ -1890,7 +1916,7 @@ input#pac-input {
   position: absolute;
 
   bottom: 5px;
-  right: 51%;
+  left: 5px;
   width: 50px;
   height: 50px;
   font-size: 0.5em;
@@ -2213,12 +2239,16 @@ input#pac-input {
   animation-duration: 5s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-}
+  z-index: 1;
 
-.slideOutLeft#motion span{
-  float: right;
+}
+#motion span{
   position: relative;
   top: 5px;
+}
+.slideOutLeft#motion span{
+  float: right;
+
 }
 
 #motion:after{
@@ -2827,8 +2857,7 @@ font-weight: bold;
 
 .slideOutRight#motion span{
   float: left;
-  position: relative;
-  top: 5px;
+
 }
 
 .frame{
