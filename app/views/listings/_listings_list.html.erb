@@ -12,9 +12,15 @@
         <% end %>
      </div>
 
-     <span class="address-prefecture-name">
-       <%= listing.user.address_prefecture_name %>
+     <span class="user-image">
+       <% if (user_signed_in?)%>
+         <%= image_tag listing.user.image, class: "img-circle avatar-small" %>
+       <% else %>
+         <%= image_tag "avatar-default", class: "img-circle avatar-small" %>
+       <% end %>
      </span>
+
+
 
      <p class="price-day">
          <b ><span class="red"><%= listing.price_day %>円</span></b>
@@ -25,11 +31,11 @@
   <script type="text/javascript">
     $(function(){
      var w = window.innerWidth;
-
      if (w <= 480){
-
-       $(".address-prefecture-name").remove();
+       $(".user-image .img-circle").removeClass("avatar-small");
+       $(".user-image .img-circle").addClass("avatar-minimum");
      }
+
      console.log(w);
     });
   </script>
@@ -37,7 +43,7 @@
   <% elsif
      request.path == '/search' || request.path == '/ajaxsearch' %>
 
-   <li class="col-md-6 col-sm-6 col-xs-6  row-eq-height">
+   <li class="col-md-6 col-sm-6 row-eq-height desktop">
 
     <div class="listing-block">
 
@@ -49,10 +55,10 @@
       </div>
 
       <div class="listing-content">
-        <%= link_to listing.listing_title, listing  %>
+        <%= link_to listing.listing_title, listing , class:"listing-title" %>
 
         <div class="row case">
-          <div class="col-md-3 col-sm-3 col-xs-4">
+          <div class="col-md-3 col-sm-3 col-xs-4 ">
             <% if (user_signed_in?)%>
               <%= image_tag listing.user.image, class: "img-circle avatar-medium" %>
             <% else %>
@@ -63,7 +69,7 @@
           </div>
           <div class="col-md-9 col-sm-9 col-xs-8  bottom">
             <p>
-              <span><%= listing.listing_type %></span>
+              <span class="listing-type"><%= listing.listing_type %></span>
             </p>
             <p>
               1日&nbsp;<b class="red"><%= listing.price_day%></b>円
@@ -75,6 +81,48 @@
     </div>
 
    </li>
+
+   <li class="col-xs-2  row-eq-height smartphone">
+
+     <div class="listing-block" >
+      <div class="">
+         <%= link_to  listing  do %>
+          <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
+         <% end %>
+      </div>
+
+      <span class="user-image">
+        <% if (user_signed_in?)%>
+          <%= image_tag listing.user.image, class: "img-circle avatar-small" %>
+        <% else %>
+          <%= image_tag "avatar-default", class: "img-circle avatar-small" %>
+        <% end %>
+      </span>
+
+      <p class="price-day">
+          <b ><span class="red"><%= listing.price_day %>円</span></b>
+      </p>
+     </div>
+
+   </li>
+
+   <script type="text/javascript">
+     $(function(){
+      var w = window.innerWidth;
+
+      if (w > 768){
+        $(".smartphone").remove();
+      }
+      if (w <= 768){
+        $(".desktop").remove();
+      }
+      if (w <= 480){
+        $(".user-image .img-circle").removeClass("avatar-small");
+        $(".user-image .img-circle").addClass("avatar-minimum");
+      }
+      console.log(w);
+     });
+   </script>
 
   <% else %>
 

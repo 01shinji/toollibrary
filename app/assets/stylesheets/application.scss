@@ -724,6 +724,11 @@ html input[disabled]{
 }
 
 // プロフィール画像
+.avatar-minimum {
+  width: 20px;
+  height: 20px;
+}
+
 .avatar-small {
   width: 28px;
   height: 28px;
@@ -963,6 +968,7 @@ html input[disabled]{
   margin:5px;
 }
 
+
 .listing-content .bottom span{
   color: #ffffff;
   padding: 2px;
@@ -1121,6 +1127,21 @@ margin-top: 5px;
 #home-listings .listings-list li{
   padding: 5px;
 
+}
+
+#home-listings .user-image{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 2px;
+}
+
+@media (max-width: 480px) {
+  /* ~480px */
+#home-listings .user-image {
+  top: 5px;
+  left: 5px;
+}
 }
 
 #home-listings .listing-content{
@@ -1818,10 +1839,11 @@ input#pac-input {
 }
 
 #right {
-  padding: 61px 0 0 0;
+
   position: fixed;
   top:0;
   right:0;
+  padding: 61px 0 0 0;
   height: 100%;
   overflow: scroll;
 }
@@ -1838,8 +1860,31 @@ input#pac-input {
 }
 
 #right {
+    position: fixed;
+    bottom: 0px;
+    top: auto;
+    background-color: rgba(192, 192, 192, 0.5);
+    margin: 0;
+    padding: 0;
+    height: auto;
+
+}
+
+#right .listings-list{
+  margin: 0;
+
+}
+
+#right .listings-list li{
+  padding: 5px;
+
+}
+
+#right .search-detail{
   display: none
 }
+
+
 }
 
 .nolistings{
@@ -1902,6 +1947,7 @@ input#pac-input {
   padding: 5px;
   margin: 10px;
 }
+
 .search-detail .chevron{
   margin-left: 5px;
 }
@@ -1972,6 +2018,35 @@ input#pac-input {
   font-size: 2rem;
 }
 }
+
+
+
+.smartphone .user-image{
+  position: absolute;
+  top:10px;
+  left: 10px;
+  padding: 2px;
+}
+
+@media (max-width: 480px) {
+  /* ~480px */
+  .smartphone .user-image{
+    top: 5px;
+    left: 5px;
+  }
+}
+
+.smartphone .price-day{
+  position: absolute;
+  right: 12px;
+  bottom: 7px;
+
+  margin: 0;
+  text-align: center;
+
+}
+
+
 // GoogleMap 右下の利用規約隠す
 .gm-style-cc{
   display: none;
