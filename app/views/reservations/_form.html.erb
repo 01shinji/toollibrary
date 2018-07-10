@@ -18,6 +18,15 @@
     <h5><span id="message" class="message-alert"></span></h5>
 
     <div id="preview" style="display: none">
+      <p>
+        <i class="fa fa-calendar" aria-hidden="true"></i>
+        予約日:
+        <b>
+          <span id="check_start_date"></span>
+          ~
+          <span id="check_end_date"></span>
+        </b>
+      </p>
       <table class="reservation-table">
       <tbody>
        <tr>
@@ -86,7 +95,7 @@
    <% if @listing.Instant? %>
      <%= f.submit "今すぐ予約する", id: "btn_book", class: "btn-sm  white b-red", disabled: true %>
    <% else %>
-     <%= f.submit "予約をリクエストする", id: "btn_book", class: "btn-sm  white b-red", disabled: true %>
+     <%= f.submit "予約をリクエストする", id: "btn_book", class: "btn-sm  white b-red", disabled: true, data: {confirm: "ホストに予約リクエストを送ります。ホストがリクエストを承認した後に予約が確定します。"} %>
    <% end %>
 
  <% end %>
@@ -132,7 +141,14 @@ $(document).ready(function(){
            $('#reservation_end_date').attr("disabled", false);
 
            var start_date = $('#reservation_start_date').datepicker('getDate');
+
            var end_date = $('#reservation_end_date').datepicker('getDate');
+
+           var check_start_date = start_date.toLocaleDateString();
+           $('#check_start_date').text(check_start_date);
+
+          
+
            var days = (end_date - start_date)/1000/60/60/24 + 1;
 
            var input = {
@@ -157,6 +173,8 @@ $(document).ready(function(){
                 var total = days * ( <%= @listing.price_day %> +  <%= (@listing.price_day * 0.10).to_i %> )
                 $('#reservation_days').text(days);
                 $('#reservation_total').text(total);
+
+
               }
 
              }
@@ -181,6 +199,12 @@ $(document).ready(function(){
 
            var start_date = $('#reservation_start_date').datepicker('getDate');
            var end_date = $('#reservation_end_date').datepicker('getDate');
+
+
+
+           var check_end_date = end_date.toLocaleDateString();
+           $('#check_end_date').text(check_end_date);
+
            var days = (end_date - start_date)/1000/60/60/24 + 1;
 
            var input = {
@@ -205,6 +229,8 @@ $(document).ready(function(){
                 var total = days * ( <%= @listing.price_day %> +  <%= (@listing.price_day * 0.10).to_i %> )
                 $('#reservation_days').text(days);
                 $('#reservation_total').text(total);
+
+
               }
 
              }

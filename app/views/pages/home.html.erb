@@ -88,9 +88,9 @@ $(".local").click(function(){
 function init() {
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 35.2, lng: 139.781992
+    center: {lat: 39, lng: 137
 },
-    zoom: 8.55,
+    zoom: 4.6,
     // デフォルトのコントロールセット非表示
     disableDefaultUI: true,
     // デフォルトの情報ウィンドウ非表示
@@ -104,53 +104,7 @@ function init() {
 
   var data = new Array();
 
-  // 千葉
-  data.push({
-   lat: '35.704110', //緯度
-   lng: '140.844648', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=千葉県銚子市潮見町&commit=検索"
-  });
-  data.push({
-   lat: '35.510721', //緯度
-   lng: '140.446380', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=千葉県山武郡九十九里町片貝&commit=検索"
-  });
-  data.push({
-   lat: '35.355873', //緯度
-   lng: '140.388274', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=千葉県長生郡一宮町東浪見&commit=検索"
-  });
-  data.push({
-   lat: '35.293079', //緯度
-   lng: '140.403677', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=千葉県いすみ市岬町和泉４４４８−１&commit=検索"
-  });
-  data.push({
-   lat: '35.165243', //緯度
-   lng: '140.332695', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=千葉県勝浦市部原&commit=検索"
-  });
-  data.push({
-   lat: '35.105099', //緯度
-   lng: '140.103352', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=千葉県鴨川市横渚&commit=検索"
-  });
-  data.push({
-   lat: '35.040621', //緯度
-   lng: '140.019128', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=千葉県南房総市和田町仁我浦&commit=検索"
-  });
-  data.push({
-   lat: '34.975407', //緯度
-   lng: '139.958146', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=千葉県南房総市千倉町瀬戸&commit=検索"
-  });
-  data.push({
-    title: "",
-   lat: '34.924269', //緯度
-   lng: '139.829140', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=千葉県館山市相浜&commit=検索"
-  });
+
   // 湘南
   data.push({
    lat: '35.302457', //緯度
@@ -173,11 +127,7 @@ function init() {
    lng: '139.346261', //経度
    url: "/search?utf8=✓&lat=&lng=&search=神奈川県平塚市龍城ケ丘１９&commit=検索"
   });
-  data.push({
-   lat: '35.156015', //緯度
-   lng: '139.127862', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=神奈川県足柄下郡湯河原町吉浜&commit=検索"
-  });
+
 
 
   for (i = 0; i < data.length; i++) {
