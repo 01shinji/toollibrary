@@ -1149,10 +1149,21 @@ margin-top: 5px;
 
 }
 
+#home-listings .listings-list li a{
+  background-color: #ffffff;
+  position: relative;
+  margin-bottom: 10px;
+
+}
+
+#home-listings .listings-list li a .price-day b{
+  color: #808080;
+}
+
 #home-listings .user-image{
   position: absolute;
-  top: 5px;
-  left: 5px;
+  top: 2px;
+  left: 2px;
   padding: 2px;
 }
 
@@ -1181,21 +1192,18 @@ margin-top: 5px;
 }
 
 #home-listings .price-day{
-  position: absolute;
-  right: 10px;
-  bottom: 5px;
 
-  margin: 0;
+
+  margin: 0 auto;
   text-align: center;
+  position: absolute;
+  bottom: -10px;
+  background-color: #ffffff;
+  width: 100%;
 
 }
 
-@media (max-width: 480px) {
-  /* ~480px */
-#home-listings .price-day{
-  right:5px;
-}
-}
+
 
 // リスティング詳細ページ
 #listing-show{

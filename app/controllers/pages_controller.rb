@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def home
-    @listings = Listing.where(active: true)
+    @listings = Listing.where(active: true).limit(12)
+
     @listings = @listings.order(created_at: :desc)
 
 

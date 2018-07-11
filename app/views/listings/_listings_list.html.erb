@@ -3,12 +3,12 @@
 
 
 
- <% listings.each do |listing| %>
+
   <% if
     request.path == '/' %>
+    <% listings.first(12).each do |listing| %>
 
-
-      <li class="col-md-1 col-sm-1 col-xs-2  row-eq-height ">
+      <li class="col-md-1 col-sm-1 col-xs-2  row-eq-height twelve">
 
        <%= link_to  listing  do %>
        <div class="listing-block" >
@@ -27,22 +27,54 @@
          </span>
 
          <p class="price-day">
-            <b><span class="red"><%= listing.price_day %></span class="black"><span>円</span></b>
+            <b><span class="red"><%= listing.price_day %></span>円</b>
          </p>
        </div>
        <% end %>
 
       </li>
+    <% end %>
 
+    <% listings.first(6).each do |listing| %>
 
+      <li class="col-md-1 col-sm-1 col-xs-2  row-eq-height six">
 
+       <%= link_to  listing  do %>
+       <div class="listing-block" >
+         <div class="">
 
+            <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
 
+         </div>
+
+         <span class="user-image">
+          <% if (user_signed_in?)%>
+            <%= image_tag listing.user.image, class: "img-circle avatar-small" %>
+          <% else %>
+            <%= image_tag "avatar-default", class: "img-circle avatar-small" %>
+          <% end %>
+         </span>
+
+         <p class="price-day">
+            <b><span class="red"><%= listing.price_day %></span>円</b>
+         </p>
+       </div>
+       <% end %>
+
+      </li>
+    <% end %>
 
    <script type="text/javascript">
     $(function(){
      var w = window.innerWidth;
+     if (w > 768){
+       $(".six").remove();
+     }
+     if (w <= 768 && w > 480){
+       $(".twelve").remove();
+     }
      if (w <= 480){
+       $(".six").remove();
        $(".user-image .img-circle").removeClass("avatar-small");
        $(".user-image .img-circle").addClass("avatar-minimum");
      }
@@ -57,7 +89,7 @@
 
   <% elsif
      request.path == '/search' || request.path == '/ajaxsearch' %>
-
+   <% listings.each do |listing| %>
    <li class="col-md-6 col-sm-6 row-eq-height desktop">
 
     <div class="listing-block">
@@ -131,7 +163,7 @@
      <% end %>
 
    </li>
-
+   <% end %>
    <script type="text/javascript">
      $(function(){
       var w = window.innerWidth;
@@ -151,8 +183,8 @@
    </script>
 
   <% else %>
-
-  <li class="col-md-3 col-sm-3 col-xs-6  row-eq-height">
+   <% listings.each do |listing| %>
+   <li class="col-md-3 col-sm-3 col-xs-6  row-eq-height">
    <%= link_to  listing  do %>
    <div class="listing-block">
 
@@ -196,11 +228,12 @@
 
    </div>
    <% end %>
-  </li>
+   </li>
+   <% end %>
 
   <% end %>
 
- <% end %>
+
 
 
 
