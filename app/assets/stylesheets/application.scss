@@ -982,7 +982,7 @@ html input[disabled]{
 
 }
 .listing-content{
- font-size: 12px;
+
 }
 }
 
@@ -1178,6 +1178,23 @@ margin-top: 5px;
 }
 
 // リスティング詳細ページ
+#listing-show{
+
+}
+
+#listing-show .row .col-md-12{
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#listing-show .listing-block{
+  background-color: #ffffff ;
+}
+
+#listing-show .listing-content p{
+  margin: 0;
+}
+
 .show-header h3{
   margin: 20px auto;
   text-align: center;
@@ -1241,32 +1258,52 @@ margin-top: 5px;
   top: 2px;
 }
 
-.amenities li {
-
-  margin-bottom: 10px;
-  font-size: 16px;
-  list-style-type: none;
+.amenities ul:after{
+  content:"";
+  clear:both;
+  display:block;
 }
+
+.amenities ul{
+  padding: 0;
+
+}
+
+.amenities ul li{
+  list-style: none;
+  float:left;
+  margin: 5px;
+
+}
+
 
 .amenities .text-line-through {
   text-decoration: line-through;
-  color: rgba(0,0,0,0.45);
-  font-size: 14px;
+  color: rgba(0,0,0,0.2);
+
 }
 
 .show-map{
   margin:10px auto;
 }
 
-.nearby{
-  margin-top: 30px;
+
+.nearby.listings-list{
+  margin-top: 20px;
+  margin-right: 0;
+  margin-left: 0;
 }
 
 .nearby h4{
-  margin: 10px;
+
 }
 
-.distance{
+.nearby ul{
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.location{
   position: absolute;
   top:10px;
   left: 10px;
@@ -1276,6 +1313,12 @@ margin-top: 5px;
   background-color: rgba(128,128,128,1);
 }
 
+#listing-show .user-image{
+  position: absolute;
+
+  top: 38px;
+  left: 12px;
+}
 
 // パンくずリスト
 .breadcrumb{
