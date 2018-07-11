@@ -188,7 +188,11 @@
    <div class="row">
     <div class="col-md-12">
      <h4>商品詳細</h4>
-     <p><%= @listing.description %></p>
+
+     <p>
+       <%= text_url_to_link(simple_format(h(@listing.description))).html_safe %>
+     </p>
+
     </div>
    </div>
 

@@ -1,34 +1,43 @@
 <ul class="row-eq-height">
+
+
+
+
  <% listings.each do |listing| %>
   <% if
     request.path == '/' %>
 
-  <li class="col-md-1 col-sm-1 col-xs-2  row-eq-height">
 
-    <div class="listing-block" >
-     <div class="">
-        <%= link_to  listing  do %>
-         <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
-        <% end %>
-     </div>
+      <li class="col-md-1 col-sm-1 col-xs-2  row-eq-height ">
 
-     <span class="user-image">
-       <% if (user_signed_in?)%>
-         <%= image_tag listing.user.image, class: "img-circle avatar-small" %>
-       <% else %>
-         <%= image_tag "avatar-default", class: "img-circle avatar-small" %>
-       <% end %>
-     </span>
+        <div class="listing-block" >
+         <div class="">
+           <%= link_to  listing  do %>
+            <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
+           <% end %>
+        </div>
+
+         <span class="user-image">
+          <% if (user_signed_in?)%>
+            <%= image_tag listing.user.image, class: "img-circle avatar-small" %>
+          <% else %>
+            <%= image_tag "avatar-default", class: "img-circle avatar-small" %>
+          <% end %>
+         </span>
+
+         <p class="price-day">
+            <b ><span class="red"><%= listing.price_day %>円</span></b>
+         </p>
+        </div>
+
+      </li>
 
 
 
-     <p class="price-day">
-         <b ><span class="red"><%= listing.price_day %>円</span></b>
-     </p>
-    </div>
 
-  </li>
-  <script type="text/javascript">
+
+
+   <script type="text/javascript">
     $(function(){
      var w = window.innerWidth;
      if (w <= 480){
@@ -37,8 +46,12 @@
      }
 
      console.log(w);
+
+
+
+
     });
-  </script>
+   </script>
 
   <% elsif
      request.path == '/search' || request.path == '/ajaxsearch' %>
@@ -164,4 +177,7 @@
   <% end %>
 
  <% end %>
+
+
+
 </ul>

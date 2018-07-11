@@ -1131,18 +1131,12 @@ margin-top: 5px;
 
 #home-listings .user-image{
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 5px;
+  left: 5px;
   padding: 2px;
 }
 
-@media (max-width: 480px) {
-  /* ~480px */
-#home-listings .user-image {
-  top: 5px;
-  left: 5px;
-}
-}
+
 
 #home-listings .listing-content{
   position: absolute;
