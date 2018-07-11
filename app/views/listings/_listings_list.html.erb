@@ -10,12 +10,13 @@
 
       <li class="col-md-1 col-sm-1 col-xs-2  row-eq-height ">
 
-        <div class="listing-block" >
+       <%= link_to  listing  do %>
+       <div class="listing-block" >
          <div class="">
-           <%= link_to  listing  do %>
+
             <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
-           <% end %>
-        </div>
+
+         </div>
 
          <span class="user-image">
           <% if (user_signed_in?)%>
@@ -26,9 +27,10 @@
          </span>
 
          <p class="price-day">
-            <b>¥<span class="red"><%= listing.price_day %></span>/日</b>
+            <b><span class="red"><%= listing.price_day %></span class="black"><span>円</span></b>
          </p>
-        </div>
+       </div>
+       <% end %>
 
       </li>
 
@@ -65,33 +67,39 @@
         <%= link_to  listing  do %>
           <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
         <% end %>
+
+        <span class="location">
+          <%= listing.location %>
+        </span>
+
+        <span class="user-image">
+          <% if (user_signed_in?)%>
+            <%= image_tag listing.user.image, class: "img-circle avatar-small" %>
+          <% else %>
+            <%= image_tag "avatar-default", class: "img-circle avatar-small" %>
+          <% end %>
+        </span>
+
       </div>
 
       <div class="listing-content">
-        <b>
-          <%= link_to listing.listing_title, listing , class:"listing-title" %>
-        </b>
+        <p>
+          <span>
+            <b>
+             <%= link_to listing.listing_title, listing %>
+
+            </b>
+          </span>
 
 
-        <div class="row case">
-          <div class="col-md-3 col-sm-3 col-xs-4 ">
-            <% if (user_signed_in?)%>
-              <%= image_tag listing.user.image, class: "img-circle avatar-medium" %>
-            <% else %>
-              <%= image_tag "avatar-default", class: "img-circle avatar-medium" %>
-            <% end %>
+        </p>
 
+        <p>
+          <b>
+           1日&nbsp;<b class="red"><%= listing.price_day %></b>円
+          </b>
+        </p>
 
-          </div>
-          <div class="col-md-9 col-sm-9 col-xs-8  bottom">
-            <p>
-              <span class="listing-type"><%= listing.listing_type %></span>
-            </p>
-            <p>
-              1日&nbsp;<b class="red"><%= listing.price_day%></b>円
-            </p>
-          </div>
-        </div>
       </div>
 
     </div>
@@ -100,11 +108,12 @@
 
    <li class="col-xs-2  row-eq-height smartphone">
 
+     <%= link_to  listing  do %>
      <div class="listing-block" >
       <div class="">
-         <%= link_to  listing  do %>
+
           <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
-         <% end %>
+
       </div>
 
       <span class="user-image">
@@ -119,6 +128,7 @@
           <b ><span class="red"><%= listing.price_day %>円</span></b>
       </p>
      </div>
+     <% end %>
 
    </li>
 
@@ -143,38 +153,49 @@
   <% else %>
 
   <li class="col-md-3 col-sm-3 col-xs-6  row-eq-height">
-
+   <%= link_to  listing  do %>
    <div class="listing-block">
 
      <div class="">
-       <%= link_to  listing  do %>
+
          <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
-       <% end %>
+
+         <span class="location">
+           <%= listing.location %>
+         </span>
+
+         <span class="user-image">
+           <% if (user_signed_in?)%>
+             <%= image_tag listing.user.image, class: "img-circle avatar-small" %>
+           <% else %>
+             <%= image_tag "avatar-default", class: "img-circle avatar-small" %>
+           <% end %>
+         </span>
+
      </div>
 
      <div class="listing-content">
-       <%= link_to listing.listing_title, listing %>
-       <div class="row case">
-         <div class="col-md-3 col-sm-3 col-xs-4">
+       <p>
+         <span>
+           <b>
+            <%= link_to listing.listing_title, listing %>
 
-           <% if (user_signed_in?)%>
-             <%= image_tag listing.user.image, class: "img-circle avatar-medium" %>
-           <% else %>
-             <%= image_tag "avatar-default", class: "img-circle avatar-medium" %>
-           <% end %>
-         </div>
-         <div class="col-md-9 col-sm-9 col-xs-8  bottom">
-           <p>
-             <span><%= listing.listing_type %></span>
-           </p>
-           <p>
-             1日&nbsp;<b class="red"><%= listing.price_day%></b>円
-           </p>
-         </div>
-       </div>
+           </b>
+         </span>
+
+
+       </p>
+
+       <p>
+         <b>
+          1日&nbsp;<b class="red"><%= listing.price_day %></b>円
+         </b>
+       </p>
+
      </div>
 
    </div>
+   <% end %>
   </li>
 
   <% end %>

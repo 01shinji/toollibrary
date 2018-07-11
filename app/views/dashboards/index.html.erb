@@ -1,4 +1,4 @@
-<div class="row text-center">
+<div class="row text-center" id="dashboard">
   <div class="col-md-8 col-md-offset-2 col-xs-12">
 
 
@@ -36,7 +36,7 @@
 
     <!-- 通知 -->
     <div class="row">
-     <h4>あなたへのお知らせ</h4>
+     <h4><b>お知らせ</b></h4>
      <div class="col-md-12 notification-dashboard">
 
          <p>
@@ -55,11 +55,11 @@
     <hr class="dotted-hr" />
 
     <!-- 出品中アイテム -->
-    <div class="nearby">
+    <div class="">
       <h4>
-        出品中アイテム<span>&nbsp;<%= @listings.length %>点</span>
+        <b>出品中アイテム</b><span>&nbsp;<%= @listings.length %>点</span>
       </h4>
-      <div class="row  listings-list">
+      <div class="row nearby listings-list">
         <%= render partial: "listings/listings_list", locals: {listings: @listings} %>
       </div>
     </div>

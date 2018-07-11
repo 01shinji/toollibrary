@@ -40,6 +40,13 @@ a:hover{
 .row{
   margin: 0;
 }
+
+.row .col-md-12{
+ padding-left: 0;
+ padding-right: 0;
+}
+
+
 .trash a {
   color: #808080;
 }
@@ -774,6 +781,7 @@ html input[disabled]{
 }
 
 
+
 // リスティング作成
 .listing-title{
   padding: 5px;
@@ -957,6 +965,18 @@ html input[disabled]{
   list-style: none;
   padding:10px;
   margin:0;
+}
+
+.listing-block{
+ background-color: #ffffff ;
+}
+
+.listing-block .user-image{
+  position: absolute;
+
+  top: 38px;
+  left: 12px;
+  right: unset;
 }
 
 .listing-content{
@@ -1182,14 +1202,6 @@ margin-top: 5px;
 
 }
 
-#listing-show .row .col-md-12{
-  padding-left: 0;
-  padding-right: 0;
-}
-
-#listing-show .listing-block{
-  background-color: #ffffff ;
-}
 
 #listing-show .listing-content p{
   margin: 0;
@@ -1313,12 +1325,7 @@ margin-top: 5px;
   background-color: rgba(128,128,128,1);
 }
 
-#listing-show .user-image{
-  position: absolute;
 
-  top: 38px;
-  left: 12px;
-}
 
 // パンくずリスト
 .breadcrumb{
@@ -1745,6 +1752,7 @@ margin-top: 5px;
 .jcrop-holder {
   margin: 0 auto;
 }
+
 // プロフィール詳細
 .profile p{
  margin: 10px;

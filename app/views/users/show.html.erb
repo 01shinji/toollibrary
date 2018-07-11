@@ -1,4 +1,4 @@
-<div class="row text-center">
+<div class="row text-center" id="user-show">
   <div class="col-md-8 col-md-offset-2 col-xs-12">
 
 
@@ -65,7 +65,10 @@
     <div class="row">
       <div class="col-md-12">
         <h4>
-          レビュー&nbsp;
+          <b>
+            レビュー
+          </b>
+          &nbsp;
           <%= pluralize(@guest_reviews.count, "件") %>
 
         </h4>
@@ -77,11 +80,14 @@
     </div>
 
     <!-- 出品中アイテム -->
-    <div class="nearby">
+    <div class="">
       <h4>
-        出品中アイテム<span>&nbsp;<%= @listings.length %>点</span>
+        <b>
+          出品中アイテム
+        </b>
+        <span>&nbsp;<%= @listings.length %>点</span>
       </h4>
-      <div class="row  listings-list">
+      <div class="row nearby listings-list">
         <%= render partial: "listings/listings_list", locals: {listings: @listings} %>
       </div>
     </div>
