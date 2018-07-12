@@ -48,10 +48,13 @@
         <% end %>
       </p>
       <p>
-        <%= link_to "画像を確認する", photo_upload_listing_path(@listing)  %>
+        <%= link_to "プレビューで確認する", listing_path(@listing)  %>
       </p>
       <p>
-        <%= link_to "商品情報を確認する", information_listing_path(@listing)  %>
+        <%= link_to "画像を修正する", photo_upload_listing_path(@listing)  %>
+      </p>
+      <p>
+        <%= link_to "商品情報を修正する", information_listing_path(@listing)  %>
       </p>
 
      </div>

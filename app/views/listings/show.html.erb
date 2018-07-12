@@ -2,9 +2,30 @@
 
  <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
 
+
    <!-- About -->
    <div class="row show-header">
     <div class="col-md-12">
+
+     <p>
+       <% if !@listing.active  %>
+         <div class="registration-alert b-light-red">
+          <p>
+            まだ公開されていません&nbsp;
+            <%= link_to "公開する", exhibition_listing_path(@listing) , class: "blue b-white" %>
+          </p>
+         </div>
+       <% elsif current_user == @listing.user && @listing.active %>
+         <div class="registration-alert b-light-green">
+          <p>
+            公開中
+
+          </p>
+
+         </div>
+       <% else %>
+       <% end %>
+     </p>
 
      <h3>
        <b><%= @listing.listing_title %></b>

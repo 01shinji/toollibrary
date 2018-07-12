@@ -52,7 +52,9 @@
 
            </ul>
 
-           <div class="exhibit">
+           <% if   request.path == '/search' && @arrListings.count == 0 %>
+           <% else %>
+            <div class="exhibit">
              <p class="text-center">
                <%= link_to  new_listing_path  do %>
                  <span class="letter">
@@ -68,7 +70,7 @@
              </p>
 
            </div>
-
+           <% end %>
 
          </div>
        </div>

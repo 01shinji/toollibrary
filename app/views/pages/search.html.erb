@@ -30,10 +30,14 @@
 
     <% if @arrListings.count == 0 %>
 
-    <div class="nolistings">
-      <p>まだこの地域に出品はありません...</p><br/>
-      <%= link_to "出品する", new_listing_path, class: "btn btn-form" %>
+    <div class="registration-alert b-light-red">
+     <p>
+       まだこの地域に出品はありません&nbsp;
+       <%= link_to "出品する", new_listing_path , class: "blue b-white" %>
+     </p>
     </div>
+
+
 
     <% else %>
 

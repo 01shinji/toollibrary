@@ -1901,6 +1901,10 @@ input#pac-input {
   overflow: scroll;
 }
 
+#right .registration-alert{
+  margin: 10px;
+}
+
 @media (max-width: 768px) {
   /* ~768px */
 #left {
@@ -1916,7 +1920,7 @@ input#pac-input {
     position: fixed;
     bottom: 0px;
     top: auto;
-    background-color: rgba(192, 192, 192, 0.5);
+
     margin: 0;
     padding: 0;
     height: auto;
@@ -1924,6 +1928,7 @@ input#pac-input {
 }
 
 #right .listings-list{
+  background-color: rgba(192, 192, 192, 0.5);
   margin: 0;
 
 }
@@ -2026,7 +2031,9 @@ input#pac-input {
   /* ~768px */
 .search-spot{
 
-  right: 10px;
+  top: 66px;
+  left: auto;
+  right: 5px;
   }
 }
 
