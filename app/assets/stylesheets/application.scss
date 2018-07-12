@@ -885,16 +885,16 @@ html input[disabled]{
 
 }
 
-#target{
+.panel-body #target{
   margin: 10px;
 }
 
-#target img {
+.panel-body #target img {
   width: 100px;
 
 }
 
-#photos .case{
+ #photos .case{
   padding: 5px;
   margin: 0;
 
@@ -1723,6 +1723,22 @@ margin-top: 5px;
   background-color: #F4F6F6;
 
   padding: 10px;
+}
+
+.edit-image .photo-preview {
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #ffffff ;
+
+}
+
+.edit-image #target{
+  margin: 10px;
+}
+
+.edit-image #target img {
+  width: 80px;
+
 }
 
 .edit-phone button,

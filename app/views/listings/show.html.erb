@@ -42,20 +42,15 @@
        </p>
      </h3>
 
+
      <div  class="social_block">
       <ul>
        <li>
          <!-- Facebookシェア-->
          <div>
 
-
-
-            <a
-
-            href="http://www.facebook.com/sharer.php?u='+request.fullpath
-            &name=<%= @listing.listing_title %>
-            &picture=<%= @listing.cover_photo(:medium) %>
-            &redirect_uri=http://facebook.com/"
+           <a
+           href="http://www.facebook.com/sharer.php?u=<%= request.url %>"
 
             class="icon icon-facebook"
 
