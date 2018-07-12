@@ -53,7 +53,7 @@
 
        </p>
 
-       <%=  url_for controller: :listings, action: :show, only_path: :false  %>
+       https://www.toollibrary.jp<%=  url_for controller: :listings, action: :show, only_path: :true  %>
 
        <div  class="social_block">
         <ul>
@@ -61,7 +61,7 @@
            <!-- Facebookシェア-->
            <div>
 
-             <a href="http://www.facebook.com/share.php?u=https://www.toollibrary.jp/entry/ "
+             <a href="http://www.facebook.com/share.php?u=https://www.toollibrary.jp<%=  url_for controller: :listings, action: :show, only_path: :false %> "
 
                onclick="window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;"
                rel="nofollow">
