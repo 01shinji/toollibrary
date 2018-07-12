@@ -1,3 +1,5 @@
+
+
 <div class="row" id="listing-show">
 
  <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
@@ -46,9 +48,20 @@
          <!-- Facebookシェア-->
          <div>
 
-           <a href="http://www.facebook.com/share.php?u=https://www.toollibrary.jp/entry/ "
-             onclick="window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;"
-             rel="nofollow">
+
+
+            <a
+
+            href="http://www.facebook.com/sharer.php?u='+request.fullpath
+            &name=<%= @listing.listing_title %>
+            &picture=<%= @listing.cover_photo(:medium) %>
+            &redirect_uri=http://facebook.com/"
+
+            class="icon icon-facebook"
+
+            onclick="window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;"
+
+            rel="nofollow">
 
             <span id="facebook_btn" >
               <svg
@@ -64,6 +77,8 @@
              </svg>
               シェア</span>
            </a>
+
+
          </div>
        </li>
        <li>
