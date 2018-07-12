@@ -1,8 +1,8 @@
 <% if !@photos.nil? && @photos.count > 0 %>
 
-  <div class="row">
+  <div class="row row-eq-height">
     <% @photos.each do |photo| %>
-      <div class="col-md-6 col-sm-6 col-xs-6">
+      <div class="col-md-6 col-sm-6 col-xs-6 row-eq-height case">
         <div class="panel panel-default">
           <div class="panel-heading preview">
             <%= image_tag photo.image.url() %>

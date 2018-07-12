@@ -878,6 +878,31 @@ html input[disabled]{
   margin-right: 5px;
 }
 
+.panel-body .photo-preview {
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #F4F6F6 ;
+
+}
+
+#target{
+  margin: 10px;
+}
+
+#target img {
+  width: 100px;
+
+}
+
+#photos .case{
+  padding: 5px;
+  margin: 0;
+
+}
+
+.panel-body #photos-select {
+    margin-top: 10px;
+}
 // 出品完了ページ
 .ribbon {
     display: inline-block;

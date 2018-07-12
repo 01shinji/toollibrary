@@ -59,17 +59,50 @@
                     <span class="btn btn-default btn-file">
                       <i class="fa fa-cloud-upload" aria-hidden="true"></i>画像を選択
 
-                      <%= file_field_tag "images[]", type: :file, multiple: true %>
+                      <%= file_field_tag "images[]", type: :file, multiple: true , id: "pictureInput" %>
 
                     </span>
                   </div>
                 </div>
 
-                <div class="text-center">
-                  <%= f.submit "アップロード", class: "btn btn-form" %>
+                <div class="photo-preview">
+                  <p class="text-center">
+                    プレビュー
+                  </p>
+                  <div id="target">
+                  </div>
+
+                  <div class="text-center">
+                    <%= f.submit "アップロード", class: "btn btn-form" %>
+                  </div>
+
                 </div>
 
+
               <% end %>
+
+
+
+              <script type="text/javascript">
+              $(function() {
+                $('#pictureInput').on('change', function(event) {
+                  var files = event.target.files;
+                  var image = files[0]
+                  var reader = new FileReader();
+                  reader.onload = function(file) {
+                    var img = new Image();
+                    console.log(file);
+                    img.src = file.target.result;
+                    $('#target').html(img);
+                  }
+                  reader.readAsDataURL(image);
+                  console.log(files);
+                });
+              });
+
+
+              </script>
+
 
             </div>
           </div>

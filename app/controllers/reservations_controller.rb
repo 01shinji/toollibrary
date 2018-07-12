@@ -14,6 +14,8 @@ class ReservationsController < ApplicationController
     if current_user == listing.user
       flash[:alert] = "自分の商品を予約することはできません"
 
+
+
     elsif !current_user.stripe_id
       flash[:alert] = "クレジットカードを登録してください"
       return redirect_to payment_method_path
