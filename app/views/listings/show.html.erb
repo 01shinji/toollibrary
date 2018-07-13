@@ -76,10 +76,17 @@
 
          </div>
        </li>
+
        <li>
          <!-- Twitter -->
-         <div >
-          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="" data-text="7月オープンのサーフィンのシェアリングサービス「サーフ文庫」" data-url="<%= listing_path(@listing) %>" data-hashtags="サーフィン サーフボード シェアリングエコノミー" data-show-count="false">
+         <div>
+          <a href="http://twitter.com/intent/tweet?text=`サーフィンのシェアサービス「サーフ文庫」/<%= @listing.listing_title %>`&amp;url=`<%= request.url %>`"
+           onClick="window.open(encodeURI(decodeURI(this.href)),
+           'tweetwindow',
+           'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1, resizable=1'
+           ); return false;">
+
+
 
             <span id="twitter_btn">
               <svg
