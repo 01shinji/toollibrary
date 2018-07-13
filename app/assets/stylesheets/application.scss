@@ -285,6 +285,8 @@ a.b-orange:hover{
 }
 .navbar-default {
   background-color: #FFFFFF;
+  position: fixed;
+  width: 100%;
 }
 
 .navbar-default .navbar-brand {
@@ -1877,6 +1879,16 @@ span#average_rating {
 // 検索フォーム
 .search-form{
   margin: 0 5px;
+  position: relative;
+  top: 61px;
+}
+
+@media (max-width: 480px) {
+  /* ~480px */
+  .search-form{
+
+    top: 51px;
+  }
 }
 
 .search-form p{
@@ -2409,6 +2421,8 @@ input#pac-input {
 
 // トップページ
 #motion{
+  position: relative;
+  top: 61px;
   margin: 0;
   font-size: 1.5em;
   -webkit-animation-duration: 5s;
@@ -2418,6 +2432,16 @@ input#pac-input {
   z-index: 1;
 
 }
+
+@media (max-width: 480px) {
+  /* ~480px */
+  #motion{
+
+    top: 51px;
+
+  }
+}
+
 #motion span{
   position: relative;
   top: 5px;
@@ -2440,6 +2464,7 @@ input#pac-input {
 
 #home-left {
   position: fixed;
+  top: 61px;
 
   height: 100%;
 
@@ -2452,6 +2477,7 @@ input#pac-input {
   /* ~480px */
 #home-left {
   position: fixed;
+  top: 51px;
 
   padding-bottom: 51px;
   width: 100%;
