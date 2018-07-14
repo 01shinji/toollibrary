@@ -8,6 +8,7 @@
  </div>
 
  <div class="" id="home-listings">
+
    <div class="row listings-list">
     <%= render partial: "listings/listings_list", locals: {listings: @listings} %>
    </div>
@@ -90,7 +91,7 @@ function init() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 35.32, lng: 139.47
 },
-    zoom: 12,
+    zoom: 9,
     // デフォルトのコントロールセット非表示
     disableDefaultUI: true,
     // デフォルトの情報ウィンドウ非表示

@@ -55,6 +55,28 @@
 
                   </p>
 
+                  <p>
+                    <span>
+                     <% if !listing.active || listing.active == false %>
+
+                        <%= form_for listing do |f| %>
+                         <%= f.hidden_field :active, value: true %>
+                         <%= f.submit "公開する", class:  'btn-xs  white b-green' %>
+                        <% end %>
+
+                     <% else
+                       listing.active == true  %>
+
+                        <%= form_for listing do |f| %>
+                         <%= f.hidden_field :active, value: false %>
+                         <%= f.submit "公開停止", class:  'btn-xs white b-gray' %>
+                        <% end %>
+
+
+                     <% end %>
+                    </span>
+                  </p>
+
 
 
                 </li>
