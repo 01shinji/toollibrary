@@ -1,10 +1,10 @@
- <div class="row">
+ <div class="row" id="home">
    <div id="home-left" class="col-md-12 col-sm-12 col-xs-12">
     <!-- Google Map -->
     <div id="map"></div>
    </div>
 
-
+   <%= render "search_spot" %>
  </div>
 
  <div class="" id="home-listings">
@@ -15,35 +15,9 @@
  </div>
 
 
- <p class="" id="motion">
-  <span class="">🌊</span><span class="reverse" >🏄</span>
- </p>
-
- <!-- 検索フォーム -->
- <%= form_tag search_path, method: :get do %>
-
-  <div class="row search-form">
-   <!-- 住所から検索 -->
-   <%= hidden_field_tag :lat %>
-   <%= hidden_field_tag :lng %>
-
-   <div class="col-md-10 col-sm-10 col-xs-10 box">
-     <%= text_field_tag :search, params[:search], placeholder: "例:神奈川県藤沢市", class: "form-control search-location", id: "autolocation" %>
-   </div>
-
-   <div class="col-md-2 col-sm-2 col-xs-2 box">
-     <%= submit_tag "検索", class: "search-short white b-green" %>
-   </div>
- </div>
- <% end %>
 
 
 
-<script>
-$("#motion").click(function(){
- $('#motion').addClass('animated infinite slideOutRight');
-});
-</script>
 
 <script>
   $('#start_date').datepicker({
@@ -89,9 +63,9 @@ $(".local").click(function(){
 function init() {
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 35.32, lng: 139.47
+    center: {lat: 35.12, lng: 139.47
 },
-    zoom: 9,
+    zoom: 8.7,
     // デフォルトのコントロールセット非表示
     disableDefaultUI: true,
     // デフォルトの情報ウィンドウ非表示
@@ -106,27 +80,116 @@ function init() {
   var data = new Array();
 
 
-  // 湘南
+  // 由比ヶ浜
   data.push({
-   lat: '35.302457', //緯度
-   lng: '139.525644', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=神奈川県鎌倉市稲村ガ崎１丁目１９&commit=検索"
+   lat: '35.309297', //緯度
+   lng: '139.545282', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=〒248-0014 神奈川県鎌倉市由比ガ浜４丁目&commit=検索"
   });
+  // 稲村ヶ崎
   data.push({
-   lat: '35.315711', //緯度
-   lng: '139.470007', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=神奈川県藤沢市鵠沼海岸１丁目１７−３&commit=検索"
+   lat: '35.301945', //緯度
+   lng: '139.525547', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=248-0024 神奈川県鎌倉市稲村ガ崎１丁目&commit=検索"
   });
+  // 七里ヶ浜
   data.push({
+   lat: '35.305113', //緯度
+   lng: '139.510737', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=〒248-0025 神奈川県鎌倉市七里ガ浜東２丁目２&commit=検索"
+  });
+  // 峰ヶ原
+  data.push({
+   lat: '35.306076', //緯度
+   lng: '139.506147', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=〒248-0026 神奈川県鎌倉市七里ガ浜１丁目５&commit=検索"
+  });
+  // 鎌高前
+  data.push({
+   lat: '35.306558', //緯度
+   lng: '139.502177', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=〒248-0026 神奈川県鎌倉市七里ガ浜２丁目１９&commit=検索"
+  });
+  // 腰越漁港
+  data.push({
+   lat: '35.308266', //緯度
+   lng: '139.487287', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=〒251-0035 神奈川県藤沢市片瀬海岸１丁目１５&commit=検索"
+  });
 
-   lat: '35.320212', //緯度
-   lng: '139.417428', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=神奈川県茅ヶ崎市東海岸南６丁目&commit=検索"
-  });
+  // 江ノ島水族館前
   data.push({
-   lat: '35.314952', //緯度
-   lng: '139.346261', //経度
-   url: "/search?utf8=✓&lat=&lng=&search=神奈川県平塚市龍城ケ丘１９&commit=検索"
+   lat: '35.309398', //緯度
+   lng: '139.480096', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=〒251-0035 神奈川県藤沢市片瀬海岸２丁目１９&commit=検索"
+  });
+
+  // 銅像前
+  data.push({
+   lat: '35.315760', //緯度
+   lng: '139.469865', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=〒251-0037 神奈川県藤沢市鵠沼海岸１丁目１７−３"
+  });
+  // 引地川河口
+  data.push({
+   lat: '35.316696', //緯度
+   lng: '139.465906', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=〒251-0037 神奈川県藤沢市鵠沼海岸４丁目４−１&commit=検索"
+  });
+  // 湘洋中学前
+  data.push({
+   lat: '35.318363', //緯度
+   lng: '139.457821', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=〒251-0045 神奈川県藤沢市辻堂東海岸４丁目９&commit=検索"
+  });
+  // 辻堂正面
+  data.push({
+   lat: '35.318547', //緯度
+   lng: '139.453347', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=〒251-0045 神奈川県藤沢市辻堂東海岸４丁目３&commit=検索"
+  });
+  // 第二駐車場前
+  data.push({
+   lat: '35.320276', //緯度
+   lng: '139.444163', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=〒251-0046 神奈川県藤沢市辻堂西海岸３丁目４&commit=検索"
+  });
+
+  // クソ下
+  data.push({
+   lat: '35.320627', //緯度
+   lng: '139.438967', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=〒251-0046 神奈川県藤沢市辻堂西海岸３丁目３&commit=検索"
+  });
+  // 裏パーク
+  data.push({
+   lat: '35.317816', //緯度
+   lng: '139.412569', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=〒253-0054 神奈川県茅ヶ崎市東海岸南４丁目&commit=検索"
+  });
+  // 白樺
+  data.push({
+   lat: '35.318779', //緯度
+   lng: '139.406261', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=〒253-0055 神奈川県茅ヶ崎市中海岸３丁目３&commit=検索"
+  });
+  // 西浜
+  data.push({
+   lat: '35.316652', //緯度
+   lng: '139.396032', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=〒253-0061 神奈川県茅ヶ崎市南湖６丁目１８−７&commit=検索"
+  });
+  // 柳島
+  data.push({
+   lat: '35.317248', //緯度
+   lng: '139.380608', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=〒253-0064 神奈川県茅ヶ崎市柳島&commit=検索"
+  });
+  // 馬入
+  data.push({
+   lat: '35.315006', //緯度
+   lng: '139.36636', //経度
+   url: "/search?utf8=✓&lat=&lng=&search=〒254-0803 神奈川県平塚市千石河岸５７−３０&commit=検索"
   });
 
 

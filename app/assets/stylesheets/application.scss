@@ -53,8 +53,15 @@ a:hover{
 
 .container {
   width: 90%;
-  padding-top: 61px;
+
   margin-bottom: 10px;
+
+}
+
+.container #listing-show {
+
+  padding-top: 61px;
+
 }
 
 .container .col-xs-12{
@@ -1112,6 +1119,7 @@ html input[disabled]{
   position:relative;
   left:-50%;
   float:left;
+  padding: 0;
   }
 
 .listing-index .bottom p{
@@ -2068,26 +2076,38 @@ input#pac-input {
     margin: 20px;
 }
 
-.search-spot {
+#home .search-spot {
   color: #ffffff;
   background-color: #04b4e4;
   position: absolute;
 
-  bottom: 5px;
-  left: 5px;
-  width: 50px;
-  height: 50px;
+  top: 66px;
+  right: 5px;
+  width: 60px;
+  height: 60px;
+  font-size: 0.5em;
+  border-radius: 50%;
+}
+
+#main .search-spot {
+  color: #ffffff;
+  background-color: #04b4e4;
+  position: absolute;
+
+  top: 66px;
+  right: 51%;
+  width: 60px;
+  height: 60px;
   font-size: 0.5em;
   border-radius: 50%;
 }
 
 @media (max-width: 768px) {
   /* ~768px */
-.search-spot{
 
-  top: 66px;
-  left: auto;
-  right: 5px;
+  #main .search-spot{
+    top: 66px;
+    right: 5px;
   }
 }
 
@@ -2099,8 +2119,8 @@ input#pac-input {
   font-weight: bold;
   font-size: 10px;
   position: relative;
-  top: 10px;
-  left: 6px;
+  top: 8px;
+  left: 9px;
   text-decoration: none;
 }
 
@@ -2116,18 +2136,19 @@ input#pac-input {
 }
 
 .spot-name {
+    color: #ffffff;
+    background-color: #04b4e4;
     position: absolute;
-    right: 0;
-    margin-top: 5px;
-    margin-right: 5px;
+    left: 0;
+    padding: 0 5px;
     z-index: 1;
     font-size: 3rem;
     font-weight: bold;
+
 }
 @media (max-width: 480px) {
   /* ~480px */
 .spot-name {
-  margin-top: 10px;
 
   font-size: 2rem;
 }
