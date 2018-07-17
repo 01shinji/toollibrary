@@ -1167,13 +1167,25 @@ margin-top: 5px;
 #home-listings {
     position: fixed;
     bottom: 0px;
-    background-color: rgba(192, 192, 192, 0.5);
+
     margin: 0;
     padding: 0;
     z-index: 2;
 }
 
+#home-listings .box {
 
+    background-color: rgba(192, 192, 192, 0.5);
+    margin: 0;
+
+}
+
+#home-listings p {
+  font-weight: bold;
+  margin: 0;
+  padding-left: 5px;
+
+}
 
 #home-listings .listings-list{
   margin: 0;
@@ -1181,7 +1193,7 @@ margin-top: 5px;
 }
 
 #home-listings .listings-list li{
-  padding: 5px;
+  padding: 2px;
 
 }
 
@@ -1773,20 +1785,7 @@ margin-top: 5px;
   text-align: center;
   border-radius: 10px;
 }
-@media (max-width: 768px) {
-  /* ~480px */
-.registration-alert{
 
-
-}
-}
-@media (max-width: 480px) {
-  /* ~480px */
-.registration-alert{
-
-
-}
-}
 .registration-alert p{
   color: #ffffff ;
   padding: 5px;
@@ -1990,11 +1989,14 @@ input#pac-input {
 }
 
 #right .listings-list{
-  background-color: rgba(192, 192, 192, 0.5);
+
   margin: 0;
 
 }
 
+#test{
+  background-color: rgba(192, 192, 192, 0.5);
+}
 #right .listings-list li{
   padding: 5px;
 
@@ -2108,6 +2110,16 @@ input#pac-input {
   #main .search-spot{
     top: 66px;
     right: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* ~480px */
+
+  #home .search-spot,
+  #main .search-spot{
+    top: 56px;
+
   }
 }
 
@@ -2444,7 +2456,7 @@ input#pac-input {
 // トップページ
 #motion{
   position: relative;
-  top: 61px;
+  top: 0;
   margin: 0;
   font-size: 1.5em;
   -webkit-animation-duration: 5s;
@@ -2459,7 +2471,7 @@ input#pac-input {
   /* ~480px */
   #motion{
 
-    top: 51px;
+    top: 0;
 
   }
 }

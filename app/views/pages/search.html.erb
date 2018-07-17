@@ -29,6 +29,14 @@
 
     <% else %>
 
+    <div class="registration-alert b-light-green">
+       <p>
+         この地域には<%= @arrListings.count %>点の出品があります&nbsp;
+
+       </p>
+    </div>
+
+
     <!-- 出品中アイテム -->
     <div class="row listings-list" id="">
       <%= render partial: "listings/listings_list", locals: {listings: @arrListings} %>
@@ -140,12 +148,21 @@ $("#detail-header").click(function(){
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: <%= @latitude %>, lng: <%= @longitude %>},
-    zoom: 12,
+    zoom: 13,
     // デフォルトのコントロールセット非表示
     disableDefaultUI: true,
     // デフォルトの情報ウィンドウ非表示
     clickableIcons: false
   });
+
+
+  var spot = new google.maps.Marker({
+    position: {lat: <%= @latitude %>, lng: <%= @longitude %>},
+    map: map,
+    icon: {url: 'assets/wave.png',scaledSize: new google.maps.Size(25, 25)}
+  });
+
+  spot.setMap(map);
 
   var input = /** @type {!HTMLInputElement} */(
       document.getElementById('pac-input'));
@@ -278,4 +295,5 @@ function initMap() {
 
 }
 </script>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ZRYgtCagsAWTqGbqxkpW09Y1i_ZYixI&libraries=places&callback=initMap" async defer></script>
