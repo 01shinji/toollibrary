@@ -1180,10 +1180,11 @@ margin-top: 5px;
 
 }
 
-#home-listings p {
+#home-listings span {
   font-weight: bold;
   margin: 0;
   padding-left: 5px;
+
 
 }
 
@@ -1989,16 +1990,13 @@ input#pac-input {
 }
 
 #right .listings-list{
-
+  background-color: rgba(192, 192, 192, 0.5);
   margin: 0;
 
 }
 
-#test{
-  background-color: rgba(192, 192, 192, 0.5);
-}
 #right .listings-list li{
-  padding: 5px;
+  padding: 2px;
 
 }
 
