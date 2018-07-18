@@ -59,6 +59,9 @@ a:hover{
 
 }
 
+.container #listing-show{
+  margin-top: 61px;
+}
 .container.adjustment {
 
   margin-top: 61px;
@@ -69,6 +72,9 @@ a:hover{
   /* ~480px */
   .container {
     margin-top: 0;
+  }
+  .container #listing-show{
+    margin-top: 51px;
   }
   .container.adjustment {
 
@@ -2824,7 +2830,7 @@ input#autolocation {
 
 // ガイダンス内リンク
 .guidance-link{
-  
+
   margin-bottom: 20px;
 }
 
