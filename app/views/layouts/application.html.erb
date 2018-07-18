@@ -72,6 +72,13 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ZRYgtCagsAWTqGbqxkpW09Y
       <%= yield %>
       <%= render 'shared/footer'%>
 
+      <% elsif  request.path == '/login' || request.path == '/registration'   %>
+      <div class="container adjustment">
+        <%= yield %>
+      </div>
+      <%= render 'shared/footer'%>
+
+
       <% else %>
       <div class="container">
         <%= yield %>

@@ -52,16 +52,29 @@ a:hover{
 }
 
 .container {
+  margin-top: 20px;
   width: 90%;
 
   margin-bottom: 10px;
 
 }
 
-.container #listing-show {
+.container.adjustment {
 
-  padding-top: 61px;
+  margin-top: 61px;
 
+}
+
+@media (max-width: 480px) {
+  /* ~480px */
+  .container {
+    margin-top: 0;
+  }
+  .container.adjustment {
+
+    margin-top: 51px;
+
+  }
 }
 
 .container .col-xs-12{
@@ -461,7 +474,15 @@ a.b-orange:hover{
 
 // ダッシュボード内リンク
 .dashboard-link{
+
   margin-bottom: 20px;
+}
+
+@media (max-width: 480px) {
+  /* ~480px */
+  .dashboard-link{
+
+  }
 }
 
 .dashboard-link ul{
@@ -2803,7 +2824,15 @@ input#autolocation {
 
 // ガイダンス内リンク
 .guidance-link{
+  
   margin-bottom: 20px;
+}
+
+@media (max-width: 480px) {
+  /* ~480px */
+  .guidance-link{
+
+  }
 }
 
 .guidance-link ul{

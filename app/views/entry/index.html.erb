@@ -1,19 +1,16 @@
 
-
-
-
 <div class="" id="entry">
 
 <div class="entry-box" id="top">
   <ul>
    <li id="title" class="">
-     <%= link_to "サーフ文庫", entry_path, class: "navbar-brand " %>
+     <%= link_to "サーフ文庫", root_path, class: "navbar-brand " %>
    </li>
    <li class="sentence font-md">
-     サーフィンのシェアリングサービス
+     <span class="orange">湘南</span>のサーフィンのシェアリングサービス
    </li>
    <li class="sentence font-sm">
-     サーフィンの<br>シェアリングサービス
+     <span class="orange">湘南</span>のサーフィンの<br>シェアリングサービス
    </li>
 
    <script type="text/javascript">
@@ -37,7 +34,7 @@
   </ul>
   <div class="entry-case entry-button">
 
-      <%= link_to "応募する", anchor: "entry-form"  %>
+      <%= link_to "貸し出す", new_user_registration_path  %>
 
 
   </div>
@@ -50,7 +47,13 @@
 <nav class="upper">
   <div class="inform text-center">
     <p>
-      7月末にサービスがオープンします<br>
+      7月末に
+      <span>
+
+        <%= link_to("サービス", root_path  ) %>
+      </span>
+
+      がオープンします<br>
       ただいま湘南地域でサーフボードやボード置き場を貸してくれる方を募集中
     </p>
     <p >
@@ -118,7 +121,7 @@
   </div>
 
   <p class="entry-button text-center">
-    <%= link_to "応募する", anchor: "entry-form" %>
+    <%= link_to "貸し出す", new_user_registration_path  %>
   </p>
 
  </div>
@@ -681,7 +684,7 @@
 <div class="row">
   <div class="text-center frame">
     <div class="panel panel-default" id="entry-form">
-      <h3><b>応募する</b></h3>
+      <h3><b>お問合わせ</b></h3>
 
       <div class="container">
 
@@ -734,15 +737,15 @@
         </div>
 
         <div class="form_box inquiry-text">
-          <p>その他&nbsp;自由記入欄</p>
+          <p>お問合わせ内容</p>
           <div class="form-group">
             <%= f.text_area :message, class: "form-control" %>
           </div>
         </div>
 
 
-        <div class="actions">
-          <%= f.submit "確認する", class: "btn btn-form" %>
+        <div class="">
+          <%= f.submit "確認する", class: "btn-xs white b-green" %>
         </div>
 
         <% end %>
@@ -847,7 +850,7 @@
 </div>
 
   <p class="entry-button text-center">
-    <%= link_to "応募する", anchor: "entry-form" %>
+    <%= link_to "貸し出す", new_user_registration_path  %>
   </p>
 
   <div class="social_logo">

@@ -148,21 +148,28 @@ $("#detail-header").click(function(){
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: <%= @latitude %>, lng: <%= @longitude %>},
-    zoom: 13,
+    zoom: 14,
     // デフォルトのコントロールセット非表示
     disableDefaultUI: true,
     // デフォルトの情報ウィンドウ非表示
     clickableIcons: false
   });
 
+  var rectangle = new google.maps.Rectangle({
+         strokeColor: '#04b4e4 ',
+         strokeOpacity: 0.8,
+         strokeWeight: 2,
+         fillColor: '#04b4e4 ',
+         fillOpacity: 0.35,
+         map: map,
+         bounds: {
+           north: <%= @latitude %>  ,
+           south: <%= @latitude %> - 0.005,
+           east: <%= @longitude %> + 0.005,
+           west: <%= @longitude %> - 0.005
+         }
+       });
 
-  var spot = new google.maps.Marker({
-    position: {lat: <%= @latitude %>, lng: <%= @longitude %>},
-    map: map,
-    icon: {url: 'assets/wave.png',scaledSize: new google.maps.Size(25, 25)}
-  });
-
-  spot.setMap(map);
 
   var input = /** @type {!HTMLInputElement} */(
       document.getElementById('pac-input'));
