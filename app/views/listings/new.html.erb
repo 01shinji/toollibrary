@@ -41,8 +41,9 @@
             ["オールラウンド", "オールラウンド", data: {val:"SUPボード"}],
             ["フィッシング", "フィッシング", data: {val:"SUPボード"}],
             ["クルージング", "クルージング", data: {val:"SUPボード"}],
+            ["コーチング", "コーチング", data: {val:"その他"}],
             ["ボード置き場", "ボード置き場", data: {val:"その他"}],
-            ["その他", "その他", data: {val:"その他"}]],
+            ["写真撮影", "写真撮影", data: {val:"その他"}]],
 
 
             {prompt: "カテゴリー2"},
@@ -76,18 +77,18 @@
               <%= f.check_box :is_bicycle %>
               自転車
             </div>
-            <% if !(@listing.category2 == "ボード置き場") %>
+
              <div class="col-md-4 col-sm-4 col-xs-4 check">
                <%= f.check_box :is_wetsuit %>
               ウェットスーツ
              </div>
-            <% end %>
+
           </div>
         </div>
 
 
         <div class="form_box">
-          <p><b>レンタル価格</b></p>
+          <p><b>出品価格</b></p>
           <div class="" id="information-price">
 
             <div class="form-group" >
@@ -96,7 +97,7 @@
                   <p>1日</p>
                 </li>
                 <li class="">
-                  <%= f.text_field :price_day, placeholder: "例:3000", class: "form-control" %>
+                  <%= f.text_field :price_day, placeholder: "例:3000", class: "form-control", required: true %>
                 </li>
                 <li class="">
                   <p>円</p>
@@ -108,16 +109,16 @@
 
         </div>
 
-        <% if !(@listing.category2 == "ボード置き場") %>
+
          <div class="purchase">
           <p class="text-left">
-            ※破損が起きた際の補償費の計算の参考にします
+            ※ボード類を出品する場合は入力してください(破損が起きた際の補償費の計算の参考にします)
           </p>
 
           <div class="form_box">
             <p><b>購入時期</b></p>
             <div class="form-group">
-              <%= f.text_field :purchase_time, placeholder: "例:2016年春ごろ", class: "form-control", required: true %>
+              <%= f.text_field :purchase_time, placeholder: "例:2016年春ごろ", class: "form-control" %>
             </div>
           </div>
 
@@ -129,7 +130,7 @@
                 <ul class="row">
 
                   <li class="">
-                    <%= f.text_field :purchase_price, placeholder: "例:80000", class: "form-control", required: true %>
+                    <%= f.text_field :purchase_price, placeholder: "例:80000", class: "form-control" %>
                   </li>
                   <li class="">
                     <p>円</p>
@@ -143,7 +144,7 @@
 
           </div>
         </div>
-        <% end %>
+
 
         <%= f.hidden_field :listing_type, value: "レンタル"  %>
         <%= f.hidden_field :location, value: @user.address_city %>

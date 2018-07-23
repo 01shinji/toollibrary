@@ -56,7 +56,11 @@
     <!-- 紹介文 -->
     <div class="row">
      <div class="col-md-12 description">
-      <p><%= @user.description %></p>
+      <p>
+        <%= text_url_to_link(simple_format(h(@user.description))).html_safe %>
+
+
+      </p>
      </div>
     </div>
 

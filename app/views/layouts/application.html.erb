@@ -66,24 +66,24 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ZRYgtCagsAWTqGbqxkpW09Y
 
 
       <% if  request.path == '/' || request.path == '/search'%>
-      <%= yield %>
+       <%= yield %>
 
       <% elsif request.path == '/about' || request.path == '/information' || request.path == '/pages/guide' %>
-      <%= yield %>
-      <%= render 'shared/footer'%>
+       <%= yield %>
+       <%= render 'shared/footer'%>
 
       <% elsif  request.path == '/login' || request.path == '/registration'   %>
-      <div class="container adjustment">
-        <%= yield %>
-      </div>
-      <%= render 'shared/footer'%>
+       <div class="container adjustment">
+         <%= yield %>
+       </div>
+       <%= render 'shared/footer'%>
 
 
       <% else %>
-      <div class="container">
+       <div class="container">
         <%= yield %>
-      </div>
-      <%= render 'shared/footer'%>
+       </div>
+       <%= render 'shared/footer'%>
 
       <% end %>
 

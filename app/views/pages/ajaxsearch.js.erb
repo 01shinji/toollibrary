@@ -5,7 +5,18 @@ document.getElementById('search-address').value = "<%= session[:address] %>";
   //markerはこの関数の中で同じ変数
   var marker = new google.maps.Marker({
     position: new google.maps.LatLng(<%= listing.latitude %>, <%= listing.longitude %>),
-    icon: <% if listing.category2 == "ボード置き場" %> {url: 'assets/warehouse.png',scaledSize: new google.maps.Size(35, 35)} <% else %> {url: 'assets/surfboard.png',scaledSize: new google.maps.Size(40, 40)} <% end %>,
+    
+    icon:
+    <% if listing.category2 == "コーチング" %>
+      {url: 'assets/stand-man.png',scaledSize: new google.maps.Size(35, 35)}
+    <% elsif listing.category2 == "ボード置き場" %>
+      {url: 'assets/warehouse.png',scaledSize: new google.maps.Size(35, 35)}
+    <% elsif listing.category2 == "写真撮影" %>
+      {url: 'assets/camera.png',scaledSize: new google.maps.Size(35, 35)}
+    <% else %>
+      {url: 'assets/surfboard.png',scaledSize: new google.maps.Size(40, 40)}
+    <% end %>,
+
     map: map
   });
 
