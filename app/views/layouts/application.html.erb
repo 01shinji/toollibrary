@@ -65,10 +65,10 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ZRYgtCagsAWTqGbqxkpW09Y
       <% end %>
 
 
-      <% if  request.path == '/' || request.path == '/search'%>
+      <% if   request.path == '/search'%>
        <%= yield %>
 
-      <% elsif request.path == '/about' || request.path == '/information' || request.path == '/pages/guide' %>
+      <% elsif request.path == '/' || request.path == '/about' || request.path == '/information' || request.path == '/pages/guide' %>
        <%= yield %>
        <%= render 'shared/footer'%>
 

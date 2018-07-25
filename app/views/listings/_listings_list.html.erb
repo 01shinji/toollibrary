@@ -1,60 +1,87 @@
 <ul class="row-eq-height">
 
-
-
-
-
   <% if
     request.path == '/' %>
     <% listings.first(12).each do |listing| %>
 
-      <li class="col-md-1 col-sm-1 col-xs-2  row-eq-height twelve">
+      <li class="col-md-2 col-sm-2 col-xs-3  row-eq-height twelve">
 
        <%= link_to  listing  do %>
+
        <div class="listing-block" >
          <div class="">
 
             <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
 
+            <span class="user-image">
+              <% if (user_signed_in?)%>
+                <%= image_tag listing.user.image, class: "img-circle avatar-medium" %>
+              <% else %>
+                <%= image_tag "avatar-default", class: "img-circle avatar-medium" %>
+              <% end %>
+            </span>
+
          </div>
 
-         <span class="user-image">
-          <% if (user_signed_in?)%>
-            <%= image_tag listing.user.image, class: "img-circle avatar-small" %>
-          <% else %>
-            <%= image_tag "avatar-default", class: "img-circle avatar-small" %>
-          <% end %>
-         </span>
 
-         <p class="price-day">
-            <b><span class="red"><%= listing.price_day %></span>円</b>
-         </p>
+
+
+
+         <div class="listing-content">
+
+           <p class="location">
+             <span class="">
+              <i class="fa fa-map-marker"></i>
+             </span>
+             <span >
+               <%= listing.location %>
+             </span>
+           </p>
+
+           <p>
+
+             <span class="listing-category"><%= listing.category2 %></span>
+
+           </p>
+
+
+
+           <p>
+             <span class="listing-title">
+               <b>
+                <%=  listing.listing_title %>
+               </b>
+
+             </span>
+           </p>
+
+           <p class="price-day">
+              ¥<span class="red"><b><%= listing.price_day %></b></span>&nbsp;/1日・キャンセル無料
+           </p>
+
+         </div>
+
        </div>
+
        <% end %>
 
       </li>
     <% end %>
 
+    <script type="text/javascript">
+      $(function(){
+       var w = window.innerWidth;
 
 
-
-   <script type="text/javascript">
-    $(function(){
-     var w = window.innerWidth;
-
-     if (w <= 480){
-
-       $(".user-image .img-circle").removeClass("avatar-small");
-       $(".user-image .img-circle").addClass("avatar-minimum");
-     }
-
-     console.log(w);
+       if (w <= 480){
+         $(".user-image .img-circle").removeClass("avatar-medium");
+         $(".user-image .img-circle").addClass("avatar-small");
+       }
+       console.log(w);
+      });
+    </script>
 
 
-
-
-    });
-   </script>
 
   <% elsif
      request.path == '/search' || request.path == '/ajaxsearch' %>

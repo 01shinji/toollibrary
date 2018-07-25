@@ -1,9 +1,10 @@
 class PagesController < ApplicationController
   def home
-    @listings = Listing.where(active: true).limit(12)
-
+    @listings = Listing.where(active: true)
     @listings = @listings.order(created_at: :desc)
 
+    @users = User.includes(:listings).where.not(listings: {id: nil})
+    @users = @users.order(created_at: :desc)
 
   end
 
@@ -39,24 +40,44 @@ class PagesController < ApplicationController
     # Ransack q のチェックボックス一覧
     if params[:q].present?
 
+     # category1
+     if params[:q][:category1_eq_any].present?
+       session[:category1_eq_any] = params[:q][:category1_eq_any]
+
+       session[:surfboard] = session[:category1_eq_any].include?("サーフボード")
+       session[:supboard] = session[:category1_eq_any].include?("SUPボード")
+       session[:others] = session[:category1_eq_any].include?("その他")
+
+     else
+       session[:category1_eq_any] = ""
+
+       session[:surfboard] = false
+       session[:supboard] = false
+       session[:others] = false
+     end
+
+
+     # listing_type
      if params[:q][:listing_type_eq_any].present?
        session[:listing_type_eq_any] = params[:q][:listing_type_eq_any]
-       session[:rental] = session[:listing_type_eq_any].include?("レンタル")
+
+       session[:rental] = session[:listing_type_eq].include?("レンタル")
        session[:buying_and_selling] = session[:listing_type_eq_any].include?("販売")
        session[:coaching] = session[:listing_type_eq_any].include?("コーチング")
      else
        session[:listing_type_eq_any] = ""
+
        session[:rental] = false
        session[:buying_and_selling] = false
        session[:coaching] = false
      end
 
+     # price_day
      if params[:q][:price_day_gteq].present?
        session[:price_day_gteq] = params[:q][:price_day_gteq]
      else
        session[:price_day_gteq] = nil
      end
-
      if params[:q][:price_day_lteq].present?
        session[:price_day_lteq] = params[:q][:price_day_lteq]
      else
@@ -68,8 +89,13 @@ class PagesController < ApplicationController
 
     # Q条件をまとめたものをセッションQに入れる
     session[:q] = {
+
+     "category1_eq_any" => session[:category1_eq_any],
+
      "listing_type_eq_any" => session[:listing_type_eq_any],
+
      "price_day_gteq" => session[:price_day_gteq],
+
      "price_day_lteq" => session[:price_day_lteq]
 
     }

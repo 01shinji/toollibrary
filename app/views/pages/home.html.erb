@@ -1,23 +1,163 @@
+
  <div class="row" id="home">
-   <div id="home-left" class="col-md-12 col-sm-12 col-xs-12">
-    <!-- Google Map -->
-    <div id="map"></div>
-   </div>
 
-   <%= render "search_spot" %>
- </div>
+   <div id="" class="col-md-12 col-sm-12 col-xs-12 ">
+     <!--イメージ写真-->
+     <div class="home-image">
+      <div class="image-case">
+        <h2>
 
- <div class="" id="home-listings">
-   <span class="font-lg">
-     新着の商品
-   </span>
-   <div class="box" >
+            湘南にひとり、<br>
+            サーファーの友達を作ろう。
 
-     <div class="row listings-list">
-      <%= render partial: "listings/listings_list", locals: {listings: @listings} %>
+        </h2>
+      </div>
      </div>
+
+     <!-- やりたい -->
+     <div class="chest">
+       <p>
+         <span>サーフボードを借りたい</span>
+         <span>SUPボードを借りたい</span>
+         <span>ボードロッカーを借りたい</span>
+         <span>初心者向けのコーチングを受けたい</span>
+         <span>サーフィン写真を撮影してもらいたい</span>
+       </p>
+     </div>
+
+     <!-- 新着の商品 -->
+     <div class="chest" id="home-listings">
+       <span class="font-lg">
+         <b>
+           新着の商品
+         </b>
+
+       </span>
+
+       <div class="box" >
+
+         <div class="row listings-list">
+          <%= render partial: "listings/listings_list", locals: {listings: @listings} %>
+         </div>
+
+       </div>
+
+       <p class="button">
+        <%= link_to  about_path  do %>
+          <span class="white b-blue">
+            出品商品をすべて見る&nbsp;<%= @listings.count %>
+          </span>
+        <% end %>
+       </p>
+
+       <%= render "search_spot" %>
+
+     </div>
+
+     <!-- 新着のホスト -->
+     <div class="chest" id="home-host">
+       <span class="font-lg">
+         <b>
+           新着のホスト
+         </b>
+
+       </span>
+
+       <div class="box">
+
+         <div class="row listings-list">
+           <ul class="row-eq-height">
+
+            <% @users.first(12).each do |user| %>
+
+             <li class="col-md-2 col-sm-2 col-xs-3  row-eq-height twelve">
+
+              <%= link_to user do %>
+
+              <div class="listing-block" >
+                <div class="host-image">
+
+                  <% if (user_signed_in?)%>
+                    <%= image_tag user.image, class: "img-circle avatar-large img-responsive" %>
+                  <% else %>
+                    <%= image_tag "avatar-default", class: "img-circle avatar-large img-responsive" %>
+                  <% end %>
+
+                </div>
+
+                <div class="listing-content">
+
+                  <p class="location">
+                    <span class="">
+                     <i class="fa fa-map-marker"></i>
+                    </span>
+                    <span >
+                      <%= user.address_city %>
+                    </span>
+                  </p>
+
+                  <p>
+                    <span class="host-name">
+                      <b>
+                        <% if (user_signed_in?)%>
+                         <%= user.fullname %>
+                        <% else %>
+                         <%= user.nickname %>
+                        <% end %>
+                      </b>
+
+                    </span>
+                  </p>
+
+                  <p class="price-day">
+                     <%= truncate(user.description, length: 24) %>
+                  </p>
+
+                </div>
+
+              </div>
+
+              <% end %>
+
+             </li>
+
+            <% end %>
+
+         </div>
+
+       </div>
+
+       <p class="button">
+        <%= link_to  about_path  do %>
+          <span class="white b-blue">
+            ホスト一覧&nbsp;<%= @users.count %>
+          </span>
+        <% end %>
+       </p>
+
+     </div>
+
+     <!-- サーフスポットから探す -->
+     <div class="row chest" id="">
+       <span class="font-lg">
+         <b>
+           サーフスポットから探す
+         </b>
+       </span>
+
+       <div id="home-map" class="col-md-12 col-sm-12 col-xs-12">
+        <!-- Google Map -->
+        <div id="map"></div>
+       </div>
+     </div>
+
    </div>
+
+
+
  </div>
+
+
 
 
 <script>
@@ -64,7 +204,7 @@ $(".local").click(function(){
 function init() {
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 35.3, lng: 139.47
+    center: {lat: 35.32, lng: 139.47
 },
     zoom: 12,
     // デフォルトのコントロールセット非表示
@@ -83,113 +223,113 @@ function init() {
 
   // 由比ヶ浜
   data.push({
-   lat: '35.309297', //緯度
-   lng: '139.545282', //経度
+   lat: '35.305', //緯度 -0.004
+   lng: '139.545', //経度
    url: "/search?utf8=✓&lat=&lng=&search=〒248-0014 神奈川県鎌倉市由比ガ浜４丁目&commit=検索"
   });
   // 稲村ヶ崎
   data.push({
-   lat: '35.301945', //緯度
-   lng: '139.525547', //経度
+   lat: '35.297', //緯度
+   lng: '139.525', //経度
    url: "/search?utf8=✓&lat=&lng=&search=248-0024 神奈川県鎌倉市稲村ガ崎１丁目&commit=検索"
   });
   // 七里ヶ浜
   data.push({
-   lat: '35.305113', //緯度
-   lng: '139.510737', //経度
+   lat: '35.301', //緯度
+   lng: '139.510', //経度
    url: "/search?utf8=✓&lat=&lng=&search=〒248-0025 神奈川県鎌倉市七里ガ浜東２丁目２&commit=検索"
   });
   // 峰ヶ原
   data.push({
-   lat: '35.306076', //緯度
-   lng: '139.506147', //経度
+   lat: '35.302', //緯度
+   lng: '139.506', //経度
    url: "/search?utf8=✓&lat=&lng=&search=〒248-0026 神奈川県鎌倉市七里ガ浜１丁目５&commit=検索"
   });
   // 鎌高前
   data.push({
-   lat: '35.306558', //緯度
-   lng: '139.502177', //経度
+   lat: '35.302', //緯度
+   lng: '139.502', //経度
    url: "/search?utf8=✓&lat=&lng=&search=〒248-0026 神奈川県鎌倉市七里ガ浜２丁目１９&commit=検索"
   });
   // 腰越漁港
   data.push({
-   lat: '35.308266', //緯度
-   lng: '139.487287', //経度
+   lat: '35.304', //緯度
+   lng: '139.487', //経度
    url: "/search?utf8=✓&lat=&lng=&search=〒251-0035 神奈川県藤沢市片瀬海岸１丁目１５&commit=検索"
   });
 
   // 江ノ島水族館前
   data.push({
-   lat: '35.309398', //緯度
-   lng: '139.480096', //経度
+   lat: '35.305', //緯度
+   lng: '139.480', //経度
    url: "/search?utf8=✓&lat=&lng=&search=〒251-0035 神奈川県藤沢市片瀬海岸２丁目１９&commit=検索"
   });
 
   // 銅像前
   data.push({
-   lat: '35.315760', //緯度
-   lng: '139.469865', //経度
+   lat: '35.311', //緯度
+   lng: '139.469', //経度
    url: "/search?utf8=✓&lat=&lng=&search=〒251-0037 神奈川県藤沢市鵠沼海岸１丁目１７−３"
   });
   // 引地川河口
   data.push({
-   lat: '35.316696', //緯度
-   lng: '139.465906', //経度
+   lat: '35.312', //緯度
+   lng: '139.465', //経度
    url: "/search?utf8=✓&lat=&lng=&search=〒251-0037 神奈川県藤沢市鵠沼海岸４丁目４−１&commit=検索"
   });
   // 湘洋中学前
   data.push({
-   lat: '35.318363', //緯度
-   lng: '139.457821', //経度
+   lat: '35.314', //緯度
+   lng: '139.457', //経度
    url: "/search?utf8=✓&lat=&lng=&search=〒251-0045 神奈川県藤沢市辻堂東海岸４丁目９&commit=検索"
   });
   // 辻堂正面
   data.push({
-   lat: '35.318547', //緯度
-   lng: '139.453347', //経度
+   lat: '35.314', //緯度
+   lng: '139.453', //経度
    url: "/search?utf8=✓&lat=&lng=&search=〒251-0045 神奈川県藤沢市辻堂東海岸４丁目３&commit=検索"
   });
   // 第二駐車場前
   data.push({
-   lat: '35.320276', //緯度
-   lng: '139.444163', //経度
+   lat: '35.316', //緯度
+   lng: '139.444', //経度
    url: "/search?utf8=✓&lat=&lng=&search=〒251-0046 神奈川県藤沢市辻堂西海岸３丁目４&commit=検索"
   });
 
   // クソ下
   data.push({
-   lat: '35.320627', //緯度
-   lng: '139.438967', //経度
+   lat: '35.316', //緯度
+   lng: '139.438', //経度
    url: "/search?utf8=✓&lat=&lng=&search=〒251-0046 神奈川県藤沢市辻堂西海岸３丁目３&commit=検索"
   });
   // 裏パーク
   data.push({
-   lat: '35.317816', //緯度
-   lng: '139.412569', //経度
+   lat: '35.313', //緯度
+   lng: '139.412', //経度
    url: "/search?utf8=✓&lat=&lng=&search=〒253-0054 神奈川県茅ヶ崎市東海岸南４丁目&commit=検索"
   });
   // 白樺
   data.push({
-   lat: '35.318779', //緯度
-   lng: '139.406261', //経度
+   lat: '35.314', //緯度
+   lng: '139.406', //経度
    url: "/search?utf8=✓&lat=&lng=&search=〒253-0055 神奈川県茅ヶ崎市中海岸３丁目３&commit=検索"
   });
   // 西浜
   data.push({
-   lat: '35.316652', //緯度
-   lng: '139.396032', //経度
+   lat: '35.312', //緯度
+   lng: '139.396', //経度
    url: "/search?utf8=✓&lat=&lng=&search=〒253-0061 神奈川県茅ヶ崎市南湖６丁目１８−７&commit=検索"
   });
   // 柳島
   data.push({
-   lat: '35.317248', //緯度
-   lng: '139.380608', //経度
+   lat: '35.313', //緯度
+   lng: '139.380', //経度
    url: "/search?utf8=✓&lat=&lng=&search=〒253-0064 神奈川県茅ヶ崎市柳島&commit=検索"
   });
   // 馬入
   data.push({
-   lat: '35.315006', //緯度
-   lng: '139.36636', //経度
+   lat: '35.311', //緯度
+   lng: '139.366', //経度
    url: "/search?utf8=✓&lat=&lng=&search=〒254-0803 神奈川県平塚市千石河岸５７−３０&commit=検索"
   });
 

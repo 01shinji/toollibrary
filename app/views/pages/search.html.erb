@@ -14,33 +14,8 @@
 
 
   <div id="right" class="col-md-6 col-sm-6 col-xs-12">
-    <!-- 検索パネル -->
 
-    <% if @arrListings.count == 0 %>
-
-    <div class="registration-alert b-light-red">
-     <p>
-       まだこの地域に出品はありません&nbsp;
-       <%= link_to "出品する", new_listing_path , class: "blue b-white" %>
-     </p>
-    </div>
-
-
-
-    <% else %>
-
-    <div class="registration-alert b-light-green">
-       <p>
-         この地域には<%= @arrListings.count %>点の出品があります&nbsp;
-
-       </p>
-    </div>
-
-
-    <!-- 出品中アイテム -->
-    <div class="row listings-list" id="">
-      <%= render partial: "listings/listings_list", locals: {listings: @arrListings} %>
-    </div>
+    <!-- 詳細な検索 -->
     <div>
       <%= search_form_for @search, url: search_path do |f| %>
 
@@ -59,6 +34,21 @@
           </div>
 
           <div class="detail-list">
+           <div class="row search-panel-li">
+
+             <div class="col-md-4 col-sm-4 col-xs-4">
+               <%= check_box_tag "q[category1_eq_any][]", "surfboard" %>サーフボード
+             </div>
+             <div class="col-md-4 col-sm-4 col-xs-4">
+               <%= check_box_tag "q[category1_eq_any][]", "supboard" %>SUPボード
+             </div>
+             <div class="col-md-4 col-sm-4 col-xs-4">
+               <%= check_box_tag "q[category1_eq_any][]", "others" %>
+             </div>その他
+
+           </div>
+
+
            <div class="row search-panel-li">
              <p>価格帯(円)</p>
 
@@ -92,6 +82,36 @@
 
       <% end %>
     </div>
+
+    <!-- 検索パネル -->
+
+    <% if @arrListings.count == 0 %>
+
+    <div class="registration-alert b-light-red">
+     <p>
+       まだこの地域に出品はありません&nbsp;
+       <%= link_to "出品する", new_listing_path , class: "blue b-white" %>
+     </p>
+    </div>
+
+
+
+    <% else %>
+
+    <div class="registration-alert b-light-green">
+       <p>
+         この地域には<%= @arrListings.count %>点の出品があります&nbsp;
+
+       </p>
+    </div>
+
+
+
+    <!-- 出品中アイテム -->
+    <div class="row listings-list" id="">
+      <%= render partial: "listings/listings_list", locals: {listings: @arrListings} %>
+    </div>
+
 
 
     <% end %>
@@ -128,21 +148,7 @@
 
 
 
-<script>
-// FAQのアコーディオン
-$("#detail-header").click(function(){
-    var $answer = $(".search-detail").find(".detail-list");
-    if ($answer.hasClass("open")) {
-      $answer.removeClass("open");
-      $answer.slideUp();
-      $(this).find(".chevron").html("<i class='fa fa-chevron-down'></i>");
-    }else{
-      $answer.addClass("open");
-      $answer.slideDown();
-      $(this).find(".chevron").html("<i class='fa fa-chevron-up'></i>");
-    }
-  });
-</script>
+
 
 <script>
 function initMap() {
@@ -184,6 +190,7 @@ function initMap() {
   // マーカーとインフォウィンドウの配列を用意
   markers = [];
   infowindows = [];
+
 
   <% @arrListings.each do |listing| %>
     //markerはこの関数の中で同じ変数
