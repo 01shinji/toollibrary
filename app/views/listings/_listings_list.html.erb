@@ -2,7 +2,11 @@
 
   <% if
     request.path == '/' %>
-    <% listings.first(12).each do |listing| %>
+    <% listings.each do |listing| %>
+
+      <% guest_reviews = listing.guest_reviews %>
+
+
 
       <li class="col-md-2 col-sm-2 col-xs-3  row-eq-height twelve">
 
@@ -22,10 +26,6 @@
             </span>
 
          </div>
-
-
-
-
 
          <div class="listing-content">
 
@@ -49,7 +49,8 @@
            <p>
              <span class="listing-title">
                <b>
-                <%=  listing.listing_title %>
+                 <%= truncate(listing.listing_title, length: 20) %>
+
                </b>
 
              </span>
@@ -59,6 +60,30 @@
               ¥<span class="red"><b><%= listing.price_day %></b></span>&nbsp;/1日・キャンセル無料
            </p>
 
+           <% if guest_reviews.count > 0  %>
+
+           <script>
+            $('#average_rating').raty({
+              path: '/assets',
+              readOnly: true,
+              score: <%= listing.average_rating %>
+            });
+           </script>
+
+           <p>
+             <span id="average_rating"  class="host-stars"></span>
+
+             <span>
+               <b>
+                <%= pluralize(guest_reviews.count, "件") %>
+               </b>
+
+             </span>
+
+
+           </p>
+           <% end %>
+
          </div>
 
        </div>
@@ -66,6 +91,9 @@
        <% end %>
 
       </li>
+
+
+
     <% end %>
 
     <script type="text/javascript">
@@ -80,6 +108,8 @@
        console.log(w);
       });
     </script>
+
+
 
 
 

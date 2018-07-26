@@ -2014,6 +2014,15 @@ span#average_rating {
   width:20px;
 }
 
+#home-listings .listings-list span#average_rating {
+    position: static;
+
+}
+
+#home-listings .listings-list .host-stars img{
+  width:15px;
+}
+
 .host-review .case{
   background-color: #ffffff ;
   padding: 5px;

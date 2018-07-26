@@ -6,6 +6,8 @@ class PagesController < ApplicationController
     @users = User.includes(:listings).where.not(listings: {id: nil})
     @users = @users.order(created_at: :desc)
 
+    
+
   end
 
   def search

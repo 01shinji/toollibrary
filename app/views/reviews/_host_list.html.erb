@@ -1,6 +1,6 @@
 <% if @host_reviews.count == 0 %>
   <div class="text-center">
-    <p>まだレビューがありません...</p>
+    <p>まだレビューがありません</p>
   </div>
 <% else %>
 
@@ -30,7 +30,7 @@
 
     </div>
 
-    <div><%= r.comment %></div>
+    <div><%= text_url_to_link(simple_format(h(r.comment))).html_safe %></div>
 
     <br>
     <hr class="dotted-hr">
