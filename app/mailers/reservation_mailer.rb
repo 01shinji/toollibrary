@@ -29,6 +29,16 @@ class ReservationMailer < ApplicationMailer
 
   end
 
+  # 運営者への予約リクエスト確認メール
+  def request_to_me(reservation)
+
+    @reservation = reservation
+
+
+    mail(to: "satoyama.shinji@gmail.com", from: "s-kawabata@digisurf.co.jp", :subject => "[注]予約リクエスト")
+
+  end
+
   # ゲストへの予約確定メール
   def approve_to_guest(reservation)
 

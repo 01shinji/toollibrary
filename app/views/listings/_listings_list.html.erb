@@ -62,14 +62,6 @@
 
            <% if guest_reviews.count > 0  %>
 
-           <script>
-            $('#average_rating').raty({
-              path: '/assets',
-              readOnly: true,
-              score: <%= listing.average_rating %>
-            });
-           </script>
-
            <p>
              <span id="average_rating"  class="host-stars"></span>
 
@@ -80,8 +72,16 @@
 
              </span>
 
-
            </p>
+
+           <script>
+            $('#average_rating').raty({
+              path: '/assets',
+              readOnly: true,
+              score: <%= listing.average_rating %>
+            });
+           </script>
+
            <% end %>
 
          </div>

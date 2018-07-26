@@ -52,6 +52,7 @@ class ReservationsController < ApplicationController
 
           ReservationMailer.request_to_guest(@reservation).deliver
           ReservationMailer.request_to_host(@reservation).deliver
+          ReservationMailer.request_to_me(@reservation).deliver
 
 
         else

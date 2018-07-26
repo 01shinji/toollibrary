@@ -1,0 +1,74 @@
+<!-- ホストへの予約リクエスト確認メール -->
+<div class="">
+  <div style="padding: 2px; text-align: center; background-color: #04b4e4;">
+    <p style="color:  #ffffff;">
+      サーフ文庫
+    </p>
+  </div>
+
+  <div class="">
+
+    <p>
+      <b>
+        <%= link_to("https://www.toollibrary.jp/listings/#{@reservation.listing.id}/reservations/#{@reservation.id}", {method: "get"}) do %>
+          予約状況を確認
+        <% end %>
+
+
+      </b>
+    </p>
+
+    <p>
+      予約リクエスト内容
+    </p>
+    <div class="table_container">
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>ホスト</th>
+              <td><%= @reservation.listing.user.fullname %></td>
+
+            </tr>
+            <tr>
+              <th>ゲスト</th>
+              <td><%= @reservation.user.fullname %></td>
+
+            </tr>
+            <tr>
+              <th>商品名</th>
+              <td><%= @reservation.listing.listing_title %></td>
+
+            </tr>
+            <tr>
+              <th>利用開始日</th>
+              <td><%= @reservation.start_date.strftime('%Y年%m月%d日') %></td>
+            </tr>
+            <tr>
+              <th>利用終了日</th>
+              <td><%= @reservation.end_date.strftime('%Y年%m月%d日') %></td>
+            </tr>
+            <tr>
+              <th>お振込予定金額</th>
+              <% days = @reservation.total / (@reservation.listing.price_day  +  @reservation.listing.price_day * 0.10 ).to_i %>
+              <% host_total = days * (@reservation.listing.price_day  -  @reservation.listing.price_day * 0.10 ).to_i %>
+
+              <td><%= host_total %>円</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div style="padding: 2px; text-align: center;  background-color: #04b4e4; " >
+    <p style="color:  #ffffff ; " >
+      Copyright(C)&nbsp;サーフ文庫&nbsp;All Rights Reserved.
+    </p>
+
+  </div>
+
+</div>

@@ -14,6 +14,7 @@ class UserDashboard < Administrate::BaseDashboard
     host_reviews: Field::HasMany,
     notifications: Field::HasMany,
     id: Field::Number,
+
     email: Field::String,
     encrypted_password: Field::String,
     reset_password_token: Field::String,
