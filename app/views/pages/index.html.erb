@@ -1,0 +1,46 @@
+<div class="row" id="index">
+
+  <div id="" class="col-md-12 col-sm-12 col-xs-12 ">
+
+    <!-- 新着の商品 -->
+    <div class="chest" id="home-listings">
+
+
+      <p class="case">
+        <span>
+          <%= link_to 'サーフボードを借りたい',{:controller => "pages", :action => "refer", :q=>{:category1_eq => "サーフボード"}} %>
+        </span>
+
+        <span>
+          <%= link_to 'SUPボードを借りたい',{:controller => "pages", :action => "refer", :q=>{:category1_eq => "SUPボード"}} %>
+        </span>
+
+        <span>
+          <%= link_to 'ボードロッカーを借りたい',{:controller => "pages", :action => "refer", :q=>{:category2_eq => "ボード置き場"}} %>
+        </span>
+
+        <span>
+          <%= link_to '初心者向けのコーチングを受けたい',{:controller => "pages", :action => "refer", :q=>{:category2_eq => "コーチング"}} %>
+        </span>
+
+        <span>
+          <%= link_to 'サーフィン写真を撮影してもらいたい',{:controller => "pages", :action => "refer", :q=>{:category2_eq => "写真撮影"}} %>
+        </span>
+
+
+      </p>
+
+      <div class="box" >
+
+        <div class="row listings-list">
+         <%= render partial: "listings/listings_list", locals: {listings: @listings} %>
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>

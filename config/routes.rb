@@ -65,6 +65,9 @@ Rails.application.routes.draw do
     resources :reservations, only: [:create, :show]
   end
 
+
+
+
   resources :guest_reviews, only: [:create, :destroy]
   resources :host_reviews, only: [:create, :destroy]
 
@@ -74,6 +77,9 @@ Rails.application.routes.draw do
   get 'search' => 'pages#search'
 
   get '/ajaxsearch' => 'pages#ajaxsearch'
+
+  get 'index' => 'pages#index'
+  get 'refer' => 'pages#refer'
 
   # ---- AirKong ------
   get 'dashboard' => 'dashboards#index'
@@ -108,6 +114,8 @@ Rails.application.routes.draw do
   get 'pages/host_flow' => 'pages#host_flow'
   get 'pages/guest_flow' => 'pages#guest_flow'
   get 'pages/qanda' => 'pages#qanda'
+
+
 
   get 'inquiry' => 'inquiry#index'
   get 'inquiry/confirm' => redirect("/inquiry")

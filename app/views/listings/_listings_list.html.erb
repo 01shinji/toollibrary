@@ -1,7 +1,7 @@
 <ul class="row-eq-height">
 
   <% if
-    request.path == '/' %>
+    request.path == '/' || request.path == '/index' || request.path == '/refer' %>
     <% listings.each do |listing| %>
 
       <% guest_reviews = listing.guest_reviews %>

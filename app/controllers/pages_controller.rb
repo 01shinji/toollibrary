@@ -1,12 +1,33 @@
 class PagesController < ApplicationController
-  def home
+
+  def index
+    @q = Listing.ransack(params[:q])
+
     @listings = Listing.where(active: true)
+    @listings = @listings.order(created_at: :desc)
+
+    @listings = @q.result.includes( :photos, :user)
+  end
+
+  def refer
+    @q = Listing.search(refer_params)
+
+    @listings = Listing.where(active: true)
+    @listings = @listings.order(created_at: :desc)
+
+    @listings = @q.result.includes( :photos, :user)
+  end
+
+
+
+  def home
+    @listings = Listing.where(active: true).includes( :photos, :user)
     @listings = @listings.order(created_at: :desc)
 
     @users = User.includes(:listings).where.not(listings: {id: nil})
     @users = @users.order(created_at: :desc)
 
-    
+
 
   end
 
@@ -105,7 +126,7 @@ class PagesController < ApplicationController
 
     # STEP 3
     @search = @listings_address.ransack(session[:q])
-    @listings = @search.result(distinct: true)
+    @listings = @search.result(distinct: true).includes( :photos, :user)
 
 
 
@@ -188,6 +209,11 @@ class PagesController < ApplicationController
 
    respond_to :js
 
+  end
+
+  private
+  def refer_params
+    params.require(:q).permit(:category1_eq, :category2_eq)
   end
 
 

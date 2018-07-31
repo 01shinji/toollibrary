@@ -1238,9 +1238,11 @@ margin-top: 5px;
  }
 }
 
-#home .chest{
-  margin: 10px 0;
-  padding: 20px 21px;
+#home .chest,
+#index .chest,
+#refer .chest{
+  margin: 20px 0;
+  padding: 10px 21px;
 
 
 }
@@ -1248,11 +1250,27 @@ margin-top: 5px;
 @media (max-width: 480px) {
   /* ~480px */
 
-  #home .chest {
+  #home .chest ,
+  #index .chest,
+  #refer .chest{
 
     padding: 5px;
 
   }
+}
+
+#home-want p span{
+
+  color: #ffffff;
+  padding: 1px;
+  margin: 2px;
+  background-color: #04b4e4;
+  border-radius: 10px;
+
+}
+
+#home-want p span a{
+  color: #ffffff;
 }
 
 #home-listings .box ,
@@ -1387,8 +1405,26 @@ margin-top: 5px;
 #home-listings .button span,
 #home-host .button span{
   padding: 10px;
+  border: solid 1px #04b4e4;
+  border-radius: 5px;
 
 }
+
+#home-spot {
+  margin: 5px 0;
+}
+
+#home-spot span{
+
+  border-radius: 0;
+  background-color: #04b4e4;
+  padding: 1px;
+
+}
+#home-spot span a{
+  color:#ffffff;
+}
+
 
 #home-map {
   position: static;
@@ -1404,6 +1440,25 @@ margin-top: 5px;
 
 
 }
+}
+
+
+#index .case span{
+
+  color: #ffffff;
+  padding: 1px;
+  margin: 2px;
+  background-color: #04b4e4;
+  border-radius: 10px;
+
+}
+
+#index .case span a{
+  color: #ffffff;
+}
+
+#index .chest .btn-sm {
+    margin: 20px;
 }
 
 // リスティング詳細ページ

@@ -15,13 +15,36 @@
      </div>
 
      <!-- やりたい -->
-     <div class="chest">
+     <div class="chest" id="home-want">
+       <span class="font-lg">
+         <b>
+           やりたいことから探す
+         </b>
+
+       </span>
+
        <p>
-         <span>サーフボードを借りたい</span>
-         <span>SUPボードを借りたい</span>
-         <span>ボードロッカーを借りたい</span>
-         <span>初心者向けのコーチングを受けたい</span>
-         <span>サーフィン写真を撮影してもらいたい</span>
+         <span>
+           <%= link_to 'サーフボードを借りたい',{:controller => "pages", :action => "refer", :q=>{:category1_eq => "サーフボード"}} %>
+         </span>
+
+         <span>
+           <%= link_to 'SUPボードを借りたい',{:controller => "pages", :action => "refer", :q=>{:category1_eq => "SUPボード"}} %>
+         </span>
+
+         <span>
+           <%= link_to 'ボードロッカーを借りたい',{:controller => "pages", :action => "refer", :q=>{:category2_eq => "ボード置き場"}} %>
+         </span>
+
+         <span>
+           <%= link_to '初心者向けのコーチングを受けたい',{:controller => "pages", :action => "refer", :q=>{:category2_eq => "コーチング"}} %>
+         </span>
+
+         <span>
+           <%= link_to 'サーフィン写真を撮影してもらいたい',{:controller => "pages", :action => "refer", :q=>{:category2_eq => "写真撮影"}} %>
+         </span>
+
+
        </p>
      </div>
 
@@ -43,14 +66,14 @@
        </div>
 
        <p class="button">
-        <%= link_to  about_path  do %>
-          <span class="white b-blue">
+        <%= link_to  index_path  do %>
+          <span class="blue">
             出品商品をすべて見る&nbsp;<%= @listings.count %>
           </span>
         <% end %>
        </p>
 
-       <%= render "search_spot" %>
+
 
      </div>
 
@@ -135,23 +158,60 @@
 
        </div>
 
-       <p class="button">
-        <%= link_to  about_path  do %>
-          <span class="white b-blue">
-            ホスト一覧&nbsp;<%= @users.count %>
-          </span>
-        <% end %>
-       </p>
-
      </div>
 
      <!-- サーフスポットから探す -->
-     <div class="row chest" id="">
+     <div class="row chest">
        <span class="font-lg">
          <b>
            サーフスポットから探す
          </b>
        </span>
+
+       <!-- 鎌倉 -->
+       <div class=""  id="home-spot" >
+
+
+         <span><%= link_to '由比ヶ浜',search_path(search: '〒248-0014 神奈川県鎌倉市由比ガ浜４丁目') %></span>
+
+         <span><%= link_to '稲村ヶ崎',search_path(search: '〒248-0024 神奈川県鎌倉市稲村ガ崎１丁目') %></span>
+
+         <span><%= link_to '七里ヶ浜',search_path(search: '〒248-0025 神奈川県鎌倉市七里ガ浜東２丁目２') %></span>
+
+         <span><%= link_to '峰ヶ原',search_path(search: '〒248-0026 神奈川県鎌倉市七里ガ浜１丁目５') %></span>
+
+         <span><%= link_to '鎌高前',search_path(search: '〒248-0026 神奈川県鎌倉市七里ガ浜２丁目１９') %></span>
+
+         <span><%= link_to '腰越漁港',search_path(search: '〒251-0035 神奈川県藤沢市片瀬海岸１丁目１５') %></span>
+
+
+         <span><%= link_to '江ノ島水族館前',search_path(search: '〒251-0035 神奈川県藤沢市片瀬海岸２丁目１９') %></span>
+
+         <span><%= link_to '銅像前',search_path(search: '〒251-0037 神奈川県藤沢市鵠沼海岸１丁目１７−３') %></span>
+
+         <span><%= link_to '引地川河口',search_path(search: '〒251-0037 神奈川県藤沢市鵠沼海岸４丁目４−１') %></span>
+
+         <span><%= link_to '湘洋中学前',search_path(search: '〒251-0045 神奈川県藤沢市辻堂東海岸４丁目９') %></span>
+
+         <span><%= link_to '辻堂正面',search_path(search: '〒251-0045 神奈川県藤沢市辻堂東海岸４丁目３') %></span>
+
+         <span><%= link_to '第二駐車場前',search_path(search: '〒251-0046 神奈川県藤沢市辻堂西海岸３丁目４') %></span>
+
+         <span><%= link_to '汐小前',search_path(search: '〒251-0046 神奈川県藤沢市辻堂西海岸３丁目３ ') %></span>
+
+
+         <span><%= link_to '裏パーク',search_path(search: '〒253-0054 神奈川県茅ヶ崎市東海岸南４丁目 ') %></span>
+
+         <span><%= link_to '白樺',search_path(search: '〒253-0055 神奈川県茅ヶ崎市中海岸３丁目３ ') %></span>
+
+         <span><%= link_to '西浜',search_path(search: '〒253-0061 神奈川県茅ヶ崎市南湖６丁目１８−７ ') %></span>
+
+         <span><%= link_to '柳島',search_path(search: '〒253-0064 神奈川県茅ヶ崎市柳島 ') %></span>
+
+         <span><%= link_to '馬入',search_path(search: '〒254-0803 神奈川県平塚市千石河岸５７−３０ ') %></span>
+
+
+       </div>
 
        <div id="home-map" class="col-md-12 col-sm-12 col-xs-12">
         <!-- Google Map -->

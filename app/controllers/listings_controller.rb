@@ -6,12 +6,15 @@ class ListingsController < ApplicationController
 
   include ActionView::Helpers::UrlHelper
 
+
+
   def index
-    @listings = current_user.listings
+    @listings = current_user.listings.includes( :photos)
 
   end
 
   def show
+
     @photos = @listing.photos
     @guest_reviews = @listing.guest_reviews
   end
@@ -129,6 +132,8 @@ class ListingsController < ApplicationController
 
     render json: output
   end
+
+
 
   private
   def is_conflict(start_date, end_date, listing)
