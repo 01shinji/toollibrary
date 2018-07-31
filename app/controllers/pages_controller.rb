@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     @listings = Listing.where(active: true)
     @listings = @listings.order(created_at: :desc)
 
-    @listings = @q.result.includes( :photos, :user)
+    @listings = @q.result.includes( :photos, :user).order(created_at: :desc)
   end
 
   def refer
@@ -15,7 +15,7 @@ class PagesController < ApplicationController
     @listings = Listing.where(active: true)
     @listings = @listings.order(created_at: :desc)
 
-    @listings = @q.result.includes( :photos, :user)
+    @listings = @q.result.includes( :photos, :user).order(created_at: :desc)
   end
 
 
@@ -65,18 +65,25 @@ class PagesController < ApplicationController
 
      # category1
      if params[:q][:category1_eq_any].present?
+
        session[:category1_eq_any] = params[:q][:category1_eq_any]
 
        session[:surfboard] = session[:category1_eq_any].include?("サーフボード")
        session[:supboard] = session[:category1_eq_any].include?("SUPボード")
        session[:others] = session[:category1_eq_any].include?("その他")
 
+
+
+
      else
        session[:category1_eq_any] = ""
+
 
        session[:surfboard] = false
        session[:supboard] = false
        session[:others] = false
+
+
      end
 
 
@@ -114,6 +121,8 @@ class PagesController < ApplicationController
     session[:q] = {
 
      "category1_eq_any" => session[:category1_eq_any],
+
+
 
      "listing_type_eq_any" => session[:listing_type_eq_any],
 

@@ -1220,6 +1220,10 @@ margin-top: 5px;
  padding: 15%;
 }
 
+.home-image .image-case h2{
+
+}
+
 @media (max-width: 768px) {
   /* ~768px */
 .home-image{
@@ -1260,9 +1264,9 @@ margin-top: 5px;
 }
 
 #home-want p span{
-
+  font-size: 18px;
   color: #ffffff;
-  padding: 1px;
+  padding:0 2px;
   margin: 2px;
   background-color: #04b4e4;
   border-radius: 10px;
@@ -1396,12 +1400,14 @@ margin-top: 5px;
 
 }
 
+#home-about .button,
 #home-listings .button,
 #home-host .button{
   text-align: center;
   margin: 15px;
 }
 
+#home-about .button span,
 #home-listings .button span,
 #home-host .button span{
   padding: 10px;
@@ -2078,6 +2084,13 @@ span#average_rating {
   width:15px;
 }
 
+@media (max-width: 480px) {
+  /* ~480px */
+  #home-listings .listings-list .host-stars img{
+    width:10px;
+  }
+}
+
 .host-review .case{
   background-color: #ffffff ;
   padding: 5px;
@@ -2275,7 +2288,7 @@ input#pac-input {
 }
 
 .detail-list {
-  display:block;
+  display:none;
 }
 
 #detail-header p{

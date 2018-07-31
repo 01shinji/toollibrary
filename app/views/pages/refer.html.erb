@@ -9,10 +9,15 @@
     <div class="chest" id="home-listings">
       <span class="font-lg">
         <b>
-          検索結果
+          <% if params[:q][:category1_eq] %>
+            <%= params[:q][:category1_eq] %>
+          <% else %>
+            <%= params[:q][:category2_eq] %>
+          <% end %>の検索結果
+
         </b>
 
-      
+
 
       </span>
 

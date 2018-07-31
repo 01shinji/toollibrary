@@ -14,6 +14,28 @@
       </div>
      </div>
 
+     <!-- サービス説明 -->
+     <div class="chest" id="home-about" >
+
+       <div class="">
+
+         <h3><span class="blue">サーフ文庫</span>は湘南地域のローカルのサーファーから直接サーフボードやボード置き場を借りれる、日本初のサーフィンのシェアリングサービスです。</h3>
+
+         <p>日本は海に囲まれており、全国にサーフィンが盛んな地域があり、そしてそこにはたくさんのサーファーがいます。</p>
+         <p>ローカルに在住するサーファー個人と仲良くなって、より楽しいサーフィンライフを送りませんか?</p>
+
+       </div>
+
+       <p class="button">
+        <%= link_to  about_path  do %>
+          <span class="blue">
+            サービスの詳細
+          </span>
+        <% end %>
+       </p>
+
+     </div>
+
      <!-- やりたい -->
      <div class="chest" id="home-want">
        <span class="font-lg">
@@ -41,7 +63,7 @@
          </span>
 
          <span>
-           <%= link_to 'サーフィン写真を撮影してもらいたい',{:controller => "pages", :action => "refer", :q=>{:category2_eq => "写真撮影"}} %>
+           <%= link_to 'サーフィン写真を撮影したい',{:controller => "pages", :action => "refer", :q=>{:category2_eq => "写真撮影"}} %>
          </span>
 
 

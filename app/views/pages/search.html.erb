@@ -36,14 +36,15 @@
            <div class="row search-panel-li">
 
              <div class="col-md-4 col-sm-4 col-xs-4">
-               <%= check_box_tag "q[category1_eq_any][]", "surfboard" %>サーフボード
+               <%= check_box_tag "q[category1_eq_any][]", "サーフボード" %>サーフボード
              </div>
              <div class="col-md-4 col-sm-4 col-xs-4">
-               <%= check_box_tag "q[category1_eq_any][]", "supboard" %>SUPボード
+               <%= check_box_tag "q[category1_eq_any][]", "SUPボード" %>SUPボード
              </div>
              <div class="col-md-4 col-sm-4 col-xs-4">
-               <%= check_box_tag "q[category1_eq_any][]", "others" %>
-             </div>その他
+               <%= check_box_tag "q[category1_eq_any][]", "その他" %>その他
+             </div>
+
 
            </div>
 
@@ -145,7 +146,21 @@
 
 </script>
 
-
+<script>
+// FAQのアコーディオン
+$("#detail-header").click(function(){
+    var $answer = $(".search-detail").find(".detail-list");
+    if ($answer.hasClass("open")) {
+      $answer.removeClass("open");
+      $answer.slideUp();
+      $(this).find(".chevron").html("<i class='fa fa-chevron-down'></i>");
+    }else{
+      $answer.addClass("open");
+      $answer.slideDown();
+      $(this).find(".chevron").html("<i class='fa fa-chevron-up'></i>");
+    }
+  });
+</script>
 
 
 
