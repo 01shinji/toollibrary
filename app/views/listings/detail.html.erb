@@ -1,0 +1,206 @@
+<% if @listing.active.blank? %>
+  <div class="registration-alert b-light-red">
+    <p>
+      まだ公開されていません&nbsp;
+      <%= link_to "公開する", exhibition_listing_path(@listing) , class: "blue b-white" %>
+    </p>
+  </div>
+<% end %>
+<% if !@listing.active.blank?  %>
+  <div class="dashboard-link">
+  <ul class="">
+
+    <li class=""><%= link_to "基本情報の編集",  information_listing_path(@listing) %></li>
+    <li class=""><%= link_to "画像アップロード",  photo_upload_listing_path(@listing)  %></li>
+    <li class="active"><%= link_to "詳細情報の編集",  photo_upload_listing_path(@listing)  %></li>
+
+  </ul>
+</div>
+  <div class="registration-alert b-light-green">
+    <p>公開中</p>
+  </div>
+
+<% end %>
+
+<div class="row">
+  <div class=" text-center">
+    <div class="panel panel-default">
+      <h3>
+        <b>
+          <% if @listing.active.blank? %>
+           <span class="blue">ステップ3</span>
+           詳細情報を入力
+          <% else %>
+           詳細情報の編集
+          <% end %>
+        </b>
+
+      </h3>
+
+      <p class="b-blue  listing-title">
+
+        <%= link_to @listing.listing_title, listing_path(@listing) , class: "white" %>
+
+      </p>
+
+      <div class="container">
+        <%= form_for @listing,html: {multipart: true} do |f| %>
+
+        <% if @listing.category1 == "サーフボード" || @listing.category1 == "SUPボード" %>
+         <div class="form_box">
+          <p><b>ブランド</b></p>
+          <div class="form-group">
+            <%= f.text_field :brand, placeholder: "例:CHANNEL ISLANDS、CATCH SURF、オーダーメイド", class: "form-control", required: true %>
+          </div>
+         </div>
+
+         <div class="form_box">
+          <p><b>サイズ</b></p>
+          <div class="form-group">
+            <%= f.text_field :purchase_time, placeholder: "長さ213.3cm×幅55.8cm×厚さ7,6cm", class: "form-control" , required: true%>
+          </div>
+         </div>
+        <% end %>
+
+
+        <div class="form_box">
+          <p><b>商品の詳細説明</b></p>
+          <div class="form-group">
+            <%= f.text_area :description, rows: 5, placeholder: "例:昨年の夏に購入しました。湘南の波にピッタリで、上級者からビギナーまで楽しめます。シングルフィン、リシューコード付き、サイズ7'0×22×3 1/8", class: "form-control", required: true %>
+          </div>
+        </div>
+
+        <div class="form_box">
+          <p><b>利用可能なアメニティ</b></p>
+          <div class="form-group row">
+            <div class="col-md-4 col-sm-4 col-xs-4 check">
+              <%= f.check_box :is_shower %>
+              シャワー
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4 check">
+              <%= f.check_box :is_bicycle %>
+              自転車
+            </div>
+
+             <div class="col-md-4 col-sm-4 col-xs-4 check">
+               <%= f.check_box :is_wetsuit %>
+              ウェットスーツ
+             </div>
+
+          </div>
+        </div>
+
+
+        <div class="form_box">
+          <p><b>出品価格</b></p>
+          <div class="" id="information-price">
+
+            <div class="form-group" >
+              <ul class="row">
+                <li id="price_day-margin">
+                  <p>1日</p>
+                </li>
+                <li class="">
+                  <%= f.text_field :price_day, placeholder: "例:3000", class: "form-control", required: true %>
+                </li>
+                <li class="">
+                  <p>円</p>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="purchase">
+          <p class="text-left">
+            ※ボード類を出品する場合は入力してください(破損が起きた際の補償費の計算の参考にします)
+          </p>
+
+          <div class="form_box">
+            <p><b>購入時期</b></p>
+            <div class="form-group">
+              <%= f.text_field :purchase_time, placeholder: "例:2016年春ごろ", class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form_box">
+            <p><b>購入価格</b></p>
+            <div class="">
+
+              <div class="form-group" >
+                <ul class="row">
+
+                  <li class="">
+                    <%= f.text_field :purchase_price, placeholder: "例:80000", class: "form-control" %>
+                  </li>
+                  <li class="">
+                    <p>円</p>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+
+          </div>
+
+          </div>
+        </div>
+
+
+        <%= f.hidden_field :listing_type, value: "レンタル"  %>
+        <%= f.hidden_field :location, value: @user.address_city %>
+        <%= f.hidden_field :instant, value: "Request" %>
+
+        <div class="actions">
+          <%= f.submit "編集する", class: "btn btn-form" %>
+        </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    $("#autoaddress").geocomplete();
+  })
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+  var $children = $('.children'); //カテゴリー2の要素を変数に入れます。
+  var original = $children.html(); //後のイベントで、不要なoption要素を削除するため、オリジナルをとっておく
+
+  //カテゴリー1のselect要素が変更になるとイベントが発生
+  $('.parent').change(function() {
+    //選択されたカテゴリー1のvalueを取得し変数に入れる
+    var val1 = $(this).val();
+
+    //削除された要素をもとに戻すため.html(original)を入れておく
+    $children.html(original).find('option').each(function() {
+      var val2 = $(this).data('val'); //data-valの値を取得
+
+      //valueと異なるdata-valを持つ要素を削除
+      if (val1 != val2) {
+        $(this).not(':first-child').remove();
+      }
+
+    });
+
+    //カテゴリー1のselect要素が未選択の場合、カテゴリー2をdisabledにする
+    if ($(this).val() !== "") {
+      $children.fadeIn(100);
+    } else {
+      $children.fadeOut(100);
+    }
+
+  });
+
+
+});
+</script>

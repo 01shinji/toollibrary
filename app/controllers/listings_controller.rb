@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
   before_action :set_listing, except: [:index, :new, :create]
   before_action :authenticate_user!, except: [:show]
 
-  before_action :is_authorised, only: [ :exhibition, :information, :photo_upload, :update]
+  before_action :is_authorised, only: [ :exhibition, :information, :detail, :photo_upload, :update]
 
   include ActionView::Helpers::UrlHelper
 
@@ -16,7 +16,7 @@ class ListingsController < ApplicationController
   def show
 
     @photos = @listing.photos
-    @guest_reviews = @listing.guest_reviews
+    @guest_reviews = @listing.guest_reviews.includes( :guest)
   end
 
   def new
@@ -80,6 +80,11 @@ class ListingsController < ApplicationController
 
   end
 
+  def detail
+    @listing = Listing.find(params[:id])
+    @user = User.find(@listing.user_id)
+  end
+
 
   def update
     new_params = listing_params
@@ -88,8 +93,7 @@ class ListingsController < ApplicationController
     if @listing.update(new_params)
 
        if @listing.active.blank?
-         redirect_to exhibition_listing_path(@listing), notice: "商品を編集しました"
-
+        redirect_to exhibition_listing_path(@listing), notice: "商品を編集しました"
 
        else
          flash[:notice] = "商品を編集しました"

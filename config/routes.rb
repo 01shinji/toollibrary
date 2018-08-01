@@ -56,8 +56,10 @@ Rails.application.routes.draw do
 
 
       get 'information'
-      get 'exhibition'
       get 'photo_upload'
+      get 'detail'
+      get 'exhibition'
+
       get 'preload'
       get 'preview'
     end

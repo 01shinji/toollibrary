@@ -55,11 +55,11 @@
     <hr class="dotted-hr" />
 
     <!-- 出品中アイテム -->
-    <div class="">
+    <div class="chest" id="home-listings">
       <h4>
         <b>出品中アイテム</b><span>&nbsp;<%= @listings.length %>点</span>
       </h4>
-      <div class="row nearby listings-list">
+      <div class="row listings-list">
         <%= render partial: "listings/listings_list", locals: {listings: @listings} %>
       </div>
     </div>

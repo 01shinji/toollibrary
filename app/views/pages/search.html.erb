@@ -108,10 +108,11 @@
 
 
     <!-- 出品中アイテム -->
-    <div class="row listings-list" id="">
-      <%= render partial: "listings/listings_list", locals: {listings: @arrListings} %>
+    <div class="chest" id="home-listings">
+      <div class="row listings-list" id="">
+        <%= render partial: "listings/listings_list", locals: {listings: @arrListings} %>
+      </div>
     </div>
-
 
 
     <% end %>

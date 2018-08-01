@@ -46,6 +46,10 @@ a:hover{
  padding-right: 0;
 }
 
+.trash{
+  position: relative;
+  bottom: 15px;
+}
 
 .trash a {
   color: #808080;
@@ -1249,6 +1253,11 @@ margin-top: 5px;
   padding: 10px 21px;
 
 
+}
+
+
+#right .chest {
+    margin:20px 10px;
 }
 
 @media (max-width: 480px) {

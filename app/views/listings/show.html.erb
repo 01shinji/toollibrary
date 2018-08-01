@@ -335,76 +335,124 @@
    <!-- 近くのリスティング -->
    <% if @listing.nearbys.present? %>
 
-   <div class="row nearby listings-list">
+   <div class="chest" id="home-listings">
      <h4><b>近くの出品商品</b></h4>
+     <div class="row  listings-list">
 
-     <ul class="row-eq-height">
-      <% for listing in @listing.nearbys(10) %>
-       <% if listing.active == true %>
-        <li class="col-md-3 col-sm-3 col-xs-6 row-eq-height">
-         <div class="listing-block">
 
-           <div class="">
-             <%= link_to  listing  do %>
-              <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
-             <% end %>
+       <ul class="row-eq-height">
+        <% for listing in @listing.nearbys(10) %>
 
-             <span class="location">
-               <%= listing.location %>
-             </span>
+         <% guest_reviews = listing.guest_reviews %>
 
-             <span class="user-image">
-               <% if (user_signed_in?)%>
-                 <%= image_tag listing.user.image, class: "img-circle avatar-small" %>
-               <% else %>
-                 <%= image_tag "avatar-default", class: "img-circle avatar-small" %>
+         <% if listing.active == true %>
+          <li class="col-md-3 col-sm-3 col-xs-6 row-eq-height">
+
+           <%= link_to  listing  do %>
+
+           <div class="listing-block">
+
+             <div class="">
+
+                <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
+
+                <span class="user-image">
+                  <% if (user_signed_in?)%>
+                    <%= image_tag listing.user.image, class: "img-circle avatar-small" %>
+                  <% else %>
+                    <%= image_tag "avatar-default", class: "img-circle avatar-small" %>
+                  <% end %>
+                </span>
+
+             </div>
+
+             <div class="listing-content">
+
+               <p class="location">
+                 <span class="">
+                  <i class="fa fa-map-marker"></i>
+                 </span>
+                 <span >
+                   <%= listing.location %>
+                 </span>
+               </p>
+
+               <p>
+
+                 <span class="listing-category"><%= listing.category2 %></span>
+
+               </p>
+
+               <p>
+                 <span class="listing-title">
+                   <b>
+                     <%= truncate(listing.listing_title, length: 20) %>
+
+                   </b>
+
+                 </span>
+               </p>
+
+               <p class="price-day">
+                  ¥<span class="red"><b><%= listing.price_day %></b></span>&nbsp;/1日・キャンセル無料
+               </p>
+
+               <% if guest_reviews.count > 0  %>
+
+               <p>
+                 <span id="average_rating_chest"  class="host-stars"></span>
+
+                 <span>
+                   <b>
+                    <%= pluralize(guest_reviews.count, "件") %>
+                   </b>
+
+                 </span>
+
+               </p>
+
+               <script>
+                $('#average_rating_chest').raty({
+                  path: '/assets',
+                  readOnly: true,
+                  score: <%= listing.average_rating %>
+                });
+               </script>
+
                <% end %>
-             </span>
-           </div>
 
-           <script type="text/javascript">
-            $(function(){
-             var w = window.innerWidth;
-             if (w <= 768){
-               $(".user-image .img-circle").removeClass("avatar-small");
-               $(".user-image .img-circle").addClass("avatar-medium");
-             }
-
-             console.log(w);
-
-
-
-
-            });
-           </script>
-
-           <div class="listing-content">
-             <p>
-               <span>
-                 <b>
-                  <%= link_to listing.listing_title, listing %>
-
-                 </b>
-               </span>
-
-
-             </p>
-
-             <p>
-               <b>
-                1日&nbsp;<b class="red"><%= listing.price_day %></b>円
-               </b>
-             </p>
+             </div>
 
            </div>
 
-         </div>
-        </li>
-       <% end %>
-      <% end %>
-     </ul>
+           <% end %>
 
+          </li>
+         <% end %>
+
+         <script type="text/javascript">
+          $(function(){
+           var w = window.innerWidth;
+           if (w <= 768){
+             $(".user-image .img-circle").removeClass("avatar-small");
+             $(".user-image .img-circle").addClass("avatar-medium");
+           }
+
+           console.log(w);
+
+
+
+
+          });
+         </script>
+
+
+        <% end %>
+       </ul>
+
+     </div>
    </div>
+
    <% end %>
  </div>
 </div>
