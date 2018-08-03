@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
+
+
   def show
     @user = User.find(params[:id])
     @listings = @user.listings
@@ -109,4 +111,7 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:phone_number, :pin, :bank_name, :account_type, :branch_code, :account_number, :account_name, :license , :image, :image_file_name, :image_content_type, :image_file_size, :image_updated_at )
     end
+
+
+
 end

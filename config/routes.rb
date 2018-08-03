@@ -37,10 +37,9 @@ Rails.application.routes.draw do
       patch '/update_image' => 'users#update_image'
 
 
-
-
     end
   end
+
 
   get '/crop_image' => "users#crop_image"
 
@@ -82,6 +81,8 @@ Rails.application.routes.draw do
 
   get 'index' => 'pages#index'
   get 'refer' => 'pages#refer'
+
+
 
   # ---- AirKong ------
   get 'dashboard' => 'dashboards#index'

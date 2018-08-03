@@ -1,7 +1,116 @@
 <ul class="row-eq-height">
 
   <% if
-    request.path == '/' || request.path == '/index' || request.path == '/refer' %>
+    request.path == '/'  %>
+    <% listings.first(12).each do |listing| %>
+
+      <% guest_reviews = listing.guest_reviews %>
+
+
+
+      <li class="col-md-2 col-sm-2 col-xs-3  row-eq-height twelve">
+
+       <%= link_to  listing  do %>
+
+       <div class="listing-block" >
+         <div class="">
+
+            <%= image_tag listing.cover_photo(:medium), class: 'img-responsive' %>
+
+            <span class="user-image">
+              <% if (user_signed_in?)%>
+                <%= image_tag listing.user.image, class: "img-circle avatar-medium" %>
+              <% else %>
+                <%= image_tag "avatar-default", class: "img-circle avatar-medium" %>
+              <% end %>
+            </span>
+
+         </div>
+
+         <div class="listing-content">
+
+           <p class="location">
+             <span class="">
+              <i class="fa fa-map-marker"></i>
+             </span>
+             <span >
+               <%= listing.location %>
+             </span>
+           </p>
+
+           <p>
+
+             <span class="listing-category"><%= listing.category2 %></span>
+
+           </p>
+
+
+
+           <p>
+             <span class="listing-title">
+               <b>
+                 <%= truncate(listing.listing_title, length: 20) %>
+
+               </b>
+
+             </span>
+           </p>
+
+           <p class="price-day">
+              ¥<span class="red"><b><%= listing.price_day %></b></span>&nbsp;/1日・キャンセル無料
+           </p>
+
+           <% if guest_reviews.count > 0  %>
+
+           <p>
+             <span id="average_rating"  class="host-stars"></span>
+
+             <span>
+               <b>
+                <%= pluralize(guest_reviews.count, "件") %>
+               </b>
+
+             </span>
+
+           </p>
+
+           <script>
+            $('#average_rating').raty({
+              path: '/assets',
+              readOnly: true,
+              score: <%= listing.average_rating %>
+            });
+           </script>
+
+           <% end %>
+
+         </div>
+
+       </div>
+
+       <% end %>
+
+      </li>
+
+
+
+    <% end %>
+
+    <script type="text/javascript">
+      $(function(){
+       var w = window.innerWidth;
+
+
+       if (w <= 480){
+         $(".user-image .img-circle").removeClass("avatar-medium");
+         $(".user-image .img-circle").addClass("avatar-small");
+       }
+       console.log(w);
+      });
+    </script>
+
+  <% elsif
+    request.path == '/index' || request.path == '/refer' %>
     <% listings.each do |listing| %>
 
       <% guest_reviews = listing.guest_reviews %>

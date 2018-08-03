@@ -220,10 +220,13 @@ class PagesController < ApplicationController
 
   end
 
+
+
   private
   def refer_params
     params.require(:q).permit(:category1_eq, :category2_eq)
   end
+
 
 
 end
