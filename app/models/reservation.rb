@@ -16,6 +16,10 @@ class Reservation < ApplicationRecord
     .order(updated_at: :asc)
   }
 
+
+
+
+
   private
   # ホストへの通知
   def host_create_notification
@@ -23,7 +27,9 @@ class Reservation < ApplicationRecord
 
     guest = User.find(self.user_id)
 
-    Notification.create(content: "#{guest.fullname}さんからの#{type}", user_id: self.listing.user_id)
+    link = "<a href = 'https://www.toollibrary.jp/guest_reservations'>#{guest.fullname}さんからの#{type}</a>"
+
+    Notification.create(content: "#{link}", user_id: self.listing.user_id)
 
 
 
@@ -33,12 +39,16 @@ class Reservation < ApplicationRecord
     type = self.listing.Instant? ? "新しい予約" : "新しいリクエスト"
     guest = User.find(self.user_id)
 
+    link_approved = "<a href = 'https://www.toollibrary.jp/guest_reservations'>#{guest.fullname}さんからの#{type}を承認しました</a>"
+
+    link_declined = "<a href = 'https://www.toollibrary.jp/guest_reservations'>#{guest.fullname}さんからの#{type}を断りました</a>"
+
     if self.status == "Approved"
-      Notification.create(content: "#{guest.fullname}さんからの#{type}を承認しました", user_id: self.listing.user_id)
+      Notification.create(content: "#{link_approved}", user_id: self.listing.user_id)
     end
 
     if self.status == "Declined"
-      Notification.create(content: "#{guest.fullname}さんからの#{type}を断りました", user_id: self.listing.user_id)
+      Notification.create(content: "#{link_declined}", user_id: self.listing.user_id)
     end
 
   end
@@ -49,19 +59,25 @@ class Reservation < ApplicationRecord
 
     host = User.find(self.listing.user_id)
 
-    Notification.create(content: "#{host.fullname}さんへの#{type}", user_id: self.user_id)
+    link = "<a href = 'https://www.toollibrary.jp/my_reservations'>#{host.fullname}さんへの#{type}</a>"
+
+    Notification.create(content: "#{link}", user_id: self.user_id)
   end
 
   def guest_update_notification
     type = self.listing.Instant? ? "新しい予約" : "新しいリクエスト"
     host = User.find(self.listing.user_id)
 
+    link_approved = "<a href = 'https://www.toollibrary.jp/my_reservations'>#{host.fullname}さんへの#{type}が承認されました</a>"
+
+    link_declined = "<a href = 'https://www.toollibrary.jp/my_reservations'>#{host.fullname}さんへの#{type}がお断りされました"
+
     if self.status == "Approved"
-      Notification.create(content: "#{host.fullname}さんへの#{type}が承認されました", user_id: self.user_id)
+      Notification.create(content: "#{link_approved}", user_id: self.user_id)
     end
 
     if self.status == "Declined"
-      Notification.create(content: "#{host.fullname}さんへの#{type}がお断りされました", user_id: self.user_id)
+      Notification.create(content: "#{link_declined}", user_id: self.user_id)
     end
 
   end

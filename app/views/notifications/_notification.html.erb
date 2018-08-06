@@ -4,7 +4,9 @@
         <span class=""><%= notification.created_at.strftime("%m月%d日 %H:%M") %></span>
       </div>
       <div class="col-md-8 col-sm-8 col-xs-6 case">
-        <strong><%= notification.content %></strong>
+        <strong><%= notification.content.html_safe %></strong>
       </div>
+
+
 
 </div>
