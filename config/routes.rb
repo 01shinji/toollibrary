@@ -23,7 +23,7 @@ Rails.application.routes.draw do
              controllers: {omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations', confirmations: 'confirmations' }
 
 
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :index] do
     member do
 
       post '/verify_phone_number' => 'users#verify_phone_number'
@@ -81,6 +81,7 @@ Rails.application.routes.draw do
 
   get 'index' => 'pages#index'
   get 'refer' => 'pages#refer'
+
 
 
 

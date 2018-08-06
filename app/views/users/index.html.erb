@@ -1,0 +1,91 @@
+<div class="row" id="index">
+
+  <div id="" class="col-md-12 col-sm-12 col-xs-12 ">
+
+    <!-- 新着の商品 -->
+    <div class="chest" id="home-host">
+
+      <span class="font-lg">
+        <b>
+          ホスト一覧
+        </b>
+      </span>
+      <% if !(user_signed_in?)%>
+        <p class="red">
+          ホストの顔写真はログイン後に見ることができます
+        </p>
+      <% end %>
+
+
+      <div class="box" >
+
+        <div class="row listings-list">
+          <ul class="row-eq-height">
+
+           <% @users.first(12).each do |user| %>
+
+
+
+
+            <li class="col-md-2 col-sm-2 col-xs-3  row-eq-height twelve">
+
+             <%= link_to user do %>
+
+             <div class="listing-block" >
+               <div class="host-image">
+
+                 <% if (user_signed_in?)%>
+                   <%= image_tag user.image, class: "img-circle avatar-large img-responsive" %>
+                 <% else %>
+                   <%= image_tag "avatar-default", class: "img-circle avatar-large img-responsive" %>
+                 <% end %>
+
+               </div>
+
+               <div class="listing-content">
+
+                 <p class="location">
+                   <span class="">
+                    <i class="fa fa-map-marker"></i>
+                   </span>
+                   <span >
+                     <%= user.address_city %>
+                   </span>
+                 </p>
+
+                 <p>
+                   <span class="host-name">
+                     <b>
+                       <% if (user_signed_in?)%>
+                        <%= user.fullname %>
+                       <% else %>
+                        <%= user.nickname %>
+                       <% end %>
+                     </b>
+
+                   </span>
+                 </p>
+
+                 <p class="price-day">
+                    <%= truncate(user.description, length: 24) %>
+                 </p>
+
+               </div>
+
+             </div>
+
+             <% end %>
+
+            </li>
+
+           <% end %>
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>

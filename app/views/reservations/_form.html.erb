@@ -103,7 +103,7 @@
 
 
    <% if current_user && current_user != @listing.user %>
-    <%= link_to "ホストにメッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @listing.user.id), method: :post, class: "btn-sm  white b-blue" %>
+    <%= link_to "ホストにメッセージで相談", conversations_path(sender_id: current_user.id, recipient_id: @listing.user.id), method: :post, class: "btn-sm  white b-blue" %>
    <% end %>
 
 
@@ -147,7 +147,7 @@ $(document).ready(function(){
            var check_start_date = start_date.toLocaleDateString();
            $('#check_start_date').text(check_start_date);
 
-          
+
 
            var days = (end_date - start_date)/1000/60/60/24 + 1;
 

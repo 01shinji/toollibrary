@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
+  def index
+    @users = User.includes(:listings).where.not(listings: {id: nil})
+    @users = @users.order(created_at: :desc)
 
+  end
 
   def show
     @user = User.find(params[:id])

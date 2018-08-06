@@ -10,13 +10,13 @@
         </div>
         <p>ゲストの<%= @reservation.user.fullname %>さんがリクエストの返答を待っています、返答をお願いします</p>
         <p>
-          <%= link_to approve_reservation_path(@reservation), method: :post, data: {confirm: "サーフ文庫では基本的に一度承認したリクエストのホスト側からのキャンセルは認めていません(特別な事情がある場合は除く)本当に承認しても大丈夫ですか？"} do %>
+          <%= link_to approve_reservation_path(@reservation), method: :post, data: {confirm: "本当に承認しても大丈夫ですか？特別な事情がある場合を除き、一度承認したリクエストのホスト側からのキャンセルは認められません"} do %>
             <span class="btn-sm  white b-orange ">
               承認する
             </span>
           <% end %>
           or
-          <%= link_to decline_reservation_path(@reservation), method: :post, data: {confirm: "リクエストをお断りする場合はその理由をゲストにメッセージで伝えてください、本当にお断りしても大丈夫ですか？"} do %>
+          <%= link_to decline_reservation_path(@reservation), method: :post, data: {confirm: "本当にお断りしても大丈夫ですか？リクエストをお断りする場合はその理由をゲストにメッセージで伝えてください"} do %>
             <span class="btn-sm  white b-thick-gray ">
               お断りする
             </span>
