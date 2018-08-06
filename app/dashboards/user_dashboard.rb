@@ -74,6 +74,11 @@ class UserDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
+    :fullname,
+    :email,
+    :address_city,
+    :current_sign_in_at,
+    :created_at,
     :listings,
     :reservations,
     :guest_reviews,
