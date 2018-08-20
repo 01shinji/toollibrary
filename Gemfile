@@ -71,3 +71,5 @@ gem 'chartkick', '~> 2.2.4'
 # オリジナル追加
 gem 'flatpickr_rails'
 gem "administrate"
+
+gem 'better_errors'

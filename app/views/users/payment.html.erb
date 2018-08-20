@@ -37,13 +37,14 @@
         </b>
       </h3>
 
-      <p class="b-light-gray cardnumber">
+      <% if current_user.stripe_id %>
+       <p class="b-light-gray cardnumber">
         <b>
           ****&nbsp;****&nbsp;****&nbsp;<%= @default_card.last4 %><br>
           有効期限&nbsp;<%= @default_card.exp_year %>年<%= @default_card.exp_month %>月
         </b>
-
-      </p>
+       </p>
+      <% end %>
 
       <div class="container">
         <%= form_tag("/add_card", method: "post", id: "add-card") do %>

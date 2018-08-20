@@ -17,5 +17,10 @@ module Admin
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
+
+    def display_resource(user)
+      fullname = user.fullname
+    end
+
   end
 end

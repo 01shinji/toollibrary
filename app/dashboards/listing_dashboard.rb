@@ -9,6 +9,7 @@ class ListingDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
+    fullname: Field::String,
     photos: Field::HasMany,
     reservations: Field::HasMany,
     guest_reviews: Field::HasMany,
@@ -51,7 +52,7 @@ class ListingDashboard < Administrate::BaseDashboard
     :description,
     :location,
     :user,
-
+    :fullname,
     :photos,
     :reservations,
     :guest_reviews,

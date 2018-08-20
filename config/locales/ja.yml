@@ -162,14 +162,15 @@ ja:
 
       user:
 
-        listings: リスティング
-        reservations: 予約
+        listings: 出品数
+        reservations: 予約数
         guest_reviews: ゲストからのレビュー
         host_reviews: ホストからのレビュー
         notifications: 通知
         email: メール
         created_at: 作成日
         updated_at: 編集日
+        current_sign_in_at: 最新ログイン
         fullname: 本名
         image: イメージ画像
         phone_number: 電話番号
@@ -196,6 +197,7 @@ ja:
 
       listing:
         user: ユーザー
+        fullname: 本名
         photos: 写真
         reservations: 予約
         guest_reviews: ゲストからのレビュー
@@ -210,7 +212,7 @@ ja:
         updated_at: 編集日
         latitude: 緯度
         longitude: 経度
-        price_day: レンタル価格(1日)
+        price_day: 出品価格
         is_shower: シャワー
         is_bicycle: 自転車
         is_wetsuit: ウェットスーツ

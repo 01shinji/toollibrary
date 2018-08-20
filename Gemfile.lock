@@ -64,6 +64,10 @@ GEM
       aws-sdk-core (= 2.10.125)
     aws-sigv4 (1.0.2)
     bcrypt (3.1.11)
+    better_errors (2.4.0)
+      coderay (>= 1.0.0)
+      erubi (>= 1.0.0)
+      rack (>= 0.9.0)
     bindex (0.5.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
@@ -86,6 +90,7 @@ GEM
     climate_control (0.2.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
+    coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -307,6 +312,7 @@ PLATFORMS
 DEPENDENCIES
   administrate
   aws-sdk (~> 2.8)
+  better_errors
   bootstrap-sass (~> 3.3.7)
   bullet
   byebug
