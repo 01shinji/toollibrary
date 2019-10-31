@@ -66,7 +66,7 @@ gem 'rails-assets-card', source: 'http://insecure.rails-assets.org'
 
 gem 'omniauth-stripe-connect', '~> 2.10.0'
 
-gem 'chartkick', '~> 2.2.4'
+gem 'chartkick', '~> 3.2.0'
 
 # オリジナル追加
 gem 'flatpickr_rails'
